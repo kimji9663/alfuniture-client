@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import { Box, Button, Link, TextField, IconButton, Typography } from "@mui/material"
 import React, { ChangeEvent, useState } from "react"
 
-
 const SnsStyle = styled(Box)(() => ({
   textAlign: 'center',
   '& .MuiButtonBase-root': {
