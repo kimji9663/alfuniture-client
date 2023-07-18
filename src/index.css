@@ -82,6 +82,9 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
