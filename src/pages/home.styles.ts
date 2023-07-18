@@ -9,6 +9,5 @@ export const exampleStyle = css`
 
 // 방법2. mui/material/styles
 export const Layout = styled(Box)(() => ({
-  margin: "42px 16px",
   height: "100vh",
 }));
