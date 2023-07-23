@@ -1,7 +1,13 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { NavWrap } from "./navigationbar.styles"
-import { icon_home, icon_style, icon_shop, icon_like, icon_my } from "../assets/images"
+import React from "react";
+import { Link } from "react-router-dom";
+import { NavWrap } from "./navigationbar.styles";
+import {
+  icon_home,
+  icon_style,
+  icon_shop,
+  icon_like,
+  icon_my,
+} from "../assets/images";
 
 const NavigationBar = () => {
   return (
@@ -27,7 +33,7 @@ const NavigationBar = () => {
         MY
       </Link>
     </NavWrap>
-  )
-}
+  );
+};
 
-export default NavigationBar
+export default NavigationBar;
