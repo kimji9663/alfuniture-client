@@ -1,14 +1,8 @@
-import React from "react"
-import { StyledBox, exampleStyle } from "./home.styles"
-import NavigationBar from "../components/NavigationBar"
+import React from "react";
+import TitleTwoLine1 from "../components/titleTwoLine1";
 
 const Home = () => {
-  return (
-    <>
-      <StyledBox>홈</StyledBox>
-      <NavigationBar/>
-    </>
-  )
-}
+  return <TitleTwoLine1 />;
+};
 
-export default Home
+export default Home;
