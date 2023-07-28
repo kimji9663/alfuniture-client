@@ -4,7 +4,7 @@ export const ContentWrap = styled.div({
     position: 'relative',
     paddingBottom: '74px',
     maxWidth: '420px',
-    minHeight: '640px',
+    height: 'calc(100vh - 74px)',
     margin: 'auto',
     backgroundColor: '#fff',
     borderLeft: '1px solid #f5f5f5',

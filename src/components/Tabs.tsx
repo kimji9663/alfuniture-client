@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { Tabs, Tab, Typography, Box } from "@mui/material"
 
@@ -36,7 +36,7 @@ function a11yProps(index: number) {
 }
 
 const NormalTabs = () => {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
