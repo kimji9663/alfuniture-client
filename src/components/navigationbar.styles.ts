@@ -18,6 +18,7 @@ export const NaviWrap = styled(Box)(() => ({
     justifyContent: 'center',
     borderRadius: 0,
     textAlign: 'center',
+    fontSize: '1rem',
   },
 
   '&.navi > a': {

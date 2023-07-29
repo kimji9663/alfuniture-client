@@ -6,6 +6,7 @@ import Guide from "./pages/Guide"
 import BrandList from "./pages/shop/BrandList"
 import ProductList from "./pages/shop/ProductList"
 import ShopAll from "./pages/shop/ShopAll"
+import FunitureSelection from "./pages/onboarding/FunitureSelection"
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,16 @@ const router = createBrowserRouter([
           {
             path: "/auth/login",
             element: <Login />,
+          }
+        ]
+      },
+      {
+        path: "/onboarding",
+        element: <FunitureSelection />,
+        children: [
+          {
+            path: "/onboarding/funiture_selection",
+            element: <FunitureSelection />,
           }
         ]
       },

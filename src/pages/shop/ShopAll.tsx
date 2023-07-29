@@ -47,81 +47,160 @@ const ShopAll = () => {
 
   return (
     <>
-      <TitleOneLine />
-      <Box sx={{ 
-        borderBottom: 1, 
-        borderColor: 'divider',
-        '.MuiTab-root.Mui-selected': { color: '#333' },
-        '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
-      }}>
-        <Tabs 
-          value={value}
-          variant="fullWidth" 
-          onChange={handleChange} 
-          aria-label="main category"
-        >
-          <Tab label="가구" {...shopProps(0)} />
-          <Tab label="브랜드" {...shopProps(1)} />
-        </Tabs>
+      <Box sx={{ height: '100%', overflow: 'auto' }}>
+        <TitleOneLine />
+        <Box sx={{ 
+          borderBottom: 1, 
+          borderColor: 'divider',
+          '.MuiTab-root.Mui-selected': { color: '#333' },
+          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+        }}>
+          <Tabs 
+            value={value}
+            variant="fullWidth" 
+            onChange={handleChange} 
+            aria-label="main category"
+          >
+            <Tab label="가구" {...shopProps(0)} />
+            <Tab label="브랜드" {...shopProps(1)} />
+          </Tabs>
+        </Box>
+        <ShopTabPanel value={value} index={0}>
+          <ShopAllList>
+            <Box className="middle_category">테이블</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="다이닝테이블" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="데스크" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="사이드테이블" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="소반" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="소파테이블" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="의자" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="쇼파" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="수납장" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="침대" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="조명" />
+            </ListItemButton>
+          </ShopAllList>
+        </ShopTabPanel>
+
+        <ShopTabPanel value={value} index={1}>
+          <ShopAllList>
+            <Box className="middle_category">A</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Aarikka" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Adea" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Adi" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Aerobie" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="AGO" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="B" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="C" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="D" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="E" />
+            </ListItemButton>
+          </ShopAllList>
+          <ShopAllList>
+            <ListItemButton sx={{ py: 2, color: '#878787' }}>
+              <ListItemText primary="F" />
+            </ListItemButton>
+          </ShopAllList>
+        </ShopTabPanel>
       </Box>
-      <ShopTabPanel value={value} index={0}>
-        <ShopAllList>
-          <Box className="middle_category">테이블</Box>
-          <Box className="subdivision">
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="전체" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="다이닝테이블" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="데스크" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="사이드테이블" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="소반" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="소파테이블" />
-                  <ArrowForwardIosIcon />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </ShopAllList>
-        <ShopAllList>
-          <ListItemButton sx={{ py: 2, color: '#878787' }}>
-            <ListItemText primary="의자" />
-          </ListItemButton>
-        </ShopAllList>
-        <ShopAllList>
-          <ListItemButton sx={{ py: 2, color: '#878787' }}>
-            <ListItemText primary="쇼파" />
-          </ListItemButton>
-        </ShopAllList>
-      </ShopTabPanel>
-      <ShopTabPanel value={value} index={1}>
-        브랜드
-      </ShopTabPanel>
       <NavigationBar />
     </>
   )
