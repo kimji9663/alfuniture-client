@@ -77,6 +77,7 @@ const Login = () => {
           margin="normal"
         />
         <TextField
+          type="password"
           error={pwError.errorActive}
           onChange={handleChangeLoginField}
           fullWidth
