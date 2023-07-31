@@ -39,10 +39,14 @@ function ShopTabPanel(props: TabPanelProps) {
 }
 
 const ShopAll = () => {
-  const [value, setValue] = useState(0)
+  const [tabValue, setTabValue] = useState(0)
+  const [menuOpen, setMenuOpen] = useState('')
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
+  const handleShopTab = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue)
+  }
+  const handleMenuOpen = (event: React.SyntheticEvent, name: string) => {
+    setMenuOpen(name)
   }
 
   return (
@@ -56,18 +60,18 @@ const ShopAll = () => {
           '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
         }}>
           <Tabs 
-            value={value}
+            value={tabValue}
             variant="fullWidth" 
-            onChange={handleChange} 
+            onChange={handleShopTab} 
             aria-label="main category"
           >
             <Tab label="가구" {...shopProps(0)} />
             <Tab label="브랜드" {...shopProps(1)} />
           </Tabs>
         </Box>
-        <ShopTabPanel value={value} index={0}>
-          <ShopAllList>
-            <Box className="middle_category">테이블</Box>
+        <ShopTabPanel value={tabValue} index={0}>
+          <ShopAllList className={menuOpen === "menu_table" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_table")}>테이블</Box>
             <Box className="subdivision"> 
               <List>
                 <ListItem disablePadding>
@@ -109,36 +113,142 @@ const ShopAll = () => {
               </List>
             </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="의자" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_chair" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_chair")}>의자</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="인테리어의자" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="스툴·벤치" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="빈백" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="안락의자" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="쇼파" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_sofa" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_sofa")}>쇼파</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="일반소파" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="리클라이너" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="수납장" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_closet" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_closet")}>수납장</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="서랍장" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="수납장" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="캐비닛" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="침대" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_bed" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_bed")}>침대</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="침대프레임" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="침대+매트리스" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="조명" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_lights" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_lights")}>조명</Box>
+            <Box className="subdivision"> 
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="전체" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
           </ShopAllList>
         </ShopTabPanel>
 
-        <ShopTabPanel value={value} index={1}>
-          <ShopAllList>
-            <Box className="middle_category">A</Box>
+        <ShopTabPanel value={tabValue} index={1}>
+          <ShopAllList className={menuOpen === "menu_A" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_A")}>A</Box>
             <Box className="subdivision">
               <List>
                 <ListItem disablePadding>
@@ -174,30 +284,137 @@ const ShopAll = () => {
               </List>
             </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="B" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_B" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_B")}>B</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="BAHA" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="BESPOKE" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="C" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_C" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_C")}>C</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Cocon" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Centrocasa" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="D" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_D" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_D")}>D</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="DOD" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Dodot" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Dolce Vita" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="E" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_E" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_E")}>E</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Elo" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Essa" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="EXfuniture" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
           </ShopAllList>
-          <ShopAllList>
-            <ListItemButton sx={{ py: 2, color: '#878787' }}>
-              <ListItemText primary="F" />
-            </ListItemButton>
+          <ShopAllList className={menuOpen === "menu_F" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_F")}>F</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Fatboy" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Ff collective" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Flos" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="FMH" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
+          </ShopAllList>
+          <ShopAllList className={menuOpen === "menu_G" ? 'open' : ''}>
+            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_G")}>G</Box>
+            <Box className="subdivision">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Gakyu" />
+                    <ArrowForwardIosIcon />
+                  </ListItemButton>
+                </ListItem>
+              </List>  
+            </Box>
           </ShopAllList>
         </ShopTabPanel>
       </Box>
