@@ -7,6 +7,9 @@ import BrandList from "./pages/shop/BrandList"
 import ProductList from "./pages/shop/ProductList"
 import ShopAll from "./pages/shop/ShopAll"
 import FunitureSelection from "./pages/onboarding/FunitureSelection"
+import StyleSelection from "./pages/onboarding/StyleSelection"
+import FeaturedFuniture from "./pages/onboarding/FeaturedFuniture"
+import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
 
 const router = createBrowserRouter([
   {
@@ -41,6 +44,18 @@ const router = createBrowserRouter([
             element: <FunitureSelection />,
           }
         ]
+      },
+      {
+        path: "/onboarding/style_selection",
+        element: <StyleSelection />,
+      },
+      {
+        path: "/onboarding/featured_funiture",
+        element: <FeaturedFuniture />,
+      },
+      {
+        path: "/onboarding/featured_brand",
+        element: <FeaturedBrand />,
       },
       {
         path: "/shop",
