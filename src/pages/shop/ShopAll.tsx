@@ -1,9 +1,253 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Tabs, Tab, Box, List, ListItem, ListItemButton, ListItemText } from "@mui/material"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { ShopAllList } from "./shopAll.styles"
 import TitleOneLine from "../../components/titleOneLine"
 import NavigationBar from "../../components/NavigationBar"
+
+const shopJson = {
+  "funiture":[
+    {
+      "id": "menu_table",
+      "category": "테이블",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "다이닝테이블",
+          "url": "/",
+        },
+        {
+          "category": "데스크",
+          "url": "/",
+        },
+        {
+          "category": "사이드테이블",
+          "url": "/",
+        },
+        {
+          "category": "소반",
+          "url": "/",
+        },
+        {
+          "category": "소파테이블",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_chair",
+      "category": "의자",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "인테리어의자",
+          "url": "/",
+        },
+        {
+          "category": "스툴·벤치",
+          "url": "/",
+        },
+        {
+          "category": "빈백",
+          "url": "/",
+        },
+        {
+          "category": "안락의자",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_sofa",
+      "category": "소파",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "일반소파",
+          "url": "/",
+        },
+        {
+          "category": "리클라이너",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_closet",
+      "category": "수납장",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "서랍장",
+          "url": "/",
+        },
+        {
+          "category": "수납장",
+          "url": "/",
+        },
+        {
+          "category": "캐비닛",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_bed",
+      "category": "침대",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "침대프레임",
+          "url": "/",
+        },
+        {
+          "category": "침대+매트리스",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_lights",
+      "category": "조명",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+      ]
+    }
+  ],
+  "alphabet": [
+    {
+      "id": "menu_A",
+      "category": "A",
+      "children": [
+        {
+          "category": "Aarikka",
+          "url": "/",
+        },
+        {
+          "category": "Adea",
+          "url": "/",
+        },
+        {
+          "category": "Adi",
+          "url": "/",
+        },
+        {
+          "category": "Aerobie",
+          "url": "/",
+        },
+        {
+          "category": "AGO",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_B",
+      "category": "B",
+      "children": [
+        {
+          "category": "BAHA",
+          "url": "/",
+        },
+        {
+          "category": "BESPOKE",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_C",
+      "category": "C",
+      "children": [
+        {
+          "category": "Cocon",
+          "url": "/",
+        },
+        {
+          "category": "Centrocasa",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_D",
+      "category": "D",
+      "children": [
+        {
+          "category": "DOD",
+          "url": "/",
+        },
+        {
+          "category": "Dodot",
+          "url": "/",
+        },
+        {
+          "category": "Dolce Vita",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_E",
+      "category": "E",
+      "children": [
+        {
+          "category": "Elo",
+          "url": "/",
+        },
+        {
+          "category": "Essa",
+          "url": "/",
+        },
+        {
+          "category": "EXfuniture",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_F",
+      "category": "F",
+      "children": [
+        {
+          "category": "Fatboy",
+          "url": "/",
+        },
+        {
+          "category": "Ff collective",
+          "url": "/",
+        },
+        {
+          "category": "Flos",
+          "url": "/",
+        },
+        {
+          "category": "FMH",
+          "url": "/",
+        },
+      ]
+    },
+  ]
+}
+
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -42,6 +286,9 @@ const ShopAll = () => {
   const [tabValue, setTabValue] = useState(0)
   const [menuOpen, setMenuOpen] = useState('')
 
+  useEffect(() => {
+  }, [])
+
   const handleShopTab = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
@@ -70,352 +317,43 @@ const ShopAll = () => {
           </Tabs>
         </Box>
         <ShopTabPanel value={tabValue} index={0}>
-          <ShopAllList className={menuOpen === "menu_table" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_table")}>테이블</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="다이닝테이블" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="데스크" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="사이드테이블" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="소반" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="소파테이블" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_chair" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_chair")}>의자</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="인테리어의자" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="스툴·벤치" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="빈백" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="안락의자" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_sofa" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_sofa")}>쇼파</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="일반소파" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="리클라이너" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_closet" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_closet")}>수납장</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="서랍장" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="수납장" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="캐비닛" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_bed" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_bed")}>침대</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="침대프레임" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="침대+매트리스" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_lights" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_lights")}>조명</Box>
-            <Box className="subdivision"> 
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="전체" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
+          {shopJson.funiture.map((el) => (
+            <ShopAllList className={menuOpen === el.id ? 'open' : ''}>
+              <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
+              <Box className="subdivision"> 
+                <List>
+                  {el.children?.map((el) => (
+                    <ListItem disablePadding>
+                      <ListItemButton>
+                        <ListItemText primary={el.category} />
+                        <ArrowForwardIosIcon />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </ShopAllList>
+          ))}
         </ShopTabPanel>
 
         <ShopTabPanel value={tabValue} index={1}>
-          <ShopAllList className={menuOpen === "menu_A" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_A")}>A</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Aarikka" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Adea" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Adi" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Aerobie" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="AGO" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_B" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_B")}>B</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="BAHA" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="BESPOKE" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_C" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_C")}>C</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Cocon" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Centrocasa" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_D" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_D")}>D</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="DOD" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Dodot" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Dolce Vita" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_E" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_E")}>E</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Elo" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Essa" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="EXfuniture" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_F" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_F")}>F</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Fatboy" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Ff collective" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Flos" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="FMH" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
-          <ShopAllList className={menuOpen === "menu_G" ? 'open' : ''}>
-            <Box className="middle_category" onClick={e => handleMenuOpen(e, "menu_G")}>G</Box>
-            <Box className="subdivision">
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary="Gakyu" />
-                    <ArrowForwardIosIcon />
-                  </ListItemButton>
-                </ListItem>
-              </List>  
-            </Box>
-          </ShopAllList>
+          {shopJson.alphabet.map((el) => (
+            <ShopAllList className={menuOpen === el.id ? 'open' : ''}>
+              <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
+              <Box className="subdivision"> 
+                <List>
+                  {el.children?.map((el) => (
+                    <ListItem disablePadding>
+                      <ListItemButton>
+                        <ListItemText primary={el.category} />
+                        <ArrowForwardIosIcon />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </ShopAllList>
+          ))}
         </ShopTabPanel>
       </Box>
       <NavigationBar />
