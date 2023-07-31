@@ -24,13 +24,21 @@ export const NaviWrap = styled(Box)(() => ({
   '&.navi > a': {
     flex: '1 1 20%',
     backgroundColor: '#000',
+    color: '#999',
+    fontSize: '.6rem',
+  },  
+  '&.navi > a svg': {
+    marginBottom: '4px',
+    color: '#999',
+  },
+
+  '&.navi > a.active, &.navi > a.active svg': {
     color: '#fff',
   },
 
   '&.pair > button': {
     flex: '1 1 50%',
-  },
-  
+  },  
   '&.single > button': {
     flex: '1 1 auto',
   },
