@@ -1,37 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NaviWrap } from "./navigationbar.styles";
+import { useLocation } from "react-router-dom";
 import {
-  icon_home,
-  icon_style,
-  icon_shop,
-  icon_like,
-  icon_my,
+  IconHome,
+  IconStyle,
+  IconShop,
+  IconLike,
+  IconMy,
 } from "../assets/images";
 
 const NavigationBar = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    console.log(location.pathname)
+  }, [location.pathname])
+
+  const navigationActive = (path:string) => {
+    const currentPath = location.pathname
+    if (currentPath.includes(path)) {
+      return "active"
+    }
+  }
 
   return (
     <>
       <NaviWrap className="navi">
-        <Link to="/">
-          <img src={icon_home} alt="home" />
+        <Link to="/home" className={navigationActive("/home")}>
+          <IconHome />
           HOME
         </Link>
-        <Link to="/">
-          <img src={icon_style} alt="style" />
+        <Link to="/" className={navigationActive("/style")}>
+          <IconStyle />
           STYLE
         </Link>
-        <Link to="/">
-          <img src={icon_shop} alt="shop" />
+        <Link to="/shop/shop_all" className={navigationActive("/shop")}>
+          <IconShop />
           SHOP
         </Link>
-        <Link to="/">
-          <img src={icon_like} alt="like" />
+        <Link to="/" className={navigationActive("/like")}>
+          <IconLike />
           LIKE
         </Link>
-        <Link to="/">
-          <img src={icon_my} alt="my" />
+        <Link to="/" className={navigationActive("/my")}>
+          <IconMy />
           MY
         </Link>
       </NaviWrap>

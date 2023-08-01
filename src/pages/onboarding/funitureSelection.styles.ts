@@ -7,7 +7,9 @@ export const RectCheckbox = styled(FormControl)(({}) => ({
     display: 'none',
   },
   '& label': {
+    padding: '3px 12px',
     border: '1px solid #DADADA',
+    fontSize: '0.875rem',
   },
   '& input:checked + label': {
     border: '1px solid #242223',
