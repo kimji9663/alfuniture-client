@@ -286,9 +286,6 @@ const ShopAll = () => {
   const [tabValue, setTabValue] = useState(0)
   const [menuOpen, setMenuOpen] = useState('')
 
-  useEffect(() => {
-  }, [])
-
   const handleShopTab = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
