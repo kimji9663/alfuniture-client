@@ -53,10 +53,10 @@ const FunitureSelection = () => {
 
   return (
     <>
-      <Box sx={{ px: 2, height: '100%', overflow: 'auto' }}>
+      <Box sx={{height: '100%', overflow: 'auto' }}>
         <TitleTwoLine1 />
 
-        <Box sx={{ m: '-16px 0 0 -8px', pt: 10 }}>
+        <Box sx={{ px: 2, m: '-16px 0 0 -8px', pt: 10 }}>
           {
             itemList.map((el) => (
               <RectCheckbox key={el.id} sx={{ ml: 1, mt: 2 }}>

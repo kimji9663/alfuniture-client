@@ -1,11 +1,9 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
 import { NaviWrap, PrimaryButton } from "../../components/navigationbar.styles"
-import TitleTwoLine1 from "../../components/titleTwoLine1"
-import { RectCheckbox } from "./funitureSelection.styles"
 import { useNavigate } from "react-router-dom"
 
-const FeaturedFuniture = () => {
+const FeaturedProduct = () => {
   const navigate = useNavigate()
 
   const goToNext = () => {
@@ -14,7 +12,7 @@ const FeaturedFuniture = () => {
 
     return (
       <>
-        <Box sx={{ px: 2, height: '100%', overflow: 'auto' }}>
+        <Box sx={{ height: '100%', overflow: 'auto' }}>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ marginTop: 2 }}>SKIP</Box>
             <Box sx={{ marginTop: 2 }}>
@@ -24,6 +22,10 @@ const FeaturedFuniture = () => {
               </Typography>
             </Box>
           </Box>
+          
+          <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
+            가구리스트
+          </Box>
         </Box>
         <NaviWrap className="single">
           <PrimaryButton onClick={goToNext}>다음으로</PrimaryButton>
@@ -31,4 +33,4 @@ const FeaturedFuniture = () => {
       </>
     )
   }
-  export default FeaturedFuniture
+  export default FeaturedProduct
