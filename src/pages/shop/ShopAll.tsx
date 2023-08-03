@@ -46,19 +46,27 @@ const shopJson = {
           "url": "/",
         },
         {
-          "category": "인테리어의자",
+          "category": "다이닝체어",
           "url": "/",
         },
         {
-          "category": "스툴·벤치",
+          "category": "라운지체어",
           "url": "/",
         },
         {
-          "category": "빈백",
+          "category": "스툴",
           "url": "/",
         },
         {
-          "category": "안락의자",
+          "category": "바체어",
+          "url": "/",
+        },
+        {
+          "category": "벤치",
+          "url": "/",
+        },
+        {
+          "category": "펫체어",
           "url": "/",
         },
       ]
@@ -72,11 +80,23 @@ const shopJson = {
           "url": "/",
         },
         {
-          "category": "일반소파",
+          "category": "1인용",
           "url": "/",
         },
         {
-          "category": "리클라이너",
+          "category": "2-3인용",
+          "url": "/",
+        },
+        {
+          "category": "4인용",
+          "url": "/",
+        },
+        {
+          "category": "모듈",
+          "url": "/",
+        },
+        {
+          "category": "풋스툴",
           "url": "/",
         },
       ]
@@ -90,15 +110,35 @@ const shopJson = {
           "url": "/",
         },
         {
+          "category": "낮은거실장",
+          "url": "/",
+        },
+        {
+          "category": "책장",
+          "url": "/",
+        },
+        {
           "category": "서랍장",
           "url": "/",
         },
         {
-          "category": "수납장",
+          "category": "장식장",
           "url": "/",
         },
         {
-          "category": "캐비닛",
+          "category": "화장대",
+          "url": "/",
+        },
+        {
+          "category": "옷장",
+          "url": "/",
+        },
+        {
+          "category": "협탁",
+          "url": "/",
+        },
+        {
+          "category": "트롤리",
           "url": "/",
         },
       ]
@@ -112,11 +152,31 @@ const shopJson = {
           "url": "/",
         },
         {
-          "category": "침대프레임",
+          "category": "침대모듈",
           "url": "/",
         },
         {
-          "category": "침대+매트리스",
+          "category": "s",
+          "url": "/",
+        },
+        {
+          "category": "ss",
+          "url": "/",
+        },
+        {
+          "category": "D",
+          "url": "/",
+        },
+        {
+          "category": "Q",
+          "url": "/",
+        },
+        {
+          "category": "K",
+          "url": "/",
+        },
+        {
+          "category": "LK-",
           "url": "/",
         },
       ]
@@ -129,8 +189,76 @@ const shopJson = {
           "category": "전체",
           "url": "/",
         },
+        {
+          "category": "펜던트",
+          "url": "/",
+        },
+        {
+          "category": "벽조명",
+          "url": "/",
+        },
+        {
+          "category": "스탠드",
+          "url": "/",
+        },
+        {
+          "category": "테이블조명",
+          "url": "/",
+        },
       ]
-    }
+    },
+    {
+      "id": "menu_homedeco",
+      "category": "홈데코",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "인테리어소품",
+          "url": "/",
+        },
+        {
+          "category": "월데코",
+          "url": "/",
+        },
+        {
+          "category": "다이닝",
+          "url": "/",
+        },
+        {
+          "category": "거울",
+          "url": "/",
+        },
+        {
+          "category": "행거",
+          "url": "/",
+        },
+      ]
+    },
+    {
+      "id": "menu_kids",
+      "category": "키즈",
+      "children": [
+        {
+          "category": "전체",
+          "url": "/",
+        },
+        {
+          "category": "옷,서랍장",
+          "url": "/",
+        },
+        {
+          "category": "책,서랍장",
+          "url": "/",
+        },
+        {
+          "category": "침대",
+          "url": "/",
+        },
+      ]
+    },
   ],
   "alphabet": [
     {
@@ -164,11 +292,19 @@ const shopJson = {
       "category": "B",
       "children": [
         {
-          "category": "BAHA",
+          "category": "B-LINE",
           "url": "/",
         },
         {
-          "category": "BESPOKE",
+          "category": "B&B Italia",
+          "url": "/",
+        },
+        {
+          "category": "Bacsac",
+          "url": "/",
+        },
+        {
+          "category": "BALERI ITALIA",
           "url": "/",
         },
       ]
@@ -178,11 +314,23 @@ const shopJson = {
       "category": "C",
       "children": [
         {
-          "category": "Cocon",
+          "category": "Caccaro",
           "url": "/",
         },
         {
-          "category": "Centrocasa",
+          "category": "CACOON",
+          "url": "/",
+        },
+        {
+          "category": "calligaris",
+          "url": "/",
+        },
+        {
+          "category": "Cane-Line",
+          "url": "/",
+        },
+        {
+          "category": "cappellini",
           "url": "/",
         },
       ]
@@ -192,15 +340,15 @@ const shopJson = {
       "category": "D",
       "children": [
         {
-          "category": "DOD",
+          "category": "Danese Milano",
           "url": "/",
         },
         {
-          "category": "Dodot",
+          "category": "DANTE",
           "url": "/",
         },
         {
-          "category": "Dolce Vita",
+          "category": "davide groppi",
           "url": "/",
         },
       ]
@@ -210,15 +358,15 @@ const shopJson = {
       "category": "E",
       "children": [
         {
-          "category": "Elo",
+          "category": "EBB&FLOW",
           "url": "/",
         },
         {
-          "category": "Essa",
+          "category": "EcoSmart Fire",
           "url": "/",
         },
         {
-          "category": "EXfuniture",
+          "category": "edra",
           "url": "/",
         },
       ]
@@ -228,19 +376,19 @@ const shopJson = {
       "category": "F",
       "children": [
         {
+          "category": "Fabbian",
+          "url": "/",
+        },
+        {
+          "category": "Fabula Living",
+          "url": "/",
+        },
+        {
+          "category": "Fast",
+          "url": "/",
+        },
+        {
           "category": "Fatboy",
-          "url": "/",
-        },
-        {
-          "category": "Ff collective",
-          "url": "/",
-        },
-        {
-          "category": "Flos",
-          "url": "/",
-        },
-        {
-          "category": "FMH",
           "url": "/",
         },
       ]
@@ -315,12 +463,12 @@ const ShopAll = () => {
         </Box>
         <ShopTabPanel value={tabValue} index={0}>
           {shopJson.funiture.map((el) => (
-            <ShopAllList className={menuOpen === el.id ? 'open' : ''}>
+            <ShopAllList key={el.id} className={menuOpen === el.id ? 'open' : ''}>
               <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
               <Box className="subdivision"> 
                 <List>
-                  {el.children?.map((el) => (
-                    <ListItem disablePadding>
+                  {el.children?.map((el, index) => (
+                    <ListItem disablePadding key={`${el}_${index}`}>
                       <ListItemButton>
                         <ListItemText primary={el.category} />
                         <ArrowForwardIosIcon />
@@ -335,12 +483,12 @@ const ShopAll = () => {
 
         <ShopTabPanel value={tabValue} index={1}>
           {shopJson.alphabet.map((el) => (
-            <ShopAllList className={menuOpen === el.id ? 'open' : ''}>
+            <ShopAllList key={el.id} className={menuOpen === el.id ? 'open' : ''}>
               <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
               <Box className="subdivision"> 
                 <List>
-                  {el.children?.map((el) => (
-                    <ListItem disablePadding>
+                  {el.children?.map((el, index) => (
+                    <ListItem disablePadding key={`${el}_${index}`}>
                       <ListItemButton>
                         <ListItemText primary={el.category} />
                         <ArrowForwardIosIcon />
