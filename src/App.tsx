@@ -3,7 +3,6 @@ import Layout from "./components/Layout"
 import Home from "./pages/Home"
 import Login from "./pages/auth/Login"
 import Guide from "./pages/Guide"
-import BrandList from "./pages/shop/BrandList"
 import ShopProductList from "./pages/shop/ProductList"
 import ShopAll from "./pages/shop/ShopAll"
 import FunitureSelection from "./pages/onboarding/FunitureSelection"
@@ -71,10 +70,6 @@ const router = createBrowserRouter([
       {
         path: "/shop/shop_all",
         element: <ShopAll />,
-      },
-      {
-        path: "/shop/brand_list",
-        element: <BrandList />,
       },
       {
         path: "/like",
