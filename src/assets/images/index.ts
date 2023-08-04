@@ -6,6 +6,7 @@ import { ReactComponent as IconShop } from "./icon_shop.svg"
 import { ReactComponent as IconLike } from "./icon_like.svg"
 import { ReactComponent as IconMy } from "./icon_my.svg"
 import { ReactComponent as ArrowRight } from "./icon_arrow_right.svg"
+import { ReactComponent as ArrowBottom } from "./icon_arrow_bottom.svg"
 import { ReactComponent as IconShift } from "./icon_shift.svg"
 
 // Image
@@ -19,6 +20,7 @@ export {
   IconLike,
   IconMy,
   ArrowRight,
+  ArrowBottom,
   IconShift,
 
   // Image
