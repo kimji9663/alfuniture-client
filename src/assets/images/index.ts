@@ -11,6 +11,10 @@ import { ReactComponent as IconShift } from "./icon_shift.svg"
 
 // Image
 import thumb_brand01 from "./thumb_brand01.png"
+import icon_kakao from "./icon_sns_kakao.svg"
+import icon_naver from "./icon_sns_naver.svg"
+import icon_facebook from "./icon_sns_facebook.svg"
+import icon_apple from "./icon_sns_apple.svg"
 
 export {
   // Component
@@ -22,6 +26,10 @@ export {
   ArrowRight,
   ArrowBottom,
   IconShift,
+  icon_kakao,
+  icon_naver,
+  icon_facebook,
+  icon_apple,
 
   // Image
   thumb_brand01,

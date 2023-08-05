@@ -3,7 +3,7 @@ import { Box, Button, Link, IconButton, Typography, FormControl, Input, InputAdo
 import { SnsLogin } from "./login.styles"
 import { useNavigate } from "react-router-dom"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { ArrowBottom } from "../../assets/images"
+import { ArrowBottom, icon_kakao, icon_naver, icon_facebook, icon_apple } from "../../assets/images"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -147,12 +147,20 @@ const Login = () => {
         </Typography>
       </Box>
 
-      <SnsLogin sx={{ mt: 7 }}>
-        <Typography component="p" sx={{ mb: 2, fontSize: '.875rem' }}>SNS로 간편하게 시작하기</Typography>
-        <IconButton aria-label="카카오" className="kakao">K</IconButton>
-        <IconButton aria-label="네이버" className="naver">N</IconButton>
-        <IconButton aria-label="페이스북" className="facebook">F</IconButton>
-        <IconButton aria-label="애플" className="apple">A</IconButton>
+      <SnsLogin sx={{ mt: 9 }}>
+        <Typography component="p" sx={{ mb: 1, fontSize: '.875rem', color: '#333333' }}>SNS로 간편하게 시작하기</Typography>
+        <IconButton aria-label="카카오" className="kakao">
+          <img src={icon_kakao} alt="" />
+        </IconButton>
+        <IconButton aria-label="네이버" className="naver">
+          <img src={icon_naver} alt="" />
+        </IconButton>
+        <IconButton aria-label="페이스북" className="facebook">
+          <img src={icon_facebook} alt="" />
+        </IconButton>
+        <IconButton aria-label="애플" className="apple">
+          <img src={icon_apple} alt="" />
+        </IconButton>
       </SnsLogin>
     </Box>
   )
