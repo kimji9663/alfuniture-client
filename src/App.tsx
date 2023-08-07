@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/auth/Login"
 import Guide from "./pages/Guide"
 import ShopProductList from "./pages/shop/ProductList"
+import ShopProductView from "./pages/shop/ProductView"
 import ShopAll from "./pages/shop/ShopAll"
 import FunitureSelection from "./pages/onboarding/FunitureSelection"
 import StyleSelection from "./pages/onboarding/StyleSelection"
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             element: <ShopProductList />,
           },
         ]
+      },
+      {
+        path: "/shop/product_view",
+        element: <ShopProductView />,
       },
       {
         path: "/shop/shop_all",
