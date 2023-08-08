@@ -1,7 +1,7 @@
 import { css } from "@emotion/css"
 import { styled } from "@mui/material/styles"
 import { Box, Button } from "@mui/material"
-import { PrimaryButton } from "../../styles/buttons.styles"
+import { OutlineButton, PrimaryButton } from "../../styles/buttons.styles"
 
 export const ProductMainInfo = styled(Box)(() => ({
   '& > .product_brand': {
@@ -53,4 +53,28 @@ export const OrderButton = styled(PrimaryButton)(() => ({
   padding: '.825rem .5rem',
   fontSize: '.875rem',
   borderRadius: 0,
+}))
+
+export const DetailView = styled(Box)(() => ({
+  position: 'relative',
+  overflow: 'hidden',
+  
+  '& img': { 
+    display: 'block',
+    width: '100%',
+  }
+}))
+
+export const CoverBox = styled(Box)(() => ({
+  padding: '40px 16px 16px',
+  position: 'absolute', 
+  bottom: 0, 
+  width: '100%', 
+  background: 'linear-gradient(#ffffff00 0%, #fff6 15%, #ffffffbf 30%, #ffffff 50%)',
+  boxSizing: 'border-box',
+}))
+export const MoreButton = styled(OutlineButton)(() => ({
+  padding: '15px 8px',
+  borderRadius: 0,
+  fontSize: '1rem',
 }))
