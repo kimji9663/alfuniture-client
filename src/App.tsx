@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import Home from "./pages/Home"
-import Login from "./pages/auth/Login"
 import Guide from "./pages/Guide"
 import ShopProductList from "./pages/shop/ProductList"
 import ShopAll from "./pages/shop/ShopAll"
@@ -10,6 +9,8 @@ import StyleSelection from "./pages/onboarding/StyleSelection"
 import FeaturedProduct from "./pages/onboarding/FeaturedProduct"
 import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
 import Like from "./pages/like"
+import SignIn from "./pages/auth/SignIn"
+import SignUp from "./pages/auth/SignUp"
 
 const router = createBrowserRouter([
   {
@@ -27,13 +28,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth",
-        element: <Login />,
+        element: <SignIn />,
         children: [
           {
-            path: "/auth/login",
-            element: <Login />,
+            path: "/auth/sign_in",
+            element: <SignIn />,
           }
         ]
+      },
+      {
+        path: "/auth/sign_up",
+        element: <SignUp />,
       },
       {
         path: "/onboarding",
