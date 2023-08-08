@@ -5,9 +5,11 @@ import { ReactComponent as IconStyle } from "./icon_style.svg"
 import { ReactComponent as IconShop } from "./icon_shop.svg"
 import { ReactComponent as IconLike } from "./icon_like.svg"
 import { ReactComponent as IconMy } from "./icon_my.svg"
+import { ReactComponent as HalfArrow } from "./icon_half_arrow.svg"
 import { ReactComponent as ArrowRight } from "./icon_arrow_right.svg"
 import { ReactComponent as ArrowBottom } from "./icon_arrow_bottom.svg"
 import { ReactComponent as IconShift } from "./icon_shift.svg"
+import { ReactComponent as IconHeartSmall } from "./icon_heart_small.svg"
 
 // Image
 import thumb_brand01 from "./thumb_brand01.png"
@@ -23,6 +25,7 @@ export {
   IconShop,
   IconLike,
   IconMy,
+  HalfArrow,
   ArrowRight,
   ArrowBottom,
   IconShift,
@@ -30,6 +33,7 @@ export {
   icon_naver,
   icon_facebook,
   icon_apple,
+  IconHeartSmall,
 
   // Image
   thumb_brand01,

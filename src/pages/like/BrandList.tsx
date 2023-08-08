@@ -1,7 +1,7 @@
 import React from "react"
 import { Typography, Avatar, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material"
 import { AvatarList } from "./index.styles"
-import { ArrowRight } from "../../assets/images"
+import { HalfArrow } from "../../assets/images"
 
 const itemList = [
   {
@@ -44,7 +44,7 @@ const BrandList = () => {
               <Avatar alt={el.name} src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText primary={el.name} />
-          <ArrowRight />
+          <HalfArrow />
           </ListItemButton>
       ))}
       </AvatarList>
