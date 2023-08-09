@@ -2,16 +2,10 @@ import React, { useState } from "react"
 import { Box, Button, Typography, FormControl, Divider } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 
-const SignUp = () => {
-  const navigate = useNavigate()
-
-  const goToBack = () => {
-    navigate(-1)
-  } 
+const TermsAgreement = () => {
 
   return (
     <Box sx={{ p: 2 }}>
-      <Button onClick={goToBack}>뒤로가기</Button>
       <Box sx={{ width: "100%", marginTop: 4 }}>
         <Typography sx={{ fontSize: "1.5rem" }}>알퍼니처 서비스 이용약관에</Typography>
         <Typography sx={{ fontSize: "1.5rem" }}>동의해주세요</Typography>
@@ -52,5 +46,4 @@ const SignUp = () => {
     </Box>
   )
 }
-
-export default SignUp
+export default TermsAgreement
