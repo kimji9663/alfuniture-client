@@ -1,11 +1,11 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { useState } from "react"
 import { Box, Button, Link, IconButton, Typography, FormControl, Input, InputAdornment, FormHelperText } from "@mui/material"
-import { SnsLogin } from "./login.styles"
+import { SnsLogin } from "./signIn.styles"
 import { useNavigate } from "react-router-dom"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
 import { ArrowBottom, icon_kakao, icon_naver, icon_facebook, icon_apple } from "../../assets/images"
 
-const Login = () => {
+const SignIn = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = React.useState(false)
   const [formData, setFormData] = useState({
@@ -19,11 +19,11 @@ const Login = () => {
 
   const goToHome = () => {
     navigate("/home")
-  }
+  }           
   
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
-  const handleChangeLoginField = (event:ChangeEvent<HTMLInputElement>)=> {
+  const handleChangeLoginField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     setFormData({ ...formData, [event.target.name]: event.target.value })
     console.log(formData, event.target.value)
   }
@@ -166,4 +166,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignIn
