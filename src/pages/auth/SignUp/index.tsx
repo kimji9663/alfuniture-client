@@ -1,126 +1,81 @@
 import React, { useState } from "react"
-import { Box, Button, Typography, Stepper, Step, StepLabel } from "@mui/material"
+import { Box, Button, Typography, Stepper, Step } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import TermsAgreement from "./TermsAgreement"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
-import { StepIconProps } from '@mui/material/StepIcon';
 import { styled } from "@mui/material/styles"
 
-const StepperBar = styled('div')<{ ownerState: { active?: boolean } }>(
-  ({ theme, ownerState }) => ({
-    color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
-    display: 'flex',
-    height: 22,
-    alignItems: 'center',
-    ...(ownerState.active && {
-      color: '#000',
+const StepBar = styled(Step)<{ active?: boolean }>(
+  ({ active }) => ({
+    backgroundColor: '#E4E4E4',
+    width: '100%',
+    height: 1,
+    ...(active && {
+      backgroundColor: '#000',
     }),
-    '& .setpper_bar': {
-      width: '50px',
-      height: 3,
-      backgroundColor: 'currentColor',
-    },
   }),
-);
+)
 
-function StepsLabel(props: StepIconProps) {
-  const { active, completed, className } = props;
-
-  return (
-    <StepperBar ownerState={{ active }} className={className}>
-      <div className="setpper_bar" />
-    </StepperBar>
-  );
-}
-
-const steps = ['SignUp01', 'SignUp02', 'SignUp03'];
+const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04', 'SignUp05', 'SignUp06']
 
 const SignUp = () => {
   const navigate = useNavigate()
+  const [activeStep, setActiveStep] = useState(0)
 
   const goToBack = () => {
     navigate(-1)
-  } 
-
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set<number>());
-
-  const isStepOptional = (step: number) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step: number) => {
-    return skipped.has(step);
-  };
+  }
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  // }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  const isActive = (label: string) => {
+    return label === steps[activeStep] ? true : false
+  }
 
   return (
     <>
       <Button onClick={goToBack}>뒤로가기</Button>
+      {/* <Button
+        color="inherit"
+        disabled={activeStep === 0}
+        onClick={handleBack}
+        sx={{ mr: 1 }}
+      >
+        뒤로가기
+      </Button> */}
 
       <Stepper activeStep={activeStep} connector={null}>
         {steps.map((label, index) => {
-          const stepProps: { completed?: boolean } = {};
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
+          const stepProps: { completed?: boolean, } = {}
+          
           return (
-            <Step key={label} {...stepProps} sx={{ px: 0 }}>
-              <StepLabel 
-                StepIconComponent={StepsLabel}                
-                sx={{ 
-                  flexDirection: 'column',
-                  '.MuiStepLabel-iconContainer': {
-                    pr: 0,
-                  },
-                }}
-              >
-              </StepLabel>
-            </Step>
-          );
+            <StepBar
+              key={label} 
+              {...stepProps} 
+              sx={{ 
+                px: 0, 
+                flex: `1 1 ${100/steps.length}%` 
+              }}
+              active={isActive(label)}
+            />
+          )
         })}
       </Stepper>
 
       {activeStep === steps.length ? (
         <>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
+            회원가입이 완료되었습니다.
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
           </Box>
         </>
       ) : (
@@ -140,26 +95,21 @@ const SignUp = () => {
               페이지 3
             </Box>
           ) : null}
-
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
-            {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )}
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
-          </Box>
+          {activeStep === 3 ? (
+            <Box>
+              페이지 4
+            </Box>
+          ) : null}
+          {activeStep === 4 ? (
+            <Box>
+              페이지 5
+            </Box>
+          ) : null}
+          {activeStep === 5 ? (
+            <Box>
+              페이지 6
+            </Box>
+          ) : null}
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">

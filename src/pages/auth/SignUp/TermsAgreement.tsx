@@ -1,6 +1,17 @@
 import React, { useState } from "react"
-import { Box, Button, Typography, FormControl, Divider } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+import { Box, Button, Typography, FormControl, Divider, Checkbox, CheckboxProps, FormControlLabel } from "@mui/material"
+import { Check } from "@mui/icons-material"
+
+function CheckboxIcon(props: CheckboxProps) {
+  return (
+    <Checkbox
+      disableRipple
+      checkedIcon={<Check sx={{ color: '#000' }} />}
+      icon={<Check sx={{ color: '#BDBDBD' }} />}
+      inputProps={{ 'id': props.id }}
+    />
+  );
+}
 
 const TermsAgreement = () => {
 
@@ -12,35 +23,29 @@ const TermsAgreement = () => {
       </Box>
 
       <Box>
-        <FormControl>
-          <input 
-            type="checkbox" 
-            id="check_agree_all" 
+        <FormControl fullWidth component="fieldset">
+          <FormControlLabel 
+            control={<CheckboxIcon id="check_agree_all" />} 
+            labelPlacement="end" 
+            label="모두동의" 
           />
-          <label>모두 동의</label>
-        </FormControl>
-        <Divider />
-
-        <FormControl>
-          <input 
-            type="checkbox" 
-            id="check_agree_age" 
+          <Divider />
+          
+          <FormControlLabel 
+            control={<CheckboxIcon id="check_agree_age" />} 
+            labelPlacement="end" 
+            label={<><span>[필수]</span> 만 14세 이상</>} 
           />
-          <label><span>[필수]</span> 만 14세 이상</label>
-        </FormControl>
-        <FormControl>
-          <input 
-            type="checkbox" 
-            id="check_terms_of_use" 
+          <FormControlLabel 
+            control={<CheckboxIcon id="check_terms_of_use" />} 
+            labelPlacement="end" 
+            label={<><span>[필수]</span> 이용약관 동의</>} 
           />
-          <label><span>[필수]</span> 이용약관 동의</label>
-        </FormControl>
-        <FormControl>
-          <input 
-            type="checkbox" 
-            id="check_agree_age" 
+          <FormControlLabel 
+            control={<CheckboxIcon id="check_privacy" />} 
+            labelPlacement="end" 
+            label={<><span>[필수]</span> 개인정보 수집 및 이용동의</>} 
           />
-          <label><span>[필수]</span> 개인정보 수집 및 이용동의</label>
         </FormControl>
       </Box>
     </Box>
