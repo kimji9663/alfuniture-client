@@ -5,17 +5,18 @@ import React from "react"
 import { FlexSpaceBetweenCenterBox, GridBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 
-interface PreviewProps {
-  imgsrc: string;
-  like: boolean;
+export interface PreviewProps {
+  imgsrc?: string;
+  like?: boolean;
+  likeCount?: number;
   shopName: string;
   modelName: string;
   productName: string;
-  price: number;
-  colors: Array<string>;
+  price?: number;
+  colors?: Array<string>;
 }
 
-const Preview: React.FC<PreviewProps> = ({
+const PreviewItem: React.FC<PreviewProps> = ({
   imgsrc,
   like,
   shopName,
@@ -51,7 +52,7 @@ const Preview: React.FC<PreviewProps> = ({
           <GridBox
             columnGap={'4px'}
           >
-            {colors.map((color: string) => (
+            {colors?.map((color: string) => (
               <Box
                 sx={{
                   width: '10px',
@@ -67,4 +68,4 @@ const Preview: React.FC<PreviewProps> = ({
   )
 }
 
-export default Preview
+export default PreviewItem
