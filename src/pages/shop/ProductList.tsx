@@ -1,6 +1,8 @@
 import React from "react"
 import PreviewItem from "../../components/product/Preview"
 import ListItem from "../../components/product/ListItem"
+import { Box, Button, ListItemButton } from "@mui/material"
+import NavigationBar from "../../components/NavigationBar"
 
 const ProductList = () => {
 
@@ -19,17 +21,35 @@ const ProductList = () => {
 
   return (
     <>
-      {/* 가구리스트 */}
-      {testData.map((product: any) => 
-        <ListItem
-          imgsrc={product.imgsrc}
-          shopName={product.shopName}
-          modelName={product.modelName}
-          productName={product.productName}
-          price={product.price}
-          colors={product.colors}
-        />
-      )}
+      <Box>
+        가구
+        <Button>장바구니</Button>
+        <Button>알림</Button>
+      </Box>{/* 타이틀 임시 */}
+      <ListItemButton
+        sx={{
+          height: '52px',
+          borderTop: '1px solid #DDDDDD',
+          borderBottom: '1px solid #DDDDDD',
+          fontSize: '.875rem',
+        }}
+      >
+        Filter +
+      </ListItemButton>
+      <Box>
+        {/* 가구리스트 */}
+        {testData.map((product: any) => 
+          <ListItem
+            imgsrc={product.imgsrc}
+            shopName={product.shopName}
+            modelName={product.modelName}
+            productName={product.productName}
+            price={product.price}
+            colors={product.colors}
+          />
+        )}
+      </Box>
+      <NavigationBar />
     </>
   )
 }

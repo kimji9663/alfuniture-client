@@ -1,6 +1,6 @@
 import { css } from "@emotion/css"
 import { styled } from "@mui/material/styles"
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 
 export const NaviWrap = styled(Box)(() => ({
   display: 'flex',
@@ -42,20 +42,5 @@ export const NaviWrap = styled(Box)(() => ({
   '&.single > button': {
     flex: '1 1 auto',
   },
-}))
-
-export const PrimaryButton = styled(Button)(() => ({
-  backgroundColor: '#000',
-  color: '#fff',
-}))
-
-export const PrimaryLightButton = styled(Button)(() => ({
-  backgroundColor: '#EEEEEE',
-  color: '#000',
-}))
-
-export const SecondaryButton = styled(Button)(() => ({
-  backgroundColor: '#242223',
-  color: '#fff',
 }))
 
