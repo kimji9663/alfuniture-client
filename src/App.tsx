@@ -1,15 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import Home from "./pages/Home"
-import Login from "./pages/auth/Login"
 import Guide from "./pages/Guide"
-import BrandList from "./pages/shop/BrandList"
-import ProductList from "./pages/shop/ProductList"
+import ShopProductList from "./pages/shop/ProductList"
+import ShopProductView from "./pages/shop/ProductView"
 import ShopAll from "./pages/shop/ShopAll"
 import FunitureSelection from "./pages/onboarding/FunitureSelection"
 import StyleSelection from "./pages/onboarding/StyleSelection"
-import FeaturedFuniture from "./pages/onboarding/FeaturedFuniture"
+import FeaturedProduct from "./pages/onboarding/FeaturedProduct"
 import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
+import Like from "./pages/like"
+import SignIn from "./pages/auth/SignIn"
+import SignUp from "./pages/auth/SignUp"
 
 const router = createBrowserRouter([
   {
@@ -27,13 +29,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth",
-        element: <Login />,
+        element: <SignIn />,
         children: [
           {
-            path: "/auth/login",
-            element: <Login />,
+            path: "/auth/sign_in",
+            element: <SignIn />,
           }
         ]
+      },
+      {
+        path: "/auth/sign_up",
+        element: <SignUp />,
       },
       {
         path: "/onboarding",
@@ -50,8 +56,8 @@ const router = createBrowserRouter([
         element: <StyleSelection />,
       },
       {
-        path: "/onboarding/featured_funiture",
-        element: <FeaturedFuniture />,
+        path: "/onboarding/featured_product",
+        element: <FeaturedProduct />,
       },
       {
         path: "/onboarding/featured_brand",
@@ -59,25 +65,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <ProductList />,
+        element: <ShopProductList />,
         children: [
           {
             path: "/shop/product_list",
-            element: <ProductList />,
+            element: <ShopProductList />,
           },
         ]
+      },
+      {
+        path: "/shop/product_view",
+        element: <ShopProductView />,
       },
       {
         path: "/shop/shop_all",
         element: <ShopAll />,
       },
       {
-        path: "/shop/brand_list",
-        element: <BrandList />,
-      },
-      {
-        path: "/shop/product_list",
-        element: <ProductList />,
+        path: "/like",
+        element: <Like />,
       },
       {
         path: "/guide",

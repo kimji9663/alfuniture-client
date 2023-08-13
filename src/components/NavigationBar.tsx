@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { NaviWrap } from "./navigationbar.styles";
 import { useLocation } from "react-router-dom";
@@ -12,10 +12,6 @@ import {
 
 const NavigationBar = () => {
   const location = useLocation()
-
-  useEffect(() => {
-    console.log(location.pathname)
-  }, [location.pathname])
 
   const navigationActive = (path:string) => {
     const currentPath = location.pathname
@@ -39,7 +35,7 @@ const NavigationBar = () => {
           <IconShop />
           SHOP
         </Link>
-        <Link to="/" className={navigationActive("/like")}>
+        <Link to="/like" className={navigationActive("/like")}>
           <IconLike />
           LIKE
         </Link>

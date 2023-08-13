@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
-import { NaviWrap, PrimaryButton } from "../../components/navigationbar.styles"
+import { NaviWrap } from "../../components/navigationbar.styles"
+import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 
 const StyleSelection = () => {

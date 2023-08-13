@@ -1,5 +1,6 @@
 import React from "react"
-import { NaviWrap, SecondaryButton, PrimaryButton, PrimaryLightButton } from "../components/navigationbar.styles"
+import { NaviWrap } from "../components/navigationbar.styles"
+import { SecondaryButton, PrimaryButton, PrimaryLightButton } from "../styles/buttons.styles"
 import TitleOneLine from "../components/titleOneLine"
 import TitleTwoLine1 from "../components/titleTwoLine1"
 import TitleTwoLine2 from "../components/titleTwoLine2"

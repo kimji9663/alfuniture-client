@@ -8,15 +8,29 @@ export const SwiperWrap = styled(Box)(() => ({
   },
   '& .swiper-slide': {
     width: '67%',
+    maxWidth: '260px',
     transform: 'scale(0.75) translateY(15%)',
     transitionDuration: '.5s',
   },
-  '& .swiper-slide img': {
-    display: 'block',
+  '& .slide_item': {
+    overflow: 'hidden',
     width: '100%',
-    height: '100%',
+    aspectRatio: '1/1.28',
   },
-  '& .swiper-slide .text': {
+  '& .slide_item img': {
+    display: 'block',
+    position: 'relative',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  '& .slide_item .landscape': {
+    height: '100%',
+  },  
+  '& .slide_item .portrait': {
+    width: '100%',
+  },
+  '& .slide_item .text': {
     position: 'absolute',
     bottom: 0,
     margin: '16px',
@@ -24,9 +38,13 @@ export const SwiperWrap = styled(Box)(() => ({
     overflow: 'hidden',
     maxHeight: '35px',
     transition: 'all .5s linear',
+    fontSize: '.75rem',
   },
-  '& .swiper-slide .title': {
+  '& .slide_item .text .title': {
     fontSize: '1.66rem',
+  },
+  '& .slide_item .text .brif': {
+    fontSize: '.75rem',
   },
 
   '& .swiper-slide.swiper-slide-active': {
