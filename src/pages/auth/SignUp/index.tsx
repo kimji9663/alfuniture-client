@@ -41,33 +41,35 @@ const SignUp = () => {
 
   return (
     <>
-      <Button onClick={goToBack}>뒤로가기</Button>
-      {/* <Button
-        color="inherit"
-        disabled={activeStep === 0}
-        onClick={handleBack}
-        sx={{ mr: 1 }}
-      >
-        뒤로가기
-      </Button> */}
+      <Box sx={{ p: 2 }}>
+        <Button onClick={goToBack}>뒤로가기</Button>
+        {/* <Button
+          color="inherit"
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          sx={{ mr: 1 }}
+        >
+          뒤로가기
+        </Button> */}
 
-      <Stepper activeStep={activeStep} connector={null}>
-        {steps.map((label, index) => {
-          const stepProps: { completed?: boolean, } = {}
-          
-          return (
-            <StepBar
-              key={label} 
-              {...stepProps} 
-              sx={{ 
-                px: 0, 
-                flex: `1 1 ${100/steps.length}%` 
-              }}
-              active={isActive(label)}
-            />
-          )
-        })}
-      </Stepper>
+        <Stepper activeStep={activeStep} connector={null}>
+          {steps.map((label, index) => {
+            const stepProps: { completed?: boolean, } = {}
+            
+            return (
+              <StepBar
+                key={label} 
+                {...stepProps} 
+                sx={{ 
+                  px: 0, 
+                  flex: `1 1 ${100/steps.length}%` 
+                }}
+                active={isActive(label)}
+              />
+            )
+          })}
+        </Stepper>
+      </Box>
 
       {activeStep === steps.length ? (
         <>

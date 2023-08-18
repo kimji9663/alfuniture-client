@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Box, Button, Link, IconButton, Typography, FormControl, Input, InputAdornment, FormHelperText } from "@mui/material"
-import { SnsLogin } from "./signIn.styles"
+import { SnsLogin } from "./index.styles"
 import { useNavigate } from "react-router-dom"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { ArrowBottom, icon_kakao, icon_naver, icon_facebook, icon_apple } from "../../assets/images"
+import { logo, ArrowBottom, icon_kakao, icon_naver, icon_facebook, icon_apple } from "../../../assets/images"
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -19,7 +19,11 @@ const SignIn = () => {
 
   const goToHome = () => {
     navigate("/home")
-  }           
+  }
+  
+  const goToSignUp = () => {
+    navigate("/auth/sign_up")
+  }         
   
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -46,7 +50,7 @@ const SignIn = () => {
         <Button 
           variant="text" 
           component={Link} 
-          href="/" 
+          onClick={goToSignUp}
           sx={{ 
             fontSize: '.875rem', 
             color: '#666666',
@@ -56,9 +60,11 @@ const SignIn = () => {
           Sign Up
         </Button>
       </Box>
-      <Box component="h1" sx={{ mt: 7, fontSize: '.75rem', color: '#666666' }}>
-        해외가구의 모든것<br />
-        Alfuniture
+      <Box component="h1" sx={{ mt: 7 }}>
+        <Typography sx={{ mb: '6px', fontSize: '.75rem', color: '#666666' }}>
+          해외가구의 모든것
+        </Typography>
+        <img src={logo} alt="logo" />
       </Box>
 
       <Box 
@@ -67,7 +73,7 @@ const SignIn = () => {
         autoComplete="off"
         onSubmit={e => handleSubmitLogin(e)}
       >
-        <FormControl  
+        <FormControl
           fullWidth
           variant="standard"
           margin="normal"

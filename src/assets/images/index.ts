@@ -17,6 +17,7 @@ import { ReactComponent as IconShift } from "./icon_shift.svg"
 import { ReactComponent as IconHeartSmall } from "./icon_heart_small.svg"
 
 // Image
+import logo from "./logo.png"
 import thumb_brand01 from "./thumb_brand01.png"
 import icon_kakao from "./icon_sns_kakao.svg"
 import icon_naver from "./icon_sns_naver.svg"
@@ -41,6 +42,7 @@ export {
   IconHeartSmall,
 
   // Image
+  logo,
   thumb_brand01,
   icon_cart,
   icon_notice,
