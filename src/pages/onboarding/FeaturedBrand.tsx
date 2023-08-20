@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Box, Typography } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
@@ -36,7 +36,7 @@ const itemList = [
     id: 3,
     img: thumb_brand01,
     name: 'James Lee',
-    description: '60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드'
+    description: '디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드'
   }
 ]
 
@@ -77,7 +77,7 @@ const FeaturedBrand = () => {
           <SwiperWrap>
             <Swiper {...settings}>
               {itemList.map((el) => (
-                <SwiperSlide>
+                <SwiperSlide key={el.id}>
                   <Box className="slide_item">
                     <img src={el.img} alt={el.name} className={getImgRatio(el.img)} />
                     <Box className="text">
