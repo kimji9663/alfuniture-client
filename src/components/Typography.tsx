@@ -12,15 +12,18 @@ export const BoldTypography = styled(Typography)(() => ({
 }));
 
 export const BoldGray9Typography = styled(BoldTypography)(() => ({
-  color: '#333'
+  color: '#333',
+  fontSize: '14px'
 }));
 
 export const BoldGray8Typography = styled(BoldTypography)(() => ({
-  color: '#666'
+  color: '#666',
+  fontSize: '12px'
 }));
 
 export const Gray7Typography = styled(Typography)(() => ({
-  color: '#999'
+  color: '#999',
+  fontSize: '12px'
 }));
 
 export const ColorInheritTypography = styled(Typography)(() => ({
