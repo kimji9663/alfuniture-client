@@ -1,9 +1,10 @@
 import { Card, CardContent, CardMedia, IconButton } from "@mui/material"
 import { Favorite, FavoriteBorder } from "@mui/icons-material"
 import { Box } from "@mui/system"
-import React from "react"
+import React, { useState } from "react"
 import { FlexSpaceBetweenCenterBox, GridBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
+import { IconLikeOff, IconLikeOn } from "../../assets/images"
 
 export interface PreviewProps {
   imgsrc?: string;
@@ -25,18 +26,30 @@ const PreviewItem: React.FC<PreviewProps> = ({
   price,
   colors
 }: PreviewProps) => {
+  const [isLike, setIsLike] = useState(like)
+  const handleClickLike = (event: any) => {
+    setIsLike(!isLike)
+  }
   return (
     <Card>
       <CardMedia
+        component="img"
         image={imgsrc}
+        width="100%"
+        alt="상품이미지"
+        sx={{
+          aspectRatio: "1 / 1"
+        }}
       />
       <CardContent>
         <FlexSpaceBetweenCenterBox>
           <BoldGray9Typography>
             {shopName}
           </BoldGray9Typography>
-          <IconButton>
-            {like ? <Favorite /> : <FavoriteBorder />}
+          <IconButton
+            onClick={handleClickLike}
+          >
+            {isLike ? <IconLikeOn /> : <IconLikeOff />}
           </IconButton>
         </FlexSpaceBetweenCenterBox>
         <Gray7Typography>
@@ -50,14 +63,17 @@ const PreviewItem: React.FC<PreviewProps> = ({
             {price} 원
           </BoldGray8Typography>
           <GridBox
-            columnGap={'4px'}
+            sx={{
+              gridTemplateColumns: `repeat(${colors?.length}, 10px)`
+            }}
+            columnGap='4px'
           >
             {colors?.map((color: string) => (
               <Box
                 sx={{
                   width: '10px',
                   height: '10px',
-                  backgroundColor: {color}
+                  backgroundColor: color
                 }}
               />
             ))}

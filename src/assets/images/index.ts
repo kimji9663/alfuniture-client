@@ -1,8 +1,6 @@
 import icon_cart from "./icon_cart.svg"
 import icon_notice from "./icon_notice.svg"
 import icon_back from "./icon_notice.svg"
-import icon_like_on from "./icon_like_on.svg"
-import icon_like_off from "./icon_like_off.svg"
 
 // Component
 import { ReactComponent as IconHome } from "./icon_home.svg"
@@ -15,6 +13,8 @@ import { ReactComponent as ArrowRight } from "./icon_arrow_right.svg"
 import { ReactComponent as ArrowBottom } from "./icon_arrow_bottom.svg"
 import { ReactComponent as IconShift } from "./icon_shift.svg"
 import { ReactComponent as IconHeartSmall } from "./icon_heart_small.svg"
+import { ReactComponent as IconLikeOn } from "./icon_like_on.svg"
+import { ReactComponent as IconLikeOff } from "./icon_like_off.svg"
 
 // Image
 import logo from "./logo.png"
@@ -47,6 +47,6 @@ export {
   icon_cart,
   icon_notice,
   icon_back,
-  icon_like_on,
-  icon_like_off
+  IconLikeOn,
+  IconLikeOff
 }
