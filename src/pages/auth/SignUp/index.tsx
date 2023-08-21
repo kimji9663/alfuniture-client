@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Button, Typography, Stepper, Step } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import TermsAgreement from "./TermsAgreement"
@@ -22,18 +22,28 @@ const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04', 'SignUp05', 'Sign
 const SignUp = () => {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = useState(0)
+  const [validated, setValidated] = useState<boolean[]>([])
 
   const goToBack = () => {
     navigate(-1)
   }
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  const handleChangeValidated = (valid:boolean, step:number) => {
+    setValidated([...validated, valid])
+    console.log('handleChangeValidated : ', validated, step)
   }
 
-  // const handleBack = () => {
-  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  // }
+  const handleNext = (step:number) => {
+    console.log(validated[step])
+    if (validated[step] === true){
+      console.log('index value1 : ', activeStep, validated[step])
+      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    }
+  }
+
+  useEffect(() => {
+    //console.log('index value0 : ', activeStep, validated)
+  }, [validated])
 
   const isActive = (label: string) => {
     return label === steps[activeStep] ? true : false
@@ -43,15 +53,7 @@ const SignUp = () => {
     <>
       <Box sx={{ p: 2 }}>
         <Button onClick={goToBack}>뒤로가기</Button>
-        {/* <Button
-          color="inherit"
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          sx={{ mr: 1 }}
-        >
-          뒤로가기
-        </Button> */}
-
+        
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label, index) => {
             const stepProps: { completed?: boolean, } = {}
@@ -84,7 +86,7 @@ const SignUp = () => {
         <>
           {activeStep === 0 ? (
             <Box>
-              <TermsAgreement />
+              <TermsAgreement handleChangeValidated={handleChangeValidated} activeStep={activeStep} />
             </Box>
           ) : null}
           {activeStep === 1 ? (
@@ -115,11 +117,11 @@ const SignUp = () => {
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">
-              <PrimaryLightButton onClick={handleNext}>가입 완료</PrimaryLightButton>
+              <PrimaryLightButton onClick={e => handleNext(activeStep)}>가입 완료</PrimaryLightButton>
             </NaviWrap>
           ) : (
             <NaviWrap className="single">
-              <PrimaryButton onClick={handleNext}>다음으로</PrimaryButton>
+              <PrimaryButton onClick={e => handleNext(activeStep)}>다음으로</PrimaryButton>
             </NaviWrap>
           )}
         </>

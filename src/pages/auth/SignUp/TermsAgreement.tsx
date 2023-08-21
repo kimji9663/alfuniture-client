@@ -1,7 +1,12 @@
-import React, { Component, useState } from "react"
-import { Box, Typography, FormControl, Divider, Checkbox, CheckboxProps, FormControlLabel } from "@mui/material"
+import React, {useEffect, useState } from "react"
+import { Box, Typography, FormControl, Divider, Checkbox, CheckboxProps } from "@mui/material"
 import { AgreeCheckbox } from "./index.styles"
 import { Check } from "@mui/icons-material"
+
+type IvalidatedProps = {
+  handleChangeValidated: (vaild:boolean, step:number) => void
+  activeStep: number
+}
 
 const agreeItems = [
   {
@@ -36,34 +41,41 @@ function CheckboxIcon(props: CheckboxProps) {
       checked={props.checked}
       onChange={props.onChange}
     />
-  );
+  )
 }
 
-const TermsAgreement = () => {
+const TermsAgreement = ({handleChangeValidated, activeStep}:IvalidatedProps) => {
+  const required = agreeItems.filter((el) => el.require === true).map(el => el.id)
   const [checkedRequire, setCheckedRequire] = useState([])
-  const [checked, setChecked] = useState([false, false, false, false])
+  const [checkedList, setCheckedList] = useState<string[]>([])
 
-  const validateChecked = (e:React.ChangeEvent<HTMLInputElement>, id:string) => {
-    if (e.currentTarget.required){
-      //setCheckedRequire([...checkedRequire, ])
+  useEffect(() => {
+    handleValid()
+  }, [checkedList])
+
+  const handleValid = () => {
+    const checkRequired = checkedList.filter(el => required.includes(el))
+    if(checkRequired.length === required.length) {
+      console.log('handleValid : ', checkedList, required, activeStep)
+      handleChangeValidated(true, activeStep)
     }
   }
 
   const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
+    if(event.currentTarget.checked){
+      setCheckedList([...checkedList, ...agreeItems.map(el => el.id)])
+    } else {
+      setCheckedList([])
+    }
+  }
 
-  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
-
-  const handleCheckAgree = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // if (event.currentTarget.checked){
-
-    // }
-    //setChecked([checked[1], event.target.checked])
-    console.log(event.currentTarget.id)
-  };
+  const handleCheckEach = (event: React.ChangeEvent<HTMLInputElement>, id:string) => {
+    if (event.currentTarget.checked){
+      setCheckedList([...checkedList, id])
+    } else {
+      setCheckedList(checkedList.filter((el) => el !== id))
+    }
+  }
   
   const children = (
     <>
@@ -71,7 +83,13 @@ const TermsAgreement = () => {
         <AgreeCheckbox
           sx={index === 0 ? { mt: 2 } : null}
           key={el.id}
-          control={<CheckboxIcon id={el.id} checked={checked[index]} onChange={handleCheckAgree} />} 
+          control={
+            <CheckboxIcon 
+              id={el.id} 
+              onChange={e => handleCheckEach(e, el.id)}
+              checked={checkedList.includes(el.id)}
+            />
+          } 
           labelPlacement="end" 
           label={<><span className="sub">{el.require ? '[필수]' : '[선택]'}</span> {el.label}</>}
         />
@@ -94,9 +112,8 @@ const TermsAgreement = () => {
               <CheckboxIcon 
                 id="check_agree_all"
                 name="check_agree_all"
-                checked={checked[0] && checked[1]}
-                indeterminate={checked[0] !== checked[1]}
                 onChange={handleCheckAll}
+                checked={checkedList.length === agreeItems.length}
               />
             } 
             labelPlacement="end" 
@@ -109,4 +126,4 @@ const TermsAgreement = () => {
     </Box>
   )
 }
-export default TermsAgreement
+export default TermsAgreement 
