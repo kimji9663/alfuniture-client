@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Box, Button, Typography, Stepper, Step } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import TermsAgreement from "./TermsAgreement"
@@ -27,26 +27,21 @@ const SignUp = () => {
   const goToBack = () => {
     navigate(-1)
   }
-
-  const handleChangeValidated = (valid:boolean, step:number) => {
-    setValidated([...validated, valid])
-    console.log('handleChangeValidated : ', validated, step)
-  }
-
+  
   const handleNext = (step:number) => {
-    console.log(validated[step])
     if (validated[step] === true){
       console.log('index value1 : ', activeStep, validated[step])
       setActiveStep((prevActiveStep) => prevActiveStep + 1)
     }
   }
 
-  useEffect(() => {
-    //console.log('index value0 : ', activeStep, validated)
-  }, [validated])
-
   const isActive = (label: string) => {
     return label === steps[activeStep] ? true : false
+  }
+
+  const changeValidated = (val:boolean[]) => {
+    setValidated([...val])
+    //console.log(val)
   }
 
   return (
@@ -55,7 +50,7 @@ const SignUp = () => {
         <Button onClick={goToBack}>뒤로가기</Button>
         
         <Stepper activeStep={activeStep} connector={null}>
-          {steps.map((label, index) => {
+          {steps.map((label) => {
             const stepProps: { completed?: boolean, } = {}
             
             return (
@@ -86,7 +81,10 @@ const SignUp = () => {
         <>
           {activeStep === 0 ? (
             <Box>
-              <TermsAgreement handleChangeValidated={handleChangeValidated} activeStep={activeStep} />
+              <TermsAgreement 
+                validated={validated}
+                changeValidated={changeValidated}
+              />
             </Box>
           ) : null}
           {activeStep === 1 ? (
@@ -121,7 +119,7 @@ const SignUp = () => {
             </NaviWrap>
           ) : (
             <NaviWrap className="single">
-              <PrimaryButton onClick={e => handleNext(activeStep)}>다음으로</PrimaryButton>
+              <PrimaryButton onClick={e => handleNext(activeStep)} disabled={validated[activeStep] ? false : true}>다음으로</PrimaryButton>
             </NaviWrap>
           )}
         </>

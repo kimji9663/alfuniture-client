@@ -1,11 +1,11 @@
-import React, {useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Box, Typography, FormControl, Divider, Checkbox, CheckboxProps } from "@mui/material"
 import { AgreeCheckbox } from "./index.styles"
 import { Check } from "@mui/icons-material"
 
 type IvalidatedProps = {
-  handleChangeValidated: (vaild:boolean, step:number) => void
-  activeStep: number
+  validated: boolean[]
+  changeValidated: (val:boolean[]) => void
 }
 
 const agreeItems = [
@@ -44,37 +44,48 @@ function CheckboxIcon(props: CheckboxProps) {
   )
 }
 
-const TermsAgreement = ({handleChangeValidated, activeStep}:IvalidatedProps) => {
-  const required = agreeItems.filter((el) => el.require === true).map(el => el.id)
-  const [checkedRequire, setCheckedRequire] = useState([])
+const TermsAgreement = ({validated, changeValidated}:IvalidatedProps) => {
   const [checkedList, setCheckedList] = useState<string[]>([])
-
-  useEffect(() => {
-    handleValid()
-  }, [checkedList])
-
-  const handleValid = () => {
-    const checkRequired = checkedList.filter(el => required.includes(el))
-    if(checkRequired.length === required.length) {
-      console.log('handleValid : ', checkedList, required, activeStep)
-      handleChangeValidated(true, activeStep)
-    }
-  }
+  const [checkedAll, setCheckedAll] = useState(false)
+  const required = agreeItems.filter((el) => el.require === true).map(el => el.id)
+  const requiredValidation = required.every(el => checkedList.includes(el)) ? true : false
 
   const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked){
       setCheckedList([...checkedList, ...agreeItems.map(el => el.id)])
+      if (event.currentTarget.id === 'check_agree_all'){
+        setCheckedAll(true)
+        validated[0] = true
+        console.log(validated)
+      }
     } else {
       setCheckedList([])
+      setCheckedAll(false)
+      validated[0] = false
     }
+    changeValidated([...validated])
   }
 
   const handleCheckEach = (event: React.ChangeEvent<HTMLInputElement>, id:string) => {
+    const isCurruntTargetRequire = required.includes(event.currentTarget.id)
+    const checkListLength = checkedList.filter(el => required.includes(el)).length
     if (event.currentTarget.checked){
       setCheckedList([...checkedList, id])
+      console.log(checkListLength, required.length)
+      if (checkedList.length === agreeItems.length - 1){
+        setCheckedAll(true)
+      }
+      if ((isCurruntTargetRequire && required.length - 1 === checkListLength) || requiredValidation){
+        validated[0] = true
+      }
     } else {
       setCheckedList(checkedList.filter((el) => el !== id))
+      setCheckedAll(false)
+      if (isCurruntTargetRequire || !requiredValidation) {
+        validated[0] = false
+      }
     }
+    changeValidated([...validated])
   }
   
   const children = (
@@ -111,9 +122,8 @@ const TermsAgreement = ({handleChangeValidated, activeStep}:IvalidatedProps) => 
             control={
               <CheckboxIcon 
                 id="check_agree_all"
-                name="check_agree_all"
                 onChange={handleCheckAll}
-                checked={checkedList.length === agreeItems.length}
+                checked={checkedAll}
               />
             } 
             labelPlacement="end" 
