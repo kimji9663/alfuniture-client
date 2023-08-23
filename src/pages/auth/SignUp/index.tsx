@@ -1,24 +1,14 @@
 import React, { useState } from "react"
 import { Box, Button, Typography, Stepper, Step } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import TermsAgreement from "./TermsAgreement"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
-import { styled } from "@mui/material/styles"
+import { StepBar } from "./index.styles"
+import TermsAgreement from "./TermsAgreement"
 import UserId from "./UserId"
+import SelectVerification from "./SelectVerification"
 
-const StepBar = styled(Step)<{ active?: boolean }>(
-  ({ active }) => ({
-    backgroundColor: '#E4E4E4',
-    width: '100%',
-    height: 1,
-    ...(active && {
-      backgroundColor: '#000',
-    }),
-  }),
-)
-
-const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04', 'SignUp05', 'SignUp06']
+const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04']
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -47,6 +37,11 @@ const SignUp = () => {
   const changeValidated = (val:boolean[]) => {
     setValidated([...val])
     //console.log(val)
+  }
+
+  const checkValidate = (step:number) => {
+    validated[step] = true
+    changeValidated([...validated])
   }
 
   return (
@@ -98,23 +93,13 @@ const SignUp = () => {
             </Box>
           ) : null}
           {activeStep === 2 ? (
-            <Box>
+            <Box onClick={e => checkValidate(2)}>
               페이지 3
             </Box>
           ) : null}
           {activeStep === 3 ? (
             <Box>
-              페이지 4
-            </Box>
-          ) : null}
-          {activeStep === 4 ? (
-            <Box>
-              페이지 5
-            </Box>
-          ) : null}
-          {activeStep === 5 ? (
-            <Box>
-              페이지 6
+              <SelectVerification />
             </Box>
           ) : null}
           
