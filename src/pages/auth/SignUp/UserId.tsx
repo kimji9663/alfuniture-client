@@ -1,28 +1,39 @@
 import React, { useState } from "react"
-import { Box, Typography, FormControl, Divider, Input, FormHelperText } from "@mui/material"
+import { Box, Typography, FormControl, Input, FormHelperText } from "@mui/material"
 
+type IvalidatedProps = {
+  validated: boolean[]
+  changeValidated: (val:boolean[]) => void
+}
 
-const UserId = () => {
+const UserId = ({validated, changeValidated}:IvalidatedProps) => {
   const [userId, setUserId] = useState('')
-  const [pwError, setPwError] = useState({
+  const [idError, setIdError] = useState({
     errorActive: false,
     errorText: ''
   })
-  
-  const handleChangeLoginField = (event:React.ChangeEvent<HTMLInputElement>)=> {
-    setUserId(event.target.value)
-  }
 
-  const handleSubmitLogin = (e:React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (userId === '') {
-      setPwError({errorActive: false, errorText: ''})
-      console.log('사용가능')
-      //stepNext()
-    } else {
-      setPwError({errorActive: true, errorText: '이메일에 형식이 올바르지 않습니다.'})
-      setUserId('')
+  const validateError = () => {
+    if (idError.errorText === '') {
+      return false
+    } else if (idError.errorText !== '' && idError.errorActive) {
+      return true
     }
+  }
+  
+  const handleIdField = (event:React.ChangeEvent<HTMLInputElement>)=> {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    setUserId(event.target.value)
+
+    if (emailPattern.test(event.target.value)) {
+      setIdError({errorActive: false, errorText: ''})
+      console.log('사용가능')
+      validated[1] = true
+    } else {
+      setIdError({errorActive: true, errorText: '이메일에 형식이 올바르지 않습니다.'})      
+      validated[1] = false
+    }
+    changeValidated([...validated])
   }
 
   return (
@@ -36,24 +47,23 @@ const UserId = () => {
         sx={{ mt: 13 }}
         component="form" 
         autoComplete="off"
-        onSubmit={e => handleSubmitLogin(e)}
       >
         <FormControl
           fullWidth
           variant="standard"
           margin="normal"
+          onChange={handleIdField}
+          error={validateError()}
         >
           <Input
-            name="login_id"
+            name="user_id"
             placeholder="이메일을 입력해주세요."
             type="text"
-            onChange={handleChangeLoginField}
             sx={{ '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
             value={userId}
           />
-          <FormHelperText>{pwError.errorText}</FormHelperText>
+          <FormHelperText>{idError.errorText}</FormHelperText>
         </FormControl>
-        <Divider sx={{ borderColor: '#333' }} />
       </Box>
     </Box>
   )

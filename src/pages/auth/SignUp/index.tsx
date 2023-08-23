@@ -6,6 +6,7 @@ import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.style
 import { StepBar } from "./index.styles"
 import TermsAgreement from "./TermsAgreement"
 import UserId from "./UserId"
+import UserPassword from "./userPassword"
 import SelectVerification from "./SelectVerification"
 
 const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04']
@@ -89,12 +90,18 @@ const SignUp = () => {
           ) : null}
           {activeStep === 1 ? (
             <Box>
-              <UserId />
+              <UserId 
+                validated={validated}
+                changeValidated={changeValidated}
+              />
             </Box>
           ) : null}
           {activeStep === 2 ? (
-            <Box onClick={e => checkValidate(2)}>
-              페이지 3
+            <Box>
+              <UserPassword 
+                validated={validated}
+                changeValidated={changeValidated}
+              />
             </Box>
           ) : null}
           {activeStep === 3 ? (
