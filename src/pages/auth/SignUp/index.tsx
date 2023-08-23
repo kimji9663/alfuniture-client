@@ -5,6 +5,7 @@ import TermsAgreement from "./TermsAgreement"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
 import { styled } from "@mui/material/styles"
+import UserId from "./UserId"
 
 const StepBar = styled(Step)<{ active?: boolean }>(
   ({ active }) => ({
@@ -28,7 +29,11 @@ const SignUp = () => {
     navigate(-1)
   }
   
-  const handleNext = (step:number) => {
+  const stepBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  }
+  
+  const stepNext = (step:number) => {
     if (validated[step] === true){
       console.log('index value1 : ', activeStep, validated[step])
       setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -47,7 +52,7 @@ const SignUp = () => {
   return (
     <>
       <Box sx={{ p: 2 }}>
-        <Button onClick={goToBack}>뒤로가기</Button>
+        <Button onClick={activeStep === 0 ? goToBack : stepBack}>뒤로가기</Button>
         
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label) => {
@@ -89,7 +94,7 @@ const SignUp = () => {
           ) : null}
           {activeStep === 1 ? (
             <Box>
-              페이지 2
+              <UserId />
             </Box>
           ) : null}
           {activeStep === 2 ? (
@@ -115,11 +120,11 @@ const SignUp = () => {
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">
-              <PrimaryLightButton onClick={e => handleNext(activeStep)}>가입 완료</PrimaryLightButton>
+              <PrimaryLightButton onClick={e => stepNext(activeStep)}>가입 완료</PrimaryLightButton>
             </NaviWrap>
           ) : (
             <NaviWrap className="single">
-              <PrimaryButton onClick={e => handleNext(activeStep)} disabled={validated[activeStep] ? false : true}>다음으로</PrimaryButton>
+              <PrimaryButton onClick={e => stepNext(activeStep)} disabled={validated[activeStep] ? false : true}>다음으로</PrimaryButton>
             </NaviWrap>
           )}
         </>
