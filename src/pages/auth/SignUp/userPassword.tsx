@@ -9,12 +9,17 @@ type IvalidatedProps = {
 
 const UserPassword = ({validated, changeValidated}:IvalidatedProps) => {
   const [userPassword, setUserPassword] = useState('')
+  const [userPasswordConfirm, setUserPasswordConfirm] = useState('')
   const [pwError, setPwError] = useState({
     errorActive: false,
     errorAlphabet: '',
     errorSpecial: '',
     errorLength: '',
     errorNumber: ''
+  })
+  const [pwConfirmError, setPwConfirmError] = useState({
+    errorActive: false,
+    errorText: ''
   })
   const [activeClass, setActiveClass] = useState({
     alphabet: '',
@@ -31,18 +36,11 @@ const UserPassword = ({validated, changeValidated}:IvalidatedProps) => {
     }
   }
 
-  const isError = (target: string, test: boolean) => {
-    if (test) {
-      if (target === 'alphabet') {
-        setActiveClass({...activeClass, alphabet: 'error'})
-      } else {
-        setActiveClass({...activeClass, alphabet: ''})
-      }
-      if (target === 'speacial') {
-        setActiveClass({...activeClass, speacial: 'error'})
-      } else {
-        setActiveClass({...activeClass, speacial: ''})
-      }
+  const validateConfirmError = () => {
+    if (pwConfirmError.errorText === '') {
+      return false
+    } else if (pwConfirmError.errorText !== '' && pwConfirmError.errorActive) {
+      return true
     }
   }
   
@@ -76,7 +74,6 @@ const UserPassword = ({validated, changeValidated}:IvalidatedProps) => {
         errorLength: '',
         errorNumber: ''
       })
-      validated[2] = true
     } else {
       setPwError({
         errorActive: true, 
@@ -84,7 +81,24 @@ const UserPassword = ({validated, changeValidated}:IvalidatedProps) => {
         errorSpecial: '특수문자', 
         errorLength: '8-20이내',
         errorNumber: '숫자'
-      })      
+      })
+    }
+  }
+
+  const handlePasswordConfirmField = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setUserPasswordConfirm(event.target.value)
+
+    if (userPassword === event.target.value) {
+      setPwConfirmError({
+        errorActive: false,
+        errorText: ''
+      })
+      validated[2] = true
+    } else {
+      setPwConfirmError({
+        errorActive: true,
+        errorText: '비밀번호 일치'
+      })
       validated[2] = false
     }
     changeValidated([...validated])
@@ -129,6 +143,23 @@ const UserPassword = ({validated, changeValidated}:IvalidatedProps) => {
             <Box component="span" className={activeClass.length}>{pwError.errorLength}</Box>
             <Box component="span" className={activeClass.number}>{pwError.errorNumber}</Box>
           </FormHelperText>
+        </FormControl>
+        
+        <FormControl
+          fullWidth
+          variant="standard"
+          margin="normal"
+          onChange={handlePasswordConfirmField}
+          error={validateConfirmError()}
+        >
+          <Input
+            name="user_pw_confirm"
+            placeholder="비밀번호를 입력해주세요."
+            type="password"
+            sx={{ '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+            value={userPasswordConfirm}
+          />
+          <FormHelperText>{pwConfirmError.errorText}</FormHelperText>
         </FormControl>
       </Box>
     </Box>

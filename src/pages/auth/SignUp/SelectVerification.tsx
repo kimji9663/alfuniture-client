@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Box, Typography } from "@mui/material"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
-import { ArrowRight } from "@mui/icons-material"
+import { ArrowBottom } from "../../../assets/images"
 import { VerificationButtonWrap } from "./index.styles"
 import PhoneVerification from "./PhoneVerification"
 import EmailVerification from "./EmailVerification"
@@ -27,7 +27,7 @@ const SelectVerification = () => {
             <PrimaryButton 
               fullWidth 
               endIcon={
-                <ArrowRight />
+                <ArrowBottom />
               }
               id="phone_verification"
               onClick={e => handleVerification(e)}
@@ -38,7 +38,7 @@ const SelectVerification = () => {
               fullWidth 
               sx={{ mt: 1 }}
               endIcon={
-                <ArrowRight />
+                <ArrowBottom />
               }
               id="email_verification"
               onClick={e => handleVerification(e)}
