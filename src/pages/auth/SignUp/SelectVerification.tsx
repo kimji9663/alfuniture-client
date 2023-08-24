@@ -6,8 +6,12 @@ import { VerificationButtonWrap } from "./index.styles"
 import PhoneVerification from "./PhoneVerification"
 import EmailVerification from "./EmailVerification"
 
+type IvalidatedProps = {
+  validated: boolean[]
+  changeValidated: (val:boolean[]) => void
+}
 
-const SelectVerification = () => {
+const SelectVerification = ({validated, changeValidated}:IvalidatedProps) => {
   const [verification, setVerification] = useState('')
 
   const handleVerification = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -16,36 +20,42 @@ const SelectVerification = () => {
 
   return(
     <Box sx={{ p: 2 }}>
-      <Box sx={{ width: "100%", marginTop: 4 }}>
-        <Typography sx={{ fontSize: "1.5rem" }}>알퍼니처 이용 전</Typography>
-        <Typography sx={{ fontSize: "1.5rem" }}>본인인증이 필요해요</Typography>
-      </Box>
-
       {verification === 'email_verification' ? <EmailVerification /> : (
-        verification === 'phone_verification' ? <PhoneVerification /> : (
-          <VerificationButtonWrap sx={{ mt: 13 }}>
-            <PrimaryButton 
-              fullWidth 
-              endIcon={
-                <ArrowBottom />
-              }
-              id="phone_verification"
-              onClick={e => handleVerification(e)}
-            >
-              휴대폰 본인인증
-            </PrimaryButton>
-            <PrimaryLightButton 
-              fullWidth 
-              sx={{ mt: 1 }}
-              endIcon={
-                <ArrowBottom />
-              }
-              id="email_verification"
-              onClick={e => handleVerification(e)}
-            >
-              이메일 본인인증
-            </PrimaryLightButton>
-          </VerificationButtonWrap>
+        verification === 'phone_verification' ? (
+          <PhoneVerification
+            validated={validated}
+            changeValidated={changeValidated}
+          />
+        ) : (
+          <>
+            <Box sx={{ width: "100%", marginTop: 4 }}>
+              <Typography sx={{ fontSize: "1.5rem" }}>알퍼니처 이용 전</Typography>
+              <Typography sx={{ fontSize: "1.5rem" }}>본인인증이 필요해요</Typography>
+            </Box>
+            <VerificationButtonWrap sx={{ mt: 13 }}>
+              <PrimaryButton 
+                fullWidth 
+                endIcon={
+                  <ArrowBottom />
+                }
+                id="phone_verification"
+                onClick={e => handleVerification(e)}
+              >
+                휴대폰 본인인증
+              </PrimaryButton>
+              <PrimaryLightButton 
+                fullWidth 
+                sx={{ mt: 1 }}
+                endIcon={
+                  <ArrowBottom />
+                }
+                id="email_verification"
+                onClick={e => handleVerification(e)}
+              >
+                이메일 본인인증
+              </PrimaryLightButton>
+            </VerificationButtonWrap>
+          </>
         )
       )}
 

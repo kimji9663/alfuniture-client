@@ -106,7 +106,10 @@ const SignUp = () => {
           ) : null}
           {activeStep === 3 ? (
             <Box>
-              <SelectVerification />
+              <SelectVerification 
+                validated={validated}
+                changeValidated={changeValidated}
+              />
             </Box>
           ) : null}
           
