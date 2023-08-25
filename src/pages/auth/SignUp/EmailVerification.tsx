@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Box, Typography, FormHelperText, Input } from "@mui/material"
 import { OutlineButton, PrimaryButton } from "../../../styles/buttons.styles"
 import { CountBox, VerificationRequestWrap } from "./index.styles"
+import { useCountdown } from "../../../components/useCountdown"
 
 type IvalidatedProps = {
   validated: boolean[]
@@ -17,6 +18,8 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
+  const getNow = new Date().getTime()
+  const timer = getNow + 1.5 * 30 * 1000 //1분 30초
 
   const requestVerificationCode = () => {
     console.log(getUserId)
@@ -72,6 +75,22 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
 
     changeValidated([...validated])
   }
+  
+  const CountDownTimer = (targetDate:number) => {
+    const [minutes, seconds] = useCountdown(targetDate)
+
+    if (minutes + seconds <= 0) {
+      return <div>인증시간 초과</div>
+    } else {
+      return (
+        <CountBox
+          sx={{ display: countStrat ? 'block' : 'none' }}
+        >
+          4:30
+        </CountBox>
+      )
+    }
+  }
 
   return (
     <Box>
@@ -117,11 +136,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
             >
               {complete.completeText}
             </FormHelperText>
-            <CountBox
-              sx={{ display: countStrat ? 'block' : 'none' }}
-            >
-              4:30
-            </CountBox>
+            <CountDownTimer targetDate={timer} />
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
