@@ -1,13 +1,16 @@
 import { css } from "@emotion/css"
 import { styled } from "@mui/material/styles"
-import { Button, Box } from "@mui/material"
+import { Button } from "@mui/material"
 
 export const PrimaryButton = styled(Button)(() => ({
   backgroundColor: '#000',
   color: '#fff',
   '&:hover': {
     backgroundColor: '#000',
-  }
+  },
+  '&[disabled]': {
+    color: '#ffffff5c',
+  },
 }))
 
 export const PrimaryLightButton = styled(Button)(() => ({
@@ -31,5 +34,8 @@ export const OutlineButton = styled(Button)(() => ({
   color: '#333333',
   '&:hover': {
     borderColor: '#333333',
-  }
+  },
+  '&[disabled]': {
+    borderColor: '#00000042',
+  },
 }))

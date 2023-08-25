@@ -54,3 +54,11 @@ export const VerificationRequestWrap = styled(FormControl)(() => ({
     fontSize: '.875rem',
   },
 }))
+
+export const CountBox = styled(Box)(() => ({
+  position: 'absolute',
+  top: '17px',
+  right: 0,
+  color: '#f11111',
+  fontSize: '.875rem',
+}))

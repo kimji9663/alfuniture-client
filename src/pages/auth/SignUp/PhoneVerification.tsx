@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Box, Typography, FormHelperText, Input, InputBase } from "@mui/material"
+import { Box, Typography, FormHelperText, Input } from "@mui/material"
 import { OutlineButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { VerificationRequestWrap } from "./index.styles"
+import { CountBox, VerificationRequestWrap } from "./index.styles"
 
 type IvalidatedProps = {
   validated: boolean[]
@@ -17,6 +17,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   })
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationDisabled, setVerificationDisabled] = useState(true)
+  const [countStrat, setCountStart] = useState(false)
 
   const handleRequestField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     const phoneNumberPattern = /^(010)[0-9]{3,4}[0-9]{4}$/
@@ -31,10 +32,14 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   }
 
   const requestVerificationCode = () => {
+    if (verificationCode !== '') {
+      setVerificationCode('')
+    }
     setComplete({
       completeActive: true,
       completeText: '인증번호가 발송되었습니다.'
     })
+    setCountStart(true)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
     // 만약 카운트가 0이면 completeText: '인증시간 초과'
@@ -44,6 +49,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
 
   const handleCodeField = (event:React.ChangeEvent<HTMLInputElement>) => {
     setVerificationCode(event.currentTarget.value)
+    //console.log(verificationCode)
 
     if (event.target.value !== '') {
       setVerificationDisabled(false)
@@ -56,12 +62,11 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
     }
   }
 
-  const checkVerificationCode = (value:string) => {
-    console.log(value)
+  const checkVerificationCode = () => {
     const codeNumber = '1234'
     // 인증번호 검증은 어떻게 ?
 
-    if (value === codeNumber) {
+    if (verificationCode === codeNumber) {
       // 인증이 완료되면
       validated[3] = true
       setComplete({
@@ -70,6 +75,10 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
       })
     } else {
       // 인증실패 시
+      setComplete({
+        completeActive: true,
+        completeText: '인증실패'
+      })
       validated[3] = false
     }
 
@@ -83,21 +92,17 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
         <Typography sx={{ fontSize: "1.5rem" }}>입력해주세요</Typography>
       </Box>
 
-      <Box 
-        sx={{ mt: 13 }}
-        component="form" 
-        autoComplete="off"
-      >
+      <Box sx={{ mt: 13 }}>
         <VerificationRequestWrap
           variant="standard"
           margin="normal"
-          onChange={handleRequestField}
         >
           <Box>
             <Input
               name="user_id"
               placeholder="휴대전화를 입력해주세요."
               type="text"
+              onChange={handleRequestField}
               value={phoneNumber}
             />
           </Box>
@@ -114,21 +119,36 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
           variant="standard"
           margin="normal"
           sx={{ mt: 7 }}
-          onChange={handleCodeField}
         >
-          <Box>
+          <Box sx={{ position: 'relative' }}>
             <Input
-              name="user_id"
+              name="verification_code"
               placeholder="인증번호를 입력해주세요."
               type="text"
-              value={verificationCode} 
+              onChange={handleCodeField}
+              value={verificationCode}
+              disabled={!countStrat}
             />
-            <FormHelperText>{complete.completeText}</FormHelperText>
+            <FormHelperText
+              sx={{
+              '&.error': { color: '#d32f2f' } 
+              }}
+              className={
+                complete.completeText === '인증실패' ? 'error' : ''
+              }
+            >
+              {complete.completeText}
+            </FormHelperText>
+            <CountBox
+              sx={{ display: countStrat ? 'block' : 'none' }}
+            >
+              1:30
+            </CountBox>
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
             sx={{ maxWidth: '72px' }}
-            onClick={e => checkVerificationCode(e.currentTarget.value)}
+            onClick={e => checkVerificationCode()}
           >
             인증
           </OutlineButton>
