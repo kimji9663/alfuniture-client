@@ -15,6 +15,9 @@ const SignUp = () => {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = useState(0)
   const [validated, setValidated] = useState<boolean[]>([])
+  const [userData, setUserData] = useState({
+    userId: ''
+  })
 
   const goToBack = () => {
     navigate(-1)
@@ -39,10 +42,9 @@ const SignUp = () => {
     setValidated([...val])
     //console.log(val)
   }
-
-  const checkValidate = (step:number) => {
-    validated[step] = true
-    changeValidated([...validated])
+  const changeUserData = (id:string) => {
+    setUserData({userId: id})
+    console.log(userData)
   }
 
   return (
@@ -93,6 +95,8 @@ const SignUp = () => {
               <UserId 
                 validated={validated}
                 changeValidated={changeValidated}
+                createUserId={userData.userId}
+                changeUserData={changeUserData}
               />
             </Box>
           ) : null}
@@ -109,6 +113,7 @@ const SignUp = () => {
               <SelectVerification 
                 validated={validated}
                 changeValidated={changeValidated}
+                getUserId={userData.userId}
               />
             </Box>
           ) : null}

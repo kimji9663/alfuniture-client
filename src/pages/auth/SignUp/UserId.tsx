@@ -4,9 +4,11 @@ import { Box, Typography, FormControl, Input, FormHelperText } from "@mui/materi
 type IvalidatedProps = {
   validated: boolean[]
   changeValidated: (val:boolean[]) => void
+  createUserId: string
+  changeUserData: (id:string) => void
 }
 
-const UserId = ({validated, changeValidated}:IvalidatedProps) => {
+const UserId = ({validated, changeValidated, createUserId, changeUserData}:IvalidatedProps) => {
   const [userId, setUserId] = useState('')
   const [idError, setIdError] = useState({
     errorActive: false,
@@ -27,6 +29,8 @@ const UserId = ({validated, changeValidated}:IvalidatedProps) => {
 
     if (emailPattern.test(event.target.value)) {
       setIdError({errorActive: false, errorText: ''})
+      createUserId = event.target.value
+      changeUserData(createUserId)
       console.log('사용가능')
       validated[1] = true
     } else {

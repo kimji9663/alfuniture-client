@@ -9,9 +9,10 @@ import EmailVerification from "./EmailVerification"
 type IvalidatedProps = {
   validated: boolean[]
   changeValidated: (val:boolean[]) => void
+  getUserId: string
 }
 
-const SelectVerification = ({validated, changeValidated}:IvalidatedProps) => {
+const SelectVerification = ({validated, changeValidated, getUserId}:IvalidatedProps) => {
   const [verification, setVerification] = useState('')
 
   const handleVerification = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -20,7 +21,13 @@ const SelectVerification = ({validated, changeValidated}:IvalidatedProps) => {
 
   return(
     <Box sx={{ p: 2 }}>
-      {verification === 'email_verification' ? <EmailVerification /> : (
+      {verification === 'email_verification' ? (
+          <EmailVerification
+            validated={validated}
+            changeValidated={changeValidated}
+            getUserId={getUserId}
+          />
+        ) : (
         verification === 'phone_verification' ? (
           <PhoneVerification
             validated={validated}
@@ -58,7 +65,6 @@ const SelectVerification = ({validated, changeValidated}:IvalidatedProps) => {
           </>
         )
       )}
-
     </Box>
   )
 }
