@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Tabs, Tab, Typography, Box, Link } from "@mui/material";
+import React, { useState } from 'react'
+import { Tabs, Tab, Typography, Box, Link } from '@mui/material'
 
 const TitleOneLine = () => {
-  const [title, setTitle] = useState("SHOP ALL");
+  const [title, setTitle] = useState('SHOP ALL')
   return (
-    <Box sx={{ width: "100%" }}>
-      <Typography sx={{}}>{title}</Typography>
+    <Box sx={{ width: '100%' }}>
+      <Typography sx={{ marginLeft: 2 }}>{title}</Typography>
     </Box>
-  );
-};
+  )
+}
 
-export default TitleOneLine;
+export default TitleOneLine

@@ -7,6 +7,7 @@ import TitleTwoLine2 from '../components/titleTwoLine2'
 import LeftTitle from '../components/LeftTitle'
 import NoTitle from '../components/NoTitle'
 import LogoTitle from '../components/LogoTitle'
+import CenterTitle from '../components/CenterTitle'
 import NormalTabs from '../components/Tabs'
 import NavigationBar from '../components/NavigationBar'
 
@@ -19,6 +20,7 @@ const Guide = () => {
       <TitleTwoLine2 />
       <LeftTitle />
       <NoTitle />
+      <CenterTitle />
       <LogoTitle />
 
       {/* 탭 */}
