@@ -9,4 +9,4 @@ export const SnsLogin = styled(Box)(() => ({
     width: '52px',
     color: '#fff',
   },
-})) 
+}))
