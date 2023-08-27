@@ -27,7 +27,6 @@ import icon_kakao from "./icon_sns_kakao.svg"
 import icon_naver from "./icon_sns_naver.svg"
 import icon_facebook from "./icon_sns_facebook.svg"
 import icon_apple from "./icon_sns_apple.svg"
-import thumb_brand01 from './thumb_brand01.png'
 
 export {
   // Component

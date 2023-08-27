@@ -136,7 +136,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
             >
               {complete.completeText}
             </FormHelperText>
-            <CountDownTimer targetDate={timer} />
+            {/* <CountDownTimer targetDate={timer} /> */}
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
