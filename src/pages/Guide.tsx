@@ -23,7 +23,7 @@ const Guide = () => {
       <NoTitle />
       <CenterTitle />
       <LogoTitle />
-      <WhiteTitle/>
+      <WhiteTitle />
 
       {/* 탭 */}
       <NormalTabs />
