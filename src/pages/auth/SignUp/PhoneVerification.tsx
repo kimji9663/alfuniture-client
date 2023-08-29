@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Typography, FormHelperText, Input } from "@mui/material"
 import { OutlineButton, PrimaryButton } from "../../../styles/buttons.styles"
 import { CountBox, VerificationRequestWrap } from "./index.styles"
+import CountDown from "../../../components/CountDown"
 
 type IvalidatedProps = {
   validated: boolean[]
@@ -18,6 +19,30 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
+  const [time, setTime] = useState(0)
+  const [expired, setExpired] = useState(false)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTime((prev) => prev - 1)
+    }, 1000)
+    if(time === 0) {
+      clearInterval(timer);
+    }
+    if (expired){
+      console.log(34)
+    }
+    return () => clearInterval(timer)
+  }, [time, expired])
+
+
+  const changeExpired = (val:boolean) => {
+    setExpired(val)
+    // setComplete({
+    //   completeActive: true,
+    //   completeText: '인증시간 초과'
+    // })
+  }
 
   const handleRequestField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     const phoneNumberPattern = /^(010)[0-9]{3,4}[0-9]{4}$/
@@ -40,6 +65,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
       completeText: '인증번호가 발송되었습니다.'
     })
     setCountStart(true)
+    setTime(90)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
     // 만약 카운트가 0이면 completeText: '인증시간 초과'
@@ -139,11 +165,10 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
             >
               {complete.completeText}
             </FormHelperText>
-            <CountBox
-              sx={{ display: countStrat ? 'block' : 'none' }}
-            >
-              1:30
-            </CountBox>
+
+            <Box sx={{ display: countStrat ? 'block' : 'none' }}>
+            </Box>
+              <CountDown time={time} changeExpired={changeExpired} countStrat={countStrat} />
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}

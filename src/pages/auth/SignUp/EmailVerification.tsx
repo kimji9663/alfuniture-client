@@ -19,7 +19,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
   const getNow = new Date().getTime()
-  const timer = getNow + 1.5 * 30 * 1000 //1분 30초
+  const timer = getNow + 9 * 30 * 1000 //4분 30초 = 30초 * 9
 
   const requestVerificationCode = () => {
     console.log(getUserId)
@@ -76,7 +76,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
     changeValidated([...validated])
   }
   
-  const CountDownTimer = (targetDate:number) => {
+  const CountDownTimer = ({ targetDate }:{ targetDate: number }) => {
     const [minutes, seconds] = useCountdown(targetDate)
 
     if (minutes + seconds <= 0) {
@@ -86,7 +86,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
         <CountBox
           sx={{ display: countStrat ? 'block' : 'none' }}
         >
-          4:30
+          {minutes}:{seconds}
         </CountBox>
       )
     }
@@ -136,7 +136,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
             >
               {complete.completeText}
             </FormHelperText>
-            {/* <CountDownTimer targetDate={timer} /> */}
+            <CountDownTimer targetDate={timer} />
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
