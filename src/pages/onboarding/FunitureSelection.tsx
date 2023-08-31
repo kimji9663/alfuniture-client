@@ -2,7 +2,7 @@ import React from "react"
 import { Box } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
-import TitleTwoLine1 from "../../components/titleTwoLine1"
+import TitleTwoLine1 from "../../components/title/titleTwoLine1"
 import { RectCheckbox } from "./funitureSelection.styles"
 import { useNavigate } from "react-router-dom"
 

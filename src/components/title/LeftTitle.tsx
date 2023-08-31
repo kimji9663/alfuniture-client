@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Box } from '@mui/material'
-import { ArrowLeft, IconCart, IconNotification } from '../assets/images'
+import { ArrowLeft, IconCart, IconNotification } from '../../assets/images'
 import { Link } from 'react-router-dom'
 
 const LeftTitle = () => {
@@ -8,19 +8,23 @@ const LeftTitle = () => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', marginTop: 4, height: '36px' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', marginLeft: 2 }}>
-        <Box sx={{ paddingTop: 1 }}>
-          <Link to="/">
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
             <ArrowLeft />
           </Link>
         </Box>
-        <Typography sx={{ fontSize: '1.5rem', marginLeft: 1, paddingTop: '4px' }}>{title[0]}</Typography>
+        <Typography variant="h6" sx={{ marginLeft: 1, display: 'flex', alignItems: 'center' }}>{title[0]}</Typography>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'flex-end' }}>
         <Box sx={{ marginRight: 1 }}>
-          <IconCart />
+          <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
+            <IconCart />
+          </Link>
         </Box>
         <Box sx={{ marginRight: 2 }}>
-          <IconNotification />
+          <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
+            <IconNotification />
+          </Link>
         </Box>
       </Box>
     </Box>

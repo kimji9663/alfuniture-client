@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, FormHelperText, Input } from "@mui/material"
 import { OutlineButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { CountBox, VerificationRequestWrap } from "./index.styles"
-import { useCountdown } from "../../../components/useCountdown"
+import { VerificationRequestWrap } from "./index.styles"
+import CountDown from "../../../components/CountDown"
 
 type IvalidatedProps = {
   validated: boolean[]
@@ -18,8 +18,26 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
-  const getNow = new Date().getTime()
-  const timer = getNow + 9 * 30 * 1000 //4분 30초 = 30초 * 9
+  const [time, setTime] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTime((prev) => prev - 1)
+    }, 1000)
+    if(time === 0) {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer)
+  }, [time])
+  
+  useEffect(() => {
+    if (countStrat && time === 0){
+      setComplete({
+        completeActive: true,
+        completeText: '인증시간 초과'
+      })
+    }
+  }, [countStrat, time])
 
   const requestVerificationCode = () => {
     console.log(getUserId)
@@ -31,6 +49,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
       completeText: '인증번호가 발송되었습니다.'
     })
     setCountStart(true)
+    setTime(90)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
     // 만약 카운트가 0이면 completeText: '인증시간 초과'
@@ -75,22 +94,6 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
 
     changeValidated([...validated])
   }
-  
-  const CountDownTimer = ({ targetDate }:{ targetDate: number }) => {
-    const [minutes, seconds] = useCountdown(targetDate)
-
-    if (minutes + seconds <= 0) {
-      return <div>인증시간 초과</div>
-    } else {
-      return (
-        <CountBox
-          sx={{ display: countStrat ? 'block' : 'none' }}
-        >
-          {minutes}:{seconds}
-        </CountBox>
-      )
-    }
-  }
 
   return (
     <Box>
@@ -124,19 +127,20 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
               type="text"
               onChange={handleCodeField}
               value={verificationCode}
-              disabled={!countStrat}
+              disabled={!countStrat || complete.completeText === '인증시간 초과'}
             />
             <FormHelperText
               sx={{
               '&.error': { color: '#d32f2f' } 
               }}
               className={
-                complete.completeText === '인증실패' ? 'error' : ''
+                complete.completeText === '인증실패' ? 'error' : 
+                (complete.completeText === '인증시간 초과' ? 'error' : '')
               }
             >
               {complete.completeText}
             </FormHelperText>
-            <CountDownTimer targetDate={timer} />
+            <CountDown time={time} />
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
