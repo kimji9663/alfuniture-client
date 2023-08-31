@@ -76,7 +76,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
     changeValidated([...validated])
   }
   
-  const CountDownTimer = (targetDate:number) => {
+  const CountDownTimer = ({targetDate} : {targetDate:number}) => {
     const [minutes, seconds] = useCountdown(targetDate)
 
     if (minutes + seconds <= 0) {
