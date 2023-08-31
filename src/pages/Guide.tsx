@@ -9,21 +9,31 @@ import NoTitle from '../components/title/NoTitle'
 import LogoTitle from '../components/title/LogoTitle'
 import WhiteTitle from '../components/title/WhiteTitle'
 import CenterTitle from '../components/title/CenterTitle'
+import ArrowTitle from '../components/title/ArrowTitle'
 import NormalTabs from '../components/Tabs'
 import NavigationBar from '../components/NavigationBar'
+
+const titleOneLine = ['SHOP ALL'];
+const titleTwoLine = ['좋아하는 스타일을', '선택해주세요'];
+const leftTitle = ['브랜드'];
+const centerTitle = ['장바구니'];
+const whiteTitle = ['모던한 인테리어 디자인'];
 
 const Guide = () => {
   return (
     <>
+      
       {/* 타이틀 */}
-      <TitleOneLine />
-      <TitleTwoLine1 />
-      <TitleTwoLine2 />
-      <LeftTitle />
+      <TitleOneLine title={titleOneLine}/>
+      <TitleTwoLine1 title={titleTwoLine} />
+      <TitleTwoLine2 title={titleTwoLine}/>
+      <LeftTitle title={leftTitle}/>
       <NoTitle />
-      <CenterTitle />
+      <CenterTitle title={centerTitle}/>
       <LogoTitle />
-      <WhiteTitle />
+      <WhiteTitle title={whiteTitle}/>
+      <ArrowTitle onClick={() => {}} />
+
 
       {/* 탭 */}
       <NormalTabs />

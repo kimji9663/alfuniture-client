@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
-import { Tabs, Tab, Typography, Box, Link } from '@mui/material'
+import React, { FC } from 'react'
+import { Typography, Box } from '@mui/material'
 
-const TitleOneLine = () => {
-  const [title, setTitle] = useState('SHOP ALL')
+interface TitleProps {
+  title: string[]; // props의 타입 정의
+}
+
+const TitleOneLine: FC<TitleProps> = ({title}) => {
   return (
-    <Box sx={{ height: "50px", display: 'flex', alignItems: 'center' }}>
-      <Typography variant="h5" sx={{ paddingLeft: 2 }}>{title}</Typography>
+    <Box sx={{ height: "50px", display: 'flex', alignItems: 'center' ,paddingTop: 2, paddingBottom: 2 }}>
+      <Typography variant="h4" sx={{ paddingLeft: 2 }}>{title}</Typography>
     </Box>
   )
 }

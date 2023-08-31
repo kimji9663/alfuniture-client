@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { FC } from 'react'
 import { Typography, Box } from '@mui/material'
 import { ArrowLeft, IconCart, IconNotification } from '../../assets/images'
 import { Link } from 'react-router-dom'
 
-const CenterTitle = () => {
-  const [title] = useState(['장바구니'])
+interface TitleProps {
+  title: string[]; // props의 타입 정의
+}
+
+const CenterTitle : FC<TitleProps> = ({title}) => {
 
   return (
     
-    <Box sx={{display: 'flex', alignItems: 'center', height: '36px',marginTop: 4 }}>
+    <Box sx={{display: 'flex', alignItems: 'center', height: '36px', paddingTop: 1, paddingBottom: 1  }}>
       <Box sx={{ width:"33.3%"}}>
         <Box sx={{ paddingLeft: 2}}>
         <Link to="/" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>

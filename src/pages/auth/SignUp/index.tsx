@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Button, Typography, Stepper, Step } from "@mui/material"
+import { Box, Typography, Stepper, Step } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
@@ -8,6 +8,8 @@ import TermsAgreement from "./TermsAgreement"
 import UserId from "./UserId"
 import UserPassword from "./userPassword"
 import SelectVerification from "./SelectVerification"
+import ArrowTitle from "../../../components/title/ArrowTitle"
+
 
 const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04']
 
@@ -49,9 +51,8 @@ const SignUp = () => {
 
   return (
     <>
-      <Box sx={{ p: 2 }}>
-        <Button onClick={activeStep === 0 ? goToBack : stepBack}>뒤로가기</Button>
-        
+      <ArrowTitle onClick={activeStep === 0 ? goToBack : stepBack}/>
+      <Box sx={{ p: 2, paddingTop: 0 }}>
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label) => {
             const stepProps: { completed?: boolean, } = {}

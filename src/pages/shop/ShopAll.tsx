@@ -440,11 +440,12 @@ const ShopAll = () => {
   const handleMenuOpen = (event: React.SyntheticEvent, name: string) => {
     setMenuOpen(name)
   }
+  const title = ['SHOP ALL'];
 
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <TitleOneLine />
+        <TitleOneLine title={title}/>
         <Box sx={{ 
           borderBottom: 1, 
           borderColor: 'divider',

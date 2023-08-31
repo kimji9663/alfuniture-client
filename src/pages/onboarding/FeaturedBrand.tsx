@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import "swiper/css"
 import { thumb_brand01 } from "../../assets/images"
 import { chair01, light01 } from "../../assets/images/product"
+import TitleTwoLine1 from '../../components/title/titleTwoLine1'
 
 type ISwiperProps = { 
   loop?: boolean
@@ -60,18 +61,12 @@ const FeaturedBrand = () => {
     return result
   }
 
+  const title = ['회원님을 위한', '맞춤 브랜드를 소개해드려요.'];
+
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <Box sx={{ width: "100%" }}>
-          <Box sx={{ marginTop: 2 }}>SKIP</Box>
-          <Box sx={{ marginTop: 2 }}>
-            <Typography sx={{ fontSize: "1.5rem" }}>
-              회원님을 위한
-              맞춤 브랜드를 소개해드려요.
-            </Typography>
-          </Box>
-        </Box>
+        <TitleTwoLine1 title={title}/>
 
         <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           <SwiperWrap>
