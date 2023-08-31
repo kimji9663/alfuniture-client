@@ -1,13 +1,14 @@
 import React from 'react'
 import { NaviWrap } from '../components/navigationbar.styles'
 import { SecondaryButton, PrimaryButton, PrimaryLightButton } from '../styles/buttons.styles'
-import TitleOneLine from '../components/titleOneLine'
-import TitleTwoLine1 from '../components/titleTwoLine1'
-import TitleTwoLine2 from '../components/titleTwoLine2'
-import LeftTitle from '../components/LeftTitle'
-import NoTitle from '../components/NoTitle'
-import LogoTitle from '../components/LogoTitle'
-import CenterTitle from '../components/CenterTitle'
+import TitleOneLine from '../components/title/titleOneLine'
+import TitleTwoLine1 from '../components/title/titleTwoLine1'
+import TitleTwoLine2 from '../components/title/titleTwoLine2'
+import LeftTitle from '../components/title/LeftTitle'
+import NoTitle from '../components/title/NoTitle'
+import LogoTitle from '../components/title/LogoTitle'
+import WhiteTitle from '../components/title/WhiteTitle'
+import CenterTitle from '../components/title/CenterTitle'
 import NormalTabs from '../components/Tabs'
 import NavigationBar from '../components/NavigationBar'
 
@@ -22,6 +23,7 @@ const Guide = () => {
       <NoTitle />
       <CenterTitle />
       <LogoTitle />
+      <WhiteTitle />
 
       {/* 탭 */}
       <NormalTabs />
