@@ -4,19 +4,18 @@ import { Link } from 'react-router-dom'
 
 interface TitleProps {
   title: string[]; // props의 타입 정의
+  onClick: () => void;
 }
 
-const TitleTwoLine1: FC<TitleProps> = ({title}) => {
+const TitleTwoLine1: FC<TitleProps> = ({title, onClick}) => {
   return (
-    <Box sx={{paddingLeft: 2, paddingTop: 2, paddingBottom: 2}}>
-      <Box sx={{ textAlign: 'right', paddingRight: 2}}>
-        <Link to="/" style={{ color: 'gray' }}>
-          SKIP
-        </Link>
+    <Box sx={{p : "16px 16px 0 16px ", mb :"80px"}}>
+      <Box sx={{ textAlign: 'right', pr: 2, height: "24px", color: 'gray'}} onClick={onClick}>
+        SKIP
       </Box>
-      <Box sx={{ marginTop: 1 }}>
-        <Typography variant="h5" >{title[0]}</Typography>
-        <Typography variant="h5" >{title[1]}</Typography>
+      <Box sx={{ mt: 2 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }} >{title[0]}</Typography>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }} >{title[1]}</Typography>
       </Box>
     </Box>
   )

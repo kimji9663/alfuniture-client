@@ -5,7 +5,7 @@ import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import ListItem from "../../components/product/ListItem"
 import { testData } from "../shop/ProductList"
-import TitleTwoLine1 from '../../components/title/titleTwoLine1'
+import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
 
 const FeaturedProduct = () => {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ const FeaturedProduct = () => {
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <TitleTwoLine1 title={title}/>
+        <TitleTwoLine2 title={title}/>
         <Box sx={{ px: 2, alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           {/* 가구리스트 */}
           {testData.map((product: any) =>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { NaviWrap } from '../components/navigationbar.styles'
 import { SecondaryButton, PrimaryButton, PrimaryLightButton } from '../styles/buttons.styles'
-import TitleOneLine from '../components/title/titleOneLine'
-import TitleTwoLine1 from '../components/title/titleTwoLine1'
-import TitleTwoLine2 from '../components/title/titleTwoLine2'
+import TitleOneLine from '../components/title/TitleOneLine'
+import TitleTwoLine1 from '../components/title/TitleTwoLine1'
+import TitleTwoLine2 from '../components/title/TitleTwoLine2'
 import LeftTitle from '../components/title/LeftTitle'
 import NoTitle from '../components/title/NoTitle'
 import LogoTitle from '../components/title/LogoTitle'
@@ -25,8 +25,8 @@ const Guide = () => {
       
       {/* 타이틀 */}
       <TitleOneLine title={titleOneLine}/>
-      <TitleTwoLine1 title={titleTwoLine} />
-      <TitleTwoLine2 title={titleTwoLine}/>
+      {/* <TitleTwoLine1 title={titleTwoLine} onClick={() => {}}/>
+      <TitleTwoLine2 title={titleTwoLine}/> */}
       <LeftTitle title={leftTitle}/>
       <NoTitle />
       <CenterTitle title={centerTitle}/>

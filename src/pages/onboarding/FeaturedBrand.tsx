@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 import "swiper/css"
 import { thumb_brand01 } from "../../assets/images"
 import { chair01, light01 } from "../../assets/images/product"
-import TitleTwoLine1 from '../../components/title/titleTwoLine1'
+import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
 
 type ISwiperProps = { 
   loop?: boolean
@@ -66,7 +66,7 @@ const FeaturedBrand = () => {
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <TitleTwoLine1 title={title}/>
+        <TitleTwoLine2 title={title}/>
 
         <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           <SwiperWrap>

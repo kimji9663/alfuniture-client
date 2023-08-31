@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Tabs, Tab, Box, List, ListItem, ListItemButton, ListItemText } from "@mui/material"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { ShopAllList } from "./shopAll.styles"
-import TitleOneLine from "../../components/title/titleOneLine"
+import TitleOneLine from "../../components/title/TitleOneLine"
 import NavigationBar from "../../components/NavigationBar"
 
 const shopJson = {

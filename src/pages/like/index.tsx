@@ -3,7 +3,7 @@ import { Box, Tabs, Tab, Typography } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import ProductList from "./ProductList"
 import BrandList from "./BrandList"
-import TitleOneLine from "../../components/title/titleOneLine"
+import TitleOneLine from "../../components/title/TitleOneLine"
 
 interface TabPanelProps {
   children?: React.ReactNode

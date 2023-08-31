@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
-import TitleTwoLine1 from '../../components/title/titleTwoLine1'
+import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
 
 const StyleSelection = () => {
   const navigate = useNavigate()
@@ -17,8 +17,9 @@ const StyleSelection = () => {
     return (
       <>
         <Box sx={{ height: '100%', overflow: 'auto' }}>
-          <TitleTwoLine1 title={title}/>
-          <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
+          <TitleTwoLine2 title={title}/>
+          {/* <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}> */}
+          <Box sx={{ px: 2, display: 'flex', alignItems: 'center' }}>
             스타일리스트
           </Box>
         </Box>

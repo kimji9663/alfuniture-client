@@ -8,11 +8,9 @@ interface ArrowTitleProps {
 
 const ArrowTitle: React.FC<ArrowTitleProps>  = ({onClick }) => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '36px', paddingTop: 1, paddingBottom: 1 }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', marginLeft: 2 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center'}} onClick={onClick}>
-          <ArrowLeft />
-        </Box>
+    <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '41px', p: "8px 0" }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', ml: 2 }}>
+          <ArrowLeft onClick={onClick}/>
       </Box>
     </Box>
   )
