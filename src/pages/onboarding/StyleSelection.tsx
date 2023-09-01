@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
+import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
 
 const StyleSelection = () => {
   const navigate = useNavigate()
@@ -11,20 +12,14 @@ const StyleSelection = () => {
     navigate("/onboarding/featured_product")
   }
 
+  const title = ['좋아하는 스타일을', '선택해주세요.'];
+
     return (
       <>
         <Box sx={{ height: '100%', overflow: 'auto' }}>
-          <Box sx={{ width: "100%" }}>
-            <Box sx={{ marginTop: 2 }}>SKIP</Box>
-            <Box sx={{ marginTop: 2 }}>
-              <Typography sx={{ fontSize: "1.5rem" }}>
-                좋아하는 스타일을<br />
-                선택해주세요.
-              </Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
+          <TitleTwoLine2 title={title}/>
+          {/* <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}> */}
+          <Box sx={{ px: 2, display: 'flex', alignItems: 'center' }}>
             스타일리스트
           </Box>
         </Box>

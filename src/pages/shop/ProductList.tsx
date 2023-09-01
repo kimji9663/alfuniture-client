@@ -5,6 +5,7 @@ import { Box, Button, ListItemButton } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import { sofa01, table01 } from "../../assets/images/product"
 import { GridBox } from "../../components/Box"
+import LeftTitle from '../../components/title/LeftTitle'
 
 export const testData = [
   {
@@ -30,13 +31,10 @@ export const testData = [
 ]
 
 const ProductList = () => {
+  const title = ["가구"]  
   return (
     <>
-      <Box>
-        가구
-        <Button>장바구니</Button>
-        <Button>알림</Button>
-      </Box>{/* 타이틀 임시 */}
+      <LeftTitle title ={title}/>
       <ListItemButton
         sx={{
           height: '52px',

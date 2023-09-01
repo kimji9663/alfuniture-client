@@ -3,6 +3,7 @@ import { Box, Tabs, Tab, Typography } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import ProductList from "./ProductList"
 import BrandList from "./BrandList"
+import TitleOneLine from "../../components/title/TitleOneLine"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -37,6 +38,8 @@ function LikeTabPanel(props: TabPanelProps) {
   )
 }
 
+const title = ['Like'];
+
 const Like = () => {
   const [tabValue, setTabValue] = useState(0)
 
@@ -47,10 +50,8 @@ const Like = () => {
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <Box sx={{ width: "100%" }}>
-          <Typography sx={{}}>Like</Typography>
-        </Box>
-
+        {/* 타이틀 */}
+        <TitleOneLine title={title}/>
         <Box sx={{ 
           borderBottom: 1, 
           borderColor: 'divider',

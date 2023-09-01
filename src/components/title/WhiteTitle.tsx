@@ -1,30 +1,37 @@
-import React, { useState } from 'react'
+import React, { FC } from 'react'
 import { Typography, Box } from '@mui/material'
 import { ArrowWhite } from '../../assets/images'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 
-const WhiteTitle = () => {
-  const [title] = useState(['모던한 인테리어 디자인'])
+interface TitleProps {
+  title: string[]; // props의 타입 정의
+}
+
+const WhiteTitle: FC<TitleProps> = ({title}) => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
         width: '100%',
-        marginTop: 4,
         height: '50px',
         color: 'white',
         border: '1px solid white',
         backgroundColor: 'transparent',
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', margin: 2, textAlign: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', m: 2, textAlign: 'center' }}>
         <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
-          <ArrowWhite />
+          <ArrowWhite onClick={goBack}/>
         </Link>
       </Box>
       <Typography
-        sx={{ height: '100%', paddingLeft: 2, display: 'flex', alignItems: 'center', borderLeft: '1px solid white' }}
+        sx={{ height: '100%', pl: 2, display: 'flex', alignItems: 'center', borderLeft: '1px solid white' }}
       >
         {title[0]}
       </Typography>

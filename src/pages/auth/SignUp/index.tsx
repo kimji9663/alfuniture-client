@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Button, Typography, Stepper } from "@mui/material"
+import { Box, Typography, Stepper } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
@@ -8,7 +8,8 @@ import TermsAgreement from "./TermsAgreement"
 import UserId from "./UserId"
 import UserPassword from "./userPassword"
 import SelectVerification from "./SelectVerification"
-import { ArrowLeft } from '../../../assets/images'
+import ArrowTitle from "../../../components/title/ArrowTitle"
+
 
 const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04']
 
@@ -50,13 +51,9 @@ const SignUp = () => {
 
   return (
     <>
-      <Box sx={{ p: 2 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '56px' }}>
-          <Button onClick={activeStep === 0 ? goToBack : stepBack} sx={{ minWidth: 0, p: 0 }}>
-            <ArrowLeft />
-          </Button>
-        </Box>
+      <ArrowTitle onClick={activeStep === 0 ? goToBack : stepBack}/>
         
+      <Box sx={{ p: 2, paddingTop: 0 }}>
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label) => {
             const stepProps: { completed?: boolean, } = {}

@@ -5,6 +5,7 @@ import { sofa01 } from "../../assets/images/product"
 import { alfdn } from "../../assets/images/brand"
 import { ArrowRight, IconHeartSmall } from "../../assets/images"
 import { ProductMainInfo, BrandInfo, OrderButton, DetailView, MoreButton, CoverBox } from "./productView.styles"
+import NoTitle from '../../components/title/NoTitle'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -53,10 +54,7 @@ const ProductView = () => {
   
   return (
     <>
-      <Box>
-        <Button>장바구니</Button>
-        <Button>알림</Button>
-      </Box>{/* 타이틀 임시 */}
+      <NoTitle/>
       <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
         <Box sx={{ '& > img': { width: '100%' } }}>
           <img src={sofa01} alt="소파" />
