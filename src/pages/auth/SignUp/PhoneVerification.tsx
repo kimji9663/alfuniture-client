@@ -12,6 +12,10 @@ type IvalidatedProps = {
 const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [requestDisabled, setReqeustDisabled] = useState(true)
+  const [number, setNumber] = useState({
+    errorActive: false,
+    errorText: ''
+  })
   const [complete, setComplete] = useState({
     completeActive: false,
     completeText: ''
@@ -47,8 +51,23 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
 
     if (phoneNumberPattern.test(onlyNumber)) {
       setReqeustDisabled(false)
+      setNumber({
+        errorActive: false,
+        errorText: ''
+      })
     } else {
       setReqeustDisabled(true)
+      
+      if (event.target.value !== '') {
+        setNumber({
+          errorActive: false,
+          errorText: ''
+        })
+      }
+      setNumber({
+        errorActive: true,
+        errorText: '휴대전화 형식이 올바르지 않습니다.'
+      })
     }
   }
 
@@ -90,8 +109,9 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
 
     if (verificationCode === codeNumber) {
       // 인증이 완료되면
-      // 카운트다운 멈춤
       validated[3] = true
+      setCountStart(false)
+      setTime(0)
       setComplete({
         completeActive: true,
         completeText: '인증완료'
@@ -128,6 +148,14 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
               onChange={handleRequestField}
               value={phoneNumber}
             />
+            <FormHelperText
+              sx={{
+              '&.error': { color: '#d32f2f' } 
+              }}
+              className="error"
+            >
+              {number.errorText}
+            </FormHelperText>
           </Box>
           <PrimaryButton 
             disabled={requestDisabled} 

@@ -36,6 +36,10 @@ const SignUp = () => {
     }
   }
 
+  const goToOnboarding = () => {
+    navigate("/onboarding/funiture_selection")
+  }
+
   const isActive = (label: string) => {
     return label === steps[activeStep] ? true : false
   }
@@ -122,7 +126,7 @@ const SignUp = () => {
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">
-              <PrimaryLightButton onClick={e => stepNext(activeStep)}>가입 완료</PrimaryLightButton>
+              <PrimaryLightButton onClick={goToOnboarding}>가입 완료</PrimaryLightButton>
             </NaviWrap>
           ) : (
             <NaviWrap className="single">

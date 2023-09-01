@@ -79,6 +79,8 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
     if (verificationCode === codeNumber) {
       // 인증이 완료되면
       validated[3] = true
+      setCountStart(false)
+      setTime(0)
       setComplete({
         completeActive: true,
         completeText: '인증완료'
@@ -140,7 +142,10 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
             >
               {complete.completeText}
             </FormHelperText>
-            <CountDown time={time} />
+            
+            <Box sx={{ display: countStrat ? 'block' : 'none' }}>
+              <CountDown time={time} />
+            </Box>
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
