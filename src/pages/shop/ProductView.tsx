@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Tabs, Tab, Box, Button, Divider, Typography } from "@mui/material"
+import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import { sofa01 } from "../../assets/images/product"
 import { alfdn } from "../../assets/images/brand"
 import { ArrowRight, IconHeartSmall } from "../../assets/images"
 import { ProductMainInfo, BrandInfo, OrderButton, DetailView, MoreButton, CoverBox } from "./productView.styles"
 import NoTitle from '../../components/title/NoTitle'
+import { IconLikeOff, IconLikeOn } from "../../assets/images"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -43,6 +44,11 @@ const ViewTabPanel = (props: TabPanelProps) => {
 const ProductView = () => {
   const [tabValue, setTabValue] = useState(0)
   const [viewMore, setViewMore] = useState(false)
+  const [isLike, setIsLike] = useState(false)
+
+  const handleClickLike = (event: any) => {
+    setIsLike(!isLike)
+  }
 
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
@@ -63,15 +69,19 @@ const ProductView = () => {
           <ProductMainInfo>
             <Box className="product_brand">
               <Typography className="brand_name">ALFDN</Typography>
-              <Box>like</Box>
+              <IconButton
+                onClick={handleClickLike}
+              >
+                {isLike ? <IconLikeOn /> : <IconLikeOff />}
+              </IconButton>
             </Box>
             <Box className="product_title">
               <Typography>카멜프튼</Typography>
               <Box className="color_info">
                 <span className="text">3 COLOR</span>
-                <span></span>
-                <span></span>
-                <span></span>
+                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
+                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
+                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
               </Box>
             </Box>
             <Box className="product_price">

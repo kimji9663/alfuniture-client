@@ -17,6 +17,13 @@ export const ProductMainInfo = styled(Box)(() => ({
     display: 'flex', 
     alignItems: 'center',
   },
+  '& > .product_title .color_info': {
+    padding: '2px 8px',
+    background: '#F1F1F1',
+  },
+  '& > .product_title .color_info > span': {
+    display: 'inline-block',
+  },
   '& > .product_title .color_info .text': {
     fontSize: '.75rem',
   },
