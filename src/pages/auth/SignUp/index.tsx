@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Typography, Stepper, Step } from "@mui/material"
+import { Box, Typography, Stepper } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
@@ -36,6 +36,10 @@ const SignUp = () => {
     }
   }
 
+  const goToOnboarding = () => {
+    navigate("/onboarding/funiture_selection")
+  }
+
   const isActive = (label: string) => {
     return label === steps[activeStep] ? true : false
   }
@@ -52,6 +56,7 @@ const SignUp = () => {
   return (
     <>
       <ArrowTitle onClick={activeStep === 0 ? goToBack : stepBack}/>
+        
       <Box sx={{ p: 2, paddingTop: 0 }}>
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label) => {
@@ -121,7 +126,7 @@ const SignUp = () => {
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">
-              <PrimaryLightButton onClick={e => stepNext(activeStep)}>가입 완료</PrimaryLightButton>
+              <PrimaryLightButton onClick={goToOnboarding}>가입 완료</PrimaryLightButton>
             </NaviWrap>
           ) : (
             <NaviWrap className="single">

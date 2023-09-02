@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Typography, FormHelperText, Input } from "@mui/material"
 import { OutlineButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { CountBox, VerificationRequestWrap } from "./index.styles"
+import { VerificationRequestWrap } from "./index.styles"
+import CountDown from "../../../components/CountDown"
 
 type IvalidatedProps = {
   validated: boolean[]
@@ -11,6 +12,10 @@ type IvalidatedProps = {
 const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [requestDisabled, setReqeustDisabled] = useState(true)
+  const [number, setNumber] = useState({
+    errorActive: false,
+    errorText: ''
+  })
   const [complete, setComplete] = useState({
     completeActive: false,
     completeText: ''
@@ -18,6 +23,26 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
+  const [time, setTime] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTime((prev) => prev - 1)
+    }, 1000)
+    if(time === 0) {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer)
+  }, [time])
+  
+  useEffect(() => {
+    if (countStrat && time === 0){
+      setComplete({
+        completeActive: true,
+        completeText: '인증시간 초과'
+      })
+    }
+  }, [countStrat, time])
 
   const handleRequestField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     const phoneNumberPattern = /^(010)[0-9]{3,4}[0-9]{4}$/
@@ -26,8 +51,23 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
 
     if (phoneNumberPattern.test(onlyNumber)) {
       setReqeustDisabled(false)
+      setNumber({
+        errorActive: false,
+        errorText: ''
+      })
     } else {
       setReqeustDisabled(true)
+      
+      if (event.target.value !== '') {
+        setNumber({
+          errorActive: false,
+          errorText: ''
+        })
+      }
+      setNumber({
+        errorActive: true,
+        errorText: '휴대전화 형식이 올바르지 않습니다.'
+      })
     }
   }
 
@@ -40,6 +80,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
       completeText: '인증번호가 발송되었습니다.'
     })
     setCountStart(true)
+    setTime(90)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
     // 만약 카운트가 0이면 completeText: '인증시간 초과'
@@ -69,6 +110,8 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
     if (verificationCode === codeNumber) {
       // 인증이 완료되면
       validated[3] = true
+      setCountStart(false)
+      setTime(0)
       setComplete({
         completeActive: true,
         completeText: '인증완료'
@@ -105,6 +148,14 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
               onChange={handleRequestField}
               value={phoneNumber}
             />
+            <FormHelperText
+              sx={{
+              '&.error': { color: '#d32f2f' } 
+              }}
+              className="error"
+            >
+              {number.errorText}
+            </FormHelperText>
           </Box>
           <PrimaryButton 
             disabled={requestDisabled} 
@@ -127,23 +178,23 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
               type="text"
               onChange={handleCodeField}
               value={verificationCode}
-              disabled={!countStrat}
+              disabled={!countStrat || complete.completeText === '인증시간 초과'}
             />
             <FormHelperText
               sx={{
               '&.error': { color: '#d32f2f' } 
               }}
               className={
-                complete.completeText === '인증실패' ? 'error' : ''
+                complete.completeText === '인증실패' ? 'error' : 
+                (complete.completeText === '인증시간 초과' ? 'error' : '')
               }
             >
               {complete.completeText}
             </FormHelperText>
-            <CountBox
-              sx={{ display: countStrat ? 'block' : 'none' }}
-            >
-              1:30
-            </CountBox>
+
+            <Box sx={{ display: countStrat ? 'block' : 'none' }}>
+              <CountDown time={time} />
+            </Box>
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
