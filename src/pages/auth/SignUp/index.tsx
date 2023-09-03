@@ -126,11 +126,15 @@ const SignUp = () => {
           
           {activeStep === steps.length - 1 ? (
             <NaviWrap className="single">
-              <PrimaryLightButton onClick={goToOnboarding}>가입 완료</PrimaryLightButton>
+              <PrimaryButton onClick={goToOnboarding}>가입 완료</PrimaryButton>
             </NaviWrap>
           ) : (
             <NaviWrap className="single">
-              <PrimaryButton onClick={e => stepNext(activeStep)} disabled={validated[activeStep] ? false : true}>다음으로</PrimaryButton>
+              {validated[activeStep] ? (
+                <PrimaryButton onClick={e => stepNext(activeStep)}>다음으로</PrimaryButton>
+              ) : (
+                <PrimaryLightButton disabled>다음으로</PrimaryLightButton>
+              )}
             </NaviWrap>
           )}
         </>
