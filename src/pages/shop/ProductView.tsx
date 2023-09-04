@@ -4,9 +4,11 @@ import NavigationBar from "../../components/NavigationBar"
 import { sofa01 } from "../../assets/images/product"
 import { alfdn } from "../../assets/images/brand"
 import { ArrowRight, IconHeartSmall } from "../../assets/images"
-import { ProductMainInfo, BrandInfo, OrderButton, DetailView, MoreButton, CoverBox } from "./productView.styles"
+import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs } from "./productView.styles"
 import NoTitle from '../../components/title/NoTitle'
 import { IconLikeOff, IconLikeOn } from "../../assets/images"
+import DetailViewPanel from "./DetailViewPanel"
+import ReviewPanel from "./ReviewPanel"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -43,7 +45,6 @@ const ViewTabPanel = (props: TabPanelProps) => {
 
 const ProductView = () => {
   const [tabValue, setTabValue] = useState(0)
-  const [viewMore, setViewMore] = useState(false)
   const [isLike, setIsLike] = useState(false)
 
   const handleClickLike = (event: any) => {
@@ -52,10 +53,6 @@ const ProductView = () => {
 
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
-  }
-
-  const handleViewHeight = () => {
-    setViewMore(!viewMore)
   }
   
   return (
@@ -78,10 +75,10 @@ const ProductView = () => {
             <Box className="product_title">
               <Typography>카멜프튼</Typography>
               <Box className="color_info">
-                <span className="text">3 COLOR</span>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
+                <Box component="span" className="text">3 COLOR</Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#494A4C' }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#192552' }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#D67531' }}></Box>
               </Box>
             </Box>
             <Box className="product_price">
@@ -93,16 +90,16 @@ const ProductView = () => {
 
             <Box className="product_delivery">
               <Box>
-                <Box component="p" sx={{ color: '#333', fontSize: '.875rem' }}>
+                <Box component="p" className="delivery_title">
                   배송정보
                 </Box>
-                <Box component="p" sx={{ mt: 1 }}>
-                  <Typography component="span" sx={{ color: '#666', fontSize: '.75rem' }}>
+                <Box component="p" className="delivery_info">
+                  <Box component="span" sx={{ color: '#666' }}>
                     빠른배송
-                  </Typography>
-                  <Typography component="span" sx={{ ml: 1, color: '#FD6868', fontSize: '.75rem' }}>
+                  </Box>
+                  <Box component="span" sx={{ ml: 1, color: '#FD6868' }}>
                     불가능
-                  </Typography>
+                  </Box>
                 </Box>
               </Box>
               <Box className="button">
@@ -112,7 +109,7 @@ const ProductView = () => {
           </ProductMainInfo>
           <BrandInfo fullWidth sx={{ mt: 3 }}>
             <Box sx={{ px: 2 }}>
-              <img src={alfdn} alt="" />
+              <img src={alfdn} alt="알프든" />
             </Box>
             <Box>
               <Typography sx={{ color: '#333', fontSize: '.875rem', fontWeight: 'bold', '& > svg': { ml: 1/2 } }}>
@@ -127,13 +124,8 @@ const ProductView = () => {
           </BrandInfo>
         </Box>
         
-        <Box sx={{ 
-          borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333' },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
-        }}>
-          <Tabs 
+        <ProductViewTabs>
+          <Tabs
             value={tabValue}
             variant="fullWidth" 
             onChange={handleViewTab} 
@@ -143,25 +135,14 @@ const ProductView = () => {
             <Tab label="리뷰" {...viewProps(1)} />
             <Tab label="문의사항" {...viewProps(2)} />
           </Tabs>
-        </Box>
+        </ProductViewTabs>
 
         <ViewTabPanel value={tabValue} index={0}>
-          <DetailView sx={{ height: viewMore ? 'auto' : '502px', pb: viewMore ? '58px' : 0 }}>
-            <img src="https://cdn.imweb.me/upload/S202012142df41e7544ce6/8f30f47c5ce2d.jpg" alt="" />
-            <CoverBox>
-              <MoreButton 
-                variant="outlined" 
-                fullWidth
-                onClick={handleViewHeight}
-              >
-                상품설명 {viewMore ? '접기' : '더보기'}
-              </MoreButton>
-            </CoverBox>
-          </DetailView>
+          <DetailViewPanel />
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={1}>
-          리뷰
+          <ReviewPanel />
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={2}>
