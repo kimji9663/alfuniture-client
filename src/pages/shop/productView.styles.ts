@@ -153,9 +153,60 @@ export const ViewTitle = styled(Box)(() => ({
 }))
 
 export const AverageGrade = styled(Box)(() => ({
+  textAlign: 'center',
 
+  '& .now, & .all': {
+    fontWeight: 500,
+  },
+  '& .now': {
+    color: '#242223',
+    fontSize: '3rem',
+  },
+  '& .all': {
+    color: '#E4E4E4',
+    fontSize: '2rem',
+  },
+  '& .grade_star > svg': {
+    color: '#EEEEEE'
+  }
 }))
 
 export const DetailGrade = styled(Box)(() => ({
+  '& > .MuiBox-root': {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '4px',
+  },
+  '& .grade_number': {
+    color: '#999',
+    fontSize: '.75rem',
+  },
+  '& .grade_pipe': {
+    position: 'relative',
+    display: 'block',
+    flex: '1 1 auto',
+    marginLeft: '4px',
+    height: '8px',
+    backgroundColor: '#eee',
+  },
+  '& .grade_pipe > span': {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    backgroundColor: '#242223',
+  },
+}))
+
+export const PhotoReview = styled(Box)(() => ({
+  marginTop: '16px',
   
+  '& .swiper-slide': {
+    width: '100px',
+    height: '100px',
+    overflow: 'hidden',
+  },
+  '& .swiper-slide > img': {
+    width: '100%',
+  },
 }))
