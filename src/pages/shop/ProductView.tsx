@@ -9,6 +9,7 @@ import NoTitle from '../../components/title/NoTitle'
 import { IconLikeOff, IconLikeOn } from "../../assets/images"
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
+import PersonalQna from "./PersonalQna"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -146,7 +147,7 @@ const ProductView = () => {
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={2}>
-          문의사항
+          <PersonalQna />
         </ViewTabPanel>
       </Box>
       <NavigationBar />

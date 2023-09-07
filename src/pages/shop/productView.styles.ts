@@ -262,9 +262,10 @@ export const UserPhotoWrap = styled(Box)(() => ({
     top: 16, 
     right: 12, 
     zIndex: 1, 
-    padding: '0 8px',
+    padding: '3px 11px',
     backgroundColor: '#000', 
     color: '#fff',
+    fontSize: '.75rem',
   }
 }))
 
@@ -295,4 +296,28 @@ export const ProductOptions = styled(Box)(() => ({
     padding: '2px 4px', 
     border: '1px solid #BDBDBD', 
   }
+}))
+
+export const QnaButton = styled(PrimaryButton)(() => ({
+  padding: '1.11rem .5rem',
+  fontSize: '.875rem',
+  borderRadius: 0,
+}))
+
+export const CustomerService = styled(Box)(() => ({
+  '& .title': {
+    flex: '0 0 66px', 
+    fontSize: '.75rem', 
+    color: '#666', 
+    fontWeight: 'bold',
+  },
+  '& .information': {
+    display: 'flex', 
+    flexWrap: 'wrap',
+  },
+  '& .information > span': {
+    marginRight: '20px',
+    color: '#666', 
+    fontSize: '.75rem',
+  },
 }))

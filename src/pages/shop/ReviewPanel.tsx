@@ -193,7 +193,7 @@ const ReviewPanel = () => {
         <Swiper {...userPhotoSettings}>
           {userPhotoList.map((userPhoto) => (
             <SwiperSlide key={`user_photo_${userPhoto.id}`}>
-              <img src={userPhoto.img} alt="" />
+              <img src={userPhoto.img} alt={userPhoto.discription} />
             </SwiperSlide>
           ))}
         </Swiper>
