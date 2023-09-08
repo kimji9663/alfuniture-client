@@ -1,12 +1,14 @@
 import React, { useState } from "react"
-import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
-import NavigationBar from "../../components/NavigationBar"
+import { useNavigate } from "react-router-dom"
+import { Tabs, Tab, Box, IconButton, Divider, Typography, SwipeableDrawer, MenuItem } from "@mui/material"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import { NaviWrap } from "../../components/navigationbar.styles"
+import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
+import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs, ViewTitle } from "./productView.styles"
+import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../assets/images"
 import { sofa01 } from "../../assets/images/product"
 import { alfdn } from "../../assets/images/brand"
-import { ArrowRight, IconHeartSmall } from "../../assets/images"
-import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs } from "./productView.styles"
 import NoTitle from '../../components/title/NoTitle'
-import { IconLikeOff, IconLikeOn } from "../../assets/images"
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQna from "./PersonalQna"
@@ -45,8 +47,30 @@ const ViewTabPanel = (props: TabPanelProps) => {
 }
 
 const ProductView = () => {
+  const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
   const [isLike, setIsLike] = useState(false)
+  const [optionOpen, setOptionOpen] = useState(false)
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
+  const goToCart = (event: React.MouseEvent) => {
+    if (optionOpen) {
+      navigate("/")
+    }
+    setOptionOpen(true)
+  }
+
+  const goToOrder = () => {
+    if (optionOpen) {
+      navigate("/")
+    }
+    setOptionOpen(true)
+  }
 
   const handleClickLike = (event: any) => {
     setIsLike(!isLike)
@@ -56,6 +80,10 @@ const ProductView = () => {
     setTabValue(newValue)
   }
   
+  const toggleDrawer = (open: boolean) => (event: React.MouseEvent) => {
+    setOptionOpen(open)
+  }
+
   return (
     <>
       <NoTitle/>
@@ -150,7 +178,49 @@ const ProductView = () => {
           <PersonalQna />
         </ViewTabPanel>
       </Box>
-      <NavigationBar />
+
+      <SwipeableDrawer
+        anchor='bottom'
+        open={optionOpen}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        sx={{
+          zIndex: 1,
+          '& .MuiBackdrop-root': {
+            bottom: '75px',
+          },
+          '& .MuiPaper-root': {
+            bottom: '75px',
+          }
+        }}
+      >
+        <Box
+          sx={{ p: 2, width: 'auto', height: '50vh' }}
+          role="presentation"
+        >
+          <ViewTitle>옵션 선택</ViewTitle>
+          <Box sx={{ mt: 2 }}>
+            <Select
+              fullWidth
+              value={age}
+              onChange={handleChange}
+              displayEmpty
+            >
+              <MenuItem value="">
+                <em>컬러 선택</em>
+              </MenuItem>
+              <MenuItem value={10}>브라운</MenuItem>
+              <MenuItem value={20}>블루</MenuItem>
+              <MenuItem value={30}>그레이</MenuItem>
+            </Select>
+          </Box>
+        </Box>
+      </SwipeableDrawer>
+
+      <NaviWrap className="pair" sx={{ zIndex: 2 }}>
+        <SecondaryButton onClick={goToCart}>장바구니</SecondaryButton>
+        <PrimaryButton onClick={goToOrder}>구매하기</PrimaryButton>
+      </NaviWrap>
     </>
   )
 }
