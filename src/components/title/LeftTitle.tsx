@@ -21,12 +21,12 @@ const LeftTitle: FC<TitleProps> = ({title}) => {
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'flex-end' }}>
         <Box sx={{ mr: 1 }}>
-          <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
+          <Link to="/cart" style={{ display: 'flex', textDecoration: 'none' }}>
             <IconCart />
           </Link>
         </Box>
         <Box sx={{ mr: 2 }}>
-          <Link to="/" style={{ display: 'flex', textDecoration: 'none' }}>
+          <Link to="/notification" style={{ display: 'flex', textDecoration: 'none' }}>
             <IconNotification />
           </Link>
         </Box>
