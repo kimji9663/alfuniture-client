@@ -24,6 +24,7 @@ const FeaturedProduct = () => {
           {/* 가구리스트 */}
           {testData.map((product: any) =>
             <ListItem
+              id={product.id}
               imgsrc={product.imgsrc}
               shopName={product.shopName}
               modelName={product.modelName}
