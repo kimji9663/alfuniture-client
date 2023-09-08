@@ -33,12 +33,12 @@ const CenterTitle : FC<TitleProps> = ({title}) => {
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'flex-end', right: 0,width:"33.3%"}}>
         <Box sx={{ mr: 1 }}>
-          <Link to="/" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
+          <Link to="/cart" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
             <IconCart />
           </Link>
         </Box>
         <Box sx={{ mr: 2 }}>
-          <Link to="/" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
+          <Link to="/notification" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
             <IconNotification />
           </Link>
         </Box>

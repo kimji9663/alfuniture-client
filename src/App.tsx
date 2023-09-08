@@ -12,6 +12,8 @@ import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
 import Like from "./pages/like"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
+import Cart from "./pages/cart"
+import Notification from "./pages/notification"
 
 const router = createBrowserRouter([
   {
@@ -89,10 +91,18 @@ const router = createBrowserRouter([
         path: "/guide",
         element: <Guide />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/notification",
+        element: <Notification />,
+      },
     ],
   },
 ]);
- 
+
 function App() {
   return (
     <>      
