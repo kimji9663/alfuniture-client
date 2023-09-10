@@ -1,12 +1,17 @@
 import React, { useState } from "react"
-import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
-import NavigationBar from "../../components/NavigationBar"
+import { useNavigate } from "react-router-dom"
+import { Tabs, Tab, Box, IconButton, Divider, Typography, SwipeableDrawer, MenuItem } from "@mui/material"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import { NaviWrap } from "../../components/navigationbar.styles"
+import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
+import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs, ViewTitle } from "./productView.styles"
+import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../assets/images"
 import { sofa01 } from "../../assets/images/product"
 import { alfdn } from "../../assets/images/brand"
-import { ArrowRight, IconHeartSmall } from "../../assets/images"
-import { ProductMainInfo, BrandInfo, OrderButton, DetailView, MoreButton, CoverBox } from "./productView.styles"
 import NoTitle from '../../components/title/NoTitle'
-import { IconLikeOff, IconLikeOn } from "../../assets/images"
+import DetailViewPanel from "./DetailViewPanel"
+import ReviewPanel from "./ReviewPanel"
+import PersonalQna from "./PersonalQna"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -42,9 +47,30 @@ const ViewTabPanel = (props: TabPanelProps) => {
 }
 
 const ProductView = () => {
+  const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
-  const [viewMore, setViewMore] = useState(false)
   const [isLike, setIsLike] = useState(false)
+  const [optionOpen, setOptionOpen] = useState(false)
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
+  const goToCart = (event: React.MouseEvent) => {
+    if (optionOpen) {
+      navigate("/")
+    }
+    setOptionOpen(true)
+  }
+
+  const goToOrder = () => {
+    if (optionOpen) {
+      navigate("/")
+    }
+    setOptionOpen(true)
+  }
 
   const handleClickLike = (event: any) => {
     setIsLike(!isLike)
@@ -53,11 +79,11 @@ const ProductView = () => {
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
-
-  const handleViewHeight = () => {
-    setViewMore(!viewMore)
-  }
   
+  const toggleDrawer = (open: boolean) => (event: React.MouseEvent) => {
+    setOptionOpen(open)
+  }
+
   return (
     <>
       <NoTitle/>
@@ -78,10 +104,10 @@ const ProductView = () => {
             <Box className="product_title">
               <Typography>카멜프튼</Typography>
               <Box className="color_info">
-                <span className="text">3 COLOR</span>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
-                <Box component="span" sx={{ background: '#f5f5f5' }}></Box>
+                <Box component="span" className="text">3 COLOR</Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#494A4C' }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#192552' }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: '#D67531' }}></Box>
               </Box>
             </Box>
             <Box className="product_price">
@@ -93,16 +119,16 @@ const ProductView = () => {
 
             <Box className="product_delivery">
               <Box>
-                <Box component="p" sx={{ color: '#333', fontSize: '.875rem' }}>
+                <Box component="p" className="delivery_title">
                   배송정보
                 </Box>
-                <Box component="p" sx={{ mt: 1 }}>
-                  <Typography component="span" sx={{ color: '#666', fontSize: '.75rem' }}>
+                <Box component="p" className="delivery_info">
+                  <Box component="span" sx={{ color: '#666' }}>
                     빠른배송
-                  </Typography>
-                  <Typography component="span" sx={{ ml: 1, color: '#FD6868', fontSize: '.75rem' }}>
+                  </Box>
+                  <Box component="span" sx={{ ml: 1, color: '#FD6868' }}>
                     불가능
-                  </Typography>
+                  </Box>
                 </Box>
               </Box>
               <Box className="button">
@@ -112,7 +138,7 @@ const ProductView = () => {
           </ProductMainInfo>
           <BrandInfo fullWidth sx={{ mt: 3 }}>
             <Box sx={{ px: 2 }}>
-              <img src={alfdn} alt="" />
+              <img src={alfdn} alt="알프든" />
             </Box>
             <Box>
               <Typography sx={{ color: '#333', fontSize: '.875rem', fontWeight: 'bold', '& > svg': { ml: 1/2 } }}>
@@ -127,13 +153,8 @@ const ProductView = () => {
           </BrandInfo>
         </Box>
         
-        <Box sx={{ 
-          borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333' },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
-        }}>
-          <Tabs 
+        <ProductViewTabs>
+          <Tabs
             value={tabValue}
             variant="fullWidth" 
             onChange={handleViewTab} 
@@ -143,32 +164,63 @@ const ProductView = () => {
             <Tab label="리뷰" {...viewProps(1)} />
             <Tab label="문의사항" {...viewProps(2)} />
           </Tabs>
-        </Box>
+        </ProductViewTabs>
 
         <ViewTabPanel value={tabValue} index={0}>
-          <DetailView sx={{ height: viewMore ? 'auto' : '502px', pb: viewMore ? '58px' : 0 }}>
-            <img src="https://cdn.imweb.me/upload/S202012142df41e7544ce6/8f30f47c5ce2d.jpg" alt="" />
-            <CoverBox>
-              <MoreButton 
-                variant="outlined" 
-                fullWidth
-                onClick={handleViewHeight}
-              >
-                상품설명 {viewMore ? '접기' : '더보기'}
-              </MoreButton>
-            </CoverBox>
-          </DetailView>
+          <DetailViewPanel />
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={1}>
-          리뷰
+          <ReviewPanel />
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={2}>
-          문의사항
+          <PersonalQna />
         </ViewTabPanel>
       </Box>
-      <NavigationBar />
+
+      <SwipeableDrawer
+        anchor='bottom'
+        open={optionOpen}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        sx={{
+          zIndex: 1,
+          '& .MuiBackdrop-root': {
+            bottom: '75px',
+          },
+          '& .MuiPaper-root': {
+            bottom: '75px',
+          }
+        }}
+      >
+        <Box
+          sx={{ p: 2, width: 'auto', height: '50vh' }}
+          role="presentation"
+        >
+          <ViewTitle>옵션 선택</ViewTitle>
+          <Box sx={{ mt: 2 }}>
+            <Select
+              fullWidth
+              value={age}
+              onChange={handleChange}
+              displayEmpty
+            >
+              <MenuItem value="">
+                <em>컬러 선택</em>
+              </MenuItem>
+              <MenuItem value={10}>브라운</MenuItem>
+              <MenuItem value={20}>블루</MenuItem>
+              <MenuItem value={30}>그레이</MenuItem>
+            </Select>
+          </Box>
+        </Box>
+      </SwipeableDrawer>
+
+      <NaviWrap className="pair" sx={{ zIndex: 2 }}>
+        <SecondaryButton onClick={goToCart}>장바구니</SecondaryButton>
+        <PrimaryButton onClick={goToOrder}>구매하기</PrimaryButton>
+      </NaviWrap>
     </>
   )
 }
