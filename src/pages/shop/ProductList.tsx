@@ -55,41 +55,43 @@ export const testData = [
 ]
 
 const ProductList = () => {
-  const title = ["가구"]  
+  const title = ["가구"]
   return (
     <>
-      <LeftTitle title ={title}/>
-      <ListItemButton
-        sx={{
-          height: '52px',
-          borderTop: '1px solid #DDDDDD',
-          borderBottom: '1px solid #DDDDDD',
-          fontSize: '.875rem',
-        }}
-      >
-        Filter +
-      </ListItemButton>
-      <Box padding='1.5rem 1rem'>
-        <GridBox
+      <LeftTitle title={title} />
+      <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
+        <ListItemButton
           sx={{
-            gridTemplateColumns: '1fr 1fr'
+            height: '52px',
+            borderTop: '1px solid #DDDDDD',
+            borderBottom: '1px solid #DDDDDD',
+            fontSize: '.875rem',
           }}
-          columnGap='0.5rem'
-          rowGap='1.5rem'
         >
-        {testData.map((product: any) => 
-          <PreviewItem
-            key={`product-${product.id}`}
-            id={product.id}
-            imgsrc={product.imgsrc}
-            shopName={product.shopName}
-            modelName={product.modelName}
-            productName={product.productName}
-            price={product.price}
-            colors={product.colors}
-          />
-        )}
-        </GridBox>
+          Filter +
+        </ListItemButton>
+        <Box padding='1.5rem 1rem'>
+          <GridBox
+            sx={{
+              gridTemplateColumns: '1fr 1fr'
+            }}
+            columnGap='0.5rem'
+            rowGap='1.5rem'
+          >
+            {testData.map((product: any) =>
+              <PreviewItem
+                key={`product-${product.id}`}
+                id={product.id}
+                imgsrc={product.imgsrc}
+                shopName={product.shopName}
+                modelName={product.modelName}
+                productName={product.productName}
+                price={product.price}
+                colors={product.colors}
+              />
+            )}
+          </GridBox>
+        </Box>
       </Box>
       <NavigationBar />
     </>
