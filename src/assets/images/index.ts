@@ -19,6 +19,7 @@ import { ReactComponent as IconLikeOn } from './icon_like_on.svg'
 import { ReactComponent as IconLikeOff } from './icon_like_off.svg'
 import { ReactComponent as IconCart } from './icon_cart.svg'
 import { ReactComponent as IconNotification } from './icon_notification.svg'
+import { ReactComponent as IconStar } from './icon_star.svg'
 import { ReactComponent as Logo } from './logo.svg'
 
 // Image
@@ -42,21 +43,22 @@ export {
   ArrowBottom,
   ArrowWhite,
   IconShift,
-  icon_kakao,
-  icon_naver,
-  icon_facebook,
-  icon_apple,
   IconHeartSmall,
+  IconLikeOn,
+  IconLikeOff,
   IconCart,
   IconNotification,
+  IconStar,
   Logo,
 
   // Image
   logo,
   thumb_brand01,
+  icon_kakao,
+  icon_naver,
+  icon_facebook,
+  icon_apple,
   icon_cart,
   icon_notice,
   icon_back,
-  IconLikeOn,
-  IconLikeOff,
 }
