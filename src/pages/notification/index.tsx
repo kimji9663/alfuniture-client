@@ -16,7 +16,7 @@ const NotificationList: React.FC = () => {
   const linkText = "홈으로 가기";
   const linkTo = "/home";
 
-  const initialData: NotificationData[] = [
+  const testData: NotificationData[] = [
     {
       title: "혜택",
       name: "",
@@ -39,7 +39,7 @@ const NotificationList: React.FC = () => {
 
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...initialData]);
+    setData([...data, ...testData]);
   }, []); 
 
   return (
