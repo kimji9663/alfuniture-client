@@ -31,6 +31,7 @@ const FeaturedProduct = () => {
               productName={product.productName}
               price={product.price}
               colors={product.colors}
+              likeCount={product.likeCount}
             />
           )}
         </Box>

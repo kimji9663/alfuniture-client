@@ -4,9 +4,9 @@ import { GridBox } from "../Box"
 
 export const ListImageBox = styled(Box)(() => ({
   padding: '16px 18px 16px 0',
-  borderRight: '1px solid #999999',
+  borderRight: '1px solid #DADADA',
   '& img': {
-    width: '100%',
+    width: '101px',
     aspectRatio: '10 / 9'
   }
 }))

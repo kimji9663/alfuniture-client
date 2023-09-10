@@ -1,5 +1,5 @@
 import { Box, IconButton } from "@mui/material"
-import { FlexAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
+import { FlexAlignItemsCenterBox, FlexBox, FlexColumnAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { PreviewProps } from "./Preview"
 import { ListDetailBox, ListImageBox } from "./preview.styles"
@@ -24,10 +24,10 @@ const ListItem: React.FC<PreviewProps> = ({
       {/* 가로형 상품 리스트 */}
       <GridBox
         sx={{
-          gridTemplateColumns: '3fr 5fr',
-          borderTop: '1px solid #999999',
+          gridTemplateColumns: '119px auto',
+          borderTop: '1px solid #DADADA',
           '&:last-child': {
-            borderBottom: '1px solid #999999'
+            borderBottom: '1px solid #DADADA'
           }
         }}
       >
@@ -50,9 +50,9 @@ const ListItem: React.FC<PreviewProps> = ({
             </Gray7Typography>
             <FlexSpaceBetweenCenterBox>
               <BoldGray8Typography>
-                {price} 원
+                {Intl.NumberFormat().format(price)} 원
               </BoldGray8Typography>
-              <Box>
+              <FlexAlignItemsCenterBox flexDirection={'row'}>
                 <IconButton
                   onClick={handleClickLike}
                 >
@@ -61,7 +61,7 @@ const ListItem: React.FC<PreviewProps> = ({
                 <Gray7Typography>
                   {likeCount}
                 </Gray7Typography>
-              </Box>
+              </FlexAlignItemsCenterBox>
             </FlexSpaceBetweenCenterBox>
           </ListDetailBox>
         </FlexAlignItemsCenterBox>
