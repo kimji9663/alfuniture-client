@@ -1,10 +1,18 @@
 import React, { useState } from "react"
 import { Box, Typography } from "@mui/material"
+import { styled } from "@mui/material/styles"
 import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.styles"
 import { ArrowBottom } from "../../../assets/images"
-import { VerificationButtonWrap } from "./index.styles"
 import PhoneVerification from "./PhoneVerification"
 import EmailVerification from "./EmailVerification"
+
+export const VerificationButtonWrap = styled(Box)(() => ({
+  '& > button': {
+    borderRadius: 0, 
+    height: '60px', 
+    fontSize: '1rem',
+  }
+}))
 
 type IvalidatedProps = {
   validated: boolean[]
