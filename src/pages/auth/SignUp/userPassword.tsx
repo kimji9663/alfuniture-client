@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Box, Typography, FormControl, Input, FormHelperText } from "@mui/material"
-import { error } from "console"
 
 type IvalidatedProps = {
   validated: boolean[]
