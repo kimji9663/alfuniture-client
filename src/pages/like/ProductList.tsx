@@ -1,7 +1,23 @@
 import React, { useState } from "react"
-import { Box, FormControlLabel, Checkbox, Button } from "@mui/material"
-import { RectCheckbox } from "./index.styles"
+import { Box, FormControl, FormControlLabel, Checkbox, Button } from "@mui/material"
+import { styled } from "@mui/material/styles"
 import { IconShift } from "../../assets/images"
+
+const RectCheckbox = styled(FormControl)(({}) => ({
+  '& input': {
+    display: 'none',
+  },
+  '& label': {
+    padding: '3px 12px',
+    border: '1px solid #DADADA',
+    fontSize: '0.875rem',
+  },
+  '& input:checked + label': {
+    border: '1px solid #242223',
+    backgroundColor: '#242223',
+    color: '#fff',
+  },
+}))
 
 const itemList = [
   {

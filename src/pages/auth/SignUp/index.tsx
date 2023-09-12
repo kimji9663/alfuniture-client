@@ -6,7 +6,7 @@ import { PrimaryButton, PrimaryLightButton } from "../../../styles/buttons.style
 import { StepBar } from "./index.styles"
 import TermsAgreement from "./TermsAgreement"
 import UserId from "./UserId"
-import UserPassword from "./userPassword"
+import UserPassword from "./UserPassword"
 import SelectVerification from "./SelectVerification"
 import ArrowTitle from "../../../components/title/ArrowTitle"
 

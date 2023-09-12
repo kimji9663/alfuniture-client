@@ -1,7 +1,16 @@
 import React, { useState } from "react"
-import { Box, Typography, FormControl, Divider, Checkbox, CheckboxProps } from "@mui/material"
-import { AgreeCheckbox } from "./index.styles"
+import { Box, Typography, FormControl, FormControlLabel, Divider, Checkbox, CheckboxProps } from "@mui/material"
+import { styled } from "@mui/material/styles"
 import { Check } from "@mui/icons-material"
+
+export const AgreeCheckbox = styled(FormControlLabel)(() => ({
+  '& > span': {
+    color: '#333',
+  },
+  '& .sub': {
+    color: '#999',
+  }
+}))
 
 type IvalidatedProps = {
   validated: boolean[]

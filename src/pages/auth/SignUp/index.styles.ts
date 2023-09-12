@@ -1,6 +1,5 @@
-import { css } from "@emotion/css"
 import { styled } from "@mui/material/styles"
-import { Step, Box, FormControlLabel, FormControl } from "@mui/material"
+import { Step, Box, FormControl } from "@mui/material"
 
 export const StepBar = styled(Step)<{ active?: boolean }>(
   ({ active }) => ({
@@ -12,23 +11,6 @@ export const StepBar = styled(Step)<{ active?: boolean }>(
     }),
   }),
 )
-
-export const AgreeCheckbox = styled(FormControlLabel)(() => ({
-  '& > span': {
-    color: '#333',
-  },
-  '& .sub': {
-    color: '#999',
-  }
-}))
-
-export const VerificationButtonWrap = styled(Box)(() => ({
-  '& > button': {
-    borderRadius: 0, 
-    height: '60px', 
-    fontSize: '1rem',
-  }
-}))
 
 export const VerificationRequestWrap = styled(FormControl)(() => ({
   display: 'flex',

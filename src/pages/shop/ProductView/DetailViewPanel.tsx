@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Divider, Button } from "@mui/material"
-import { DetailView, MoreButton, CoverBox, MoreInfomation } from "./productView.styles"
-import { HalfArrow } from "../../assets/images"
+import { DetailView, MoreButton, CoverBox, MoreInfomation } from "./detailViewPanel.styles"
+import { HalfArrow } from "../../../assets/images"
 
 const DetailViewPanel = () => {
   const [viewMore, setViewMore] = useState(false)

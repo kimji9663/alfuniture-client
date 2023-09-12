@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Box, Divider, ButtonGroup, Button } from "@mui/material"
-import { ViewTitle, QnaButton, CustomerService, SellerInfomation, QnaListItem, QnaButtonGroup } from "./productView.styles"
+import { ViewTitle } from "./index.styles"
+import { QnaButton, CustomerService, SellerInfomation, QnaListItem, QnaButtonGroup } from "./personalQna.styles"
 
 const qnaList = [
   {
