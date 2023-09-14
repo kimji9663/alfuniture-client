@@ -123,7 +123,7 @@ export const OptionSelectType = styled(Box)(() => ({
   },
 }))
 
-export const OutlinedSelect = styled(Box)(() => ({
+export const OutlinedSelect = styled(Box)(({isOpen}:{isOpen: boolean}) => ({
   position: 'relative',
   '&::before': {
     content: '"⌵"',
@@ -142,6 +142,25 @@ export const OutlinedSelect = styled(Box)(() => ({
     color: '#999'
   },
   '& > .MuiButton-root > img': {
+    marginRight: '4px',
+  },
+  '& .dropmenu': {
+    display: isOpen ? 'block' : 'none',
+    marginTop: '-1px',
+    padding: 0,
+    color:'#999999',
+    border: '1px solid #dadada',
+  },
+  '& .dropmenu > li': {
+    padding: 0,
+  },
+  '& .dropmenu > li:not(:last-of-type)': {
+    borderBottom: '1px solid #dadada',
+  },
+  '& .dropmenu .MuiListItemButton-root': {
+    padding: '13.5px 16px',
+  },
+  '& .dropmenu .MuiListItemButton-root > img': {
     marginRight: '4px',
   }
 }))
