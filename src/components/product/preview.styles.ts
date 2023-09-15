@@ -1,19 +1,20 @@
 import styled from "@emotion/styled"
-import { Box, Paper } from "@mui/material"
+import { Box } from "@mui/material"
 import { GridBox } from "../Box"
 
 export const ListImageBox = styled(Box)(() => ({
   padding: '16px 18px 16px 0',
   borderRight: '1px solid #DADADA',
   '& img': {
+    aspectRatio: '10 / 9',
     width: '101px',
-    aspectRatio: '10 / 9'
-  }
+    height: '100%',
+  },
 }))
 
 export const ListDetailBox = styled(Box)(() => ({
   width: '100%',
-  padding: '16px 8px 16px 18px'
+  padding: '16px 8px 16px 18px',
 }))
 
 export const PreviewDetailBox = styled(Box)(() => ({
