@@ -40,7 +40,7 @@ interface TabPanelProps {
   value: number
 }
 
-type ColorOptions = {
+interface ColorOptions {
   name: string
   img: string
 }
@@ -134,7 +134,7 @@ const OptionSelectType = () => {
   return (
     <OutlinedSelect 
       ref={dropMenuRef}
-      isOpen={open}
+      isopen={open.toString()}
     >
       <Button
         fullWidth
@@ -171,14 +171,18 @@ const ProductView = () => {
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
-      navigate("/")
+      // 필수 옵션이 모두 선택 되었는지 체크 후
+      // 장바구니로 이동하시겠습니까? 모달 띄움
+      // 이동하기 클릭 시 장바구니로 이동
+      navigate("/") // 장바구니 링크로
     }
     setOptionOpen(true)
   }
 
   const goToOrder = () => {
     if (optionOpen) {
-      navigate("/")
+      // 필수 옵션이 모두 선택 되었는지 체크 후 주문하기 이동
+      navigate("/order") // 주문하기 링크로
     }
     setOptionOpen(true)
   }
@@ -330,11 +334,14 @@ const ProductView = () => {
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               {checkedColor.length !== 0 && (
                 checkedColor.map((color) => (
-                  <Button 
+                  <Box 
                     key={color.name}
                     sx={{
+                      mb: 2, 
                       display: 'flex',
+                      alignItems: 'center',
                       flex: '1 1 auto',
+                      boxSizing: 'border-box',
                       padding: '12.7px 8px 12.7px 16px',
                       maxWidth: '48%',
                       borderRadius: 0,
@@ -352,12 +359,12 @@ const ProductView = () => {
                       sx={{ 
                         padding: '0 8px', 
                         marginLeft: 'auto', 
-                        '& > svg': { display: 'block' } 
+                        '& > svg': { display: 'block', cursor: 'pointer' } 
                       }}
                     >
                       <IconX />
                     </Box>
-                  </Button>
+                  </Box>
                 ))
               )}
             </Box>

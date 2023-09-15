@@ -2,6 +2,10 @@ import { styled } from "@mui/material/styles"
 import { Box, Button, FormControl } from "@mui/material"
 import { PrimaryButton } from "../../../styles/buttons.styles"
 
+interface ISelectProps {
+  isopen: string
+}
+
 export const ProductMainInfo = styled(Box)(() => ({
   '& > .product_brand': {
     display: 'flex', 
@@ -123,7 +127,7 @@ export const OptionSelectType = styled(Box)(() => ({
   },
 }))
 
-export const OutlinedSelect = styled(Box)(({isOpen}:{isOpen: boolean}) => ({
+export const OutlinedSelect = styled(Box)<ISelectProps>((props) => ({
   position: 'relative',
   '&::before': {
     content: '"⌵"',
@@ -145,7 +149,7 @@ export const OutlinedSelect = styled(Box)(({isOpen}:{isOpen: boolean}) => ({
     marginRight: '4px',
   },
   '& .dropmenu': {
-    display: isOpen ? 'block' : 'none',
+    display: props.isopen === 'true' ? 'block' : 'none',
     marginTop: '-1px',
     padding: 0,
     color:'#999999',
