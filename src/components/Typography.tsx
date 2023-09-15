@@ -13,7 +13,8 @@ export const BoldTypography = styled(Typography)(() => ({
 
 export const BoldGray9Typography = styled(BoldTypography)(() => ({
   color: '#333',
-  fontSize: '14px'
+  fontSize: '14px',
+  lineHeight: '1.25rem'
 }));
 
 export const BoldGray8Typography = styled(BoldTypography)(() => ({
@@ -23,7 +24,8 @@ export const BoldGray8Typography = styled(BoldTypography)(() => ({
 
 export const Gray7Typography = styled(Typography)(() => ({
   color: '#999',
-  fontSize: '12px'
+  fontSize: '12px',
+  lineHeight: '150%'
 }));
 
 export const ColorInheritTypography = styled(Typography)(() => ({

@@ -1,29 +1,45 @@
-
-export interface PreviewProps {
-  rank: boolean;
-  imgsrc?: string;
-  like?: boolean;
-  likeCount?: number;
-  shopName: string;
-  modelName: string;
-  productName: string;
-  price?: number;
-  colors?: Array<string>;
-}
+import { FlexBox, FlexCenterCenterBox, GridBox } from "../Box"
+import { BoldGray9Typography, Gray7Typography } from "../Typography"
+import { PreviewProps } from "./Preview"
+import { BrandContainer, BrandDetailBox, BrandImageBox } from "./brandlistitem.styles"
 
 const BrandListItem: React.FC<PreviewProps> = ({
-  rank,
   imgsrc,
-  like,
+  rank,
   shopName,
   modelName,
   productName,
-  price,
-  colors
 }: PreviewProps) => {
   return (
     <>
-    {/* 브랜드 상품 리스트 */}
+      {/* 브랜드 상품 리스트 */}
+      <BrandContainer>
+        <BrandImageBox>
+          <img
+            src={imgsrc}
+            alt="상품이미지"
+          />
+          {rank ?
+            <FlexCenterCenterBox className="rank">
+              {rank}
+            </FlexCenterCenterBox>
+            : null
+          }
+        </BrandImageBox>
+        <FlexBox>
+          <BrandDetailBox>
+            <BoldGray9Typography>
+              {shopName}
+            </BoldGray9Typography>
+            <Gray7Typography>
+              {modelName}
+            </Gray7Typography>
+            <Gray7Typography>
+              {productName}
+            </Gray7Typography>
+          </BrandDetailBox>
+        </FlexBox>
+      </BrandContainer>
     </>
   )
 }
