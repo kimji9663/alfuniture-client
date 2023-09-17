@@ -1,18 +1,17 @@
-import { Card, CardContent, CardMedia, IconButton, Link, Paper } from "@mui/material"
-import { Favorite, FavoriteBorder } from "@mui/icons-material"
+import { CardMedia, IconButton, Link, Paper } from "@mui/material"
 import { Box } from "@mui/system"
 import React, { useState } from "react"
-import { FlexSpaceBetweenCenterBox, GridBox } from "../Box"
+import { FlexSpaceBetweenCenterBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { IconLikeOff, IconLikeOn } from "../../assets/images"
 import { ColorPalette, PreviewDetailBox } from "./preview.styles"
-import { Navigate } from "react-router-dom"
 
 export interface PreviewProps {
   id: number;
   imgsrc?: string;
   like?: boolean;
   likeCount?: number;
+  rank?: number;
   shopName: string;
   modelName: string;
   productName: string;
