@@ -17,9 +17,22 @@ export const BoldGray9Typography = styled(BoldTypography)(() => ({
   lineHeight: '1.25rem'
 }));
 
+export const Gray9Typography = styled(Typography)(() => ({
+  color: '#333',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
+  fontWeight: 500
+}));
+
 export const BoldGray8Typography = styled(BoldTypography)(() => ({
   color: '#666',
   fontSize: '12px'
+}));
+
+export const Gray8Typography = styled(Typography)(() => ({
+  color: '#666',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
 }));
 
 export const Gray7Typography = styled(Typography)(() => ({
