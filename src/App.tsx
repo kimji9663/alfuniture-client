@@ -9,10 +9,11 @@ import FunitureSelection from "./pages/onboarding/FunitureSelection"
 import StyleSelection from "./pages/onboarding/StyleSelection"
 import FeaturedProduct from "./pages/onboarding/FeaturedProduct"
 import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
-import Like from "./pages/like"
+import Like from "./pages/like/Like"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
 import Cart from "./pages/cart"
+import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 
 const router = createBrowserRouter([
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/cart2",
+        element: <Cart2 />,
       },
       {
         path: "/notification",

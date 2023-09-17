@@ -3,8 +3,9 @@ import { Box, Divider, Rating } from "@mui/material"
 import StarIcon from "@mui/icons-material/Star"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
-import { ViewTitle, AverageGrade, DetailGrade, PhotoReviewWrap, ReviewerInfo, UserPhotoWrap, ProductOptions } from "./productView.styles"
-import { sofa01, sofa02, light01, light02, chair01, chair02, table01, table02 } from "../../assets/images/product"
+import { ViewTitle } from "./index.styles"
+import { AverageGrade, DetailGrade, PhotoReviewWrap, ReviewerInfo, UserPhotoWrap, ProductOptions } from "./reviewPanel.styles"
+import { sofa01, sofa02, light01, light02, chair01, chair02, table01, table02 } from "../../../assets/images/product"
 
 type ISwiperProps = { 
   loop?: boolean
