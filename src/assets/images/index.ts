@@ -21,6 +21,7 @@ import { ReactComponent as IconCart } from './icon_cart.svg'
 import { ReactComponent as IconNotification } from './icon_notification.svg'
 import { ReactComponent as IconStar } from './icon_star.svg'
 import { ReactComponent as Logo } from './logo.svg'
+import { ReactComponent as IconX } from './icon_x.svg'
 
 // Image
 import logo from "./logo.png"
@@ -50,6 +51,7 @@ export {
   IconNotification,
   IconStar,
   Logo,
+  IconX,
 
   // Image
   logo,
