@@ -12,7 +12,7 @@ import NoTitle from '../../../components/title/NoTitle'
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQna from "./PersonalQna"
-import { img_option_black, img_option_blackwood, img_option_blue, img_option_brown, img_option_gray, img_option_green, img_option_white } from "../../../assets/images/color"
+import { brown, white, black, green, blue, grey } from "../../../assets/images/filterIcon/colors"
 
 
 const globalStyle = {
@@ -48,34 +48,34 @@ interface ColorOptions {
 const productOptions = [
   {
     name: '브라운',
-    img: img_option_brown
+    img: brown
   },
   {
     name: '블루',
-    img: img_option_blue
+    img: blue
   },
   {
     name: '그레이',
-    img: img_option_gray
+    img: grey
   },
 ]
 
 const colorScheme = [
   {
     name: '브라운',
-    img: img_option_brown
+    img: brown
   },
   {
     name: '화이트',
-    img: img_option_white
+    img: white
   },
   {
     name: '블랙',
-    img: img_option_black
+    img: black
   },
   {
     name: '그린',
-    img: img_option_green
+    img: green
   },
 ]
 
@@ -348,6 +348,7 @@ const ProductView = () => {
                       border: '1px solid #DADADA',
                       color: '#999999',
                       '& > img': {
+                        width: '18px',
                         marginRight: '4px',
                       }
                     }}

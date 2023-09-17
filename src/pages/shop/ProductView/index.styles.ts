@@ -146,6 +146,7 @@ export const OutlinedSelect = styled(Box)<ISelectProps>((props) => ({
     color: '#999'
   },
   '& > .MuiButton-root > img': {
+    width: '18px',
     marginRight: '4px',
   },
   '& .dropmenu': {
@@ -165,6 +166,7 @@ export const OutlinedSelect = styled(Box)<ISelectProps>((props) => ({
     padding: '13.5px 16px',
   },
   '& .dropmenu .MuiListItemButton-root > img': {
+    width: '18px',
     marginRight: '4px',
   }
 }))
@@ -187,6 +189,7 @@ export const OutlinedCheckbox = styled(FormControl)(() => ({
     color: '#fff',
   },
   '& label > img': {
+    width: '18px',
     marginRight: '4px',
   },
 }))
