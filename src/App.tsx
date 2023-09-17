@@ -15,6 +15,7 @@ import SignUp from "./pages/auth/SignUp"
 import Cart from "./pages/cart"
 import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
+import Order from "./pages/order/Order"
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
       {
         path: "/notification",
         element: <Notification />,
+      },
+      {
+        path: "/order",
+        element: <Order />,
       },
     ],
   },
