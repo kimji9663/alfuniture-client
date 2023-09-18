@@ -1,26 +1,39 @@
-import React, { useState } from "react"
-import { Box, Divider, ButtonGroup, Button } from "@mui/material"
+import { Box, Divider, Button } from "@mui/material"
 import { ViewTitle } from "./index.styles"
-import { QnaButton, CustomerService, SellerInfomation, QnaListItem, QnaButtonGroup } from "./personalQna.styles"
+import { QnaButton, CustomerService, SellerInfomation, QnaListItem, QnaButtonGroup } from "./personalQnaPanel.styles"
+import { useNavigate } from "react-router-dom"
 
 const qnaList = [
   {
     id: 1,
     userId: 'vani@naver.com',
-    text: '테이블 문의하려고 합니다~',
-    answer: true
+    text: '오늘 주문하면 3주 안에 배송받을 수 있나요?',
+    answer: false
   },
   {
     id: 2,
-    userId: 'strawberryCake0113@gmail.com',
+    userId: 'ai1212@me.com',
     text: '조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.',
     answer: false
   },
+  {
+    id: 3,
+    userId: 'qpid3@daum.net',
+    text: '오늘 주문하면 3주 안에 배송받을 수 있나요?',
+    answer: true
+  },
+  {
+    id: 4,
+    userId: 'strawberryCake0113@gmail.com',
+    text: '조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.',
+    answer: true
+  },
 ]
 
-const PersonalQna = () => {
+const PersonalQnaPanel = () => {
+  const navigate = useNavigate()
   // 로그인한 유저 ID (임시)
-  const currentUserId = 'strawberryCake0113@gmail.com'
+  const currentUserId = 'vani@naver.com'
 
   const hideUserId = (id:string) => {
     let maskedId = ''
@@ -40,10 +53,14 @@ const PersonalQna = () => {
     return maskedId
   }
 
+  const goToWriteQna = () => {
+    navigate("/shop/write_qna")
+  }
+
   return (
     <>
       <Box sx={{ p: 2 }}>
-        <QnaButton fullWidth sx={{ mt: 3 }}>상품 문의하기</QnaButton>
+        <QnaButton fullWidth onClick={goToWriteQna} sx={{ mt: 3 }}>상품 문의하기</QnaButton>
 
         <Divider sx={{ mt: 3 }} />
 
@@ -126,4 +143,4 @@ const PersonalQna = () => {
   )
 }
 
-export default PersonalQna
+export default PersonalQnaPanel

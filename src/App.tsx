@@ -5,6 +5,7 @@ import Guide from "./pages/Guide"
 import ShopProductList from "./pages/shop/ProductList"
 import ShopProductView from "./pages/shop/ProductView"
 import ShopAll from "./pages/shop/ShopAll"
+import ShopWriteQna from "./pages/shop/WriteQna"
 import FunitureSelection from "./pages/onboarding/FunitureSelection"
 import StyleSelection from "./pages/onboarding/StyleSelection"
 import FeaturedProduct from "./pages/onboarding/FeaturedProduct"
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/shop/shop_all",
         element: <ShopAll />,
+      },
+      {
+        path: "/shop/write_qna",
+        element: <ShopWriteQna />,
       },
       {
         path: "/like",
