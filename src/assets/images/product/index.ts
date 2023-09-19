@@ -8,6 +8,7 @@ import table03 from "./table03.png"
 import chair01 from "./chair01.png"
 import chair02 from "./chair02.png"
 import chair03 from "./chair03.png"
+import chair04 from "./chair04.png"
 import closet01 from "./closet01.png"
 import closet02 from "./closet02.png"
 import closet03 from "./closet03.png"
@@ -28,6 +29,7 @@ export {
     chair01,
     chair02,
     chair03,
+    chair04,
     closet01,
     closet02,
     closet03,  
