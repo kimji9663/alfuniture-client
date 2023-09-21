@@ -5,8 +5,11 @@ import { Box } from "@mui/material";
 
 // 방법1. emotion/css
 export const exampleStyle = css`
-  font-size: 2rem;
-`
+  margin: 24px;
+  .title {
+    font-size: 25px;
+  }
+`;
 
 // 방법2. mui/material/styles
 export const ExampleStyle1 = styled(Box)(() => ({

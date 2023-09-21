@@ -31,15 +31,19 @@ const Home = () => {
   return (
     <>
       <LogoTitle/>
-      {/* <ImageSlider images={imageList} /> */}
-      <Carousel>
+      {/* <Carousel>
         {imageList.map((item, i)=>(
           <Paper key={i}><img src={item.src} alt="" /></Paper>
         ))}
-      </Carousel>
+      </Carousel> */}
+      <img src={imageList[0].src}/>
       <div css={exampleStyle}>
-        홈
+        <div className="title">
+          <div>2023 Furniture</div>
+          <div>Collection</div>
+        </div>
       </div>
+      
       <ExampleStyle1>
         홈
       </ExampleStyle1>
