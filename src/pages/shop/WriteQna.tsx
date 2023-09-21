@@ -1,31 +1,30 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, TextareaAutosize, Button, ButtonGroup } from "@mui/material"
-import { styled } from "@mui/material/styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { BasicModal } from "../../styles/modal.styles"
 import { ViewTitle } from "./ProductView/index.styles"
+import { ProductInfomation, QnaImageField, QnaTextField, VisuallyHiddenInput, UploadNotice } from "./writeQna.styles"
 import { sofa01 } from "../../assets/images/product"
 import { IconPlus } from "../../assets/images"
 import CenterTitle from "../../components/title/CenterTitle"
-
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-})
 
 const WriteQna = () => {
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState('')
+  const [userPhoto, setUserPhoto] = useState<string[]>([])
+  let photoUrl: string | undefined
+
+  useEffect(() => {
+    // 언마운트 시 url 무효화
+    return () => {
+      if (photoUrl !== undefined) {
+        URL.revokeObjectURL(photoUrl)
+      }
+    }
+  }, [photoUrl])
 
   const handleClose = () => {
     setModalOpen(false)
@@ -42,6 +41,16 @@ const WriteQna = () => {
     setModalOpen(true)
   }
 
+  const handleUploadPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(!e.target.files){
+      return
+    }
+
+    const blob = new Blob([e.target.files[0]], {type: "image/png"})
+    photoUrl = URL.createObjectURL(blob)
+    setUserPhoto([...userPhoto, photoUrl])
+  }
+
   return (
     <>
       <CenterTitle title={['문의하기']} />
@@ -49,70 +58,61 @@ const WriteQna = () => {
       <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
         <Box sx={{ p: 2 }}>
           <ViewTitle>문의상품</ViewTitle>
-          <Box sx={{ mt: 2, p: 2, display: 'flex', alignItems: 'center', background: '#FAFAFA' }}>
-            <Box sx={{ mr: 1, flex: '0 0 56px', display: 'flex', alignItems: 'center', height: '56px', overflow: 'hidden', '& > img': { display: 'block', width: '100%' } }}>
+          <ProductInfomation sx={{ mt: 2 }}>
+            <div className="image">
               <img src={sofa01} alt="" />
-            </Box>
-            <Box sx={{ '& > p': { color: '#333', fontWeight: 500 }, '.brand': { fontSize: '.75rem' }, '.product': { fontSize: '.875rem' } }}>
+            </div>
+            <div className="text">
               <p className="brand">ALFDN</p>
               <p className="product">카멜프든</p>
-            </Box>
-          </Box>
+            </div>
+          </ProductInfomation>
           
           <ViewTitle sx={{ mt: 5 }}>문의 내용</ViewTitle>
-          <Box>
+          <QnaTextField>
             <input 
               type="text" 
               placeholder="제목을 입력하세요."
-              style={{
-                marginTop: '16px',
-                width: '100%',
-                border: '1px solid #BDBDBD',
-                background: '#FAFAFA',
-                fontSize: '.75rem',
-                padding: '14px',
-                boxSizing: 'border-box',
-              }}
             />
             <TextareaAutosize 
               minRows={2}
               placeholder="내용을 입력하세요."
-              style={{
-                marginTop: '16px',
-                width: '100%',
-                border: '1px solid #BDBDBD',
-                fontSize: '.75rem',
-                padding: '14px',
-                boxSizing: 'border-box',
-              }}
             />
-          </Box>
+          </QnaTextField>
 
           <ViewTitle sx={{ mt: 3 }}>이미지 첨부</ViewTitle>
-          <Box sx={{ mt: 2 }}>
-            <Button 
-              component="label"
-              sx={{
-                width: '80px',
-                height: '80px',
-                borderRadius: 0,
-                backgroundColor: '#242223',
-                color: '#fff',
-                '&:hover': {
-                  backgroundColor: '#242223',
-                }
-              }}
-            >
-              <IconPlus />
-              <VisuallyHiddenInput type="file" />
-            </Button>
-          </Box>
+          <QnaImageField sx={{ mt: 2 }}>
+            {userPhoto.map((photo, index) => (
+              <Box
+                key={index}
+                className="image_box_wrap"
+                sx={{ mr: 2 }}
+              >
+                <div>
+                  <img src={photo} alt="" />
+                </div>
+              </Box>
+            ))}
+            {userPhoto.length < 2 && (
+              <Button 
+                component="label"
+              >
+                <IconPlus />
+                <VisuallyHiddenInput 
+                  type="file" 
+                  multiple
+                  accept="image/jpg,image/png,image/jpeg,image/gif"
+                  onChange={handleUploadPhoto} 
+                />
+              </Button>
+            )}
+          </QnaImageField>
 
-          <Box sx={{ mt: 4, fontSize: '.75rem', color: '#BDBDBD', '& > span': { color: '#FF5454' } }}>
-            상품 불량 및 오배송의 경우, 해당 제품 사진을 등록 부탁드립니다.
-            파일당 최대 <span>10MB</span>의 용량 제한이 있습니다.
-            첨부파일은 최대 2개까지 등록 가능합니다.
-          </Box>
+          <UploadNotice sx={{ mt: 4 }}>
+            <p>상품 불량 및 오배송의 경우, 해당 제품 사진을 등록 부탁드립니다.</p>
+            <p>파일당 최대 <span>10MB</span>의 용량 제한이 있습니다.</p>
+            <p>첨부파일은 최대 2개까지 등록 가능합니다.</p>
+          </UploadNotice>
         </Box>
       </Box>
 
