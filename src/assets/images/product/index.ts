@@ -2,6 +2,8 @@
 import sofa01 from "./sofa01.png"
 import sofa02 from "./sofa02.png"
 import sofa03 from "./sofa03.png"
+import sofa04 from "./sofa04.png"
+import sofa05 from "./sofa05.png"
 import table01 from "./table01.png"
 import table02 from "./table02.png"
 import table03 from "./table03.png"
@@ -23,6 +25,8 @@ export {
     sofa01,
     sofa02,
     sofa03,
+    sofa04,
+    sofa05,
     table01,
     table02,
     table03,

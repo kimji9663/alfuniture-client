@@ -5,9 +5,14 @@ import { Box } from "@mui/material";
 
 // 방법1. emotion/css
 export const exampleStyle = css`
-  margin: 24px;
+  
   .title {
-    font-size: 25px;
+    margin: 24px 0 39px 16px;
+    font-size: 32px;
+    line-height: 48px;
+  }
+  .downBtn{
+    border-radius: 50%;
   }
 `;
 
