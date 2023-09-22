@@ -20,6 +20,11 @@ import bed03 from "./bed03.png"
 import light01 from "./light01.png"
 import light02 from "./light02.png"
 import light03 from "./light03.png"
+import rankingItem01 from "./ranking_item01.png"
+import rankingItem02 from "./ranking_item02.png"
+import rankingItem03 from "./ranking_item03.png"
+import rankingItem04 from "./ranking_item04.png"
+import rankingItem05 from "./ranking_item05.png"
 
 export {
     sofa01,
@@ -43,4 +48,9 @@ export {
     light01,
     light02,
     light03,
+    rankingItem01,
+    rankingItem02,
+    rankingItem03,
+    rankingItem04,
+    rankingItem05,
 }
