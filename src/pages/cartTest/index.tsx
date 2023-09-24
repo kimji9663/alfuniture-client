@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { sofa01, table01 } from '../../assets/images/product';
 import { Box, Typography, Checkbox, Input, IconButton, Button } from '@mui/material';
-import styled from 'styled-components';
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
+import { CustomCheckbox } from "./index.styles"
 
 interface cartData {
   imgsrc: any,
@@ -319,36 +319,6 @@ function CartPage() {
     </>
   );
 }
-const CustomCheckbox = styled.input`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #DADADA;
-  cursor: pointer;
-  height: 16px;
-  outline: 0;
-  width: 16px;
 
-  &:after {
-    border: solid #fff;
-    border-width: 0 1px 1px 0;
-    content: "";
-    display: block;
-    height: 45%;
-    left: 35%;
-    position: relative;
-    top: 20%;
-    transform: rotate(45deg);
-    width: 25%;
-  }
-
-  &:checked {
-    background: #333;
-  }
-
-  &:checked::after {
-    display: block;
-  }
-`;
 
 export default CartPage;
