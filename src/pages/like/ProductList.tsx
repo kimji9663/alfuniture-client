@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { Box, FormControl, FormControlLabel, Checkbox, Button } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { IconShift } from "../../assets/images"
+import List from "./List"
 
-const RectCheckbox = styled(FormControl)(({}) => ({
+const RectCheckbox = styled(FormControl)(({ }) => ({
   '& input': {
     display: 'none',
   },
@@ -58,18 +59,18 @@ const itemList = [
   }
 ]
 
-const BrandList = () => {
+const ProductList = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
 
-  const handleCheckedFilterItem = (e:React.ChangeEvent<HTMLInputElement>, id:string) => {
-    if(id === 'all') {
-      if(e.currentTarget.checked) {
+  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    if (id === 'all') {
+      if (e.currentTarget.checked) {
         setFilterItem(itemList.map(el => el.id))
       } else {
         setFilterItem([])
       }
     } else {
-      if(e.currentTarget.checked) {
+      if (e.currentTarget.checked) {
         setFilterItem([...filterItem, id])
       } else {
         setFilterItem(filterItem.filter(el => el !== id))
@@ -79,72 +80,75 @@ const BrandList = () => {
 
   return (
     <>
-      <Box sx={{ 
-        p: 2, 
-        overflow: 'auto', 
-        whiteSpace: 'nowrap', 
-        '.MuiFormControl-root:first-of-type': { 
-            ml: 0 
-          } 
-        }}
+      <Box sx={{
+        p: 2,
+        overflow: 'auto',
+        whiteSpace: 'nowrap',
+        '.MuiFormControl-root:first-of-type': {
+          ml: 0
+        }
+      }}
       >
         <RectCheckbox key={`all`} sx={{ ml: 1 }}>
-          <input 
-            type="checkbox" 
-            id={`check_all`} 
-            onChange={e => handleCheckedFilterItem(e, 'all')} 
+          <input
+            type="checkbox"
+            id={`check_all`}
+            onChange={e => handleCheckedFilterItem(e, 'all')}
           />
           <label htmlFor={`check_all`}>전체</label>
         </RectCheckbox>
         {itemList.map((el) => (
           <RectCheckbox key={el.id} sx={{ ml: 1 }}>
-            <input 
-              type="checkbox" 
-              id={`check_${el.id}`} 
-              onChange={e => handleCheckedFilterItem(e, el.id)} 
+            <input
+              type="checkbox"
+              id={`check_${el.id}`}
+              onChange={e => handleCheckedFilterItem(e, el.id)}
               checked={filterItem.includes(el.id)}
             />
             <label htmlFor={`check_${el.id}`}>{el.name}</label>
           </RectCheckbox>
         ))}
       </Box>
-      <Box 
-        sx={{ 
+      <Box
+        sx={{
           mt: 3,
           mx: 2,
           pb: 2,
-          display: 'flex', 
-          justifyContent: 'space-between', 
+          display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
           borderBottom: '1px solid #DADADA',
         }}
       >
-        <FormControlLabel 
-          control={<Checkbox color="default" sx={{ p: '0px 4px 0px 8px' }} />} 
-          label="품절 제외" 
+        <FormControlLabel
+          control={<Checkbox color="default" sx={{ p: '0px 4px 0px 8px' }} />}
+          label="품절 제외"
           sx={{
-            '& > .MuiTypography-root': { 
+            '& > .MuiTypography-root': {
               color: '#333',
-              fontSize: '.875rem' 
+              fontSize: '.875rem'
             }
-          }} 
+          }}
         />
-        <Button 
-          sx={{ 
+        <Button
+          sx={{
             color: '#333',
-            fontSize: '.875rem', 
-            '& > svg': { 
-              ml: 1/2,
-              verticalAlign: 'middle' 
-            } 
+            fontSize: '.875rem',
+            '& > svg': {
+              ml: 1 / 2,
+              verticalAlign: 'middle'
+            }
           }}
         >
           최근 찜한 순
           <IconShift />
         </Button>
       </Box>
+      <Box>
+        <List />
+      </Box>
     </>
   )
 }
 
-export default BrandList
+export default ProductList

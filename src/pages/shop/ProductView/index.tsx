@@ -1,18 +1,18 @@
 import { Global } from "@emotion/react"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Tabs, Tab, Box, IconButton, Divider, Typography, SwipeableDrawer, Button, List, ListItem, ListItemButton } from "@mui/material"
+import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { SecondaryButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs, ViewTitle, OutlinedSelect, OutlinedCheckbox } from "./index.styles"
-import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn, IconX } from "../../../assets/images"
+import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs } from "./index.styles"
+import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { sofa01 } from "../../../assets/images/product"
 import { alfdn } from "../../../assets/images/brand"
 import NoTitle from '../../../components/title/NoTitle'
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
-import PersonalQna from "./PersonalQna"
-import { brown, white, black, green, blue, grey } from "../../../assets/images/filterIcon/colors"
+import PersonalQnaPanel from "./PersonalQnaPanel"
+import OrderSelector from "./OrderSelector"
 
 
 const globalStyle = {
@@ -39,45 +39,6 @@ interface TabPanelProps {
   index: number
   value: number
 }
-
-interface ColorOptions {
-  name: string
-  img: string
-}
-
-const productOptions = [
-  {
-    name: '브라운',
-    img: brown
-  },
-  {
-    name: '블루',
-    img: blue
-  },
-  {
-    name: '그레이',
-    img: grey
-  },
-]
-
-const colorScheme = [
-  {
-    name: '브라운',
-    img: brown
-  },
-  {
-    name: '화이트',
-    img: white
-  },
-  {
-    name: '블랙',
-    img: black
-  },
-  {
-    name: '그린',
-    img: green
-  },
-]
 
 const viewProps = (index: number) => {
   return {
@@ -106,68 +67,11 @@ const ViewTabPanel = (props: TabPanelProps) => {
   )
 }
 
-const OptionSelectType = () => {
-  const [selectedOption, setSelectedOption] = useState({ name: '컬러 선택', img: '' })
-  const dropMenuRef = useRef<HTMLDivElement | null>(null)
-  const [open, setOpen] = useState<boolean>(false)
-
-  useEffect(() => {
-    const handleOutsideClose = (e: {target: any}) => {
-      // 바깥 클릭 시 메뉴 닫힘
-      if(open && (!dropMenuRef.current?.contains(e.target))) setOpen(false)
-    }
-    document.addEventListener('click', handleOutsideClose)
-    return () => document.removeEventListener('click', handleOutsideClose)
-    // 마운트 해제 시 이벤트 삭제!!
-  }, [open])
-
-  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
-    setOpen(prevState => !prevState)
-  }
-
-  const handleSelctOption = (name: string, img: string) => {
-    setOpen(false)
-    setSelectedOption({ name: name, img: img})
-  }
-
-  return (
-    <OutlinedSelect 
-      ref={dropMenuRef}
-      isopen={open.toString()}
-    >
-      <Button
-        fullWidth
-        onClick={handleOpen}
-      >
-        {selectedOption.img !== '' && (
-          <img src={selectedOption.img} alt={selectedOption.name} />
-        )}
-        <span>{selectedOption.name}</span>
-      </Button>
-      <List className="dropmenu">
-        {productOptions.map((option) => (
-          <ListItem key={option.name} onClick={() => handleSelctOption(option.name, option.img)}>
-            <ListItemButton>
-              <img src={option.img} alt={option.name} />
-              <span>{option.name}</span>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </OutlinedSelect>
-  )
-}
-
-
 const ProductView = () => {
-  // ios에서 스와이프 동작 활성화
-  const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
   const [isLike, setIsLike] = useState(false)
   const [optionOpen, setOptionOpen] = useState(false)
-  const [checkedColor, setCheckedColor] = useState<ColorOptions[]>([])
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
@@ -194,21 +98,10 @@ const ProductView = () => {
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
-  
-  const toggleDrawer = (open: boolean) => (event: React.MouseEvent) => {
-    setOptionOpen(open)
-  }
 
-  const hadleSelectedColor = (color: string, image: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked && !checkedColor.some(el => el.name === color)){
-      setCheckedColor([...checkedColor, {name: color, img: image}])
-    } else {
-      setCheckedColor(checkedColor.filter((el) => el.name !== color))
-    }
-    if (checkedColor.length > 1){
-      setCheckedColor(checkedColor.filter((el) => el.name !== color))
-      event.target.checked = false
-    }
+  const toggleDrawer = (val:boolean) => {
+    setOptionOpen(val)
+    //console.log(val)
   }
 
   return (
@@ -303,97 +196,11 @@ const ProductView = () => {
         </ViewTabPanel>
 
         <ViewTabPanel value={tabValue} index={2}>
-          <PersonalQna />
+          <PersonalQnaPanel />
         </ViewTabPanel>
       </Box>
 
-      <SwipeableDrawer
-        disableBackdropTransition={!iOS} 
-        disableDiscovery={iOS}
-        disableSwipeToOpen={false}
-        anchor='bottom'
-        open={optionOpen}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-        sx={{
-          zIndex: 1,
-          '& .MuiBackdrop-root': {
-            bottom: '74px',
-          },
-          '& .MuiPaper-root': {
-            bottom: '74px',
-          }
-        }}
-      >
-        <Box
-          sx={{ p: 2, width: 'auto', height: '50vh' }}
-          role="presentation"
-        >
-          <ViewTitle>색상조합</ViewTitle>
-          <Box sx={{ mt: 2 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              {checkedColor.length !== 0 && (
-                checkedColor.map((color) => (
-                  <Box 
-                    key={color.name}
-                    sx={{
-                      mb: 2, 
-                      display: 'flex',
-                      alignItems: 'center',
-                      flex: '1 1 auto',
-                      boxSizing: 'border-box',
-                      padding: '12.7px 8px 12.7px 16px',
-                      maxWidth: '48%',
-                      borderRadius: 0,
-                      border: '1px solid #DADADA',
-                      color: '#999999',
-                      '& > img': {
-                        width: '18px',
-                        marginRight: '4px',
-                      }
-                    }}
-                  >
-                    <img src={color.img} alt={color.name} />
-                    <span>{color.name}</span>
-                    <Box 
-                      component="span" 
-                      sx={{ 
-                        padding: '0 8px', 
-                        marginLeft: 'auto', 
-                        '& > svg': { display: 'block', cursor: 'pointer' } 
-                      }}
-                    >
-                      <IconX />
-                    </Box>
-                  </Box>
-                ))
-              )}
-            </Box>
-            <Box sx={{ overflow: 'auto', whiteSpace: 'nowrap', backgroundColor: '#FAFAFA', padding: '16px 8px 0 16px' }}>
-              {colorScheme.map((color) => (
-                <OutlinedCheckbox key={color.name} sx={{ mr: 1, mb: 2 }}>
-                  <input 
-                    type="checkbox" 
-                    id={`check_${color.name}`} 
-                    onChange={hadleSelectedColor(color.name, color.img)}
-                  />
-                  <label htmlFor={`check_${color.name}`}>
-                    <img src={color.img} alt={color.name} />
-                    <span>{color.name}</span>
-                  </label>
-                </OutlinedCheckbox>
-              ))}
-            </Box>
-          </Box>
-
-          <Divider sx={{ mt: 3 }} />
-
-          <ViewTitle sx={{ mt: 3 }}>옵션 선택</ViewTitle>
-          <Box sx={{ mt: 2 }}>
-            <OptionSelectType />
-          </Box>
-        </Box>
-      </SwipeableDrawer>
+      <OrderSelector open={optionOpen} toggleDrawer={toggleDrawer} />
 
       <NaviWrap className="pair" sx={{ zIndex: 2 }}>
         <SecondaryButton onClick={goToCart}>장바구니</SecondaryButton>
