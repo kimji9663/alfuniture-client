@@ -3,7 +3,6 @@ import React, { useState } from "react"
 import { ExampleStyle1, ExampleStyle2, exampleStyle } from "./home.styles"
 import LogoTitle from '../../components/title/LogoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import ImageSlider from "./ImageSlider";
 import { chair04 } from "../../assets/images/product"
 import { ArrowDown, IconLikeOff, IconLikeOn, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
