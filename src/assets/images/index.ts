@@ -9,9 +9,11 @@ import { ReactComponent as IconShop } from './icon_shop.svg'
 import { ReactComponent as IconLike } from './icon_like.svg'
 import { ReactComponent as IconMy } from './icon_my.svg'
 import { ReactComponent as HalfArrow } from './icon_half_arrow.svg'
+import { ReactComponent as HalfArrowRigth } from './icon_half_arrow_right.svg'
 import { ReactComponent as ArrowRight } from './icon_arrow_right.svg'
 import { ReactComponent as ArrowLeft } from './icon_arrow_left.svg'
 import { ReactComponent as ArrowBottom } from './icon_arrow_bottom.svg'
+import { ReactComponent as ArrowDown } from './icon_arrow_down.svg'
 import { ReactComponent as ArrowWhite } from './icon_arrow_white.svg'
 import { ReactComponent as IconShift } from './icon_shift.svg'
 import { ReactComponent as IconHeartSmall } from './icon_heart_small.svg'
@@ -39,9 +41,11 @@ export {
   IconLike,
   IconMy,
   HalfArrow,
+  HalfArrowRigth,
   ArrowRight,
   ArrowLeft,
   ArrowBottom,
+  ArrowDown,
   ArrowWhite,
   IconShift,
   IconHeartSmall,

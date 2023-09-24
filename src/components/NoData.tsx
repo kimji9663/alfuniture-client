@@ -14,9 +14,11 @@ const NoData: React.FC<NoDataProps> = ({ message, linkText, linkTo }) => {
     <>
       <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "flex-start", height: "calc(100vh - 57px)",  p:"0 8px", mt: "220px" }}>
         <Typography sx={{ fontWeight: "bold", mb: 2 }}>{message}</Typography>
-        <PrimaryButton sx={{ borderRadius: 0, height: "60px", width: "100%" }}>
-          <Link to={linkTo} style={{ color: "white" }}>{linkText}</Link>
-        </PrimaryButton>
+          <Link to={linkTo} style={{  width: "100%" }}>
+            <PrimaryButton sx={{color: "white", borderRadius: 0, height: "60px", width: "100%" }}>
+            {linkText}
+            </PrimaryButton>
+          </Link>
       </Box>
     </>
   );

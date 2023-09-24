@@ -5,7 +5,7 @@ import { Box } from "@mui/material"
 export const NaviWrap = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'stretch',
-  position: 'absolute',
+  position: 'sticky',
   bottom: 0,
   width: '100%',
   height: '74px',
