@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import React from "react"
+import React, { useState } from "react"
 import { ExampleStyle1, ExampleStyle2, exampleStyle } from "./home.styles"
 import LogoTitle from '../../components/title/LogoTitle'
 import NavigationBar from "../../components/NavigationBar"
 import ImageSlider from "./ImageSlider";
 import { chair04 } from "../../assets/images/product"
-import { ArrowDown, IconLikeOff, IconLikeOn } from "../../assets/images"
+import { ArrowDown, IconLikeOff, IconLikeOn, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
-import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05 } from "../../assets/images/product"
+import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
 import {Paper, IconButton, Typography, Box} from '@mui/material'
 
 export const section2Data = [
@@ -56,6 +56,39 @@ export const section3Data = [
   },
   
 ]
+export const section4Data = [
+  {
+    id: 1,
+    imgsrc: rankingItem06,
+    title: "일상속에 스며든 가구, Aerobiey1",
+    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+  },
+  {
+    id: 2,
+    imgsrc: rankingItem06,
+    title: "일상속에 스며든 가구, Aerobiey2",
+    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+  },
+  {
+    id: 3,
+    imgsrc: rankingItem06,
+    title: "일상속에 스며든 가구, Aerobiey3",
+    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+  },
+  {
+    id: 4,
+    imgsrc: rankingItem06,
+    title: "일상속에 스며든 가구, Aerobiey4",
+    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+  },
+  {
+    id: 5,
+    imgsrc: rankingItem06,
+    title: "일상속에 스며든 가구, Aerobiey5",
+    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+  },
+  
+]
 
 
 const Home = () => {
@@ -76,7 +109,26 @@ const Home = () => {
       name: "chair04",
       src: chair04
     },
-]
+  ]
+  const [position, setPosition] = useState(0); // 화면의 현재 위치
+  const [count, setCount] = useState(0); // 화면의 현재 위치
+  const slideWidth = 323; // 한 번에 슬라이드되는 픽셀 수
+  const maxPosition = (section4Data.length - 1) * slideWidth; // 최대 슬라이드 위치
+
+  const handleNextClick = () => {
+    // "Next" 버튼 클릭 시 화면을 오른쪽으로 이동
+    setPosition((prevPosition) => {
+      const nextPosition = prevPosition - slideWidth
+      if(count < 4){
+        setCount(count + 1);
+      }else{
+        setCount(0);
+        return 0
+      }
+      return nextPosition
+    });
+  };
+
   return (
     <>
       <LogoTitle/>
@@ -165,7 +217,6 @@ const Home = () => {
       <Box sx={{ mt: 10, px: 2 }}>
         <Typography sx={{ fontSize: 22, fontWeight: "700" }}>TOP5 가구랭킹</Typography>
 
-        {/* 1순위 이미지 */}
         <Box sx={{ mt: 2, mb: 3, position: "relative", display: "flex" }}>
           <img src={section3Data[0].imgsrc} alt={`1순위 이미지`} style={{ width: "100%" }}/>
           <Box sx={{width:"40px", height: "40px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -173,13 +224,11 @@ const Home = () => {
           </Box>
         </Box>
 
-        {/* 설명 */}
         <Box sx={{mb:2}}>
           <Typography sx={{ fontSize: 16, fontWeight: "700", letterSpacing: "0.15px", mb: "4px" }}>MZ 세대를 위한 가구</Typography>
           <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>심플한 디자인을 선호하는 MZ세대를 위한 가구</Typography>
         </Box>
 
-        {/* 2~5순위 이미지가 들어갈 곳 */}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {section3Data.slice(1, 5).map((item, index) => (
             <Box key={item.id} sx={{borderTop: item.id === 2 ? "1px solid #DADADA" : "none",}}>
@@ -194,25 +243,44 @@ const Home = () => {
         </Box>
       </Box>
 
-      {/* 세번째 섹션 */}
-      <Box>
+      {/* 네번째 섹션 */}
+      <Box sx={{ mt: 10, mb: 5 }}>
         {/* 타이틀 */}
-        <Box></Box>
+        <Typography sx={{ fontSize: 22, fontWeight: "700", ml: 2 }}>
+          TOP5 브랜드랭킹
+        </Typography>
         {/* 리스트 */}
-        <Box>
-          {/* 반복할 상품정보 */}
-          <Box>
-            {/* 이미지 */}
-            <Box></Box>
-            {/* 텍스트 */}
-            <Box>
-              <Typography></Typography>
-              <Typography></Typography>
-              <IconButton></IconButton>
+        <Box
+          sx={{
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "nowrap",
+          }}
+        >
+          {section4Data.map((item, index) => (
+            <Box key={index}   sx={{
+              flexBasis: "323px",
+              transition: "transform 0.3s ease-in-out",
+              transform: `translateX(${position}px)`,
+            }}>
+              {/* 이미지 */}
+              <Box sx={{ mt: 2, width: "275px", height: "222px", mr: 6 }}>
+                <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} style={{ width: "100%" }} />
+              </Box>
+              {/* 텍스트 */}
+              <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA" }}>
+                <Typography sx={{ fontSize: 16, fontWeight: "700" }}>{item.title}</Typography>
+                <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>{item.comment}</Typography>
+                <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
+                  <HalfArrowRigth onClick={handleNextClick}/>
+                </Box>
+              </Box>
             </Box>
-          </Box>
+          ))}
         </Box>
       </Box>
+
 
       {/* <ExampleStyle1>
         홈
