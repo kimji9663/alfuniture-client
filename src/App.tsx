@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import Home from "./pages/home/Home"
+import Profile from "./pages/home/Profile"
 import Guide from "./pages/Guide"
 import ShopProductList from "./pages/shop/ProductList"
 import ShopProductView from "./pages/shop/ProductView"
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             element: <Home />,
           },
         ],
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/auth",
@@ -113,7 +118,7 @@ const router = createBrowserRouter([
       {
         path: "/order",
         element: <Order />,
-      },
+      },      
     ],
   },
 ]);

@@ -8,6 +8,18 @@ import { ArrowDown, IconLikeOff, IconLikeOn, HalfArrowRigth } from "../../assets
 import { jamesLee } from "../../assets/images/brand"
 import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
 import {Paper, IconButton, Typography, Box} from '@mui/material'
+import { Swiper, SwiperSlide } from "swiper/react"
+
+type ISwiperProps = { 
+  loop?: boolean
+  spaceBetween?: number 
+  scrollbar?: { 
+    draggable: boolean 
+    el: null 
+  }
+  slidesPerView?: "auto" | number | undefined
+  onSlideChange?: (swiper: any) => void
+}
 
 export const section2Data = [
   {
@@ -60,31 +72,31 @@ export const section4Data = [
     id: 1,
     imgsrc: rankingItem06,
     title: "일상속에 스며든 가구, Aerobiey1",
-    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
   },
   {
     id: 2,
     imgsrc: rankingItem06,
     title: "일상속에 스며든 가구, Aerobiey2",
-    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
   },
   {
     id: 3,
     imgsrc: rankingItem06,
     title: "일상속에 스며든 가구, Aerobiey3",
-    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
   },
   {
     id: 4,
     imgsrc: rankingItem06,
     title: "일상속에 스며든 가구, Aerobiey4",
-    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
   },
   {
     id: 5,
     imgsrc: rankingItem06,
     title: "일상속에 스며든 가구, Aerobiey5",
-    comment: "일상속에서 자연스러운 아름다움을 느껴보세요"
+    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
   },
   
 ]
@@ -127,6 +139,11 @@ const Home = () => {
       return nextPosition
     });
   };
+  const brandRankingSettings:ISwiperProps = {
+    loop: false,
+    scrollbar: { draggable: true, el: null },
+    slidesPerView: 1.2,
+  }
 
   return (
     <>
@@ -175,7 +192,6 @@ const Home = () => {
               </Box>
             </Box>
           </Box>
-          
         </Box>
         <Box sx={{ mx:2 }}>
           <Box>
@@ -257,26 +273,30 @@ const Home = () => {
             flexWrap: "nowrap",
           }}
         >
-          {section4Data.map((item, index) => (
-            <Box key={index}   sx={{
-              flexBasis: "323px",
-              transition: "transform 0.3s ease-in-out",
-              transform: `translateX(${position}px)`,
-            }}>
-              {/* 이미지 */}
-              <Box sx={{ mt: 2, width: "275px", height: "222px", mr: 6 }}>
-                <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} style={{ width: "100%" }} />
-              </Box>
-              {/* 텍스트 */}
-              <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA" }}>
-                <Typography sx={{ fontSize: 16, fontWeight: "700" }}>{item.title}</Typography>
-                <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>{item.comment}</Typography>
-                <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
-                  <HalfArrowRigth onClick={handleNextClick}/>
+          <Swiper {...brandRankingSettings}  style={{maxWidth: "420px",width: "100vw"}}>
+            {section4Data.map((item, index) => (
+              <SwiperSlide key={`photo_review_${index}`} style={{marginRight: 0}}>
+                <Box key={index}   sx={{
+                  flexBasis: "323px",
+                  transition: "transform 0.3s ease-in-out",
+                  transform: `translateX(${position}px)`,
+                }}>
+                  {/* 이미지 */}
+                  <Box sx={{ mt: 2, width: "275px", height: "222px", mr: 6 }}>
+                    <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} style={{ width: "100%" }} />
+                  </Box>
+                  {/* 텍스트 */}
+                  <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA" }}>
+                    <Typography sx={{ fontSize: 16, fontWeight: "700" }}>{item.title}</Typography>
+                    <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>{item.discription}</Typography>
+                    <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
+                      <HalfArrowRigth/>
+                    </Box>
+                  </Box>
                 </Box>
-              </Box>
-            </Box>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Box>
       </Box>
 
