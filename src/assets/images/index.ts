@@ -34,6 +34,7 @@ import icon_kakao from "./icon_sns_kakao.svg"
 import icon_naver from "./icon_sns_naver.svg"
 import icon_facebook from "./icon_sns_facebook.svg"
 import icon_apple from "./icon_sns_apple.svg"
+import img_Aclass from "./img_a_class.png"
 
 export {
   // Component
@@ -70,4 +71,5 @@ export {
   icon_cart,
   icon_notice,
   icon_back,
+  img_Aclass,
 }
