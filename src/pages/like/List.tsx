@@ -79,7 +79,6 @@ const ProductList = () => {
           </GridBox>
         </Box>
       </Box>
-      <NavigationBar />
     </>
   )
 }
