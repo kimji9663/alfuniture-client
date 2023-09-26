@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import NavigationBar from "../../components/NavigationBar"
 import { jamesLee } from "../../assets/images/brand"
-import { IconHeartBig } from "../../assets/images"
+import { IconHeartBig, IconHeartBigRed } from "../../assets/images"
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
 import { styled } from "@mui/material/styles"
 import DetailViewPanel from "./DetailViewPanel"
@@ -87,10 +87,17 @@ const itemList = [
 const Profile = () => {
 
   const [tabValue, setTabValue] = useState(0)
+  const [isLike, setIsLike] = useState(false)
 
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
+
+  const handleClickLike = (event: React.MouseEvent) => {
+    setIsLike(!isLike)
+  }
+
+  
   
   return (
     <>
@@ -101,7 +108,12 @@ const Profile = () => {
           <Typography sx={{ fontSize: 12, fontWeight: "400", letterSpacing: "-0.25px", color: "#333333" }}>노르웨이 출신의 작가</Typography>
         </Box>
         <Box sx={{ mr: 2}}>
-          <IconHeartBig/>
+          
+          <IconButton
+            onClick={handleClickLike}
+          >
+            {isLike ? <IconHeartBig /> : <IconHeartBigRed />}
+          </IconButton>
         </Box>
       </Box>
       <Box sx={{my:4}}>

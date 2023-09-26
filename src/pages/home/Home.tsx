@@ -11,6 +11,8 @@ import {Paper, IconButton, Typography, Box } from '@mui/material'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
+import HorizontalRanking from "./HorizontalRanking"
+
 
 type ISwiperProps = { 
   loop?: boolean
@@ -216,36 +218,10 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+      
       {/* 세번째 섹션 */}
-      <Box sx={{ mt: 10, px: 2 }}>
-        <Typography sx={{ fontSize: 22, fontWeight: "700" }}>TOP5 가구랭킹</Typography>
-
-        <Box sx={{ mt: 2, mb: 3, position: "relative", display: "flex" }}>
-          <img src={section3Data[0].imgsrc} alt={`1순위 이미지`} style={{ width: "100%" }}/>
-          <Box sx={{width:"40px", height: "40px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
-            <Typography sx={{ fontSize: 22, fontWeight: "700" }}>{section3Data[0].id}</Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{mb:2}}>
-          <Typography sx={{ fontSize: 16, fontWeight: "700", letterSpacing: "0.15px", mb: "4px" }}>MZ 세대를 위한 가구</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>심플한 디자인을 선호하는 MZ세대를 위한 가구</Typography>
-        </Box>
-
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          {section3Data.slice(1, 5).map((item, index) => (
-            <Box key={item.id} sx={{borderTop: item.id === 2 ? "1px solid #DADADA" : "none",}}>
-              <Box  sx={{position: "relative", display: "flex", mt:3 }}>
-                <img  src={item.imgsrc} alt={`순위 ${item.id}`} style={{ width: "76px", height: "76px" }} />
-                <Box sx={{width:"24px", height: "24px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
-                  <Typography sx={{ fontSize: 14, fontWeight: "700" }}>{item.id}</Typography>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box>
-      </Box>
-
+      <HorizontalRanking data={section3Data} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
+      
       {/* 네번째 섹션 */}
       <Box sx={{ mt: 10, mb: 5 }}>
         {/* 타이틀 */}
