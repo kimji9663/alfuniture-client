@@ -25,6 +25,10 @@ import { ReactComponent as IconStar } from './icon_star.svg'
 import { ReactComponent as Logo } from './logo.svg'
 import { ReactComponent as IconX } from './icon_x.svg'
 import { ReactComponent as IconPlus } from './icon_plus.svg'
+import { ReactComponent as IconMyOrder } from './icon_my_order.svg'
+import { ReactComponent as IconMyReview } from './icon_my_review.svg'
+import { ReactComponent as IconMyCoupon } from './icon_my_coupon.svg'
+import { ReactComponent as IconMyPoint } from './icon_my_point.svg'
 
 
 // Image
@@ -60,6 +64,10 @@ export {
   Logo,
   IconX,
   IconPlus,
+  IconMyOrder,
+  IconMyReview,
+  IconMyCoupon,
+  IconMyPoint,
 
   // Image
   logo,
