@@ -1,10 +1,11 @@
 import { Global } from "@emotion/react"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
+import { Tabs, Tab, Box, IconButton, Divider, Typography, ButtonGroup } from "@mui/material"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { SecondaryButton, PrimaryButton } from "../../../styles/buttons.styles"
 import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs } from "./index.styles"
+import { BasicModal } from "../../../styles/modal.styles"
 import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { sofa01 } from "../../../assets/images/product"
 import { alfdn } from "../../../assets/images/brand"
@@ -72,13 +73,22 @@ const ProductView = () => {
   const [tabValue, setTabValue] = useState(0)
   const [isLike, setIsLike] = useState(false)
   const [optionOpen, setOptionOpen] = useState(false)
+  const [selectComplete, setSelectComplete] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalType, setModalType] = useState('')
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후
-      // 장바구니로 이동하시겠습니까? 모달 띄움
-      // 이동하기 클릭 시 장바구니로 이동
-      navigate("/") // 장바구니 링크로
+      if (selectComplete) {
+        // 장바구니로 이동하시겠습니까? 모달 띄움
+        setModalType('cart')
+        setModalOpen(true)
+      } else {
+        // 필수 옵션 체크 에러
+        setModalType('error')
+        setModalOpen(true)
+      }
     }
     setOptionOpen(true)
   }
@@ -86,7 +96,14 @@ const ProductView = () => {
   const goToOrder = () => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후 주문하기 이동
-      navigate("/order") // 주문하기 링크로
+      if (selectComplete) {
+        // 구매하기 클릭 시 주문하기 링크로
+        navigate("/order")
+      } else {
+        // 필수 옵션 체크 에러
+        setModalType('error')
+        setModalOpen(true)
+      }
     }
     setOptionOpen(true)
   }
@@ -101,7 +118,15 @@ const ProductView = () => {
 
   const toggleDrawer = (val:boolean) => {
     setOptionOpen(val)
-    //console.log(val)
+  }
+
+  const handleClose = () => {
+    setModalOpen(false)
+  }
+
+  const handleAddCart = () => {
+    // 장바구니 추가 후 닫기
+    setModalOpen(false)
   }
 
   return (
@@ -200,12 +225,39 @@ const ProductView = () => {
         </ViewTabPanel>
       </Box>
 
-      <OrderSelector open={optionOpen} toggleDrawer={toggleDrawer} />
+      <OrderSelector 
+        open={optionOpen} 
+        toggleDrawer={toggleDrawer} 
+        complete={selectComplete}
+        setComplete={setSelectComplete}
+      />
 
       <NaviWrap className="pair" sx={{ zIndex: 2 }}>
         <SecondaryButton onClick={goToCart}>장바구니</SecondaryButton>
         <PrimaryButton onClick={goToOrder}>구매하기</PrimaryButton>
       </NaviWrap>
+      
+      <BasicModal open={modalOpen} onClose={handleClose}>
+        <Box>
+          {modalType === 'error' && (
+            <>
+              <div className="content">필수 옵션을 선택해주세요.</div>
+              <ButtonGroup fullWidth>
+                <PrimaryButton onClick={handleClose}>확인</PrimaryButton>
+              </ButtonGroup>
+            </>
+          )}
+          {modalType === 'cart' && (
+            <>
+              <div className="content">선택된 상품을 장바구니에 담으시겠습까?</div>
+              <ButtonGroup fullWidth>
+                <SecondaryButton onClick={handleClose}>취소</SecondaryButton>
+                <PrimaryButton onClick={handleAddCart}>확인</PrimaryButton>
+              </ButtonGroup>
+            </>
+          )}
+        </Box>
+      </BasicModal>
     </>
   )
 }
