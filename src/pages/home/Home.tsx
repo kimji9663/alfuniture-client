@@ -7,8 +7,10 @@ import { chair04 } from "../../assets/images/product"
 import { ArrowDown, IconLikeOff, IconLikeOn, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
 import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
-import {Paper, IconButton, Typography, Box} from '@mui/material'
+import {Paper, IconButton, Typography, Box } from '@mui/material'
 import { Swiper, SwiperSlide } from "swiper/react"
+import { Link } from "react-router-dom";
+import ListItem from "../../components/product/ListItem"
 
 type ISwiperProps = { 
   loop?: boolean
@@ -27,9 +29,9 @@ export const section2Data = [
     imgsrc: sofa04,
     like: true,
     likeCount: 556,
-    productName: 'James Lee - Sofa',
+    shopName: 'James Lee - Sofa',
     modelName: '[23Series] JL-305',
-    productOption: 'Basic Sofa',
+    productName: 'Basic Sofa',
     price: 969000,
   },
   {
@@ -37,9 +39,9 @@ export const section2Data = [
     imgsrc: sofa05,
     like: false,
     likeCount: 556,
-    productName: 'James Lee - Sofa',
+    shopName: 'James Lee - Sofa',
     modelName: '[23Series] JL-305',
-    productOption: 'soft_sofa',
+    productName: 'soft_sofa',
     price: 230000,
   },
 ]
@@ -171,7 +173,8 @@ const Home = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            pl:"10px",
+            p:0,
+            pl:"5px",
           }}>
             <ArrowDown />
           </IconButton>
@@ -184,47 +187,32 @@ const Home = () => {
           <Box sx={{ mt: 10, mb: "39px", ml: 5, }}>
             <Typography sx={{ fontSize: 22, fontWeight: "700", letterSpacing: "-2%", mb: "17px"}}>이달의 아티스트</Typography>
             <Box sx={{position:"relative", display:"flex"}}>
-              <img src={jamesLee}/>
-              <Box sx={{ ml: 4, mb: "33px", position:"absolute", bottom:0, left:0, color:"white"}}>
-                <Typography sx={{ fontSize: 35, fontWeight: "700", mb: 1}}>James Lee</Typography>
-                <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>알퍼니처가 선정한</Typography>
-                <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>노르웨이 출신의 이달의 작가</Typography>
-              </Box>
+              <Link to="/profile">
+                <img src={jamesLee}/>
+                <Box sx={{ ml: 4, mb: "33px", position:"absolute", bottom:0, left:0, color:"white"}}>
+                  <Typography sx={{ fontSize: 35, fontWeight: "700", mb: 1}}>James Lee</Typography>
+                  <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>알퍼니처가 선정한</Typography>
+                  <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>노르웨이 출신의 이달의 작가</Typography>
+                </Box>
+              </Link>
             </Box>
           </Box>
         </Box>
         <Box sx={{ mx:2 }}>
           <Box>
-            {section2Data.map((item, index) => (
-              <Box key={item.id} sx={{display: "flex", 
-              borderTop: "1px solid #999999",
-              borderBottom: index === section2Data.length - 1 ? "1px solid #999999" : "none", 
-            }}>
-                
-                <Box sx={{pr: "18px", display: "flex", py: 2, height: "90px", borderRight: "1px solid #999999",}}>
-                  <img src={item.imgsrc} alt={item.productName} />
-                </Box>
-                
-                <Box sx={{pl: "18px", width: "100%", py: 2}}>
-                  <Box>
-                    <Typography sx={{fontWeight: "700", fontSize: 14, mb:"4px"}}>{item.productName}</Typography>
-                    <Typography sx={{fontWeight: "700", fontSize: 12, letterSpacing:"-0.25px", color: "#999999"}}>{item.modelName}</Typography>
-                    <Typography sx={{fontWeight: "700", fontSize: 12, letterSpacing:"-0.25px", color: "#999999"}}>{item.productOption}</Typography>
-                  </Box>
-                  <Box sx={{display: "flex", justifyContent: "space-between",mt: "10px"}}>
-                    
-                    <Typography sx={{fontSize: 12, fontWeight: "700"}}>{item.price.toLocaleString()} 원</Typography>
-                    
-                    <Box sx={{display: "flex", justifyContent: "space-between"}}>
-                      <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", width: "20px", height: "20px", mr: "4px"}}>
-                        {item.like ? <IconLikeOn />: <IconLikeOff/>}
-                      </Box>
-                      <Typography sx={{fontSize: 12, fontWeight: "700", letterSpacing:"0.4px", color: "#999999"}}>{item.likeCount}</Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            ))}
+            {/* 가구리스트 */}
+          {section2Data.map((product: any) =>
+            <ListItem
+              id={product.id}
+              imgsrc={product.imgsrc}
+              shopName={product.shopName}
+              modelName={product.modelName}
+              productName={product.productName}
+              price={product.price}
+              colors={product.colors}
+              likeCount={product.likeCount}
+            />
+          )}
           </Box>
         </Box>
       </Box>

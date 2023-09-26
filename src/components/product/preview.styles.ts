@@ -14,7 +14,11 @@ export const ListImageBox = styled(Box)(() => ({
 
 export const ListDetailBox = styled(Box)(() => ({
   width: '100%',
+  height: "calc(100% - 32px)",
   padding: '16px 8px 16px 18px',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
 }))
 
 export const PreviewDetailBox = styled(Box)(() => ({

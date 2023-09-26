@@ -39,15 +39,17 @@ const ListItem: React.FC<PreviewProps> = ({
         </ListImageBox>
         <FlexAlignItemsCenterBox>
           <ListDetailBox>
-            <BoldGray9Typography>
-              {shopName}
-            </BoldGray9Typography>
-            <Gray7Typography>
-              {modelName}
-            </Gray7Typography>
-            <Gray7Typography>
-              {productName}
-            </Gray7Typography>
+            <Box>
+              <BoldGray9Typography>
+                {shopName}
+              </BoldGray9Typography>
+              <Gray7Typography>
+                {modelName}
+              </Gray7Typography>
+              <Gray7Typography>
+                {productName}
+              </Gray7Typography>
+            </Box>
             <FlexSpaceBetweenCenterBox>
               <BoldGray8Typography>
                 {Intl.NumberFormat().format(price)} 원
