@@ -3,6 +3,7 @@ import { Box, Button } from "@mui/material"
 import { PrimaryButton } from "../../../styles/buttons.styles"
 
 export const ProductMainInfo = styled(Box)(() => ({
+  marginBottom: "23px",
   '& > .product_brand': {
     display: 'flex', 
     alignItems: 'center', 
@@ -86,15 +87,6 @@ export const ProductViewTabs = styled(Box)(() => ({
     height: '1px', 
     backgroundColor: '#333' 
   },
-}))
-
-export const BrandInfo = styled(Button)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: '8px 0',
-  border: '1px solid #DADADA',
-  borderRadius: 0,
-  textAlign: 'left'
 }))
 
 export const OrderButton = styled(PrimaryButton)(() => ({

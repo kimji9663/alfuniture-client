@@ -1,10 +1,16 @@
 import React, { useState } from "react"
-import { Divider, Button, Typography, Box } from "@mui/material"
-import { DetailView, CoverBox } from "./detailViewPanel.styles"
-import { PrimaryButton, PrimaryLightButton } from "../../styles/buttons.styles"
-import { ArrowBottom } from "../../assets/images"
-import List from "../like/List"
 import { jamesLee01, jamesLee02, jamesLee03, jamesLee04 } from "../../assets/images/product"
+import { jamesLeeText } from "../../assets/images/brand"
+import List from "../like/List"
+import BrandButton from "../../components/BrandButton"
+import { Box } from "@mui/material"
+
+const brandData = {
+  name: "James Lee",
+  description: "제임스리",
+  image: jamesLeeText, 
+  isLiked: true, 
+};
 
 export const testData = [
   {
@@ -56,8 +62,13 @@ export const testData = [
 const BrandShopPanel = () => {
 
   return (
-    
+    <>
+      <Box sx={{mt: 7, mb: 6, mx:2 }}>
+        <BrandButton brandData={ brandData }/>
+      </Box>
       <List data={testData}/>
+    </>
+      
     
   )
 }

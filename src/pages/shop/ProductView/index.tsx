@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { SecondaryButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { ProductMainInfo, OrderButton, ProductViewTabs, BrandInfo } from "./index.styles"
+import { ProductMainInfo, OrderButton, ProductViewTabs } from "./index.styles"
 import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { sofa01 } from "../../../assets/images/product"
 import { alfdn } from "../../../assets/images/brand"
@@ -13,7 +13,14 @@ import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQnaPanel from "./PersonalQnaPanel"
 import OrderSelector from "./OrderSelector"
-// import BrandInfo from "./BrandInfo"
+import BrandButton from "../../../components/BrandButton"
+
+const brandData = {
+  name: "ALFDN",
+  description: "알프든",
+  image: alfdn, 
+  isLiked: true, 
+};
 
 
 const globalStyle = {
@@ -158,22 +165,9 @@ const ProductView = () => {
               </Box>
             </Box>
           </ProductMainInfo>
-          <BrandInfo fullWidth sx={{ mt: 3 }}>
-            <Box sx={{ px: 2 }}>
-              <img src={alfdn} alt="알프든" />
-            </Box>
-            <Box>
-              <Typography sx={{ color: '#333', fontSize: '.875rem', fontWeight: 'bold', '& > svg': { ml: 1/2 } }}>
-                ALFDN
-                <ArrowRight />
-              </Typography>
-              <Typography sx={{ color: '#999', fontSize: '.75rem' }}>알프든</Typography>
-            </Box>
-            <Box sx={{ ml: 'auto', px: 4, '& > svg': { display: 'block' } }}>
-              <IconHeartSmall />
-            </Box>
-          </BrandInfo>
+          <BrandButton brandData={brandData}/>
         </Box>
+        
         
         <ProductViewTabs>
           <Tabs

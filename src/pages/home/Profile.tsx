@@ -102,7 +102,7 @@ const Profile = () => {
   
   return (
     <>
-      <img src={jamesLee} style={{width: "100vw"}}/>
+      <img src={jamesLee} style={{width: "100vw", maxWidth: "420px"}}/>
       <Box sx={{mt: 3, ml: 2, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Box>
           <Typography sx={{ fontSize: 24, fontWeight: "500", letterSpacing: "-2%" }}>James Lee</Typography>
