@@ -11,7 +11,7 @@ import {Paper, IconButton, Typography, Box } from '@mui/material'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
-import HorizontalRanking from "./HorizontalRanking"
+import HorizontalRanking from "../../components/product/HorizontalRanking"
 
 
 type ISwiperProps = { 

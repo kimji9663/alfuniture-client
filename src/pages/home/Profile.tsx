@@ -6,6 +6,7 @@ import { IconHeartBig, IconHeartBigRed } from "../../assets/images"
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
 import { styled } from "@mui/material/styles"
 import DetailViewPanel from "./DetailViewPanel"
+import BrandShopPanel from "./BrandShopPanel"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -149,7 +150,7 @@ const Profile = () => {
         </LikeTabPanel>
 
         <LikeTabPanel value={tabValue} index={1}>
-          {/* 브랜드 샵 내용 */}
+          <BrandShopPanel/>
         </LikeTabPanel>
       
       <NavigationBar/>

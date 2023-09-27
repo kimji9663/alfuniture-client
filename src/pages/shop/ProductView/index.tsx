@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Tabs, Tab, Box, IconButton, Divider, Typography } from "@mui/material"
 import { NaviWrap } from "../../../components/navigationbar.styles"
 import { SecondaryButton, PrimaryButton } from "../../../styles/buttons.styles"
-import { ProductMainInfo, BrandInfo, OrderButton, ProductViewTabs } from "./index.styles"
+import { ProductMainInfo, OrderButton, ProductViewTabs, BrandInfo } from "./index.styles"
 import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { sofa01 } from "../../../assets/images/product"
 import { alfdn } from "../../../assets/images/brand"
@@ -13,6 +13,7 @@ import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQnaPanel from "./PersonalQnaPanel"
 import OrderSelector from "./OrderSelector"
+// import BrandInfo from "./BrandInfo"
 
 
 const globalStyle = {
