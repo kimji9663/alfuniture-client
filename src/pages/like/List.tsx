@@ -17,7 +17,7 @@ interface ProductData {
 }
 
 interface ProductListProps {
-  data: ProductData[]; // testData 프롭의 타입을 지정
+  data: ProductData[]; 
 }
 
 const ProductList: React.FC<ProductListProps> = ({ data }) => {
