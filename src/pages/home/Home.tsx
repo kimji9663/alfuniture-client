@@ -266,7 +266,7 @@ const Home = () => {
                     <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} style={{ width: "100%" }} />
                   </Box>
                   {/* 텍스트 */}
-                  <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA" }}>
+                  <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA", borderLeft: "none" }}>
                     <Typography sx={{ fontSize: 16, fontWeight: "700" }}>{item.title}</Typography>
                     <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>{item.discription}</Typography>
                     <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
