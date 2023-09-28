@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
 import HorizontalRanking from "../../components/product/HorizontalRanking"
+import { Pagination } from 'swiper/modules';
 
 
 type ISwiperProps = { 
@@ -109,20 +110,20 @@ export const section4Data = [
 const Home = () => {
   const imageList = [
     {
-      name: "chair01",
-      src: chair04
+      discription: "chair01",
+      img: chair04
     },
     {
-      name: "chair02",
-      src: chair04
+      discription: "chair02",
+      img: chair04
     },
     {
-      name: "chair03",
-      src: chair04
+      discription: "chair03",
+      img: chair04
     },
     {
-      name: "chair04",
-      src: chair04
+      discription: "chair04",
+      img: chair04
     },
   ]
   const [position, setPosition] = useState(0); // 화면의 현재 위치
@@ -149,13 +150,27 @@ const Home = () => {
     slidesPerView: 1.2,
   }
 
+  const photoBannerSettings:ISwiperProps = {
+    loop: false,
+    scrollbar: { draggable: true, el: null },
+    slidesPerView: 1,
+  }
   return (
     <>
       <LogoTitle/>
       
       {/* 첫번째 섹션 */}
       <Box>
-        <img src={imageList[0].src}/>
+        <Box sx={{ width: "301px"}}>
+          <Swiper {...photoBannerSettings} >
+            {imageList.map((photoReview, index) => (
+              <SwiperSlide key={`photo_review_${index}`}>
+                <img src={photoReview.img} alt={photoReview.discription} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
+        
         <Box sx={{ mt: 3, mb: "39px", ml: 2 }}>
           <Typography sx={{ fontSize: 32, fontWeight: "700" }}>2023 Furniture</Typography>
           <Typography sx={{ fontSize: 32, fontWeight: "700" }}>Collection</Typography>
@@ -203,8 +218,9 @@ const Home = () => {
         <Box sx={{ mx:2 }}>
           <Box>
             {/* 가구리스트 */}
-          {section2Data.map((product: any) =>
+          {section2Data.map((product: any, index) =>
             <ListItem
+              key={index}
               id={product.id}
               imgsrc={product.imgsrc}
               shopName={product.shopName}

@@ -22,8 +22,9 @@ const FeaturedProduct = () => {
         <TitleTwoLine2 title={title}/>
         <Box sx={{ px: 2, alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           {/* 가구리스트 */}
-          {testData.map((product: any) =>
+          {testData.map((product: any, index) =>
             <ListItem
+              key={index}
               id={product.id}
               imgsrc={product.imgsrc}
               shopName={product.shopName}

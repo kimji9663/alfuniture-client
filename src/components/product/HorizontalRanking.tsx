@@ -36,8 +36,8 @@ const HorizontalRanking: React.FC<HorizontalRankingProps> = ({ data, title, subT
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {data.slice(1, 5).map((item: any, index: any) => (
-            <Link href='/shop/product_view' underline='none'>
-              <Box key={item.id} sx={{borderTop: item.id === 2 ? "1px solid #DADADA" : "none",}}>
+            <Link href='/shop/product_view' underline='none' key={index}>
+              <Box sx={{borderTop: item.id === 2 ? "1px solid #DADADA" : "none",}}>
                 <Box  sx={{position: "relative", display: "flex", mt:3 }}>
                   <img  src={item.imgsrc} alt={`순위 ${item.id}`} style={{ width: "76px", height: "76px" }} />
                   <Box sx={{width:"24px", height: "24px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
