@@ -73,14 +73,14 @@ const ProductView = () => {
   const [tabValue, setTabValue] = useState(0)
   const [isLike, setIsLike] = useState(false)
   const [optionOpen, setOptionOpen] = useState(false)
-  const [selectComplete, setSelectComplete] = useState(false)
+  const [selectComplete, setSelectComplete] = useState([false, false])
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState('')
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후
-      if (selectComplete) {
+      if (selectComplete[0] && selectComplete[1]) {
         // 장바구니로 이동하시겠습니까? 모달 띄움
         setModalType('cart')
         setModalOpen(true)
@@ -96,7 +96,7 @@ const ProductView = () => {
   const goToOrder = () => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후 주문하기 이동
-      if (selectComplete) {
+      if (selectComplete[0] && selectComplete[1]) {
         // 구매하기 클릭 시 주문하기 링크로
         navigate("/order")
       } else {
