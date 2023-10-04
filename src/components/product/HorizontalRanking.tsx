@@ -19,7 +19,7 @@ const HorizontalRanking: React.FC<HorizontalRankingProps> = ({ data, title, subT
   return (
     <>
       {/* 랭킹형 가로 */}
-      <Box sx={{ mt: 10, px: 2 }}>
+      <Box sx={{ px: 2 }}>
         <Typography sx={{ fontSize: 22, fontWeight: "700" }}>{title}</Typography>
         <Link href='/shop/product_view' underline='none'>
           <Box sx={{ mt: 2, mb: 3, position: "relative", display: "flex" }}>

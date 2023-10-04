@@ -7,6 +7,9 @@ import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/
 import { styled } from "@mui/material/styles"
 import StyleList from './StyleList';
 import { styleBanner01, styleBanner02 } from "../../assets/images/banner"
+import HorizontalRanking  from "../../components/product/HorizontalRanking"
+
+
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -95,6 +98,29 @@ export const section2Data = [
   },
 ]
 
+export const rankingData = [
+  {
+    id: 1,
+    imgsrc: rankingItem01,
+  },
+  {
+    id: 2,
+    imgsrc: rankingItem02,
+  },
+  {
+    id: 3,
+    imgsrc: rankingItem03,
+  },
+  {
+    id: 4,
+    imgsrc: rankingItem04,
+  },
+  {
+    id: 5,
+    imgsrc: rankingItem05,
+  },
+  
+]
 
 
 const Style = () => {
@@ -199,12 +225,16 @@ const Style = () => {
           </Box>
 
           <LikeTabPanel value={tabValue} index={0}>
-            {/* <DetailViewPanel/> */}
             <StyleList/>
           </LikeTabPanel>
 
           <LikeTabPanel value={tabValue} index={1}>
-            {/* <BrandShopPanel/> */}
+            <Box sx={{mt:5}}>
+              <HorizontalRanking data={rankingData} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
+              <Box sx={{mt:"60px", ml:2, mb:2}}>
+                <Typography sx={{ fontSize: 22, fontWeight: "700", color:"#333333", letterSpacing: "-1px" }}>실시간 인기 브랜드</Typography>
+              </Box>
+            </Box>
           </LikeTabPanel>
 
           <LikeTabPanel value={tabValue} index={2}>
