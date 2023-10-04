@@ -27,7 +27,7 @@ const NavigationBar = () => {
           <IconHome />
           HOME
         </Link>
-        <Link to="/" className={navigationActive("/style")}>
+        <Link to="/style" className={navigationActive("/style")}>
           <IconStyle />
           STYLE
         </Link>

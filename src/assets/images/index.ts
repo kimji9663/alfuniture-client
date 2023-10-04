@@ -17,6 +17,8 @@ import { ReactComponent as ArrowDown } from './icon_arrow_down.svg'
 import { ReactComponent as ArrowWhite } from './icon_arrow_white.svg'
 import { ReactComponent as IconShift } from './icon_shift.svg'
 import { ReactComponent as IconHeartSmall } from './icon_heart_small.svg'
+import { ReactComponent as IconHeartBig } from './icon_heart_big.svg'
+import { ReactComponent as IconHeartBigRed } from './icon_heart_big_red.svg'
 import { ReactComponent as IconLikeOn } from './icon_like_on.svg'
 import { ReactComponent as IconLikeOff } from './icon_like_off.svg'
 import { ReactComponent as IconCart } from './icon_cart.svg'
@@ -51,6 +53,8 @@ export {
   ArrowWhite,
   IconShift,
   IconHeartSmall,
+  IconHeartBig,
+  IconHeartBigRed,
   IconLikeOn,
   IconLikeOff,
   IconCart,

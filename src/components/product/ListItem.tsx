@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material"
+import { Box, IconButton, Link } from "@mui/material"
 import { FlexAlignItemsCenterBox, FlexBox, FlexColumnAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { PreviewProps } from "./Preview"
@@ -22,50 +22,56 @@ const ListItem: React.FC<PreviewProps> = ({
   return (
     <>
       {/* 가로형 상품 리스트 */}
-      <GridBox
-        sx={{
-          gridTemplateColumns: '119px auto',
-          borderTop: '1px solid #DADADA',
-          '&:last-child': {
-            borderBottom: '1px solid #DADADA'
-          }
-        }}
-      >
-        <ListImageBox>
-          <img
-            src={imgsrc}
-            alt="상품이미지"
-          />
-        </ListImageBox>
-        <FlexAlignItemsCenterBox>
-          <ListDetailBox>
-            <BoldGray9Typography>
-              {shopName}
-            </BoldGray9Typography>
-            <Gray7Typography>
-              {modelName}
-            </Gray7Typography>
-            <Gray7Typography>
-              {productName}
-            </Gray7Typography>
-            <FlexSpaceBetweenCenterBox>
-              <BoldGray8Typography>
-                {Intl.NumberFormat().format(price)} 원
-              </BoldGray8Typography>
-              <FlexAlignItemsCenterBox flexDirection={'row'}>
-                <IconButton
-                  onClick={handleClickLike}
-                >
-                  {isLike ? <IconLikeOn /> : <IconLikeOff />}
-                </IconButton>
-                <Gray7Typography>
-                  {likeCount}
-                </Gray7Typography>
-              </FlexAlignItemsCenterBox>
-            </FlexSpaceBetweenCenterBox>
-          </ListDetailBox>
-        </FlexAlignItemsCenterBox>
-      </GridBox>
+        <GridBox
+          sx={{
+            gridTemplateColumns: '119px auto',
+            borderTop: '1px solid #DADADA',
+            '&:last-child': {
+              borderBottom: '1px solid #DADADA'
+            }
+          }}
+        >
+          <Link href='/shop/product_view' underline='none'>
+            <ListImageBox>
+              <img
+                src={imgsrc}
+                alt="상품이미지"
+              />
+            </ListImageBox>
+          </Link>
+          <FlexAlignItemsCenterBox>
+            <ListDetailBox>
+              <Link href='/shop/product_view' underline='none'>
+                <Box>
+                  <BoldGray9Typography>
+                    {shopName}
+                  </BoldGray9Typography>
+                  <Gray7Typography>
+                    {modelName}
+                  </Gray7Typography>
+                  <Gray7Typography>
+                    {productName}
+                  </Gray7Typography>
+                </Box>
+              </Link>
+              <FlexSpaceBetweenCenterBox>
+                <BoldGray8Typography>
+                  {Intl.NumberFormat().format(price)} 원
+                </BoldGray8Typography>
+                <FlexAlignItemsCenterBox flexDirection={'row'}>
+                  <IconButton
+                    onClick={handleClickLike}
+                  >
+                    {isLike ? <IconLikeOn /> : <IconLikeOff />}
+                  </IconButton>
+                  <Gray7Typography>
+                    {likeCount}
+                  </Gray7Typography>
+                </FlexAlignItemsCenterBox>
+              </FlexSpaceBetweenCenterBox>
+            </ListDetailBox>
+          </FlexAlignItemsCenterBox>
+        </GridBox>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { GridBox } from "../Box"
 export const ListImageBox = styled(Box)(() => ({
   padding: '16px 18px 16px 0',
   borderRight: '1px solid #DADADA',
+  display: 'flex',
   '& img': {
     aspectRatio: '10 / 9',
     width: '101px',
@@ -14,7 +15,11 @@ export const ListImageBox = styled(Box)(() => ({
 
 export const ListDetailBox = styled(Box)(() => ({
   width: '100%',
+  height: "calc(100% - 32px)",
   padding: '16px 8px 16px 18px',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
 }))
 
 export const PreviewDetailBox = styled(Box)(() => ({
