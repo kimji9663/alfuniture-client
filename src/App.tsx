@@ -18,6 +18,7 @@ import Cart from "./pages/cart"
 import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 import Order from "./pages/order/Order"
+import Style from "./pages/style/Style"
 
 const router = createBrowserRouter([
   {
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "/order",
         element: <Order />,
+      },      
+      {
+        path: "/style",
+        element: <Style />,
       },      
     ],
   },
