@@ -19,6 +19,8 @@ import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 import Order from "./pages/order/Order"
 import Style from "./pages/style/Style"
+import RankingList from "./pages/style/RankingList"
+import Brand from "./pages/style/Brand"
 
 const router = createBrowserRouter([
   {
@@ -123,7 +125,15 @@ const router = createBrowserRouter([
       {
         path: "/style",
         element: <Style />,
-      },      
+      },
+      {
+        path: "/style/ranking",
+        element: <RankingList />,
+      },
+      {
+        path: "/style/brand",
+        element: <Brand />,
+      },
     ],
   },
 ]);

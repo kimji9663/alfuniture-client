@@ -29,3 +29,25 @@ export const PreviewDetailBox = styled(Box)(() => ({
 export const ColorPalette = styled(GridBox)(() => ({
   marginRight: '0.5rem'
 }))
+
+export const ListImageBoxType2 = styled(Box)(() => ({
+  position: "relative",
+  padding: '16px 16px 0 0',
+  marginBottom: "16px",
+  borderRight: '1px solid #DADADA',
+  display: 'flex',
+  '& img': {
+    width: '80px',
+    height: '80px',
+    objectFit: 'cover',
+  },
+}))
+
+export const ListDetailBoxType2 = styled(Box)(() => ({
+  width: '100%',
+  height: "calc(100% - 32px)",
+  padding: '16px 0 16px 16px',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+}))

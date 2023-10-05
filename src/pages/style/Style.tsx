@@ -2,12 +2,13 @@
 import React, { useState } from "react"
 import LogoTitle from '../../components/title/LogoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
+
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
 import { styled } from "@mui/material/styles"
-import StyleList from './StyleList';
+import StyleTab from './StyleTab';
+import RankingTab from './RankingTab';
 import { styleBanner01, styleBanner02 } from "../../assets/images/banner"
-import HorizontalRanking  from "../../components/product/HorizontalRanking"
+
 
 
 
@@ -74,54 +75,6 @@ type ISwiperProps = {
   slidesPerView?: "auto" | number | undefined
   onSlideChange?: (swiper: any) => void
 }
-
-export const section2Data = [
-  {
-    id: 0,
-    imgsrc: sofa04,
-    like: true,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'Basic Sofa',
-    price: 969000,
-  },
-  {
-    id: 1,
-    imgsrc: sofa05,
-    like: false,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'soft_sofa',
-    price: 230000,
-  },
-]
-
-export const rankingData = [
-  {
-    id: 1,
-    imgsrc: rankingItem01,
-  },
-  {
-    id: 2,
-    imgsrc: rankingItem02,
-  },
-  {
-    id: 3,
-    imgsrc: rankingItem03,
-  },
-  {
-    id: 4,
-    imgsrc: rankingItem04,
-  },
-  {
-    id: 5,
-    imgsrc: rankingItem05,
-  },
-  
-]
-
 
 const Style = () => {
 
@@ -225,16 +178,11 @@ const Style = () => {
           </Box>
 
           <LikeTabPanel value={tabValue} index={0}>
-            <StyleList/>
+            <StyleTab/>
           </LikeTabPanel>
 
           <LikeTabPanel value={tabValue} index={1}>
-            <Box sx={{mt:5}}>
-              <HorizontalRanking data={rankingData} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
-              <Box sx={{mt:"60px", ml:2, mb:2}}>
-                <Typography sx={{ fontSize: 22, fontWeight: "700", color:"#333333", letterSpacing: "-1px" }}>실시간 인기 브랜드</Typography>
-              </Box>
-            </Box>
+            <RankingTab/>
           </LikeTabPanel>
 
           <LikeTabPanel value={tabValue} index={2}>

@@ -20,9 +20,10 @@ const WhiteTitle: FC<TitleProps> = ({title}) => {
         alignItems: 'center',
         width: '100%',
         height: '50px',
-        color: 'white',
+        color: '#DADADA',
         border: '1px solid white',
         backgroundColor: 'transparent',
+        position :"fixed", top:0, left:0, zIndex: "999"
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', m: 2, textAlign: 'center' }}>
@@ -31,7 +32,7 @@ const WhiteTitle: FC<TitleProps> = ({title}) => {
         </Link>
       </Box>
       <Typography
-        sx={{ height: '100%', pl: 2, display: 'flex', alignItems: 'center', borderLeft: '1px solid white' }}
+        sx={{ height: '100%', pl: 2, display: 'flex', alignItems: 'center', borderLeft: '1px solid #DADADA' }}
       >
         {title[0]}
       </Typography>
