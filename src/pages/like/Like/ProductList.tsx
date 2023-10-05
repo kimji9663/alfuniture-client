@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Box, FormControl, FormControlLabel, Checkbox, Button } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { IconShift } from "../../assets/images"
+import { IconShift } from "../../../assets/images"
 import List from "./List"
 
 const RectCheckbox = styled(FormControl)(({ }) => ({

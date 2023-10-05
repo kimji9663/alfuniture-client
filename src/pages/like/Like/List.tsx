@@ -1,8 +1,7 @@
-import PreviewItem from "../../components/product/Preview"
+import PreviewItem from "../../../components/product/Preview"
 import { Box } from "@mui/material"
-import NavigationBar from "../../components/NavigationBar"
-import { chair03, sofa01, sofa02, sofa03 } from "../../assets/images/product"
-import { GridBox } from "../../components/Box"
+import { chair03, sofa01, sofa02, sofa03 } from "../../../assets/images/product"
+import { GridBox } from "../../../components/Box"
 
 export const testData = [
   {
@@ -55,29 +54,27 @@ const ProductList = () => {
 
   return (
     <>
-      <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
-        <Box padding='1.5rem 1rem'>
-          <GridBox
-            sx={{
-              gridTemplateColumns: '1fr 1fr'
-            }}
-            columnGap='0.5rem'
-            rowGap='1.5rem'
-          >
-            {testData.map((product: any) =>
-              <PreviewItem
-                key={`product-${product.id}`}
-                id={product.id}
-                imgsrc={product.imgsrc}
-                shopName={product.shopName}
-                modelName={product.modelName}
-                productName={product.productName}
-                price={product.price}
-                colors={product.colors}
-              />
-            )}
-          </GridBox>
-        </Box>
+      <Box padding='1.5rem 1rem'>
+        <GridBox
+          sx={{
+            gridTemplateColumns: '1fr 1fr'
+          }}
+          columnGap='0.5rem'
+          rowGap='1.5rem'
+        >
+          {testData.map((product: any) =>
+            <PreviewItem
+              key={`product-${product.id}`}
+              id={product.id}
+              imgsrc={product.imgsrc}
+              shopName={product.shopName}
+              modelName={product.modelName}
+              productName={product.productName}
+              price={product.price}
+              colors={product.colors}
+            />
+          )}
+        </GridBox>
       </Box>
     </>
   )
