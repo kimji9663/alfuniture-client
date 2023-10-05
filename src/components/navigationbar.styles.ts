@@ -9,6 +9,7 @@ export const NaviWrap = styled(Box)(() => ({
   bottom: 0,
   width: '100%',
   height: '74px',
+  zIndex: 100,
 
   '& > a, & > button': {
     textTransform: 'none',

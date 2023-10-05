@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import Home from "./pages/home/Home"
+import Profile from "./pages/home/Profile"
 import Guide from "./pages/Guide"
 import ShopProductList from "./pages/shop/ProductList"
 import ShopProductView from "./pages/shop/ProductView"
@@ -18,6 +19,7 @@ import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 import Order from "./pages/order/Order"
 import Dashboard from "./pages/mypage/Dashboard"
+import Style from "./pages/style/Style"
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
             element: <Home />,
           },
         ],
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/auth",
@@ -124,7 +130,11 @@ const router = createBrowserRouter([
             element: <Dashboard />,
           },
         ]
-      },
+      },     
+      {
+        path: "/style",
+        element: <Style />,
+      },      
     ],
   },
 ]);
