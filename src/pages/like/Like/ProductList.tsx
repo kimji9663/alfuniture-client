@@ -3,7 +3,7 @@ import { Box, FormControl, FormControlLabel, Checkbox, Button } from "@mui/mater
 import { styled } from "@mui/material/styles"
 import { IconShift } from "../../../assets/images"
 import List from "./List"
-import { chair03, sofa01, sofa02, sofa03 } from "../../assets/images/product"
+import { chair03, sofa01, sofa02, sofa03 } from "../../../assets/images/product"
 
 const RectCheckbox = styled(FormControl)(({ }) => ({
   '& input': {
