@@ -7,7 +7,7 @@ interface TitleProps {
   title: string[]; // props의 타입 정의
 }
 
-const LeftTitle: FC<TitleProps> = ({title}) => {
+const LeftTitleNoIcon: FC<TitleProps> = ({title}) => {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -23,4 +23,4 @@ const LeftTitle: FC<TitleProps> = ({title}) => {
   )
 }
 
-export default LeftTitle
+export default LeftTitleNoIcon
