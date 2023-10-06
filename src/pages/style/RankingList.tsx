@@ -183,7 +183,7 @@ const RankingList = () => {
           </RectCheckbox>
         ))}
       </Box>
-      <Box sx={{px: 2}}>
+      <Box sx={{px: 2, minHeight: 'calc(100vh - 213.6px)'}}>
         {/* 가구리스트 */}
         {brandItemData.map((product: any, index) =>
         <ListItemType2

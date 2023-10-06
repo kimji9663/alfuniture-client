@@ -63,7 +63,7 @@ const Brand = () => {
       <Box sx={{position:"absolute", top:0, zIndex:2,width: "100%"}}>
         <WhiteTitle title={["모던한 인테리어 디자인"]}/>
       </Box>
-      <img src={onerainDetail} alt="" style={{position:"absolute", width: "100%", zIndex:1}}/>
+      <img src={onerainDetail} alt="" style={{position:"absolute", width: "100%", zIndex:1, objectFit: "cover", height: "100%"}}/>
       {iconCoordinates.map((coord, index) => (
         <div
           key={index}

@@ -5,8 +5,9 @@ import NavigationBar from "../../components/NavigationBar"
 
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
 import { styled } from "@mui/material/styles"
-import StyleTab from './StyleTab';
-import RankingTab from './RankingTab';
+import StyleTabPanel from './StyleTabPanel';
+import RankingTabPanel from './RankingTabPanel';
+import PostMagazineTabPanel from './PostMagazineTabPanel';
 import { styleBanner01, styleBanner02 } from "../../assets/images/banner"
 
 
@@ -42,7 +43,7 @@ function profileProps(index: number) {
   }
 }
 
-function LikeTabPanel(props: TabPanelProps) {
+function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props
 
   return (
@@ -77,11 +78,7 @@ type ISwiperProps = {
 }
 
 const Style = () => {
-
-  
   const [tabValue, setTabValue] = useState(0)
-  const [isLike, setIsLike] = useState(false)
-
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
@@ -112,17 +109,7 @@ const Style = () => {
       return nextPosition
     });
   };
-  const brandRankingSettings:ISwiperProps = {
-    loop: false,
-    scrollbar: { draggable: true, el: null },
-    slidesPerView: 1.2,
-  }
-
-  const photoBannerSettings:ISwiperProps = {
-    loop: false,
-    scrollbar: { draggable: true, el: null },
-    slidesPerView: 1,
-  }
+  
   return (
     <Box sx={{height: 'calc(100vh - 74px)'}}>
       <LogoTitle/>
@@ -177,17 +164,17 @@ const Style = () => {
             </Tabs>
           </Box>
 
-          <LikeTabPanel value={tabValue} index={0}>
-            <StyleTab/>
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={0}>
+            <StyleTabPanel/>
+          </TabPanel>
 
-          <LikeTabPanel value={tabValue} index={1}>
-            <RankingTab/>
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={1}>
+            <RankingTabPanel/>
+          </TabPanel>
 
-          <LikeTabPanel value={tabValue} index={2}>
-            {/* <BrandShopPanel/> */}
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={2}>
+            <PostMagazineTabPanel/>
+          </TabPanel>
       
       <NavigationBar/>
     </Box>

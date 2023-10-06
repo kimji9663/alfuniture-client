@@ -46,7 +46,7 @@ export const brandItemData = [
   },
 ]
 
-const RankingTab = () => {
+const RankingTabPanel = () => {
   
   return (
     <>
@@ -88,4 +88,4 @@ const RankingTab = () => {
   )
 }
 
-export default RankingTab
+export default RankingTabPanel
