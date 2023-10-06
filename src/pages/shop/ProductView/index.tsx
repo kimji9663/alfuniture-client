@@ -141,7 +141,7 @@ const ProductView = () => {
     <>
       <Global styles={globalStyle} />
       <NoTitle/>
-      <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
+      <Box sx={{ height: 'calc(100vh - 74px)', overflow: 'auto' }}>
         <Box sx={{ '& > img': { width: '100%' } }}>
           <img src={sofa01} alt="소파" />
         </Box>

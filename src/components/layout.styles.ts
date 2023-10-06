@@ -2,9 +2,8 @@ import styled from "@emotion/styled"
 
 export const ContentWrap = styled.div({
     position: 'relative',
-    paddingBottom: '74px',
     maxWidth: '420px',
-    height: 'calc(100vh - 74px)',
+    minHeight: '100vh',
     margin: 'auto',
     backgroundColor: '#fff',
     borderLeft: '1px solid #f5f5f5',

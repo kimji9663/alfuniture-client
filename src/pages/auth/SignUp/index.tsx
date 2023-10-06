@@ -56,8 +56,8 @@ const SignUp = () => {
   return (
     <>
       <ArrowTitle onClick={activeStep === 0 ? goToBack : stepBack}/>
-        
-      <Box sx={{ p: 2, paddingTop: 0 }}>
+
+      <Box sx={{ px: 2, paddingTop: 0 }}>
         <Stepper activeStep={activeStep} connector={null}>
           {steps.map((label) => {
             const stepProps: { completed?: boolean, } = {}
@@ -77,67 +77,69 @@ const SignUp = () => {
         </Stepper>
       </Box>
 
-      {activeStep === steps.length ? (
-        <>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            회원가입이 완료되었습니다.
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-          </Box>
-        </>
+      <Box sx={{ height: 'calc(100vh - 132px)', overflow: 'auto' }}>
+        {activeStep === steps.length ? (
+          <>
+            <Typography sx={{ mt: 2, mb: 1 }}>
+              회원가입이 완료되었습니다.
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+              <Box sx={{ flex: '1 1 auto' }} />
+            </Box>
+          </>
+        ) : (
+          <>
+            {activeStep === 0 ? (
+              <Box>
+                <TermsAgreement 
+                  validated={validated}
+                  changeValidated={changeValidated}
+                />
+              </Box>
+            ) : null}
+            {activeStep === 1 ? (
+              <Box>
+                <UserId 
+                  validated={validated}
+                  changeValidated={changeValidated}
+                  createUserId={userData.userId}
+                  changeUserData={changeUserData}
+                />
+              </Box>
+            ) : null}
+            {activeStep === 2 ? (
+              <Box>
+                <UserPassword 
+                  validated={validated}
+                  changeValidated={changeValidated}
+                />
+              </Box>
+            ) : null}
+            {activeStep === 3 ? (
+              <Box>
+                <SelectVerification 
+                  validated={validated}
+                  changeValidated={changeValidated}
+                  getUserId={userData.userId}
+                />
+              </Box>
+            ) : null}
+          </>
+        )}
+      </Box>
+            
+      {activeStep === steps.length - 1 ? (
+        <NaviWrap className="single">
+          <PrimaryButton onClick={goToOnboarding}>가입 완료</PrimaryButton>
+        </NaviWrap>
       ) : (
-        <>
-          {activeStep === 0 ? (
-            <Box>
-              <TermsAgreement 
-                validated={validated}
-                changeValidated={changeValidated}
-              />
-            </Box>
-          ) : null}
-          {activeStep === 1 ? (
-            <Box>
-              <UserId 
-                validated={validated}
-                changeValidated={changeValidated}
-                createUserId={userData.userId}
-                changeUserData={changeUserData}
-              />
-            </Box>
-          ) : null}
-          {activeStep === 2 ? (
-            <Box>
-              <UserPassword 
-                validated={validated}
-                changeValidated={changeValidated}
-              />
-            </Box>
-          ) : null}
-          {activeStep === 3 ? (
-            <Box>
-              <SelectVerification 
-                validated={validated}
-                changeValidated={changeValidated}
-                getUserId={userData.userId}
-              />
-            </Box>
-          ) : null}
-          
-          {activeStep === steps.length - 1 ? (
-            <NaviWrap className="single">
-              <PrimaryButton onClick={goToOnboarding}>가입 완료</PrimaryButton>
-            </NaviWrap>
+        <NaviWrap className="single">
+          {validated[activeStep] ? (
+            <PrimaryButton onClick={e => stepNext(activeStep)}>다음으로</PrimaryButton>
           ) : (
-            <NaviWrap className="single">
-              {validated[activeStep] ? (
-                <PrimaryButton onClick={e => stepNext(activeStep)}>다음으로</PrimaryButton>
-              ) : (
-                <PrimaryLightButton disabled>다음으로</PrimaryLightButton>
-              )}
-            </NaviWrap>
+            <PrimaryLightButton disabled>다음으로</PrimaryLightButton>
           )}
-        </>
+        </NaviWrap>
       )}
     </>
   )

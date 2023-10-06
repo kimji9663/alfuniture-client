@@ -9,9 +9,8 @@ const title = ['My page'];
 const Dashboard = () => {
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
-        {/* 타이틀 */}
-        <LeftTitle title={title}/>
+      <LeftTitle title={title}/>
+      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
         <Box sx={{ 
         }}>
           <Button fullWidth

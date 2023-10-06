@@ -54,8 +54,7 @@ const WriteQna = () => {
   return (
     <>
       <CenterTitle title={['문의하기']} />
-
-      <Box sx={{ height: 'calc(100% - 57px)', overflow: 'auto' }}>
+      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
         <Box sx={{ p: 2 }}>
           <ViewTitle>문의상품</ViewTitle>
           <ProductInfomation sx={{ mt: 2 }}>
