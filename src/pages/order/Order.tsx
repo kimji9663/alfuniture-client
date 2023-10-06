@@ -293,7 +293,9 @@ const Order = () => {
               </Box>
             </Box>
             <Box sx={{ flex: '1 1 auto' }}>
-              <Typography sx={{ fontSize: '1rem', fontWeight: 'bold' }}>ALFDN - 카멜프든</Typography>
+              <Typography sx={{ fontSize: '1rem', fontWeight: 'bold' }}>
+                ALFDN - 카멜프든
+              </Typography>
               <Box
                 sx={{
                   mt: 2,
@@ -339,7 +341,9 @@ const Order = () => {
         <PrimaryButton 
           disabled={handleActiveOrder}
           onClick={handleCompleteOrder}
-        >1,435,050원 결제하기</PrimaryButton>
+        >
+          1,435,050원 결제하기
+        </PrimaryButton>
       </NaviWrap>
 
       <BasicModal
