@@ -2,11 +2,16 @@
 import React, { useState } from "react"
 import LogoTitle from '../../components/title/LogoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
+
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
 import { styled } from "@mui/material/styles"
-import StyleList from './StyleList';
+import StyleTabPanel from './StyleTabPanel';
+import RankingTabPanel from './RankingTabPanel';
+import PostMagazineTabPanel from './PostMagazineTabPanel';
 import { styleBanner01, styleBanner02 } from "../../assets/images/banner"
+
+
+
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -38,7 +43,7 @@ function profileProps(index: number) {
   }
 }
 
-function LikeTabPanel(props: TabPanelProps) {
+function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props
 
   return (
@@ -72,37 +77,8 @@ type ISwiperProps = {
   onSlideChange?: (swiper: any) => void
 }
 
-export const section2Data = [
-  {
-    id: 0,
-    imgsrc: sofa04,
-    like: true,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'Basic Sofa',
-    price: 969000,
-  },
-  {
-    id: 1,
-    imgsrc: sofa05,
-    like: false,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'soft_sofa',
-    price: 230000,
-  },
-]
-
-
-
 const Style = () => {
-
-  
   const [tabValue, setTabValue] = useState(0)
-  const [isLike, setIsLike] = useState(false)
-
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
@@ -133,17 +109,7 @@ const Style = () => {
       return nextPosition
     });
   };
-  const brandRankingSettings:ISwiperProps = {
-    loop: false,
-    scrollbar: { draggable: true, el: null },
-    slidesPerView: 1.2,
-  }
-
-  const photoBannerSettings:ISwiperProps = {
-    loop: false,
-    scrollbar: { draggable: true, el: null },
-    slidesPerView: 1,
-  }
+  
   return (
     <Box sx={{height: 'calc(100vh - 74px)'}}>
       <LogoTitle/>
@@ -198,18 +164,17 @@ const Style = () => {
             </Tabs>
           </Box>
 
-          <LikeTabPanel value={tabValue} index={0}>
-            {/* <DetailViewPanel/> */}
-            <StyleList/>
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={0}>
+            <StyleTabPanel/>
+          </TabPanel>
 
-          <LikeTabPanel value={tabValue} index={1}>
-            {/* <BrandShopPanel/> */}
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={1}>
+            <RankingTabPanel/>
+          </TabPanel>
 
-          <LikeTabPanel value={tabValue} index={2}>
-            {/* <BrandShopPanel/> */}
-          </LikeTabPanel>
+          <TabPanel value={tabValue} index={2}>
+            <PostMagazineTabPanel/>
+          </TabPanel>
       
       <NavigationBar/>
     </Box>

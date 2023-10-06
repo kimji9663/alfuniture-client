@@ -75,7 +75,7 @@ const StyleTypes = [
 const evenIndexStyles = StyleTypes.filter((_, index) => index % 2 === 0);
 const oddIndexStyles = StyleTypes.filter((_, index) => index % 2 !== 0);
 
-const StyleList = () => {
+const StyleTabPanel = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
 
   const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
@@ -218,4 +218,4 @@ const StyleList = () => {
   )
 }
 
-export default StyleList
+export default StyleTabPanel

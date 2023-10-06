@@ -236,8 +236,11 @@ const Home = () => {
       </Box>
       
       {/* 세번째 섹션 */}
-      <HorizontalRanking data={section3Data} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
-      
+      <Box sx={{mt:10}}>
+        <Link to="/style/ranking"style={{ textDecoration: 'none', color: 'inherit' }}>
+          <HorizontalRanking data={section3Data} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
+        </Link>
+      </Box>
       {/* 네번째 섹션 */}
       <Box sx={{ mt: 10, mb: 5 }}>
         {/* 타이틀 */}
