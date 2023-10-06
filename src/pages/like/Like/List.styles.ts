@@ -1,6 +1,6 @@
 import { Box, ListItemButton } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { FlexSpaceBetweenBox } from "../../components/Box"
+import { FlexSpaceBetweenBox } from "../../../components/Box"
 
 export const FilterContainer = styled(Box)(() => ({
   display: 'block',

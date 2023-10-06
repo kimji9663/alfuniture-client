@@ -29,6 +29,11 @@ import { ReactComponent as IconX } from './icon_x.svg'
 import { ReactComponent as IconPlus } from './icon_plus.svg'
 import { ReactComponent as IconRadioOn } from './icon_radio_on.svg'
 import { ReactComponent as IconRadioOff } from './icon_radio_off.svg'
+import { ReactComponent as IconMyOrder } from './icon_my_order.svg'
+import { ReactComponent as IconMyReview } from './icon_my_review.svg'
+import { ReactComponent as IconMyCoupon } from './icon_my_coupon.svg'
+import { ReactComponent as IconMyPoint } from './icon_my_point.svg'
+
 
 
 // Image
@@ -38,6 +43,7 @@ import icon_kakao from "./icon_sns_kakao.svg"
 import icon_naver from "./icon_sns_naver.svg"
 import icon_facebook from "./icon_sns_facebook.svg"
 import icon_apple from "./icon_sns_apple.svg"
+import img_Aclass from "./img_a_class.png"
 
 export {
   // Component
@@ -67,6 +73,10 @@ export {
   IconPlus,
   IconRadioOn,
   IconRadioOff,
+  IconMyOrder,
+  IconMyReview,
+  IconMyCoupon,
+  IconMyPoint,
 
   // Image
   logo,
@@ -78,4 +88,5 @@ export {
   icon_cart,
   icon_notice,
   icon_back,
+  img_Aclass,
 }

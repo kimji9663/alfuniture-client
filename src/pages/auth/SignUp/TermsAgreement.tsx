@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Box, Typography, FormControl, FormControlLabel, Divider, Checkbox, CheckboxProps } from "@mui/material"
+import { Box, Typography, FormControl, FormControlLabel, Divider } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { Check } from "@mui/icons-material"
+import CheckboxIcon from "../../../components/CheckBoxIcon"
 
 export const AgreeCheckbox = styled(FormControlLabel)(() => ({
   '& > span': {
@@ -39,19 +39,6 @@ const agreeItems = [
     label: '광고성 정보 수신 및 마케팅 활용 동의'
   },
 ]
-
-function CheckboxIcon(props: CheckboxProps) {
-  return (
-    <Checkbox
-      disableRipple
-      checkedIcon={<Check sx={{ color: '#000' }} />}
-      icon={<Check sx={{ color: '#BDBDBD' }} />}
-      inputProps={{ 'id': props.id }}
-      checked={props.checked}
-      onChange={props.onChange}
-    />
-  )
-}
 
 const TermsAgreement = ({validated, changeValidated}:IvalidatedProps) => {
   const [checkedList, setCheckedList] = useState<string[]>([])

@@ -1,7 +1,7 @@
 import React from "react"
 import { Typography, Avatar, List, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { HalfArrow } from "../../assets/images"
+import { HalfArrow } from "../../../assets/images"
 
 const AvatarList = styled(List)(() => ({
   '& > .MuiButtonBase-root': {

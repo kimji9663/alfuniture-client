@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Box, Tabs, Tab } from "@mui/material"
-import NavigationBar from "../../components/NavigationBar"
+import NavigationBar from "../../../components/NavigationBar"
 import ProductList from "./ProductList"
 import BrandList from "./BrandList"
-import TitleOneLine from "../../components/title/TitleOneLine"
+import TitleOneLine from "../../../components/title/TitleOneLine"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -49,9 +49,8 @@ const Like = () => {
 
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
-        {/* 타이틀 */}
-        <TitleOneLine title={title}/>
+      <TitleOneLine title={title}/>
+      <Box sx={{ height: 'calc(100vh - 138px)', overflow: 'auto' }}>
         <Box sx={{ 
           borderBottom: 1, 
           borderColor: 'divider',
