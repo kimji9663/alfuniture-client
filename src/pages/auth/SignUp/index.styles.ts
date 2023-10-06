@@ -25,7 +25,6 @@ export const VerificationRequestWrap = styled(FormControl)(() => ({
   },
   '& .MuiInputBase-root': {
     width: '100%',
-    height: '100%',
   },
   '& .MuiInputBase-root > input': {
     fontSize: '.875rem',

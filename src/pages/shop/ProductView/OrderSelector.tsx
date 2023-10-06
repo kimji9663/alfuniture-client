@@ -8,16 +8,22 @@ import { IconX } from "../../../assets/images"
 interface ToggleProps {
   open: boolean 
   toggleDrawer: (val:boolean) => void
+  complete: boolean[]
+  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 interface OptionTagProps {
   selectedColor: ColorOptions[] | null
   setSelectedColor: React.Dispatch<React.SetStateAction<ColorOptions[]>>
+  complete: boolean[]
+  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 interface OptionSelectProps {
   selectedOption: OptionsProps | null
   setSelectedOption: React.Dispatch<React.SetStateAction<OptionsProps>>
+  complete: boolean[]
+  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 interface OptionsProps {
@@ -65,21 +71,33 @@ const colorScheme = [
 ]
 
 // 태그 타입(2개 선택)
-const OptionTagType = ({selectedColor, setSelectedColor }: OptionTagProps) => {
+const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }: OptionTagProps) => {
   const [checkedColor, setCheckedColor] = useState<ColorOptions[]>([])
 
   const hadleSelectedColor = (color: string, image: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked && !checkedColor.some(el => el.name === color)){
-      setCheckedColor([...checkedColor, {name: color, img: image}])
-      selectedColor = checkedColor
-      setSelectedColor(selectedColor)
+      if (checkedColor.length < 2) {
+        selectedColor = [...checkedColor, {name: color, img: image}]
+        setCheckedColor(selectedColor)
+      } else {
+        // 컬러 2개이상 선택 시 체크 막기
+        event.target.checked = false
+      }
     } else {
-      setCheckedColor(checkedColor.filter((el) => el.name !== color))
+      selectedColor = checkedColor.filter((el) => el.name !== color)
+      setCheckedColor(selectedColor)
     }
-    if (checkedColor.length > 1){
-      setCheckedColor(checkedColor.filter((el) => el.name !== color))
-      event.target.checked = false
+
+    // 옵션 모두 선택 시 complete[0] = ture
+    if (selectedColor && selectedColor.length === 2){
+      setSelectedColor(selectedColor)
+      complete[0] = true
+      setComplete(complete)
+    } else {
+      complete[0] = false
+      setComplete(complete)
     }
+    console.log(selectedColor)
   }
 
   return (
@@ -124,7 +142,7 @@ const OptionTagType = ({selectedColor, setSelectedColor }: OptionTagProps) => {
 }
 
 // 셀렉트박스 타입
-const OptionSelectType = ({selectedOption, setSelectedOption }: OptionSelectProps) => {
+const OptionSelectType = ({selectedOption, setSelectedOption, complete, setComplete }: OptionSelectProps) => {
   const [selected, setSelected] = useState<OptionsProps>(
     { name: '컬러 선택', img: '' }
   )
@@ -148,9 +166,20 @@ const OptionSelectType = ({selectedOption, setSelectedOption }: OptionSelectProp
 
   const handleSelctOption = (name: string, img: string) => {
     setOpen(false)
-    setSelected({...selected,  name: name, img: img})
+    const selectOption = {...selected,  name: name, img: img}
+    setSelected(selectOption)
     selectedOption = selected
     setSelectedOption(selectedOption)
+
+    // 옵션 선택 시 complete[1] = ture
+    if (selectedOption !== null) {
+      complete[1] = true
+      setComplete(complete)
+    } else {
+      complete[1] = false
+      setComplete(complete)
+    }
+    console.log(selectedOption)
   }
 
   return (
@@ -182,7 +211,7 @@ const OptionSelectType = ({selectedOption, setSelectedOption }: OptionSelectProp
 }
 
 
-const OrderSelector = ({open, toggleDrawer}: ToggleProps) => {
+const OrderSelector = ({open, toggleDrawer, complete, setComplete}: ToggleProps) => {
   // ios에서 스와이프 동작 활성화
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
   const [selectedColors, setSelectedColors] = useState<ColorOptions[]>([])
@@ -193,8 +222,8 @@ const OrderSelector = ({open, toggleDrawer}: ToggleProps) => {
   }
 
   useEffect(() => {
-    console.log(selectedColors, selectedOption)
-  }, [selectedColors, selectedOption])
+    console.log(complete)
+  }, [selectedColors, selectedOption, complete])
 
   return (
     <SwipeableDrawer
@@ -223,7 +252,9 @@ const OrderSelector = ({open, toggleDrawer}: ToggleProps) => {
         <Box sx={{ mt: 2 }}>
           <OptionTagType 
             selectedColor={selectedColors} 
-            setSelectedColor={setSelectedColors} 
+            setSelectedColor={setSelectedColors}
+            complete={complete}
+            setComplete={setComplete}
           />
         </Box>
 
@@ -234,6 +265,8 @@ const OrderSelector = ({open, toggleDrawer}: ToggleProps) => {
           <OptionSelectType 
             selectedOption={selectedOption} 
             setSelectedOption={setSelectedOption}
+            complete={complete}
+            setComplete={setComplete}
           />
         </Box>
       </Box>
