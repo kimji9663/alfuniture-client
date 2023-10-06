@@ -58,7 +58,7 @@ const RankingTabPanel = () => {
           <Typography sx={{ fontSize: 22, fontWeight: "700", color:"#333333", letterSpacing: "-1px" }}>실시간 인기 브랜드</Typography>
           <Box sx={{ my: 2 , overflow: "hidden", display: "flex", alignItems:"flex-end"}}>
             <Link to="/style/brand">
-              <Box sx={{ width: 'calc(100vw - 48px)', height: 'calc(94vw - 48px)', position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
+              <Box sx={{ width: 'calc(100vw - 48px)', height: 'calc(94vw - 48px)',maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
                 <img src={onerain} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                 <Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
                   ONERAIN
@@ -69,7 +69,7 @@ const RankingTabPanel = () => {
               <img src={unknown} alt="" />
             </Box>
           </Box>
-          <Box sx={{ width: 'calc(100vw - 48px)'}}>
+          <Box sx={{ width: 'calc(100vw - 48px)', maxWidth:"calc(420px - 48px)"}}>
              {/* 가구리스트 */}
               {brandItemData.map((product: any, index) =>
                 <ListItemType2
