@@ -26,6 +26,13 @@ import rankingItem03 from "./ranking_item03.png"
 import rankingItem04 from "./ranking_item04.png"
 import rankingItem05 from "./ranking_item05.png"
 import rankingItem06 from "./ranking_item06.png"
+import jamesLee01 from "./jamesLee01.png"
+import jamesLee02 from "./jamesLee02.png"
+import jamesLee03 from "./jamesLee03.png"
+import jamesLee04 from "./jamesLee04.png"
+import onerain01 from "./onerain01.png"
+import onerain02 from "./onerain02.png"
+import onerain03 from "./onerain03.png"
 
 export {
     sofa01,
@@ -55,4 +62,11 @@ export {
     rankingItem04,
     rankingItem05,
     rankingItem06,
+    jamesLee01,
+    jamesLee02,
+    jamesLee03,
+    jamesLee04,
+    onerain01,
+    onerain02,
+    onerain03,
 }

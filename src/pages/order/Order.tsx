@@ -1,86 +1,16 @@
 import React, { useState } from "react"
-import { Box, FormControl, Input, FormHelperText, FormControlLabel, Checkbox, CheckboxProps, Divider, Button } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { PrimaryLightButton, PrimaryButton } from "../../styles/buttons.styles"
+import { Box, FormControl, Input, FormHelperText, ButtonGroup } from "@mui/material"
+import { PrimaryLightButton, SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
-import { VerificationRequestWrap } from "../auth/SignUp/index.styles"
-import { Check } from "@mui/icons-material"
+import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
+import DaumPostcodeEmbed from 'react-daum-postcode'
+import { BasicModal } from "../../styles/modal.styles"
+import OrderInfomation from "./OrderInfomation"
+import { sofa01 } from "../../assets/images/product"
+import OrderTermsAgreement from "./OrderTermsAgreement"
+import CheckboxIcon from "../../components/CheckBoxIcon"
 
-
-export const OrderTitle = styled(Box)(() => ({
-  color: '#333',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-})) 
-
-export const AccordionMenu = styled(Button)(() => ({
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'space-between',
-  paddingLeft: 0,
-  paddingRight: '24px',
-  width: '100%',
-  borderRadius: 0,
-  '& > span': {
-    color: '#999',
-    fontSize: '.875rem',
-  },
-  '& > span.total_amount': {
-    color: '#333',
-    fontSize: '1rem',
-    fontWeight: 'bold',
-  },
-  '&::before': {
-    content: '"⌵"',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    color: '#333',
-    fontSize: '20px',
-    fontWeight: 'bold',
-  },
-}))
-
-export const AgreeCheckbox = styled(FormControlLabel)(() => ({
-  '& > span': {
-    color: '#333',
-  },
-  '& .sub': {
-    color: '#999',
-  }
-}))
-
-const agreeItems = [
-  {
-    id: 'check_agree_age',
-    require: true,
-    label: '개인정보 수집/이용 동의'
-  },
-  {
-    id: 'check_terms_of_use',
-    require: true,
-    label: '개인정보 수집/이용 동의'
-  },
-  {
-    id: 'check_privacy',
-    require: true,
-    label: '결제대행 서비스 이용약관 (주)KG이니시스'
-  },
-]
-
-function CheckboxIcon(props: CheckboxProps) {
-  return (
-    <Checkbox
-      disableRipple
-      checkedIcon={<Check sx={{ color: '#000' }} />}
-      icon={<Check sx={{ color: '#BDBDBD' }} />}
-      inputProps={{ 'id': props.id }}
-      checked={props.checked}
-      onChange={props.onChange}
-    />
-  )
-}
 
 const Order = () => {
   // 입력한 모든 주소 저장
@@ -96,18 +26,15 @@ const Order = () => {
     errorActive: false,
     errorText: ''
   })
-  const [addressError, setAddressError] = useState({
-    errorActive: false,
-    errorText: ''
-  })
   const [phoneError, setPhoneError] = useState({
     errorActive: false,
     errorText: ''
   })
-  const required = agreeItems.filter((el) => el.require === true).map(el => el.id)
-  const [checkedAgreeList, setCheckedAgreeList] = useState<string[]>([])
-  const [checkedAgreeAll, setCheckedAgreeAll] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
+  const handleClose = () => {
+    setModalOpen(false)
+  }
 
   const validateError = () => {
     if (recipientError.errorText === '') {
@@ -133,26 +60,10 @@ const Order = () => {
     }
   }
   
-  const handleRequestField = (event:React.ChangeEvent<HTMLInputElement>)=> {
-    // 결제하기 클릭 시 배송지 입력 안되어있는지 체크
-    // 입력 안되었을 시 애러 표시
-
-    if (event.target.value) {
-      setAddressError({
-        errorActive: false,
-        errorText: ''
-      })
-    } else {
-      setAddressError({
-        errorActive: true,
-        errorText: '배송지를 입력해주세요.'
-      })
-    }
-  }
-  
   const handleSearchPostcode = () => {
     // 우편번호 검색 클릭 시 다음 우편번호 API 연동
     setOrderData({ ...orderData, zipcode: '', deliveryAddress: '' })
+    setModalOpen(true)
   }
   
   const handlePhoneField = (event:React.ChangeEvent<HTMLInputElement>)=> {
@@ -180,20 +91,8 @@ const Order = () => {
       }
       setPhoneError({
         errorActive: true,
-        errorText: '연락처를 입력해주세요.'
+        errorText: '휴대전화 형식이 올바르지 않습니다.'
       })
-    }
-  }
-
-  const handleCheckAgreeAll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.currentTarget.checked){
-      setCheckedAgreeList([...checkedAgreeList, ...agreeItems.map(el => el.id)])
-      if (event.currentTarget.id === 'check_agree_all'){
-        setCheckedAgreeAll(true)
-      }
-    } else {
-      setCheckedAgreeList([])
-      setCheckedAgreeAll(false)
     }
   }
   
@@ -208,51 +107,25 @@ const Order = () => {
     }
   }
 
-  const handleCheckEach = (event: React.ChangeEvent<HTMLInputElement>, id:string) => {
-    const isCurruntTargetRequire = required.includes(event.currentTarget.id)
-    const checkListLength = checkedAgreeList.filter(el => required.includes(el)).length
-    if (event.currentTarget.checked){
-      setCheckedAgreeList([...checkedAgreeList, id])
-      console.log(checkListLength, required.length)
-      if (checkedAgreeList.length === agreeItems.length - 1){
-        setCheckedAgreeAll(true)
-      }
-      if ((isCurruntTargetRequire && required.length - 1 === checkListLength)){
-        setOrderData({ ...orderData, termsAgree: true })
-      }
-    } else {
-      setCheckedAgreeList(checkedAgreeList.filter((el) => el !== id))
-      setCheckedAgreeAll(false)
-      if (isCurruntTargetRequire) {
-        setOrderData({ ...orderData, termsAgree: true })
-      }
-    }
+  const onCompletePost = (data:any) => {
+    setModalOpen(false)
+    console.log(data)
+    setOrderData({
+      ...orderData, 
+      zipcode: data.zonecode,
+      deliveryAddress: data.address
+    })
   }
-  
-  const children = (
-    <Box sx={{ py: 2, background: '#FAFAFA' }}>
-      {agreeItems.map((el, index) => (
-        <AgreeCheckbox
-          sx={index === 0 ? { mt: 2 } : null}
-          key={el.id}
-          control={
-            <CheckboxIcon 
-              id={el.id} 
-              onChange={e => handleCheckEach(e, el.id)}
-              checked={checkedAgreeList.includes(el.id)}
-            />
-          } 
-          labelPlacement="end" 
-          label={<><span className="sub">{el.require ? '[필수]' : '[선택]'}</span> {el.label}</>}
-        />
-      ))}
-    </Box>
-  )
+
+  const changeOrderData = (val:boolean) => {
+    setOrderData({...orderData, termsAgree: val})
+    //console.log(val)
+  }
 
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <NoTitle />
+      <NoTitle />
+      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
         <Box sx={{ p: 2 }}>
           <OrderTitle>배송지정보</OrderTitle>
 
@@ -265,44 +138,37 @@ const Order = () => {
               error={validateError()}
             >
               <Box 
-                  sx={{ position: 'absolute', top: '12px', fontSize: '.875rem', fontWeight: 'bold' }}
+                  sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
               >
                 수령인
               </Box>
               <Input
                 name="recipient"
                 type="text"
-                sx={{ pl: 7, '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+                sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
                 value={orderData.recipient}
               />
               <FormHelperText>{recipientError.errorText}</FormHelperText>
             </FormControl>
             
-            <VerificationRequestWrap
+            <SearchZipcodeWrap
               variant="standard"
               margin="normal"
+              sx={{height: 'auto'}}
             >
               <Box>
                 <Box 
-                  sx={{ position: 'absolute', top: '12px', fontSize: '.875rem', fontWeight: 'bold' }}
+                  sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
                 >
                   배송지
                 </Box>
                 <Input
                   name="user_id"
                   type="text"
-                  sx={{ pl: 7, '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+                  sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
                   value={orderData.zipcode}
                   readOnly
                 />
-                <FormHelperText
-                  sx={{
-                  '&.error': { color: '#d32f2f' } 
-                  }}
-                  className="error"
-                >
-                  {addressError.errorText}
-                </FormHelperText>
               </Box>
               <PrimaryButton 
                 sx={{ maxWidth: '111px' }}
@@ -310,18 +176,17 @@ const Order = () => {
               >
                 우편번호 검색
               </PrimaryButton>
-            </VerificationRequestWrap>
+            </SearchZipcodeWrap>
 
             <FormControl
               fullWidth
               variant="standard"
               margin="normal"
-              onChange={handleRequestField}
             >
               <Input
                 name="user_id"
                 type="text"
-                sx={{ pl: 7, '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+                sx={{ '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
                 value={orderData.deliveryAddress}
                 readOnly
               />
@@ -331,13 +196,12 @@ const Order = () => {
               fullWidth
               variant="standard"
               margin="normal"
-              onChange={handleRequestField}
             >
               <Input
                 name="user_id"
                 placeholder="상세주소를 입력해 주세요"
                 type="text"
-                sx={{ '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+                sx={{ '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
               />
             </FormControl>
             
@@ -349,17 +213,24 @@ const Order = () => {
               error={validateError()}
             >
               <Box 
-                  sx={{ position: 'absolute', top: '12px', fontSize: '.875rem', fontWeight: 'bold' }}
+                sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
               >
                 연락처
               </Box>
               <Input
                 name="recipient"
                 type="text"
-                sx={{ pl: 7, '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+                sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
                 value={orderData.phoneNumber}
               />
-              <FormHelperText>{phoneError.errorText}</FormHelperText>
+              <FormHelperText
+                sx={{
+                '&.error': { color: '#d32f2f' } 
+                }}
+                className="error"
+              >
+                {phoneError.errorText}
+              </FormHelperText>
             </FormControl>
 
             <AgreeCheckbox 
@@ -379,77 +250,49 @@ const Order = () => {
 
         <Box sx={{ p: 2, background: '#FAFAFA' }}>
           <OrderTitle>상품 정보</OrderTitle>
+          <Box sx={{
+            display: 'flex',
+            '& > .MuiBox-root': {
+              maxWidth: '50%',
+            }
+          }}>
+            <Box sx={{ '& > img': { width: '100%' } }}>
+              <img src={sofa01} alt="소파" />
+            </Box>
+            <Box>
+              <p>ALFDN - 카멜프든</p>
+              <p>색상 브라운</p>
+              <p>재질 인조가죽</p>
+              <p>수량 1개</p>
+              <p>상품 금액 1,594,500원</p>
+            </Box>
+          </Box>
         </Box>
 
-        <Box sx={{ p: 2 }}>
-          <AccordionMenu fullWidth>
-            <OrderTitle>사용가능 쿠폰조회</OrderTitle>
-            <span>쿠폰 선택</span>
-          </AccordionMenu>
-          <Divider />
-        </Box>
+        <OrderInfomation />
 
-        <Box sx={{ p: 2 }}>
-          <AccordionMenu fullWidth>
-            <OrderTitle>배송방법 선택</OrderTitle>
-            <span>일반배송</span>            
-          </AccordionMenu>
-          <Divider />
-        </Box>
-
-        <Box sx={{ p: 2 }}>
-          <AccordionMenu fullWidth>
-            <OrderTitle>결제방법</OrderTitle>
-            <span>신용카드</span>            
-          </AccordionMenu>
-          <Divider />
-        </Box>
-
-        <Box sx={{ p: 2 }}>
-          <AccordionMenu fullWidth>
-            <OrderTitle>결제금액</OrderTitle>
-            <span className="total_amount">1,435,050원</span>            
-          </AccordionMenu>
-          <Divider />
-        </Box>
-
-        <Box sx={{ p: 2 }}>
-          <FormControl 
-            fullWidth 
-            component="fieldset"
-            sx={{
-              '& label': {
-                margin: 0,
-              },
-              '& > label span': {
-                fontSize: '.75rem'
-              },
-              '& > label > span': {
-                fontSize: '.875rem'
-              }
-            }}
-          >
-            <AgreeCheckbox 
-              sx={{ mb: 2 }}
-              control={
-                <CheckboxIcon 
-                  id="check_agree_all"
-                  onChange={handleCheckAgreeAll}
-                  checked={checkedAgreeAll}
-                />
-              }
-              labelPlacement="end" 
-              label="주문 내용 모두 동의"
-            />
-            <Divider sx={{ borderColor: '#333' }} />
-            {children}
-          </FormControl>
-        </Box>
+        <OrderTermsAgreement 
+          termsAgree={orderData.termsAgree}
+          changeOrderData={changeOrderData}
+        />
       </Box>
 
       <NaviWrap className="single">
         <PrimaryLightButton>1,435,050원 결제하기</PrimaryLightButton>
       </NaviWrap>
+
+      <BasicModal
+        open={modalOpen}
+      >
+        <Box>
+          <DaumPostcodeEmbed
+            onComplete={onCompletePost}
+          />
+          <ButtonGroup fullWidth>
+            <SecondaryButton onClick={handleClose}>닫기</SecondaryButton>
+          </ButtonGroup>
+        </Box>
+      </BasicModal>
     </>
   )
 }

@@ -27,7 +27,7 @@ const NavigationBar = () => {
           <IconHome />
           HOME
         </Link>
-        <Link to="/" className={navigationActive("/style")}>
+        <Link to="/style" className={navigationActive("/style")}>
           <IconStyle />
           STYLE
         </Link>
@@ -39,7 +39,7 @@ const NavigationBar = () => {
           <IconLike />
           LIKE
         </Link>
-        <Link to="/" className={navigationActive("/my")}>
+        <Link to="/mypage" className={navigationActive("/my")}>
           <IconMy />
           MY
         </Link>
