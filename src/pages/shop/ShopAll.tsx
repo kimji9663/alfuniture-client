@@ -444,8 +444,8 @@ const ShopAll = () => {
 
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <TitleOneLine title={title}/>
+      <TitleOneLine title={title}/>
+      <Box sx={{ height: 'calc(100vh - 138px)', overflow: 'auto' }}>
         <Box sx={{ 
           borderBottom: 1, 
           borderColor: 'divider',

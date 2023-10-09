@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { Box, FormControl, Input, FormHelperText, ButtonGroup } from "@mui/material"
-import { PrimaryLightButton, SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
+import { useNavigate } from "react-router-dom"
+import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography } from "@mui/material"
+import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
 import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
@@ -13,6 +14,7 @@ import CheckboxIcon from "../../components/CheckBoxIcon"
 
 
 const Order = () => {
+  const navigate = useNavigate()
   // 입력한 모든 주소 저장
   const [orderData, setOrderData] = useState({
     recipient: '',
@@ -36,6 +38,22 @@ const Order = () => {
     setModalOpen(false)
   }
 
+  const handleCompleteOrder = () => {
+    navigate('/')
+  }
+
+  const handleActiveOrder = 
+    orderData.recipient !== '' && 
+    orderData.zipcode !== '' &&
+    orderData.deliveryAddress !== '' &&
+    orderData.phoneNumber !== '' &&
+    orderData.termsAgree === true
+  ? (
+    false
+  ) : (
+    true
+  )
+
   const validateError = () => {
     if (recipientError.errorText === '') {
       return false
@@ -44,7 +62,7 @@ const Order = () => {
     }
   }
   
-  const handleIdField = (event:React.ChangeEvent<HTMLInputElement>)=> {
+  const handleNameField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     setOrderData({ ...orderData, recipient: event.target.value })
 
     if (event.target.value) {
@@ -134,7 +152,7 @@ const Order = () => {
               fullWidth
               variant="standard"
               margin="normal"
-              onChange={handleIdField}
+              onChange={handleNameField}
               error={validateError()}
             >
               <Box 
@@ -251,20 +269,62 @@ const Order = () => {
         <Box sx={{ p: 2, background: '#FAFAFA' }}>
           <OrderTitle>상품 정보</OrderTitle>
           <Box sx={{
+            mt: 3,
             display: 'flex',
-            '& > .MuiBox-root': {
-              maxWidth: '50%',
-            }
+            alignItems: 'center'
           }}>
-            <Box sx={{ '& > img': { width: '100%' } }}>
-              <img src={sofa01} alt="소파" />
+            <Box sx={{ mr: 2, position: 'relative', width: '35%', paddingTop: '35%' }}>
+              <Box 
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                  height: '100%',
+                  overflow: 'hidden',
+                  background: '#000',
+                  '& > img': { minWidth: '100%', minHeight: '100%' },
+                }}
+              >
+                <img src={sofa01} alt="소파" />
+              </Box>
             </Box>
-            <Box>
-              <p>ALFDN - 카멜프든</p>
-              <p>색상 브라운</p>
-              <p>재질 인조가죽</p>
-              <p>수량 1개</p>
-              <p>상품 금액 1,594,500원</p>
+            <Box sx={{ flex: '1 1 auto' }}>
+              <Typography sx={{ fontSize: '1rem', fontWeight: 'bold' }}>
+                ALFDN - 카멜프든
+              </Typography>
+              <Box
+                sx={{
+                  mt: 2,
+                  '& > p': {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    color: '#999',
+                    fontSize: '.75rem',
+                  },
+                  '& .title, & .total': {
+                    fontWeight: 'bold',
+                    color: '#333',
+                  },
+                }}
+              >
+                <p>
+                  <span className="title">색상</span><span>브라운</span>
+                </p>
+                <p>
+                  <span className="title">재질</span><span>인조가죽</span>
+                </p>
+                <p>
+                  <span className="title">수량</span><span>1개</span>
+                </p>
+                <p>
+                  <span className="title">상품 금액</span>
+                  <span className="total">1,594,500원</span>
+                </p>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -278,7 +338,12 @@ const Order = () => {
       </Box>
 
       <NaviWrap className="single">
-        <PrimaryLightButton>1,435,050원 결제하기</PrimaryLightButton>
+        <PrimaryButton 
+          disabled={handleActiveOrder}
+          onClick={handleCompleteOrder}
+        >
+          1,435,050원 결제하기
+        </PrimaryButton>
       </NaviWrap>
 
       <BasicModal

@@ -36,34 +36,31 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
       setCheckedAgreeList([...checkedAgreeList, ...agreeItems.map(el => el.id)])
       if (event.currentTarget.id === 'check_agree_all'){
         setCheckedAgreeAll(true)
+        termsAgree = true
       }
     } else {
       setCheckedAgreeList([])
       setCheckedAgreeAll(false)
+      termsAgree = false
     }
+    changeOrderData(termsAgree)
   }
 
   const handleCheckEach = (event: React.ChangeEvent<HTMLInputElement>, id:string) => {
-    const isCurruntTargetRequire = required.includes(event.currentTarget.id)
     const checkListLength = checkedAgreeList.filter(el => required.includes(el)).length
     if (event.currentTarget.checked){
       setCheckedAgreeList([...checkedAgreeList, id])
       console.log(checkListLength, required.length)
       if (checkedAgreeList.length === agreeItems.length - 1){
         setCheckedAgreeAll(true)
-      }
-      if ((isCurruntTargetRequire && required.length - 1 === checkListLength)){
         termsAgree = true
-        changeOrderData(termsAgree)
       }
     } else {
       setCheckedAgreeList(checkedAgreeList.filter((el) => el !== id))
       setCheckedAgreeAll(false)
-      if (isCurruntTargetRequire) {
-        termsAgree = true
-        changeOrderData(termsAgree)
-      }
+      termsAgree = false
     }
+    changeOrderData(termsAgree)
   }
   
   const children = (
@@ -96,7 +93,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
             '& label': {
               margin: 0,
             },
-            '& > label span': {
+            '& label span': {
               fontSize: '.75rem'
             },
             '& > label > span': {
