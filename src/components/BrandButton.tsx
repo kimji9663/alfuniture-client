@@ -1,8 +1,5 @@
-import React, { useState } from "react"
-import { Tabs, Tab, Box, IconButton, Divider, Typography, Button } from "@mui/material"
-import { ArrowRight, IconHeartSmall, IconLikeOff, IconLikeOn } from "../assets/images"
-
-import { alfdn } from "../assets/images/brand"
+import { Box, Typography, Button } from "@mui/material"
+import { ArrowRight, IconHeartSmall } from "../assets/images"
 
 interface BrandButtonProps {
   brandData: {

@@ -1,6 +1,5 @@
-import React, { useState } from "react"
 import { jamesLee01, jamesLee02, jamesLee03, jamesLee04 } from "../../assets/images/product"
-import { jamesLeeText } from "../../assets/images/brand"
+import { jameslee } from "../../assets/images/logo"
 import List from "../like/Like/List"
 import BrandButton from "../../components/BrandButton"
 import { Box } from "@mui/material"
@@ -8,7 +7,7 @@ import { Box } from "@mui/material"
 const brandData = {
   name: "James Lee",
   description: "제임스리",
-  image: jamesLeeText, 
+  image: jameslee, 
   isLiked: true, 
 };
 
