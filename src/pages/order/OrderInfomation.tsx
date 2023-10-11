@@ -1,8 +1,27 @@
 import React, { useState } from "react"
-import { Box, Divider, Accordion, AccordionDetails, AccordionSummary, Typography, FormControl, Input } from "@mui/material"
+import { Box, Avatar, List, ListItemAvatar, ListItemText, ListItemButton, Accordion, AccordionDetails, AccordionSummary, FormControl, Input } from "@mui/material"
+import SelectBox from "../../components/SelectBox"
 import { styled } from "@mui/material/styles"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { PrimaryButton } from "../../styles/buttons.styles"
+import { aerobiey, jameslee, onerain, clods } from "../../assets/images/logo"
+
+interface OptionsProps {
+  id?: string | undefined
+  name?: string | undefined
+  img?: string | undefined
+}
+
+const AvatarList = styled(List)(() => ({
+  padding: 0,
+  '& > .MuiButtonBase-root.Mui-selected': {
+    backgroundColor: 'transparent',
+  },
+  '& .MuiTypography-root': {
+    color: '#666',
+    fontSize: '.875rem',
+  },
+}))
 
 export const AccordionMenu = styled(Accordion)(() => ({
   margin: '16px 16px 0',
@@ -82,12 +101,55 @@ const CardSelectWrap = styled(FormControl)(() => ({
   },
 }))
 
+const couponItems = [
+  {
+    id: 'rerobiey',
+    brand: 'Rerobiey',
+    title: '브랜드 10% 쿠폰',
+    logo: aerobiey
+  },
+  {
+    id: 'onerain',
+    brand: 'ONERAIN',
+    title: '브랜드 10% 쿠폰',
+    logo: onerain
+  },
+  {
+    id: 'james_lee',
+    brand: 'James Lee',
+    title: '브랜드 10% 쿠폰',
+    logo: jameslee
+  },
+  {
+    id: 'clods',
+    brand: 'CLODS',
+    title: '브랜드 10% 쿠폰',
+    logo: clods,
+  }
+]
+
 const OrderInfomation = () => {
   const [expanded, setExpanded] = useState<string | false>(false)
+  const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
+    { name: '쿠폰 선택', img: '' }
+  )
+  const [open, setOpen] = useState(false)
   const [selectCard, setSelectCard] = useState()
+  const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
+  }
+
+  const handleListItemClick = (
+    brand: string,
+    logo: string,
+    title: string,
+  ) => {
+    setOpen(false)
+    const option = {...selectCoupon,  name: brand + '\u00A0' + title, img: logo}
+    setSelectCoupon(option)
+    setSelectedOption(selectCoupon)
   }
 
   return (
@@ -103,15 +165,30 @@ const OrderInfomation = () => {
           <p>쿠폰 선택</p>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component="p">
-            <span>보유중인 쿠폰</span>
-            <span>3개</span>
-          </Typography>
-          <select>
-            <option>Aerobiey 브랜드 10% 쿠폰</option>
-            <option>ONERAIN 브랜드 10% 쿠폰</option>
-            <option>James Lee 브랜드 10% 쿠폰</option>
-          </select>
+          <SelectBox
+            selected={selectCoupon}
+            setSelected={setSelectCoupon}
+            open={open}
+            setOpen={setOpen}
+          >
+            <AvatarList>
+              {couponItems.map((el, index) => (
+                <ListItemButton
+                  component="li"
+                  key={el.id}
+                  onClick={() => handleListItemClick(el.brand, el.logo, el.title)}
+                >
+                  <ListItemAvatar>
+                    <Avatar alt={el.brand} src={el.logo} />
+                  </ListItemAvatar>
+                  <Box>
+                    <ListItemText primary={el.brand} />
+                    <ListItemText primary={el.title} />
+                  </Box>
+                </ListItemButton>
+              ))}
+            </AvatarList>
+          </SelectBox>
         </AccordionDetails>
       </AccordionMenu>
 
@@ -171,8 +248,8 @@ const OrderInfomation = () => {
       </AccordionMenu>
 
       <AccordionMenu
-        expanded={expanded === 'panel3'} 
-        onChange={handleChange('panel3')}
+        expanded={expanded === 'panel4'} 
+        onChange={handleChange('panel4')}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
