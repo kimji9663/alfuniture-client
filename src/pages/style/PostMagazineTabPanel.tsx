@@ -29,7 +29,6 @@ export const testData = [
     id: 5,
     imgsrc: brandCollectionVideo01,
   },
-  
 ]
 
 type ISwiperProps = { 
@@ -116,14 +115,14 @@ const PostMagazineTabPanel = () => {
       <Box sx={{mt:"60px", pl:2, mb:2, overflow:"hidden"}}>
         <Typography sx={{ fontSize: 22, fontWeight: "600", color:"#333333", lineHeight:"28px"}}>Brand Collection Video</Typography>
         <Swiper {...brandCollectionSettings}  style={{maxWidth: "420px",width: "100vw"}}>
-            {testData.map((item, index) => (
-              <SwiperSlide key={index} >
-                <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
-                  <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {testData.map((item, index) => (
+            <SwiperSlide key={index} >
+              <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
+                <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
+              </Box>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
     </>
   )
