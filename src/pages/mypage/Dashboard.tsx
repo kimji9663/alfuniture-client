@@ -1,12 +1,18 @@
-import React, { useState } from "react"
-import { Box, Tabs, Tab, Button, Divider, List, ListItemButton } from "@mui/material"
+import { Box, Button, Divider, List, ListItemButton } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import LeftTitle from "../../components/title/LeftTitle"
 import { HalfArrow, IconMyCoupon, IconMyOrder, IconMyPoint, IconMyReview, img_Aclass } from "../../assets/images"
+import { useNavigate } from "react-router-dom"
 
-const title = ['My page'];
+const title = ['My page']
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+  
+  const goToMyInfo = () => {
+    navigate("/mypage/my_info")
+  }
+
   return (
     <>
       <LeftTitle title={title}/>
@@ -27,6 +33,7 @@ const Dashboard = () => {
               } 
             }}
             endIcon={<HalfArrow />}
+            onClick={goToMyInfo}
           >
             홍길동님 안녕하세요!
           </Button>

@@ -35,6 +35,7 @@ import { ReactComponent as IconMyCoupon } from './icon_my_coupon.svg'
 import { ReactComponent as IconMyPoint } from './icon_my_point.svg'
 import { ReactComponent as IconDeliveryQuick } from './icon_delivery_quick.svg'
 import { ReactComponent as IconDeliveryNormal } from './icon_delivery_normal.svg'
+import { ReactComponent as IconEdit } from './icon_edit.svg'
 
 
 
@@ -81,6 +82,7 @@ export {
   IconMyPoint,
   IconDeliveryQuick,
   IconDeliveryNormal,
+  IconEdit,
 
   // Image
   logo,
