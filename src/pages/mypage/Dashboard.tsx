@@ -13,6 +13,10 @@ const Dashboard = () => {
     navigate("/mypage/my_info")
   }
 
+  const goToMyOrder = () => {
+    navigate("/mypage/my_order")
+  }
+
   return (
     <>
       <LeftTitle title={title}/>
@@ -83,7 +87,7 @@ const Dashboard = () => {
                 }
               }}
             >
-              <Button>
+              <Button onClick={goToMyOrder}>
                 <div><IconMyOrder /></div>
                 <p>주문/배송</p>
               </Button>
