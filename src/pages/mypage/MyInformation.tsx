@@ -5,7 +5,29 @@ import CenterTitle from "../../components/title/CenterTitle"
 import { IconEdit, HalfArrow } from "../../assets/images"
 import { styled } from "@mui/material/styles" 
 
-export const MoreInfomation = styled(Box)(() => ({
+const IdSection = styled(Box)(() => ({
+  paddingTop: '32px', 
+  paddingBottom: '40px', 
+  textAlign: 'center',
+
+  '& > .nickname': {
+    display: 'inline-block', 
+    position: 'relative', 
+    fontSize: '1.5rem',
+  },
+  '& > .nickname > svg': {
+    position: 'absolute',
+    top: '9px',
+    right: '-26px',
+  },
+  '& > .email': {
+    marginTop: '4px', 
+    textAlign: 'center', 
+    fontSize: '.875rem',
+  },
+})) 
+
+const InfomationList = styled(Box)(() => ({
   '& > button': {
     justifyContent: 'space-between',
     padding: '12px 16px',
@@ -13,12 +35,12 @@ export const MoreInfomation = styled(Box)(() => ({
     color: '#333',
     fontSize: '.875rem',
   },
-  '& > .MuiDivider-root': {
-    margin: '6px 0'
-  },
   '& > button.gray': {
     color: '#BDBDBD',
-  }
+  },
+  '& > .MuiDivider-root': {
+    margin: '6px 0'
+  }, 
 }))
 
 const centerTitle = ['내 정보']
@@ -28,23 +50,17 @@ const MyInformation = () => {
     <>
       <CenterTitle title={centerTitle}/>
       <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
-        <Box sx={{ pt: 4, pb: 5, textAlign: 'center' }}>
-          <Box component="p" sx={{ display: 'inline-block', position: 'relative', fontSize: '1.5rem' }}>
+        <IdSection>
+          <Box component="p" className="nickname">
             Hongroad
-            <IconEdit 
-              style={{
-                position: 'absolute',
-                top: '9px',
-                right: '-26px',
-              }}
-            />
+            <IconEdit />
           </Box>
-          <Box component="p" sx={{ mt: 1/2, textAlign: 'center', fontSize: '.875rem' }}>
+          <Box component="p" className="email">
             hongroad@gmail.com
           </Box>
-        </Box>
+        </IdSection>
 
-        <MoreInfomation>
+        <InfomationList>
           <Divider />
           <Button fullWidth>
             회원정보 수정
@@ -77,7 +93,7 @@ const MyInformation = () => {
             회원탈퇴
             <HalfArrow />
           </Button>
-        </MoreInfomation>
+        </InfomationList>
       </Box>
       <NavigationBar />
     </>
