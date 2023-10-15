@@ -15,7 +15,7 @@ const PostMagazineHeader: React.FC<PostMagazineHeaderProps> = (props) => {
   const { title, subtitle, backgroundImg, ctaTitle, ctaSubtitle } = props;
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", height: 'calc(100vh - 74px)', overflow: 'hidden' }}>
       <Box sx={{ position: "absolute", top: 0, width: "100%" }}>
         <NoTitle />
       </Box>
