@@ -33,6 +33,7 @@ import { ReactComponent as IconMyOrder } from './icon_my_order.svg'
 import { ReactComponent as IconMyReview } from './icon_my_review.svg'
 import { ReactComponent as IconMyCoupon } from './icon_my_coupon.svg'
 import { ReactComponent as IconMyPoint } from './icon_my_point.svg'
+import { ReactComponent as IconDownWhite } from './icon_down_white.svg'
 
 
 
@@ -77,6 +78,7 @@ export {
   IconMyReview,
   IconMyCoupon,
   IconMyPoint,
+  IconDownWhite,
 
   // Image
   logo,

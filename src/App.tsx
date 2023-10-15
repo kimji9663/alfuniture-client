@@ -22,6 +22,9 @@ import Dashboard from "./pages/mypage/Dashboard"
 import Style from "./pages/style/Style"
 import RankingList from "./pages/style/RankingList"
 import Brand from "./pages/style/Brand"
+import StylePostMagazine from "./pages/postmagazine/StylePostMagazine"
+import EditorPick from "./pages/postmagazine/EditorPick"
+import MonthlyPost from "./pages/postmagazine/MonthlyPost"
 
 const router = createBrowserRouter([
   {
@@ -144,6 +147,18 @@ const router = createBrowserRouter([
       {
         path: "/style/brand",
         element: <Brand />,
+      },
+      {
+        path: "/postMagazine/aerobiey",
+        element: <StylePostMagazine />,
+      },
+      {
+        path: "/editorPick/henredn",
+        element: <EditorPick />,
+      },
+      {
+        path: "/monthlyPost/umasqu",
+        element: <MonthlyPost />,
       },
     ],
   },
