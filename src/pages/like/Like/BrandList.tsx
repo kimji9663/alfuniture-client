@@ -2,6 +2,7 @@ import React from "react"
 import { Typography, Avatar, List, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { HalfArrow } from "../../../assets/images"
+import { aerobiey, alfdn, clods, jameslee } from "../../../assets/images/logo"
 
 const AvatarList = styled(List)(() => ({
   '& > .MuiButtonBase-root': {
@@ -20,18 +21,22 @@ const itemList = [
   {
     id: 'james_lee',
     name: 'James Lee',
+    logo: jameslee
   },
   {
     id: 'alfdn',
     name: 'ALFDN',
+    logo: alfdn
   },
   {
     id: 'rerobiey',
     name: 'Rerobiey',
+    logo: aerobiey
   },
   {
     id: 'clods',
     name: 'CLODS',
+    logo: clods
   }
 ]
 
@@ -54,7 +59,7 @@ const BrandList = () => {
           onClick={(event) => handleListItemClick(event, index)}
           >
           <ListItemAvatar>
-              <Avatar alt={el.name} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={el.name} src={el.logo} />
           </ListItemAvatar>
           <ListItemText primary={el.name} />
           <HalfArrow />
