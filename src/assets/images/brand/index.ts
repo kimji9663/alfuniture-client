@@ -1,7 +1,5 @@
 // Image
-import alfdn from "./alfdn.png"
 import jamesLee from "./jamesLee.png"
-import jamesLeeText from "./jamesLeeText.png"
 import onerain from "./onerain.png"
 import unknown from "./unknown.png"
 import onerainDetail from "./onerainDetail.png"
@@ -20,23 +18,21 @@ import umasqu02 from "./umasqu02.png"
 import umasqu03 from "./umasqu03.png"
 
 export {
-    alfdn,
-    jamesLee,
-    jamesLeeText,
-    onerain,
-    unknown,
-    onerainDetail,
-    aerobiey01,
-    aerobiey02,
-    aerobiey03,
-    aerobiey04,
-    aerobiey05,
-    designer,
-    brandStory,
-    henredn01,
-    henredn02,
-    henredn03,
-    umasqu01,
-    umasqu02,
-    umasqu03,
+  jamesLee,
+  onerain,
+  unknown,
+  onerainDetail,
+  aerobiey01,
+  designer,
+  brandStory,
+  aerobiey02,
+  aerobiey03,
+  aerobiey04,
+  aerobiey05,
+  henredn01,
+  henredn02,
+  henredn03,
+  umasqu01,
+  umasqu02,
+  umasqu03,
 }
