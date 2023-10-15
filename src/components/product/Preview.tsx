@@ -61,12 +61,14 @@ const PreviewItem: React.FC<PreviewProps> = ({
             {isLike ? <IconLikeOn /> : <IconLikeOff />}
           </IconButton>
         </FlexSpaceBetweenCenterBox>
-        <Gray7Typography>
-          {modelName}
-        </Gray7Typography>
-        <Gray7Typography>
-          {productName}
-        </Gray7Typography>
+        <Box sx={{mb:1}}>
+          <Gray7Typography>
+            {modelName}
+          </Gray7Typography>
+          <Gray7Typography>
+            {productName}
+          </Gray7Typography>
+        </Box>
         <FlexSpaceBetweenCenterBox>
           <BoldGray8Typography>
             {Intl.NumberFormat().format(price)} 원
