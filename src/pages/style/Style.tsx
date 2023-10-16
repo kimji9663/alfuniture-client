@@ -8,33 +8,33 @@ import { styled, withStyles } from "@mui/material/styles"
 import StyleTabPanel from './StyleTabPanel';
 import RankingTabPanel from './RankingTabPanel';
 import PostMagazineTabPanel from './PostMagazineTabPanel';
-import { styleBanner01, styleBanner02, styleBanner03 } from "../../assets/images/banner"
+import { styleBanner01, styleBanner02, styleBanner03, styleBanner04, styleBanner05 } from "../../assets/images/banner"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 export const testData = [
   {
+    img: styleBanner03,
+    newItem: true,
+    brandName: "Redon",
+    discription: "혁신적인 가구 디자인의 한획을 긋다",
+  },
+  {
+    img: styleBanner04,
+    newItem: true,
+    brandName: "Pianoa",
+    discription: "가구의 예술성과 실용성을 더했다",
+  },
+  {
+    img: styleBanner05,
+    newItem: true,
+    brandName: "Rily",
+    discription: "미니멀과 모던함의 조화를 이루다",
+  },
+  {
     img: styleBanner01,
     newItem: true,
     brandName: "One Rain",
     discription: "미니멀과 디테일의 균형적인 가구",
-  },
-  {
-    img: styleBanner03,
-    newItem: true,
-    brandName: "Umasqu",
-    discription: "혁신적인 가구 디자인의 한획을 긋다",
-  },
-  {
-    img: styleBanner01,
-    newItem: true,
-    brandName: "One Rain",
-    discription: "미니멀과 디테일의 균형적인 가구",
-  },
-  {
-    img: styleBanner03,
-    newItem: true,
-    brandName: "Umasqu",
-    discription: "혁신적인 가구 디자인의 한획을 긋다",
   },
 ]
 
@@ -100,7 +100,6 @@ function TabPanel(props: TabPanelProps) {
 }
 type ISwiperProps = { 
   loop?: boolean
-  spaceBetween?: number 
   scrollbar?: { 
     draggable: boolean 
     el: null 

@@ -24,7 +24,7 @@ import RankingList from "./pages/style/RankingList"
 import Brand from "./pages/style/Brand"
 import MyInformation from "./pages/mypage/MyInformation"
 import MyOrder from "./pages/mypage/MyOrder"
-import StylePostMagazine from "./pages/postmagazine/StylePostMagazine"
+import FurniturePick from "./pages/postmagazine/FurniturePick"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
 
@@ -159,8 +159,8 @@ const router = createBrowserRouter([
         element: <Brand />,
       },
       {
-        path: "/postMagazine/aerobiey",
-        element: <StylePostMagazine />,
+        path: "/furniturePick/aerobiey",
+        element: <FurniturePick />,
       },
       {
         path: "/editorPick/henredn",
