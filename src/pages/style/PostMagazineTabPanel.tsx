@@ -81,13 +81,19 @@ const PostMagazineTabPanel = () => {
   return (
     <>
       {/* 첫번째 섹션 */}
-      <Swiper {...furniturePickBoxSettings}>
+      <Box sx={{ mt: 10, px: 2, mb: "30px" }}>
+        <Typography sx={{ fontSize: 36, fontWeight: "700", color: "#000000", py: 1 }}>
+          Funiture pick
+        </Typography>
+        <Swiper {...furniturePickBoxSettings}>
           {furnitureDataArray.map((data, index) => (
             <SwiperSlide key={index} >
               <FurniturePickBox key={index} data={data} />
             </SwiperSlide>
           ))}
         </Swiper>
+      </Box>
+      
       
       {/* 두번째 섹션 */}
       <Link to="/editorPick/henredn">
