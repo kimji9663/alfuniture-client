@@ -15,7 +15,6 @@ import Like from "./pages/like/Like"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
 import Cart from "./pages/cart"
-import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 import Order from "./pages/order/Order"
 import Dashboard from "./pages/mypage/Dashboard"
@@ -115,10 +114,6 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-      },
-      {
-        path: "/cart2",
-        element: <Cart2 />,
       },
       {
         path: "/notification",

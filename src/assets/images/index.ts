@@ -26,6 +26,7 @@ import { ReactComponent as IconNotification } from './icon_notification.svg'
 import { ReactComponent as IconStar } from './icon_star.svg'
 import { ReactComponent as Logo } from './logo.svg'
 import { ReactComponent as IconX } from './icon_x.svg'
+import { ReactComponent as IconXblack } from './icon_x_black.svg'
 import { ReactComponent as IconPlus } from './icon_plus.svg'
 import { ReactComponent as IconRadioOn } from './icon_radio_on.svg'
 import { ReactComponent as IconRadioOff } from './icon_radio_off.svg'
@@ -74,6 +75,7 @@ export {
   IconStar,
   Logo,
   IconX,
+  IconXblack,
   IconPlus,
   IconRadioOn,
   IconRadioOff,
