@@ -24,6 +24,7 @@ import Brand from "./pages/style/Brand"
 import MyInformation from "./pages/mypage/MyInformation"
 import MyOrder from "./pages/mypage/MyOrder"
 import RecentlyProduct from "./pages/mypage/RecentlyProduct"
+import OrderDetail from "./pages/mypage/OrderDetail"
 import FurniturePick from "./pages/postmagazine/FurniturePick"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
@@ -145,6 +146,10 @@ const router = createBrowserRouter([
       {
         path: "/mypage/recently_product",
         element: <RecentlyProduct />,
+      },
+      {
+        path: "/mypage/order_detail",
+        element: <OrderDetail />,
       },
       {
         path: "/style",

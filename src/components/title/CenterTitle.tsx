@@ -16,7 +16,7 @@ const CenterTitle : FC<TitleProps> = ({title}) => {
   return (
     
     <Box sx={{display: 'flex', alignItems: 'center', height: '41px', p:"8px 0"  }}>
-      <Box sx={{ width:"33.3%"}}>
+      <Box sx={{ width:"20%"}}>
         <Box sx={{ pl: 2}} >
           <ArrowLeft onClick={goBack}/>
         </Box>
@@ -25,13 +25,13 @@ const CenterTitle : FC<TitleProps> = ({title}) => {
         variant="h6"
         sx={{
           fontWeight: "bold",
-          width:"33.3%",
+          width:"60%",
           textAlign: "center"
         }}
       >
         {title[0]}
       </Typography>
-      <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'flex-end', right: 0,width:"33.3%"}}>
+      <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'flex-end', right: 0,width:"20%"}}>
         <Box sx={{ mr: 1 }}>
           <Link to="/cart" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
             <IconCart />

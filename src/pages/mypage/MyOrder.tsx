@@ -5,6 +5,7 @@ import CenterTitle from "../../components/title/CenterTitle"
 import { chair01, chair02, chair03, sofa04 } from "../../assets/images/product"
 import { styled } from "@mui/material/styles" 
 import { OutlineButton } from "../../styles/buttons.styles"
+import { useNavigate } from "react-router-dom"
 
 const RectCheckbox = styled(FormControl)(() => ({
   '& input': {
@@ -153,6 +154,12 @@ const MyOrder = () => {
     }
   }
 
+  const navigate = useNavigate()
+  
+  const goToOrderDetail = () => {
+    navigate("/mypage/order_detail")
+  }
+
   return (
     <>
       <CenterTitle title={centerTitle}/>
@@ -216,7 +223,7 @@ const MyOrder = () => {
                     </Box>
                   </div>
                   <CardActions>
-                    <OutlineButton>
+                    <OutlineButton onClick={goToOrderDetail}>
                       주문 상세
                     </OutlineButton>
                     <OutlineButton>
