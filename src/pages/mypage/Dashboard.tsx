@@ -17,6 +17,11 @@ const Dashboard = () => {
     navigate("/mypage/my_order")
   }
 
+  const goToRecentlyProduct = () => {
+    navigate("/mypage/recently_product")
+  }
+
+
   return (
     <>
       <LeftTitle title={title}/>
@@ -130,7 +135,7 @@ const Dashboard = () => {
               component="nav"
               subheader={<Box>쇼핑</Box>}
             >
-              <ListItemButton>최근 본 상품</ListItemButton>
+              <ListItemButton onClick={goToRecentlyProduct}>최근 본 상품</ListItemButton>
             </List>
             <List
               component="nav"
