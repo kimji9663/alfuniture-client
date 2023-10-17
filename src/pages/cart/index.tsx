@@ -58,9 +58,7 @@ function CartPage() {
     Array(testData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
   );
   const [data, setData] = useState<cartData[]>([]);
-  const message = "장바구니에 담은 상품이 없습니다.";
-  const linkText = "상품 보러가기";
-  const linkTo = "/shop";
+
 
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
@@ -339,7 +337,9 @@ function CartPage() {
         //
       ) : (
         // 데이터가 없을 때 렌더링
-        <NoData  message={message} linkText={linkText} linkTo={linkTo}/>
+        <Box sx={{height:"100%", display:"flex", alignItems:"center", justifyContent:"center"}}>
+          <NoData  message={"장바구니에 담은 상품이 없습니다."} linkText={"상품 보러가기"} linkTo={"/shop"}/>
+        </Box>
       )}
       
     </>
