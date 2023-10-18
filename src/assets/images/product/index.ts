@@ -54,6 +54,7 @@ import recentlyProduct06 from "./recentlyProduct06.png"
 import recentlyProduct07 from "./recentlyProduct07.png"
 import recentlyProduct08 from "./recentlyProduct08.png"
 import recentlyProduct09 from "./recentlyProduct09.png"
+import onerain_coupon03 from "./onerain_coupon03.png"
 
 export {
     sofa01,
@@ -111,4 +112,5 @@ export {
     recentlyProduct07,
     recentlyProduct08,
     recentlyProduct09,
+    onerain_coupon03,
 }

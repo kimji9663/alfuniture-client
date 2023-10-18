@@ -20,6 +20,10 @@ const Dashboard = () => {
   const goToRecentlyProduct = () => {
     navigate("/mypage/recently_product")
   }
+  const goToMyCoupon = () => {
+    navigate("/mypage/coupon")
+  }
+  
 
 
   return (
@@ -102,7 +106,7 @@ const Dashboard = () => {
                 <p>리뷰</p>
               </Button>
               <Divider orientation="vertical" flexItem />
-              <Button>
+              <Button onClick={goToMyCoupon}>
                 <div><IconMyCoupon /></div>
                 <p>쿠폰</p>
               </Button>

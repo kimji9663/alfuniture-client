@@ -10,6 +10,7 @@ import { ReactComponent as IconLike } from './icon_like.svg'
 import { ReactComponent as IconMy } from './icon_my.svg'
 import { ReactComponent as HalfArrow } from './icon_half_arrow.svg'
 import { ReactComponent as HalfArrowRigth } from './icon_half_arrow_right.svg'
+import { ReactComponent as HalfArrowDownGray } from './icon_half_arrow_down_gray.svg'
 import { ReactComponent as ArrowRight } from './icon_arrow_right.svg'
 import { ReactComponent as ArrowLeft } from './icon_arrow_left.svg'
 import { ReactComponent as ArrowBottom } from './icon_arrow_bottom.svg'
@@ -59,6 +60,7 @@ export {
   IconMy,
   HalfArrow,
   HalfArrowRigth,
+  HalfArrowDownGray,
   ArrowRight,
   ArrowLeft,
   ArrowBottom,

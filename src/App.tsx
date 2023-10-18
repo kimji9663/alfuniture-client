@@ -25,6 +25,7 @@ import MyInformation from "./pages/mypage/MyInformation"
 import MyOrder from "./pages/mypage/MyOrder"
 import RecentlyProduct from "./pages/mypage/RecentlyProduct"
 import OrderDetail from "./pages/mypage/OrderDetail"
+import Coupon from "./pages/mypage/Coupon"
 import FurniturePick from "./pages/postmagazine/FurniturePick"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
@@ -150,6 +151,10 @@ const router = createBrowserRouter([
       {
         path: "/mypage/order_detail",
         element: <OrderDetail />,
+      },
+      {
+        path: "/mypage/coupon",
+        element: <Coupon />,
       },
       {
         path: "/style",
