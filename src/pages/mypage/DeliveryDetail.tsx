@@ -165,11 +165,11 @@ const DeliveryDetail = () => {
                 {MyDeliveryInfo[0].deliveryData.length === 1 ? (
                   <>
                     <Box sx={{position:"relative"}}>
-                      <IconCircleGray style={{position:"absolute", top:4,left:0}}/>
+                      <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.date}</Typography>
+                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
+                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.date}</Typography>
                     </Box>
                   </>
                 ) : index === 0 ? (
