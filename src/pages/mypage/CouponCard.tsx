@@ -12,11 +12,10 @@ type CouponData = {
 
 type CouponCardProps = {
   data: CouponData[];
-  hasCoupon: boolean;
   onCouponClick?: (index: number) => void;
 };
 
-const CouponCard: React.FC<CouponCardProps> = ({ data, hasCoupon, onCouponClick }) => {
+const CouponCard: React.FC<CouponCardProps> = ({ data, onCouponClick }) => {
   return (
     <Box style={{ display: "flex", flexDirection:"column" }}>
     {data.map((item, index) => (
@@ -37,7 +36,7 @@ const CouponCard: React.FC<CouponCardProps> = ({ data, hasCoupon, onCouponClick 
               </Typography>
             </Box>
           </Box>
-          {!hasCoupon && onCouponClick && (
+          {onCouponClick && (
             <Button sx={{ position: "absolute", top: 71, right: 16, zIndex: 10, py: 1, px: 2, border:"1px solid #FAFAFA", borderRadius:0 }}   onClick={() => {
               // 해당 카드의 인덱스를 전달하여 클릭 이벤트 핸들러를 호출
               onCouponClick(index);

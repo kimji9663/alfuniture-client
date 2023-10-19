@@ -221,9 +221,9 @@ const Coupon: React.FC = () => {
             {/* 쿠폰 */}
             
             {isSortedPanel1 ? (
-              <CouponCard data={sortedDataPanel1} hasCoupon={true} />
+              <CouponCard data={sortedDataPanel1}/>
             ) : (
-              <CouponCard data={dataPanel1} hasCoupon={true} />
+              <CouponCard data={dataPanel1}/>
             )}
           </Box>
         </CouponTabPanel>
@@ -250,9 +250,9 @@ const Coupon: React.FC = () => {
             
             {/* 쿠폰 */}
             {isSortedPanel2 ? (
-              <CouponCard data={sortedDataPanel2} hasCoupon={false} onCouponClick={(index) => handleCouponClick(index)} />
+              <CouponCard data={sortedDataPanel2} onCouponClick={(index) => handleCouponClick(index)} />
             ) : (
-              <CouponCard data={dataPanel2} hasCoupon={false} onCouponClick={(index) => handleCouponClick(index)} />
+              <CouponCard data={dataPanel2}onCouponClick={(index) => handleCouponClick(index)} />
             )}
           </Box>
         </CouponTabPanel>
