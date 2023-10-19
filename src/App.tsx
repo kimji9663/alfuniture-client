@@ -15,7 +15,6 @@ import Like from "./pages/like/Like"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
 import Cart from "./pages/cart"
-import Cart2 from "./pages/cartTest"
 import Notification from "./pages/notification"
 import Order from "./pages/order/Order"
 import Dashboard from "./pages/mypage/Dashboard"
@@ -24,7 +23,11 @@ import RankingList from "./pages/style/RankingList"
 import Brand from "./pages/style/Brand"
 import MyInformation from "./pages/mypage/MyInformation"
 import MyOrder from "./pages/mypage/MyOrder"
-import StylePostMagazine from "./pages/postmagazine/StylePostMagazine"
+import RecentlyProduct from "./pages/mypage/RecentlyProduct"
+import OrderDetail from "./pages/mypage/OrderDetail"
+import Coupon from "./pages/mypage/Coupon"
+import DeliveryDetail from "./pages/mypage/DeliveryDetail"
+import FurniturePick from "./pages/postmagazine/FurniturePick"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
 
@@ -117,10 +120,6 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/cart2",
-        element: <Cart2 />,
-      },
-      {
         path: "/notification",
         element: <Notification />,
       },
@@ -147,6 +146,22 @@ const router = createBrowserRouter([
         element: <MyOrder />,
       },
       {
+        path: "/mypage/recently_product",
+        element: <RecentlyProduct />,
+      },
+      {
+        path: "/mypage/order_detail",
+        element: <OrderDetail />,
+      },
+      {
+        path: "/mypage/delivery_detail",
+        element: <DeliveryDetail />,
+      },
+      {
+        path: "/mypage/coupon",
+        element: <Coupon />,
+      },
+      {
         path: "/style",
         element: <Style />,
       },
@@ -159,8 +174,8 @@ const router = createBrowserRouter([
         element: <Brand />,
       },
       {
-        path: "/postMagazine/aerobiey",
-        element: <StylePostMagazine />,
+        path: "/furniturePick/aerobiey",
+        element: <FurniturePick />,
       },
       {
         path: "/editorPick/henredn",

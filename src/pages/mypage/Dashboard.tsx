@@ -17,6 +17,15 @@ const Dashboard = () => {
     navigate("/mypage/my_order")
   }
 
+  const goToRecentlyProduct = () => {
+    navigate("/mypage/recently_product")
+  }
+  const goToMyCoupon = () => {
+    navigate("/mypage/coupon")
+  }
+  
+
+
   return (
     <>
       <LeftTitle title={title}/>
@@ -97,7 +106,7 @@ const Dashboard = () => {
                 <p>리뷰</p>
               </Button>
               <Divider orientation="vertical" flexItem />
-              <Button>
+              <Button onClick={goToMyCoupon}>
                 <div><IconMyCoupon /></div>
                 <p>쿠폰</p>
               </Button>
@@ -130,7 +139,7 @@ const Dashboard = () => {
               component="nav"
               subheader={<Box>쇼핑</Box>}
             >
-              <ListItemButton>최근 본 상품</ListItemButton>
+              <ListItemButton onClick={goToRecentlyProduct}>최근 본 상품</ListItemButton>
             </List>
             <List
               component="nav"

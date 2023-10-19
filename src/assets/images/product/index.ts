@@ -45,6 +45,17 @@ import umasqu04 from "./umasqu04.png"
 import umasqu05 from "./umasqu05.png"
 import umasqu06 from "./umasqu06.png"
 import umasqu07 from "./umasqu07.png"
+import recentlyProduct01 from "./recentlyProduct01.png"
+import recentlyProduct02 from "./recentlyProduct02.png"
+import recentlyProduct03 from "./recentlyProduct03.png"
+import recentlyProduct04 from "./recentlyProduct04.png"
+import recentlyProduct05 from "./recentlyProduct05.png"
+import recentlyProduct06 from "./recentlyProduct06.png"
+import recentlyProduct07 from "./recentlyProduct07.png"
+import recentlyProduct08 from "./recentlyProduct08.png"
+import recentlyProduct09 from "./recentlyProduct09.png"
+import onerain_coupon03 from "./onerain_coupon03.png"
+import deliveryProduct from "./deliveryProduct.png"
 
 export {
     sofa01,
@@ -93,4 +104,15 @@ export {
     umasqu05,
     umasqu06,
     umasqu07,
+    recentlyProduct01,
+    recentlyProduct02,
+    recentlyProduct03,
+    recentlyProduct04,
+    recentlyProduct05,
+    recentlyProduct06,
+    recentlyProduct07,
+    recentlyProduct08,
+    recentlyProduct09,
+    onerain_coupon03,
+    deliveryProduct,
 }

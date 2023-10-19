@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import HorizontalRanking  from "../../components/product/HorizontalRanking"
-import { rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, onerain01, onerain02 } from "../../assets/images/product"
+import { styleBanner06, styleBanner07 } from "../../assets/images/banner"
 import { HalfArrowRigth } from "../../assets/images/"
 import { aerobiey01, designer, brandStory } from "../../assets/images/brand"
 import { brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03 } from "../../assets/images/banner"
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"
+import FurniturePickBox from "./FurniturePickBox"
+
 
 export const testData = [
   {
@@ -31,6 +32,27 @@ export const testData = [
   },
 ]
 
+const furnitureDataArray = [
+  {
+    imageUrl: aerobiey01,
+    title: "따듯한 가구",
+    description: "일상속에서 자연스러운 아름다움을 느껴보세요.",
+    author: "Aerobiey - 23s",
+  },
+  {
+    imageUrl: styleBanner06,
+    title: "유니크한 가구",
+    description: "포인트를 더해 집 안에 생기를 불어 넣어보세요.",
+    author: "NIXO - 23s",
+  },
+  {
+    imageUrl: styleBanner07,
+    title: "모던한 가구",
+    description: "카페테라스에 모던하면서 시크한 매력을 더하다.",
+    author: "SAKIRO - 23s",
+  },
+];
+
 type ISwiperProps = { 
   loop?: boolean
   spaceBetween?: number 
@@ -47,26 +69,31 @@ const brandCollectionSettings:ISwiperProps = {
   slidesPerView: 2.2,
 }
 
+const furniturePickBoxSettings:ISwiperProps = {
+  loop: true,
+  scrollbar: { draggable: true, el: null },
+  slidesPerView: 1,
+}
+
 const PostMagazineTabPanel = () => {
   
   return (
     <>
       {/* 첫번째 섹션 */}
-      <Box sx={{mt:10, px:2, mb:"30px"}}>
-        <Typography sx={{ fontSize: 36, fontWeight: "700", color:"#000000", py:1 }}>Brand Story</Typography>
-        <img src={aerobiey01} alt="" style={{width:"100%", objectFit: "cover"}}/>
-        <Box sx={{my:3}}>
-          <Typography sx={{ fontSize: 20, fontWeight: "700", color:"#333333", lineHeight:"24px", letterSpacing:"-0.25px", mb:1 }}>오롯한 행복으로 채우는집, Wagner</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#999999", lineHeight:"20px", letterSpacing:"-0.25px" }}>일상속에서 자연스러운 아름다움을 느껴보세요.</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#999999", lineHeight:"20px", letterSpacing:"-0.25px" }}>Aerobiey - 23s</Typography>
-        </Box>
-        <Link to="/postMagazine/aerobiey">
-          <Button sx={{color:"#333333", fontSize:"14px", border: "1px solid #999999", borderRadius:0, px:2}}>
-            <Typography sx={{ fontSize: 14, fontWeight: "400", color:"#333333"}}>보러가기 &gt;</Typography>
-          </Button>
-        </Link>
+      <Box sx={{ mt: 10, px: 2, mb: "30px" }}>
+        <Typography sx={{ fontSize: 36, fontWeight: "700", color: "#000000", py: 1 }}>
+          Funiture pick
+        </Typography>
+        <Swiper {...furniturePickBoxSettings}>
+          {furnitureDataArray.map((data, index) => (
+            <SwiperSlide key={index} >
+              <FurniturePickBox key={index} data={data} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
-
+      
+      
       {/* 두번째 섹션 */}
       <Link to="/editorPick/henredn">
         <Box sx={{borderTop: "0.5px solid #868686", borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
