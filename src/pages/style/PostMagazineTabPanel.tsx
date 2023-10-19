@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import HorizontalRanking  from "../../components/product/HorizontalRanking"
 import { styleBanner06, styleBanner07 } from "../../assets/images/banner"
 import { HalfArrowRigth } from "../../assets/images/"
 import { aerobiey01, designer, brandStory } from "../../assets/images/brand"

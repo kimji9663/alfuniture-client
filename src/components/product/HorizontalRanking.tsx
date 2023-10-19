@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
-import {Paper, IconButton, Typography, Box, Link } from '@mui/material'
+import {Typography, Box, Link } from '@mui/material'
 
 interface RankingItem {
   id: number;

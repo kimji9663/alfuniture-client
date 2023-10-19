@@ -4,8 +4,6 @@ import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import ProductList from "./ProductList"
 import { recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, sofa01, sofa02, sofa03, chair03 } from "../../assets/images/product"
-import { styled } from "@mui/material/styles" 
-import { OutlineButton } from "../../styles/buttons.styles"
 
 export const testData = [
   {

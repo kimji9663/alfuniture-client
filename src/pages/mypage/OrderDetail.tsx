@@ -3,10 +3,7 @@ import { Box, Typography } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { Link } from "react-router-dom";
-import ProductList from "./ProductList"
-import { sofa01, table01 } from '../../assets/images/product';
-import { styled } from "@mui/material/styles" 
-import { OutlineButton } from "../../styles/buttons.styles"
+import { sofa01 } from '../../assets/images/product';
 import OrderInformation from "./OrderInformation"
 
 interface cartData {

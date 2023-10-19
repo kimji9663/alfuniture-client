@@ -1,9 +1,8 @@
-import { CardMedia, IconButton, Link, Paper } from "@mui/material"
+import { CardMedia, Link, Paper } from "@mui/material"
 import { Box } from "@mui/system"
 import React, { useState } from "react"
 import { FlexSpaceBetweenCenterBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
-import { IconLikeOff, IconLikeOn } from "../../assets/images"
 import { PreviewDetailBox } from "./preview.styles"
 
 export interface PreviewProps {

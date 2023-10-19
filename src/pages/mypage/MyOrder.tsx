@@ -159,6 +159,9 @@ const MyOrder = () => {
   const goToOrderDetail = () => {
     navigate("/mypage/order_detail")
   }
+  const goToDeliveryDetail = () => {
+    navigate("/mypage/delivery_detail")
+  }
 
   return (
     <>
@@ -226,7 +229,7 @@ const MyOrder = () => {
                     <OutlineButton onClick={goToOrderDetail}>
                       주문 상세
                     </OutlineButton>
-                    <OutlineButton>
+                    <OutlineButton onClick={goToDeliveryDetail}>
                       배송 상세
                     </OutlineButton>
                   </CardActions>
