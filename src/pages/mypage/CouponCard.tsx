@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, Button } from "@mui/material"
 
 type CouponData = {
   imgsrc: string;
@@ -12,10 +12,11 @@ type CouponData = {
 
 type CouponCardProps = {
   data: CouponData[];
-  hasCoupon: boolean; // 쿠폰 보유 여부
+  hasCoupon: boolean;
+  onCouponClick?: (index: number) => void;
 };
 
-const CouponCard: React.FC<CouponCardProps> = ({ data, hasCoupon  }) => {
+const CouponCard: React.FC<CouponCardProps> = ({ data, hasCoupon, onCouponClick }) => {
   return (
     <Box style={{ display: "flex", flexDirection:"column" }}>
     {data.map((item, index) => (
@@ -36,10 +37,13 @@ const CouponCard: React.FC<CouponCardProps> = ({ data, hasCoupon  }) => {
               </Typography>
             </Box>
           </Box>
-          {!hasCoupon && (
-            <Box sx={{ position: "absolute", top: 71, right: 16, zIndex: 10, py: 1, px: 2, border:"1px solid #FAFAFA" }}>
+          {!hasCoupon && onCouponClick && (
+            <Button sx={{ position: "absolute", top: 71, right: 16, zIndex: 10, py: 1, px: 2, border:"1px solid #FAFAFA", borderRadius:0 }}   onClick={() => {
+              // 해당 카드의 인덱스를 전달하여 클릭 이벤트 핸들러를 호출
+              onCouponClick(index);
+            }}>
               <Typography sx={{ fontSize: "12px", lineHeight: "16px", color: "#FAFAFA", fontWeight: "700", letterSpacing: "-0.25px" }}>쿠폰 받기</Typography>
-            </Box>
+            </Button>
           )}
           <img src={item.imgsrc} alt="" style={{ position: "absolute", top: 0, left: 0, objectFit: "cover", filter: "brightness(50%)", height: "128px", width: "100%", zIndex: 0 }} />
         </Box>

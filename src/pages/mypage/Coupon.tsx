@@ -48,8 +48,15 @@ const data2 = [
     imgsrc: onerain_coupon03,
     shopName: 'Aerobiey',
     couponName: '에어로우뷔 브랜드 10% 쿠폰',
-    startDate: '20230918',
+    startDate: '20230925',
     endDate: '20231118',
+  },
+  {
+    imgsrc: onerain_coupon03,
+    shopName: 'One rain',
+    couponName: '원레인  브랜드 10% 쿠폰',
+    startDate: '20230822',
+    endDate: '20231128',
   },
 ]
 
@@ -128,23 +135,46 @@ function CouponTabPanel(props: TabPanelProps) {
 const title = ['쿠폰'];
 
 const Coupon: React.FC = () => {
-  const [tabValue, setTabValue] = useState(0)
+  const [tabValue, setTabValue] = useState(0);
+  const [dataPanel1, setDataPanel1] = useState<CouponData[]>(formattedData);
+  const [sortedDataPanel1, setSortedDataPanel1] = useState<CouponData[]>([]);
+  const [isSortedPanel1, setIsSortedPanel1] = useState(false);
+  const [dataPanel2, setDataPanel2] = useState<CouponData[]>(formattedData2);
+  const [sortedDataPanel2, setSortedDataPanel2] = useState<CouponData[]>([]);
+  const [isSortedPanel2, setIsSortedPanel2] = useState(false);
+  const [couponCount, setCouponCount] = useState(0);
+
 
   const handleCouponTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
 
-  const [data, setData] = useState<CouponData[]>([]); 
-  const [sortedData, setSortedData] = useState<CouponData[]>([]); 
-  const [isSorted, setIsSorted] = useState(false);
-
   useEffect(() => {
-    setData(formattedData);
+    setDataPanel1(formattedData);
+    setDataPanel2(formattedData2);
+    setCouponCount(formattedData2.length);
   }, []);
 
   const sortData = (unsortedData: CouponData[]) => {
     const sortedDataCopy = [...unsortedData].sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
     return sortedDataCopy;
+  };
+
+  const handleCouponClick = (index: number) => {
+    if (isSortedPanel2) {
+      const deletedValue = sortedDataPanel2[index];
+      const updatedSortedData = sortedDataPanel2.filter((item) => item !== deletedValue);
+      const updatedUnsortedData = dataPanel2.filter((item) => item !== deletedValue);
+      setSortedDataPanel2(updatedSortedData);
+      setDataPanel2(updatedUnsortedData);
+      setCouponCount(updatedUnsortedData.length);
+    } else {
+      const deletedValue = dataPanel2[index];
+      const updatedData = dataPanel2.filter((item) => item !== deletedValue);
+      setSortedDataPanel2(updatedData);
+      setDataPanel2(updatedData);
+      setCouponCount(updatedData.length);
+    }
   };
 
   return (
@@ -173,13 +203,13 @@ const Coupon: React.FC = () => {
             <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
               <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+formattedData.length+"개"}</Typography>
               <Box sx={{display:"flex"}}>
-                <Button sx={{color:"#333", display:"flex"}} onClick={() => {
-                  if (!isSorted) {
-                    const sortedDataCopy = sortData(formattedData);
-                    setSortedData(sortedDataCopy);
-                    setIsSorted(true);
+                <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
+                  if (!isSortedPanel1) {
+                    const sortedDataCopy = sortData(dataPanel1);
+                    setSortedDataPanel1(sortedDataCopy);
+                    setIsSortedPanel1(true);
                   } else {
-                    setIsSorted(false);
+                    setIsSortedPanel1(false);
                   }
                 }}>
                   <Typography sx={{fontSize: "12px", lineHeight: "16px", color:"#999999", fontWeight:"400"}}>최신순</Typography>
@@ -190,10 +220,10 @@ const Coupon: React.FC = () => {
             
             {/* 쿠폰 */}
             
-            {isSorted ? (
-              <CouponCard data={sortedData} hasCoupon={true}/>
+            {isSortedPanel1 ? (
+              <CouponCard data={sortedDataPanel1} hasCoupon={true} />
             ) : (
-              <CouponCard data={formattedData} hasCoupon={true}/>
+              <CouponCard data={dataPanel1} hasCoupon={true} />
             )}
           </Box>
         </CouponTabPanel>
@@ -201,17 +231,17 @@ const Coupon: React.FC = () => {
         <CouponTabPanel value={tabValue} index={1}>
           <Box sx={{mx:"20px", mt:6}}>
             <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
-              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+formattedData2.length+"개"}</Typography>
+              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+couponCount+"개"}</Typography>
               <Box sx={{display:"flex"}}>
-              <Button sx={{color:"#333", display:"flex"}} onClick={() => {
-                if (!isSorted) {
-                  const sortedDataCopy = sortData(formattedData2);
-                  setSortedData(sortedDataCopy);
-                  setIsSorted(true);
-                } else {
-                  setIsSorted(false);
-                }
-              }}>
+                <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
+                  if (!isSortedPanel2) {
+                    const sortedDataCopy = sortData(dataPanel2);
+                    setSortedDataPanel2(sortedDataCopy);
+                    setIsSortedPanel2(true);
+                  } else {
+                    setIsSortedPanel2(false);
+                  }
+                }}>
                 <Typography sx={{fontSize: "12px", lineHeight: "16px", color:"#999999", fontWeight:"400"}}>최신순</Typography>
                 <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
               </Button>
@@ -219,10 +249,10 @@ const Coupon: React.FC = () => {
             </Box>
             
             {/* 쿠폰 */}
-            {isSorted ? (
-              <CouponCard data={sortedData} hasCoupon={false}/>
+            {isSortedPanel2 ? (
+              <CouponCard data={sortedDataPanel2} hasCoupon={false} onCouponClick={(index) => handleCouponClick(index)} />
             ) : (
-              <CouponCard data={formattedData2} hasCoupon={false}/>
+              <CouponCard data={dataPanel2} hasCoupon={false} onCouponClick={(index) => handleCouponClick(index)} />
             )}
           </Box>
         </CouponTabPanel>
