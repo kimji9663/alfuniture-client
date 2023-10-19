@@ -97,8 +97,6 @@ MyDeliveryInfo.forEach((info) => {
   info.deliveryData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 });
 
-console.log(MyDeliveryInfo);
-
 const DeliveryDetail = () => {
 
   return (
@@ -174,7 +172,18 @@ const DeliveryDetail = () => {
                       <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.date}</Typography>
                     </Box>
                   </>
-                ) : item.deliveryStatus === "배송완료" ? (
+                ) : index === 0 ? (
+                  <>
+                    <Box sx={{position:"relative"}}>
+                      <Box sx={{ml:"5.6px", mt:1, minHeight:"60px", borderLeft: "1px solid #D9D9D9"}}></Box>
+                      <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
+                    </Box>
+                    <Box sx={{ml: 5}}>
+                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
+                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.date}</Typography>
+                    </Box>
+                  </>
+                  ) : item.deliveryStatus === "배송완료" ? (
                 <>
                   <Box sx={{position:"relative"}}>
                     <Box sx={{ml:"5.6px", mt:1, minHeight:"60px", borderLeft: "1px solid #D9D9D9"}}></Box>
