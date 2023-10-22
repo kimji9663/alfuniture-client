@@ -1,12 +1,10 @@
 import React, { useState } from "react"
 import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
 import WhiteTitle from '../../components/title/WhiteTitle'
-import { rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, onerain03, onerain02 } from "../../assets/images/product"
+import { onerain03 } from "../../assets/images/product"
 import { IconRadioOn, IconRadioOff } from "../../assets/images"
 import onerainDetail from "../../assets/images/brand/onerainDetail.png"
 import { Link } from "react-router-dom";
-import ListItemType2 from "../../components/product/ListItemType2"
-import { styled } from "@mui/material/styles"
 import NavigationBar from "../../components/NavigationBar"
 import { chair02, table01 } from "../../assets/images/product"
 

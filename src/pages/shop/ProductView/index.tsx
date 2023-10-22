@@ -8,7 +8,7 @@ import { ProductMainInfo, OrderButton, ProductViewTabs } from "./index.styles"
 import { IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { BasicModal } from "../../../styles/modal.styles"
 import { sofa01 } from "../../../assets/images/product"
-import { alfdn } from "../../../assets/images/brand"
+import { alfdn } from "../../../assets/images/logo"
 import NoTitle from '../../../components/title/NoTitle'
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
@@ -221,7 +221,7 @@ const ProductView = () => {
       </Box>
 
       <OrderSelector 
-        open={optionOpen} 
+        drawerOpen={optionOpen} 
         toggleDrawer={toggleDrawer} 
         complete={selectComplete}
         setComplete={setSelectComplete}

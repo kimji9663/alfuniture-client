@@ -1,8 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { jamesLee } from "../../assets/images/brand"
-import { chair03, sofa01, sofa02, sofa03 } from "../../assets/images/product"
 import { Link } from "react-router-dom";
 import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../../assets/images/filterIcon/styles";
 
@@ -22,45 +20,6 @@ const RectCheckbox = styled(FormControl)(({ }) => ({
   },
 }))
 
-const itemList = [
-  {
-    id: '1',
-    name: '모던',
-  },
-  {
-    id: '2',
-    name: '클래식',
-  },
-  {
-    id: '3',
-    name: '북유럽',
-  },
-  {
-    id: '4',
-    name: '내츄럴',
-  },
-  {
-    id: '5',
-    name: '엔티크',
-  },
-  {
-    id: '6',
-    name: '빈티지',
-  },
-  {
-    id: '7',
-    name: '프로방스',
-  },
-  {
-    id: '8',
-    name: '정크',
-  },
-  {
-    id: '9',
-    name: '미니멀',
-  },
-]
-
 const StyleTypes = [
   {avatar: modern, name: '모던', discription: '혼자 사는 자취방'},
   {avatar: northernEU, name: '북유럽', discription: '아이들이 좋아하는'},
@@ -72,24 +31,43 @@ const StyleTypes = [
   {avatar: romantic, name: '로맨틱', discription: '달달한 신혼'},
 ];
 
-const evenIndexStyles = StyleTypes.filter((_, index) => index % 2 === 0);
-const oddIndexStyles = StyleTypes.filter((_, index) => index % 2 !== 0);
+const itemList = StyleTypes.map(style => ({
+  id: (StyleTypes.indexOf(style) + 1).toString(),
+  name: style.name,
+}));
 
 const StyleTabPanel = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
+  const [isAllChecked, setIsAllChecked] = useState(true);
 
-  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-    if (id === 'all') {
+  const filteredItemIds = filterItem;
+  const filteredStyles = StyleTypes.filter(style => filteredItemIds.includes(style.name));
+  const evenIndexStyles = filteredStyles.filter((_, index) => index % 2 === 0);
+  const oddIndexStyles = filteredStyles.filter((_, index) => index % 2 !== 0);
+
+  useEffect(() => {
+    setFilterItem(itemList.map(el => el.name));
+  }, []);
+  useEffect(() => {
+    if (filterItem.length === StyleTypes.length) {
+      setIsAllChecked(true);
+    } else {
+      setIsAllChecked(false);
+    }
+  }, [filterItem]);
+
+  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    if (name === 'all') {
       if (e.currentTarget.checked) {
-        setFilterItem(itemList.map(el => el.id))
+        setFilterItem(itemList.map(el => el.name))
       } else {
         setFilterItem([])
       }
     } else {
       if (e.currentTarget.checked) {
-        setFilterItem([...filterItem, id])
+        setFilterItem([...filterItem, name])
       } else {
-        setFilterItem(filterItem.filter(el => el !== id))
+        setFilterItem(filterItem.filter(el => el !== name))
       }
     }
   }
@@ -112,6 +90,7 @@ const StyleTabPanel = () => {
             type="checkbox"
             id={`check_all`}
             onChange={e => handleCheckedFilterItem(e, 'all')}
+            checked={isAllChecked}
           />
           <label htmlFor={`check_all`}>전체</label>
         </RectCheckbox>
@@ -119,11 +98,11 @@ const StyleTabPanel = () => {
           <RectCheckbox key={el.id} sx={{ ml: 1 }}>
             <input
               type="checkbox"
-              id={`check_${el.id}`}
-              onChange={e => handleCheckedFilterItem(e, el.id)}
-              checked={filterItem.includes(el.id)}
+              id={`check_${el.name}`}
+              onChange={e => handleCheckedFilterItem(e, el.name)}
+              checked={filterItem.includes(el.name)}
             />
-            <label htmlFor={`check_${el.id}`}>{el.name}</label>
+            <label htmlFor={`check_${el.name}`}>{el.name}</label>
           </RectCheckbox>
         ))}
       </Box>
@@ -148,7 +127,7 @@ const StyleTabPanel = () => {
                 position: "relative",
                 overflow: "hidden",
                 width: "100%",
-                height: index === evenIndexStyles.length - 1 ? "200px" : "250px", // 마지막 요소일 때 height를 200px로 설정
+                height: evenIndexStyles.length >= 2 ? (index === evenIndexStyles.length - 1 ? "200px" : "250px") : "250px",
                 mb: 1
               }}
             >

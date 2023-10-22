@@ -1,32 +1,23 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Box, Divider, SwipeableDrawer, Button, List, ListItem, ListItemButton } from "@mui/material"
+import { Box, Divider, SwipeableDrawer, List, ListItem, ListItemButton } from "@mui/material"
+import SelectBox from "../../../components/SelectBox"
 import { ViewTitle } from "./index.styles"
-import { OutlinedTag, OutlinedCheckbox, OutlinedSelect } from "./orderSelector.styles"
+import { OutlinedTag, OutlinedCheckbox } from "./orderSelector.styles"
 import { brown, white, black, green, blue, grey } from "../../../assets/images/filterIcon/colors"
 import { IconX } from "../../../assets/images"
 
-interface ToggleProps {
-  open: boolean 
+interface CompleteProps {
+  complete: boolean[]
+  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
+}
+
+interface ToggleProps extends CompleteProps {
+  drawerOpen: boolean 
   toggleDrawer: (val:boolean) => void
-  complete: boolean[]
-  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
-}
-
-interface OptionTagProps {
-  selectedColor: ColorOptions[] | null
-  setSelectedColor: React.Dispatch<React.SetStateAction<ColorOptions[]>>
-  complete: boolean[]
-  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
-}
-
-interface OptionSelectProps {
-  selectedOption: OptionsProps | null
-  setSelectedOption: React.Dispatch<React.SetStateAction<OptionsProps>>
-  complete: boolean[]
-  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 interface OptionsProps {
+  id?: string | undefined
   name?: string | undefined
   img?: string | undefined
 }
@@ -36,16 +27,31 @@ interface ColorOptions {
   img: string
 }
 
+interface OptionTagProps extends CompleteProps {
+  selectedColor: ColorOptions[] | null
+  setSelectedColor: React.Dispatch<React.SetStateAction<ColorOptions[]>>
+}
+
+interface OptionSelectProps extends CompleteProps {
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  selectedOption: OptionsProps | null
+  setSelectedOption: React.Dispatch<React.SetStateAction<OptionsProps>>
+}
+
 const productOptions = [
   {
+    id: 'brown',
     name: '브라운',
     img: brown
   },
   {
+    id: 'blue',
     name: '블루',
     img: blue
   },
   {
+    id: 'gray',
     name: '그레이',
     img: grey
   },
@@ -159,15 +165,10 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
     // 마운트 해제 시 이벤트 삭제!!
   }, [open])
 
-  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
-    setOpen(prevState => !prevState)
-  }
-
-  const handleSelctOption = (name: string, img: string) => {
+  const handleSelectOption = (name: string, img: string) => {
     setOpen(false)
-    const selectOption = {...selected,  name: name, img: img}
-    setSelected(selectOption)
+    const option = {...selected,  name: name, img: img}
+    setSelected(option)
     selectedOption = selected
     setSelectedOption(selectedOption)
 
@@ -183,22 +184,18 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
   }
 
   return (
-    <OutlinedSelect 
-      ref={dropMenuRef}
-      isopen={open.toString()}
-    >
-      <Button
-        fullWidth
-        onClick={handleOpen}
-      >
-        {selected.img !== '' && (
-          <img src={selected.img} alt={selected.name} />
-        )}
-        <span>{selected.name}</span>
-      </Button>
-      <List className="dropmenu">
+    <SelectBox
+      selected={selected}
+      setSelected={setSelected}
+      open={open}
+      setOpen={setOpen}
+    >      
+      <List>
         {productOptions.map((option) => (
-          <ListItem key={option.name} onClick={() => handleSelctOption(option.name, option.img)}>
+          <ListItem 
+            key={option.id} 
+            onClick={() => handleSelectOption(option.name, option.img)}
+          >
             <ListItemButton>
               <img src={option.img} alt={option.name} />
               <span>{option.name}</span>
@@ -206,16 +203,17 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
           </ListItem>
         ))}
       </List>
-    </OutlinedSelect>
+    </SelectBox>
   )
 }
 
 
-const OrderSelector = ({open, toggleDrawer, complete, setComplete}: ToggleProps) => {
+const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: ToggleProps) => {
   // ios에서 스와이프 동작 활성화
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
   const [selectedColors, setSelectedColors] = useState<ColorOptions[]>([])
   const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
+  const [open, setOpen] = useState(false)
 
   const setToggleDrawer = (val: boolean) => (event: React.ChangeEvent<HTMLInputElement>) => {
     toggleDrawer(val)
@@ -231,7 +229,7 @@ const OrderSelector = ({open, toggleDrawer, complete, setComplete}: ToggleProps)
       disableDiscovery={iOS}
       disableSwipeToOpen={false}
       anchor='bottom'
-      open={open}
+      open={drawerOpen}
       onClose={setToggleDrawer(false)}
       onOpen={setToggleDrawer(true)}
       sx={{
@@ -261,8 +259,10 @@ const OrderSelector = ({open, toggleDrawer, complete, setComplete}: ToggleProps)
         <Divider sx={{ mt: 3 }} />
 
         <ViewTitle sx={{ mt: 3 }}>옵션 선택</ViewTitle>
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ py: 2 }}>
           <OptionSelectType 
+            open={open}
+            setOpen={setOpen}
             selectedOption={selectedOption} 
             setSelectedOption={setSelectedOption}
             complete={complete}

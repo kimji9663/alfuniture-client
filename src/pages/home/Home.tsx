@@ -160,8 +160,12 @@ const Home = () => {
       <LogoTitle/>
       
       {/* 첫번째 섹션 */}
-      <Box>
-        <Box sx={{ width: "301px"}}>
+      <Box sx={{ height: 'calc(100vh - 74px - 57px)', overflow: 'hidden' }}>
+        <Box sx={{ 
+          width: "301px",
+          height: 'calc(100vh - 159px - 53px - 74px - 57px)',
+          overflow: 'hidden',
+        }}>
           <Swiper {...photoBannerSettings} >
             {imageList.map((photoReview, index) => (
               <SwiperSlide key={`photo_review_${index}`}>

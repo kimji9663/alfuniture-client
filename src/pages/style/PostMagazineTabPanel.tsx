@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import HorizontalRanking  from "../../components/product/HorizontalRanking"
-import { rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, onerain01, onerain02 } from "../../assets/images/product"
+import { styleBanner06, styleBanner07 } from "../../assets/images/banner"
 import { HalfArrowRigth } from "../../assets/images/"
 import { aerobiey01, designer, brandStory } from "../../assets/images/brand"
 import { brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03 } from "../../assets/images/banner"
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"
+import FurniturePickBox from "./FurniturePickBox"
+
 
 export const testData = [
   {
@@ -29,8 +30,28 @@ export const testData = [
     id: 5,
     imgsrc: brandCollectionVideo01,
   },
-  
 ]
+
+const furnitureDataArray = [
+  {
+    imageUrl: aerobiey01,
+    title: "따듯한 가구",
+    description: "일상속에서 자연스러운 아름다움을 느껴보세요.",
+    author: "Aerobiey - 23s",
+  },
+  {
+    imageUrl: styleBanner06,
+    title: "유니크한 가구",
+    description: "포인트를 더해 집 안에 생기를 불어 넣어보세요.",
+    author: "NIXO - 23s",
+  },
+  {
+    imageUrl: styleBanner07,
+    title: "모던한 가구",
+    description: "카페테라스에 모던하면서 시크한 매력을 더하다.",
+    author: "SAKIRO - 23s",
+  },
+];
 
 type ISwiperProps = { 
   loop?: boolean
@@ -48,55 +69,67 @@ const brandCollectionSettings:ISwiperProps = {
   slidesPerView: 2.2,
 }
 
+const furniturePickBoxSettings:ISwiperProps = {
+  loop: true,
+  scrollbar: { draggable: true, el: null },
+  slidesPerView: 1,
+}
+
 const PostMagazineTabPanel = () => {
   
   return (
     <>
       {/* 첫번째 섹션 */}
-      <Box sx={{mt:10, px:2, mb:"30px"}}>
-        <Typography sx={{ fontSize: 36, fontWeight: "700", color:"#000000", py:1 }}>Brand Story</Typography>
-        <img src={aerobiey01} alt="" style={{width:"100%", objectFit: "cover"}}/>
-        <Box sx={{my:3}}>
-          <Typography sx={{ fontSize: 20, fontWeight: "700", color:"#333333", lineHeight:"24px", letterSpacing:"-0.25px", mb:1 }}>오롯한 행복으로 채우는집, Wagner</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#999999", lineHeight:"20px", letterSpacing:"-0.25px" }}>일상속에서 자연스러운 아름다움을 느껴보세요.</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#999999", lineHeight:"20px", letterSpacing:"-0.25px" }}>Aerobiey - 23s</Typography>
-        </Box>
-        <Button sx={{color:"#333333", fontSize:"14px", border: "1px solid #999999", borderRadius:0, px:2}}>
-          <Typography sx={{ fontSize: 14, fontWeight: "400", color:"#333333"}}>보러가기 &gt;</Typography>
-        </Button>
+      <Box sx={{ mt: 10, px: 2, mb: "30px" }}>
+        <Typography sx={{ fontSize: 36, fontWeight: "700", color: "#000000", py: 1 }}>
+          Funiture pick
+        </Typography>
+        <Swiper {...furniturePickBoxSettings}>
+          {furnitureDataArray.map((data, index) => (
+            <SwiperSlide key={index} >
+              <FurniturePickBox key={index} data={data} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
-
+      
+      
       {/* 두번째 섹션 */}
-      <Box sx={{borderTop: "0.5px solid #868686", borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
-        <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", pt: "51px", px: 2, pb: 2, position: "relative" }}>
-          {/* 이미지 */}
-          <img src={designer} alt="" style={{ objectFit: "cover", width: "100%" }} />
-          <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", left:"16px", px:2, py:1 }}>
-            <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#FFFFFF", textAlign: "center" }}>에디터 pick</Typography>
+      <Link to="/editorPick/henredn">
+        <Box sx={{borderTop: "0.5px solid #868686", borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
+          <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", pt: "51px", px: 2, pb: 2, position: "relative" }}>
+            {/* 이미지 */}
+            <img src={designer} alt="" style={{ objectFit: "cover", width: "100%" }} />
+            <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", left:"16px", px:2, py:1 }}>
+              <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#FFFFFF", textAlign: "center" }}>에디터 pick</Typography>
+            </Box>
+          </Box>
+          <Box sx={{display: "flex", width:"135px", alignItems:"center", justifyContent: "center" }}>
+            <Box sx={{transform: "rotate(270deg)", display: "flex"}}>
+              <Typography sx={{ fontSize: 50, fontWeight: "700", color:"#333333"}}>Bradley</Typography>
+            </Box>
           </Box>
         </Box>
-        <Box sx={{display: "flex", width:"135px", alignItems:"center", justifyContent: "center" }}>
-          <Box sx={{transform: "rotate(270deg)", display: "flex"}}>
-            <Typography sx={{ fontSize: 50, fontWeight: "700", color:"#333333"}}>Bradley</Typography>
+        <Box sx={{borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
+          <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", px: 2, py: 2, position: "relative" }}>
+            <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>새로운 감각의 가구 디자이너</Typography>
+          </Box>
+          <Box sx={{display: "flex", width:"135px" , alignItems:"center", justifyContent: "center"}}>
           </Box>
         </Box>
-      </Box>
-      <Box sx={{borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
-        <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", px: 2, py: 2, position: "relative" }}>
-          <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>새로운 감각의 가구 디자이너</Typography>
-        </Box>
-        <Box sx={{display: "flex", width:"135px" , alignItems:"center", justifyContent: "center"}}>
-        </Box>
-      </Box>
+      </Link>
+      {/* 세번째 섹션 */}
       <Box sx={{borderLeft: "0.5px solid #868686", width: "calc(100% - 32px)", display:"flex", ml:2, pt: 10, pr:2, flexDirection:"column"}}>
         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
           <Typography sx={{ fontSize: 36, fontWeight: "700", color:"#000000", py:1 }}>Brand Story</Typography>
-          <Button sx={{borderRadius:0, display: "flex", p:0}}>
-            <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#333333", pr:1}}>
-              ALL
-            </Typography>
-            <HalfArrowRigth/>
-          </Button>
+          <Link to="/monthlyPost/umasqu" style={{display:"flex", alignItems:"center"}}>
+            <Button sx={{borderRadius:0, display: "flex", p:0, color:"#333333"}}>
+              <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#333333", pr:1}}>
+                ALL
+              </Typography>
+              <HalfArrowRigth/>
+            </Button>
+          </Link>
         </Box>
         <Box sx={{display: "flex", width: "100%"}}>
           <img src={brandStory} alt="" style={{width: "100%", objectFit:"cover", maxHeight:"230px"}}/>
@@ -112,18 +145,18 @@ const PostMagazineTabPanel = () => {
         </Box>
       </Box>
 
-      {/* 세번째 섹션 */}
+      {/* 네번째 섹션 */}
       <Box sx={{mt:"60px", pl:2, mb:2, overflow:"hidden"}}>
         <Typography sx={{ fontSize: 22, fontWeight: "600", color:"#333333", lineHeight:"28px"}}>Brand Collection Video</Typography>
         <Swiper {...brandCollectionSettings}  style={{maxWidth: "420px",width: "100vw"}}>
-            {testData.map((item, index) => (
-              <SwiperSlide key={index} >
-                <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
-                  <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {testData.map((item, index) => (
+            <SwiperSlide key={index} >
+              <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
+                <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
+              </Box>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
     </>
   )

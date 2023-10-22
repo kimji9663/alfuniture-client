@@ -1,10 +1,8 @@
-import { Box, IconButton, Link,Typography } from "@mui/material"
-import { FlexAlignItemsCenterBox, FlexBox, FlexColumnAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
-import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
+import { Box, Link,Typography } from "@mui/material"
+import { FlexAlignItemsCenterBox, GridBox } from "../Box"
+import { BoldGray9Typography, Gray7Typography } from "../Typography"
 
 import { ListDetailBoxType2, ListImageBoxType2 } from "./preview.styles"
-import { useState } from "react"
-import { IconLikeOff, IconLikeOn } from "../../assets/images"
 
 export interface PreviewProps {
   id?: number;

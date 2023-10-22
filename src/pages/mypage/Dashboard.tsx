@@ -1,12 +1,31 @@
-import React, { useState } from "react"
-import { Box, Tabs, Tab, Button, Divider, List, ListItemButton } from "@mui/material"
+import { Box, Button, Divider, List, ListItemButton } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import LeftTitle from "../../components/title/LeftTitle"
 import { HalfArrow, IconMyCoupon, IconMyOrder, IconMyPoint, IconMyReview, img_Aclass } from "../../assets/images"
+import { useNavigate } from "react-router-dom"
 
-const title = ['My page'];
+const title = ['My page']
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+  
+  const goToMyInfo = () => {
+    navigate("/mypage/my_info")
+  }
+
+  const goToMyOrder = () => {
+    navigate("/mypage/my_order")
+  }
+
+  const goToRecentlyProduct = () => {
+    navigate("/mypage/recently_product")
+  }
+  const goToMyCoupon = () => {
+    navigate("/mypage/coupon")
+  }
+  
+
+
   return (
     <>
       <LeftTitle title={title}/>
@@ -27,6 +46,7 @@ const Dashboard = () => {
               } 
             }}
             endIcon={<HalfArrow />}
+            onClick={goToMyInfo}
           >
             홍길동님 안녕하세요!
           </Button>
@@ -76,7 +96,7 @@ const Dashboard = () => {
                 }
               }}
             >
-              <Button>
+              <Button onClick={goToMyOrder}>
                 <div><IconMyOrder /></div>
                 <p>주문/배송</p>
               </Button>
@@ -86,7 +106,7 @@ const Dashboard = () => {
                 <p>리뷰</p>
               </Button>
               <Divider orientation="vertical" flexItem />
-              <Button>
+              <Button onClick={goToMyCoupon}>
                 <div><IconMyCoupon /></div>
                 <p>쿠폰</p>
               </Button>
@@ -119,7 +139,7 @@ const Dashboard = () => {
               component="nav"
               subheader={<Box>쇼핑</Box>}
             >
-              <ListItemButton>최근 본 상품</ListItemButton>
+              <ListItemButton onClick={goToRecentlyProduct}>최근 본 상품</ListItemButton>
             </List>
             <List
               component="nav"

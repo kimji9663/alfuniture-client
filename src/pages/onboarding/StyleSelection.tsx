@@ -20,11 +20,11 @@ const StyleSelection = () => {
   }
 
   const title = ['좋아하는 스타일을', '선택해주세요.'];
-
+  
   const handleClickStyle = (styleName: any) => (event: React.MouseEvent) => {
     setSelected({ ...selected, [styleName]: !selected[styleName] })
   }
-
+    
   return (
     <>
       <Box sx={{ height: '100%', overflow: 'auto' }}>

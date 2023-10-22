@@ -1,5 +1,5 @@
 import { Box, IconButton, Link } from "@mui/material"
-import { FlexAlignItemsCenterBox, FlexBox, FlexColumnAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
+import { FlexAlignItemsCenterBox, FlexSpaceBetweenCenterBox, GridBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { PreviewProps } from "./Preview"
 import { ListDetailBox, ListImageBox } from "./preview.styles"
