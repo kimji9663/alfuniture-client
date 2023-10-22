@@ -16,7 +16,7 @@ const StyleSelection = () => {
   );
 
   const goToNext = () => {
-    navigate("/onboarding/featured_product")
+    navigate("/onboarding/loading_curation")
   }
 
   const title = ['좋아하는 스타일을', '선택해주세요.'];

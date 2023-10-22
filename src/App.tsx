@@ -22,6 +22,7 @@ import Dashboard from "./pages/mypage/Dashboard"
 import Style from "./pages/style/Style"
 import RankingList from "./pages/style/RankingList"
 import Brand from "./pages/style/Brand"
+import LoadingCuration from "./pages/onboarding/LoadingCuration"
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "/onboarding/featured_product",
         element: <FeaturedProduct />,
+      },
+      {
+        path: "/onboarding/loading_curation",
+        element: <LoadingCuration />,
       },
       {
         path: "/onboarding/featured_brand",
