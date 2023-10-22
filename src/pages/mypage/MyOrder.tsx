@@ -91,10 +91,6 @@ const filterList = [
     name: '배송완료',
   },
   {
-    id: 'completed',
-    name: '배송완료',
-  },
-  {
     id: 'cancel',
     name: '취소/교환/반품',
   },

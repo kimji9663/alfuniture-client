@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography } from "@mui/material"
+import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography, Button } from "@mui/material"
 import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
@@ -11,6 +11,7 @@ import OrderInfomation from "./OrderInfomation"
 import { sofa01 } from "../../assets/images/product"
 import OrderTermsAgreement from "./OrderTermsAgreement"
 import CheckboxIcon from "../../components/CheckBoxIcon"
+import CouponSelector from "./CouponSelector"
 
 
 const Order = () => {
@@ -33,6 +34,8 @@ const Order = () => {
     errorText: ''
   })
   const [modalOpen, setModalOpen] = useState(false)
+  const [couponOpen, setCouponOpen] = useState(false)
+  const [finalAmount, setFinalAmount] = useState(0)
 
   const handleClose = () => {
     setModalOpen(false)
@@ -40,6 +43,11 @@ const Order = () => {
 
   const handleCompleteOrder = () => {
     navigate('/')
+  }
+
+  const applyCoupon = () => {
+    // 총 가격 - 할인율
+    // return 
   }
 
   const handleActiveOrder = 
@@ -138,6 +146,10 @@ const Order = () => {
   const changeOrderData = (val:boolean) => {
     setOrderData({...orderData, termsAgree: val})
     //console.log(val)
+  }
+
+  const toggleDrawer = (val:boolean) => {
+    setCouponOpen(val)
   }
 
   return (
@@ -309,6 +321,12 @@ const Order = () => {
                     fontWeight: 'bold',
                     color: '#333',
                   },
+                  '& .MuiButton-root': {
+                    fontSize: '.75rem',
+                    width: '62px',
+                    padding: 0,
+                    borderRadius: 0,
+                  }
                 }}
               >
                 <p>
@@ -324,6 +342,10 @@ const Order = () => {
                   <span className="title">상품 금액</span>
                   <span className="total">1,594,500원</span>
                 </p>
+                <p>
+                  <span className="title">쿠폰적용</span>
+                  <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
+                </p>
               </Box>
             </Box>
           </Box>
@@ -336,6 +358,13 @@ const Order = () => {
           changeOrderData={changeOrderData}
         />
       </Box>
+
+      <CouponSelector
+        drawerOpen={couponOpen} 
+        toggleDrawer={toggleDrawer} 
+        complete={finalAmount}
+        setComplete={setFinalAmount}
+      />
 
       <NaviWrap className="single">
         <PrimaryButton 
