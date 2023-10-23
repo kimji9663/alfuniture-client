@@ -58,38 +58,39 @@ const MyDeliveryInfo = [
     optionCode: '[21Series] HCA-309',
     name: 'HC 아트 우든체어',
     deliveryNum: "158290398",
-    deliveryData: [
-                    {
-                        "location": "해외배송",
-                        "deliveryStatus": "집하",
-                        "date": "3/14(화)  06:33"
-                    },
-                    {
-                        "location": "이탈리아 > 인청항",
-                        "deliveryStatus": "배송중",
-                        "date": "3/15(수)  01:14"
-                    },
-                    {
-                        "location": "통관",
-                        "deliveryStatus": "통관절차 진행중",
-                        "date": "3/15(수)  08:21"
-                    },
-                    {
-                        "location": "통관",
-                        "deliveryStatus": "통관 처리완료",
-                        "date": "3/15(수)  08:21"
-                    },
-                    {
-                        "location": "국내배송",
-                        "deliveryStatus": "배송중",
-                        "date": "3/15(수)  14:02"
-                    },
-                    {
-                        "location": "판교",
-                        "deliveryStatus": "배송완료",
-                        "date": "3/15(수)  17:11"
-                    }
-                ]
+    deliveryData: 
+      [
+        {
+            "location": "해외배송",
+            "deliveryStatus": "집하",
+            "date": "3/14(화)  06:33"
+        },
+        {
+            "location": "이탈리아 > 인천항",
+            "deliveryStatus": "배송중",
+            "date": "3/15(수)  01:14"
+        },
+        {
+            "location": "통관",
+            "deliveryStatus": "통관절차 진행중",
+            "date": "3/15(수)  08:21"
+        },
+        {
+            "location": "통관",
+            "deliveryStatus": "통관 처리완료",
+            "date": "3/15(수)  08:21"
+        },
+        {
+            "location": "국내배송",
+            "deliveryStatus": "배송중",
+            "date": "3/15(수)  14:02"
+        },
+        {
+            "location": "판교",
+            "deliveryStatus": "배송완료",
+            "date": "3/15(수)  17:11"
+        }
+    ]
   },
 ]
 

@@ -54,12 +54,12 @@ const testData = [
 ];
 
 function CartPage() {
+  const [data, setData] = useState<cartData[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
+
   const [selectedProducts, setSelectedProducts] = useState<number[]>(
     Array(testData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
   );
-  const [data, setData] = useState<cartData[]>([]);
-
-
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
     setData([...data, ...testData]);
@@ -71,15 +71,21 @@ function CartPage() {
   
     setSelectedProducts(indexArray);
   }, []);
+
+  useEffect(() => {
+    setTotalCount(calculateTotalCount());
+  }, [selectedProducts]);
   
 
   // 선택된 상품을 토글하는 함수
   const toggleProduct = (productId: number) => {
-    if (selectedProducts.includes(productId)) {
-      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
-    } else {
-      setSelectedProducts([...selectedProducts, productId]);
-    }
+    setSelectedProducts((prevSelected) => {
+      if (prevSelected.includes(productId)) {
+        return prevSelected.filter((id) => id !== productId);
+      } else {
+        return [...prevSelected, productId];
+      }
+    });
   };
 
   // 선택된 상품들의 가격을 합산하는 함수
@@ -106,6 +112,7 @@ function CartPage() {
     const updatedData = [...data];
     updatedData[index].count += 1;
     setData(updatedData);
+    setTotalCount(calculateTotalCount());
   };
   
   // - 버튼 클릭 시 수량 감소
@@ -114,9 +121,16 @@ function CartPage() {
     if (updatedData[index].count > 1) {
       updatedData[index].count -= 1;
       setData(updatedData);
+      setTotalCount(calculateTotalCount());
     }
   };
   
+  const calculateTotalCount = () => {
+    return data
+      .filter((product, index) => selectedProducts.includes(index))
+      .reduce((total, product) => total + product.count, 0);
+  }
+
   const handleActiveOrder = selectedProducts.length === 0;
   const navigate = useNavigate()
   const handleGoToOrder = () => {
@@ -136,10 +150,8 @@ function CartPage() {
       // 데이터 배열과 선택된 상품 목록 상태 업데이트
       setData(updatedItems);
       setSelectedProducts(updatedSelectedProducts);
+      setTotalCount(calculateTotalCount());
     }
-
-
-
   }
   return (
     <>
@@ -328,7 +340,7 @@ function CartPage() {
                 disabled={handleActiveOrder}
                 onClick={handleGoToOrder}
               >
-                {selectedProducts.length+"개 선택상품 구매하기"}
+                {totalCount+"개 선택상품 구매하기"}
               </PrimaryButton>
             </NaviWrap>
           </Box>

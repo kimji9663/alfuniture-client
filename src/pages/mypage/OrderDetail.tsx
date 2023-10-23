@@ -33,7 +33,7 @@ const testData = [
     price: 1594500,
     discount: 159450,
     totalPrice: 1435050,
-    deliveryCharge: 100000,
+    deliveryCharge: 0,
     coupon: [
       {
         name: '쿠폰1',
@@ -112,7 +112,7 @@ const OrderDetail = () => {
                           <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"600"}}>{product.shopName}</Typography>
                         </Box>
                         {/* 판매자 정보 버튼 예정 */}
-                        <Link to={"/"} style={{display:"flex", alignItems:"center"}}>
+                        <Link to={"/"} style={{display:"flex", alignItems:"center"}} onClick={(e) => {e.preventDefault()}}>
                           <Typography sx={{fontSize: "12px", lineHeight: "13px", letterSpacing: "-0.25px", color:"#0066FF", fontWeight:"500", borderBottom:"1px solid #0066FF"}}>판매자 정보</Typography>
                         </Link>
                       </Box>
@@ -131,19 +131,27 @@ const OrderDetail = () => {
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
                           <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>상품 금액</Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{product.price.toLocaleString()+"원"}</Typography>
+                            <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{product.price.toLocaleString()+"원"}</Typography>
                           </Box>
                         </Box>
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
                           <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>상품 할인</Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{"-"+product.discount.toLocaleString()+"원"}</Typography>
+                            <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{"-"+product.discount.toLocaleString()+"원"}</Typography>
+                          </Box>
+                        </Box>
+                        <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
+                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>배송비</Typography>
+                          <Box sx={{display:"flex", alignItems:"center"}}>
+                            {product.deliveryCharge === 0 ? <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>무료배송</Typography>
+                            : 
+                            <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{product.deliveryCharge.toLocaleString()+"원"}</Typography>}
                           </Box>
                         </Box>
                         <Box sx={{bottom: "0", display: "flex", justifyContent: "space-between", width: "100%"}}>
                           <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>결제 금액</Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{product.totalPrice.toLocaleString()+"원"}</Typography>
+                            <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{product.totalPrice.toLocaleString()+"원"}</Typography>
                           </Box>
                         </Box>
                       </Box>

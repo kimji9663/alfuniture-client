@@ -116,7 +116,7 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
               <Typography sx={{ fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#333333", fontWeight: "500" }}>결제 방법</Typography>
               <Box sx={{ display: "flex", alignItems: "end", flexDirection:"column" }}>
                 <Typography sx={{ fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color: "#333333", fontWeight: "500", mb:2}}>{"(" +data.paymentCard + ") " + data.paymentMethod}</Typography>
-                <Link to={"/"} style={{display:"flex", alignItems:"center"}}>
+                <Link to={"/"} style={{display:"flex", alignItems:"center"}} onClick={(e) => {e.preventDefault()}}>
                   <Typography sx={{fontSize: "12px", lineHeight: "13px", letterSpacing: "-0.25px", color:"#0066FF", fontWeight:"500", borderBottom:"1px solid #0066FF"}}>영수증 보기</Typography>
                 </Link>
               </Box>

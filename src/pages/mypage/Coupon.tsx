@@ -204,11 +204,12 @@ const Coupon: React.FC = () => {
               <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+formattedData.length+"개"}</Typography>
               <Box sx={{display:"flex"}}>
                 <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
+                  const sortedDataCopy = sortData(dataPanel1);
                   if (!isSortedPanel1) {
-                    const sortedDataCopy = sortData(dataPanel1);
                     setSortedDataPanel1(sortedDataCopy);
                     setIsSortedPanel1(true);
                   } else {
+                    setDataPanel1(sortedDataCopy.reverse());
                     setIsSortedPanel1(false);
                   }
                 }}>
@@ -219,7 +220,6 @@ const Coupon: React.FC = () => {
             </Box>
             
             {/* 쿠폰 */}
-            
             {isSortedPanel1 ? (
               <CouponCard data={sortedDataPanel1}/>
             ) : (
@@ -234,11 +234,12 @@ const Coupon: React.FC = () => {
               <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+couponCount+"개"}</Typography>
               <Box sx={{display:"flex"}}>
                 <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
+                  const sortedDataCopy = sortData(dataPanel2);
                   if (!isSortedPanel2) {
-                    const sortedDataCopy = sortData(dataPanel2);
                     setSortedDataPanel2(sortedDataCopy);
                     setIsSortedPanel2(true);
                   } else {
+                    setDataPanel2(sortedDataCopy.reverse());
                     setIsSortedPanel2(false);
                   }
                 }}>
