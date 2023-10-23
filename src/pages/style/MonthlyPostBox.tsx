@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Link } from "react-router-dom";
 
-interface FurniturePickBoxProps {
+interface MonthlyPostBoxProps {
   data: {
     title: string;
     imageUrl: any;
@@ -12,7 +12,7 @@ interface FurniturePickBoxProps {
   };
 }
 
-const FurniturePickBox: React.FC<FurniturePickBoxProps> = ({data}) => {
+const MonthlyPostBox: React.FC<MonthlyPostBoxProps> = ({data}) => {
   const { title, imageUrl, description, author, linkTo } = data;
   return (
     <>
@@ -29,7 +29,7 @@ const FurniturePickBox: React.FC<FurniturePickBoxProps> = ({data}) => {
         </Typography>
       </Box>
       {/* <Link to={linkTo}> */}
-      <Link to="/furniturePick/aerobiey">
+      <Link to="/monthly_post/umasqu">
         <Button sx={{ color: "#333333", fontSize: "14px", border: "1px solid #999999", borderRadius: 0, px: 2 }}>
           <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#333333" }}>보러가기 &gt;</Typography>
         </Button>
@@ -38,4 +38,4 @@ const FurniturePickBox: React.FC<FurniturePickBoxProps> = ({data}) => {
   );
 };
 
-export default FurniturePickBox;
+export default MonthlyPostBox;

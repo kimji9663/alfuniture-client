@@ -8,7 +8,7 @@ interface CardProps {
   description: string;
 }
 
-const RigthImageCard: React.FC<CardProps> = ({ imageSrc, title, description }) => {
+const RightImageCard: React.FC<CardProps> = ({ imageSrc, title, description }) => {
   return (
     <Box sx={{ mt: 5, px: 2 }}>
       <Box sx={{ width: "100%", display: "flex" }}>
@@ -26,4 +26,4 @@ const RigthImageCard: React.FC<CardProps> = ({ imageSrc, title, description }) =
   );
 };
 
-export default RigthImageCard;
+export default RightImageCard;

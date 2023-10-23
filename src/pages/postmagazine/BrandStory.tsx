@@ -57,7 +57,7 @@ export const testData = [
   },
 ]
 
-const FurniturePick = () => {
+const BrandStory = () => {
   
   return (
     <Box>
@@ -117,4 +117,4 @@ const FurniturePick = () => {
   )
 }
 
-export default FurniturePick;
+export default BrandStory;

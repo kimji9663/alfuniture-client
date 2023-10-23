@@ -29,7 +29,7 @@ import RecentlyProduct from "./pages/mypage/RecentlyProduct"
 import OrderDetail from "./pages/mypage/OrderDetail"
 import Coupon from "./pages/mypage/Coupon"
 import DeliveryDetail from "./pages/mypage/DeliveryDetail"
-import FurniturePick from "./pages/postmagazine/FurniturePick"
+import BrandStory from "./pages/postmagazine/BrandStory"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
 
@@ -184,15 +184,15 @@ const router = createBrowserRouter([
         element: <Brand />,
       },
       {
-        path: "/furniturePick/aerobiey",
-        element: <FurniturePick />,
+        path: "/brand_story/aerobiey",
+        element: <BrandStory />,
       },
       {
-        path: "/editorPick/henredn",
+        path: "/editor_pick/henredn",
         element: <EditorPick />,
       },
       {
-        path: "/monthlyPost/umasqu",
+        path: "/monthly_post/umasqu",
         element: <MonthlyPost />,
       },
     ],

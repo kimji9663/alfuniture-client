@@ -6,7 +6,7 @@ import { aerobiey01, designer, brandStory } from "../../assets/images/brand"
 import { brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03 } from "../../assets/images/banner"
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"
-import FurniturePickBox from "./FurniturePickBox"
+import MonthlyPostBox from "./MonthlyPostBox"
 
 
 export const testData = [
@@ -32,7 +32,7 @@ export const testData = [
   },
 ]
 
-const furnitureDataArray = [
+const MonthlyPostDataArray = [
   {
     imageUrl: aerobiey01,
     title: "따듯한 가구",
@@ -69,7 +69,7 @@ const brandCollectionSettings:ISwiperProps = {
   slidesPerView: 2.2,
 }
 
-const furniturePickBoxSettings:ISwiperProps = {
+const MonthlyPostBoxSettings:ISwiperProps = {
   loop: true,
   scrollbar: { draggable: true, el: null },
   slidesPerView: 1,
@@ -82,12 +82,12 @@ const PostMagazineTabPanel = () => {
       {/* 첫번째 섹션 */}
       <Box sx={{ mt: 10, px: 2, mb: "30px" }}>
         <Typography sx={{ fontSize: 36, fontWeight: "700", color: "#000000", py: 1 }}>
-          Funiture pick
+          Monthly Post
         </Typography>
-        <Swiper {...furniturePickBoxSettings}>
-          {furnitureDataArray.map((data, index) => (
+        <Swiper {...MonthlyPostBoxSettings}>
+          {MonthlyPostDataArray.map((data, index) => (
             <SwiperSlide key={index} >
-              <FurniturePickBox key={index} data={data} />
+              <MonthlyPostBox key={index} data={data} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -95,7 +95,7 @@ const PostMagazineTabPanel = () => {
       
       
       {/* 두번째 섹션 */}
-      <Link to="/editorPick/henredn">
+      <Link to="/editor_pick/henredn">
         <Box sx={{borderTop: "0.5px solid #868686", borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
           <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", pt: "51px", px: 2, pb: 2, position: "relative" }}>
             {/* 이미지 */}
@@ -122,7 +122,7 @@ const PostMagazineTabPanel = () => {
       <Box sx={{borderLeft: "0.5px solid #868686", width: "calc(100% - 32px)", display:"flex", ml:2, pt: 10, pr:2, flexDirection:"column"}}>
         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
           <Typography sx={{ fontSize: 36, fontWeight: "700", color:"#000000", py:1 }}>Brand Story</Typography>
-          <Link to="/monthlyPost/umasqu" style={{display:"flex", alignItems:"center"}}>
+          <Link to="/brand_story/aerobiey" style={{display:"flex", alignItems:"center"}}>
             <Button sx={{borderRadius:0, display: "flex", p:0, color:"#333333"}}>
               <Typography sx={{ fontSize: 12, fontWeight: "400", color:"#333333", pr:1}}>
                 ALL

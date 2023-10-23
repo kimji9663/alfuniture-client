@@ -2,7 +2,7 @@
 import NoTitle from '../../components/title/NoTitle'
 import NavigationBar from "../../components/NavigationBar"
 import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } from '@mui/material'
-import RigthImageCard from './RigthImageCard'
+import RightImageCard from './RightImageCard'
 import {umasqu01, umasqu02, umasqu03} from "../../assets/images/brand"
 import {umasqu04, umasqu05, umasqu06, umasqu07, } from "../../assets/images/product"
 import PostMagazineHeader from './PostMagazineHeader'
@@ -69,7 +69,7 @@ const MonthlyPost = () => {
         backgroundImg={umasqu01}
         />
       {/* 두번째 섹션 */}
-      <RigthImageCard
+      <RightImageCard
         imageSrc={umasqu02}
         title="친환경적 브랜드계의 거장"
         description="Umasqu 의 브랜드 제품 생산 시 환경 개선을 위해

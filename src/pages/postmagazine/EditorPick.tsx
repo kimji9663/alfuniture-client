@@ -5,7 +5,7 @@ import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } fro
 
 import {henredn01, henredn02, henredn03} from "../../assets/images/brand"
 import {henredn04, henredn05, henredn06, henredn07, } from "../../assets/images/product"
-import RigthImageCard from './RigthImageCard'
+import RightImageCard from './RightImageCard'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
 
@@ -90,7 +90,7 @@ const EditorPick = () => {
         </Box>
       </Box>
       {/* 두번째 섹션 */}
-      <RigthImageCard
+      <RightImageCard
         imageSrc={henredn02}
         title="친환경적 브랜드계의 거장"
         description="Aerobiey 의 브랜드 제품 생산 시 환경 개선을 위해
