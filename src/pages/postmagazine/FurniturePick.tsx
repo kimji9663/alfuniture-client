@@ -57,7 +57,7 @@ export const testData = [
   },
 ]
 
-const StylePostMagazine = () => {
+const FurniturePick = () => {
   
   return (
     <Box>
@@ -117,4 +117,4 @@ const StylePostMagazine = () => {
   )
 }
 
-export default StylePostMagazine;
+export default FurniturePick;

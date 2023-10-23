@@ -131,7 +131,7 @@ const StyleTabPanel = () => {
                 mb: 1
               }}
             >
-              <Link to="/">
+              <Link to="/style/home_styling">
                 <img
                   src={style.avatar}
                   alt={style.name}
@@ -168,7 +168,7 @@ const StyleTabPanel = () => {
                 mb: 1
               }}
             >
-              <Link to="/">
+              <Link to="/style/home_styling">
                 <img
                   src={style.avatar}
                   alt={style.name}

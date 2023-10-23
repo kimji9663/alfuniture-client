@@ -20,6 +20,7 @@ import Order from "./pages/order/Order"
 import Dashboard from "./pages/mypage/Dashboard"
 import Style from "./pages/style/Style"
 import RankingList from "./pages/style/RankingList"
+import HomeStyling from "./pages/style/HomeStyling"
 import Brand from "./pages/style/Brand"
 import LoadingCuration from "./pages/onboarding/LoadingCuration"
 import MyInformation from "./pages/mypage/MyInformation"
@@ -173,6 +174,10 @@ const router = createBrowserRouter([
       {
         path: "/style/ranking",
         element: <RankingList />,
+      },
+      {
+        path: "/style/home_styling",
+        element: <HomeStyling />,
       },
       {
         path: "/style/brand",
