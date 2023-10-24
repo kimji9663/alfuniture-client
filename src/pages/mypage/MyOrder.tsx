@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { Box, FormControl, Card } from "@mui/material"
+import { Box, FormControl } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { chair01, chair02, chair03, sofa04 } from "../../assets/images/product"
 import { styled } from "@mui/material/styles"
-import { OutlineButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import OrderList from "./OrderList"
 
@@ -142,7 +141,7 @@ const MyOrder = () => {
           ))}
         </Box>
         <Box sx={{ p: 2, pt: 3 }}>
-          <OrderList myOrderList={myOrderList} />
+          <OrderList myOrderList={myOrderList} review={false} />
         </Box>
       </Box>
       <NavigationBar />

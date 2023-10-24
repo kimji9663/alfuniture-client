@@ -57,7 +57,6 @@ const OrderCard = styled(Card)(() => ({
   },
 }))
 
-// MyOrder 데이터의 타입 정의
 type myOrder = {
   date: string;
   state: string;
@@ -67,8 +66,12 @@ type myOrder = {
   name: string;
 };
 
-// OrderCard 컴포넌트를 정의
-const MyOrderCard: React.FC<myOrder> = (props) => {
+type OrderListProps = {
+  myOrderList: myOrder[];
+  review: boolean;
+};
+
+const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
   const navigate = useNavigate()
   
   const goToOrderDetail = () => {
@@ -77,59 +80,49 @@ const MyOrderCard: React.FC<myOrder> = (props) => {
   const goToDeliveryDetail = () => {
     navigate("/mypage/delivery_detail")
   }
-  return (
-    <OrderCard>
-      <CardHeader title={props.date} />
-      <div className="card_content">
-        <p className="state">{props.state}</p>
-        <Box className="product">
-          <CardMedia
-            component="img"
-            height="80"
-            image={props.img}
-            alt="chair"
-          />
-          <Box sx={{ flex: '1 1 auto' }}>
-            <Box className="delivery">빠른배송</Box>
-            <Box className="brand">{props.brand}</Box>
-            <Box className="name">
-              {props.optionCode}
-              <br />
-              {props.name}
-            </Box>
-          </Box>
-        </Box>
-      </div>
-      <CardActions>
-        <OutlineButton onClick={goToOrderDetail} sx={{p:"13px 42px"}}>
-          <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>주문 상세</Typography>
-        </OutlineButton>
-        <OutlineButton onClick={goToDeliveryDetail} sx={{p:"13px 42px"}}>
-          <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>배송 상세</Typography>
-        </OutlineButton>
-      </CardActions>
-    </OrderCard>
-  );
-};
-
-// OrderList 컴포넌트를 정의
-type OrderListProps = {
-  myOrderList: myOrder[];
-};
-
-const OrderList: React.FC<OrderListProps> = ({ myOrderList }) => {
+  const goToWriteReview = () => {
+    navigate("/mypage/write_review")
+  }
   return (
     <>
       {myOrderList.map((order, index) => (
         <Box key={index}>
-          <MyOrderCard
-            date={order.date}
-            state={order.state}
-            img={order.img}
-            brand={order.brand}
-            optionCode={order.optionCode}
-            name={order.name}
-          />
+          <OrderCard>
+            <CardHeader title={order.date} />
+            <div className="card_content">
+              <p className="state">{order.state}</p>
+              <Box className="product">
+                <CardMedia
+                  component="img"
+                  height="80"
+                  image={order.img}
+                  alt="chair"
+                />
+                <Box sx={{ flex: '1 1 auto' }}>
+                  <Box className="delivery">빠른배송</Box>
+                  <Box className="brand">{order.brand}</Box>
+                  <Box className="name">
+                    {order.optionCode}
+                    <br />
+                    {order.name}
+                  </Box>
+                </Box>
+              </Box>
+            </div>
+            <CardActions>
+              <OutlineButton onClick={goToOrderDetail} sx={{p:"13px 42px"}}>
+                <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>주문 상세</Typography>
+              </OutlineButton>
+              {review ? 
+              (<OutlineButton onClick={goToWriteReview} sx={{p:"13px 42px"}}>
+                <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>리뷰 쓰기</Typography>
+              </OutlineButton>)
+              :
+              (<OutlineButton onClick={goToDeliveryDetail} sx={{p:"13px 42px"}}>
+              <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>배송 상세</Typography>
+            </OutlineButton>)}
+            </CardActions>
+          </OrderCard>
         </Box>
       ))}
     </>
