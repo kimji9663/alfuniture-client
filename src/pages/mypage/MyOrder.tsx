@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Box, FormControl, Card, CardHeader, CardMedia, CardActions, } from "@mui/material"
+import { Box, FormControl, Card } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { chair01, chair02, chair03, sofa04 } from "../../assets/images/product"
-import { styled } from "@mui/material/styles" 
+import { styled } from "@mui/material/styles"
 import { OutlineButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
+import OrderList from "./OrderList"
 
 const RectCheckbox = styled(FormControl)(() => ({
   '& input': {
@@ -20,58 +21,6 @@ const RectCheckbox = styled(FormControl)(() => ({
     border: '1px solid #242223',
     backgroundColor: '#242223',
     color: '#fff',
-  },
-}))
-
-const OrderCard = styled(Card)(() => ({
-  marginBottom: '16px',
-  borderRadius: 0,
-  border: '1px solid #dadada', 
-  boxShadow: 'none', 
-  '& .MuiCardHeader-root': {
-    padding: '8px 16px',
-    borderBottom: '1px solid #dadada',
-    '& .MuiCardHeader-title': {
-      color: '#666',
-      fontSize: '.875rem',
-    },
-  },
-  '& .MuiCardMedia-root': {
-    marginRight: '24px',
-    flex: '0 0 100px',
-  },
-  '& .card_content': {
-    padding: '16px',
-  },
-  '& .card_content .state': {
-    fontSize: '.75rem', 
-    color: '#333', 
-    fontWeight: 'bold',
-  },
-  '& .card_content .product': {
-    display: 'flex',
-    marginTop: '16px', 
-    '& .delivery': {
-      fontSize: '.6rem', 
-      fontWeight: 'bold',
-    },
-    '& .brand': {
-      marginTop: '8px', 
-      fontSize: '.875rem', 
-      fontWeight: 'bold',
-    },
-    '& .name': {
-      fontSize: '.75rem',
-    },
-  },
-  '& .MuiCardActions-root': {
-    padding: '16px',
-    '& > button': {
-      flex: '1 1 auto',
-      borderRadius: 0,
-      borderColor: '#dadada',
-      color: '#666',
-    },
   },
 }))
 
@@ -91,16 +40,12 @@ const filterList = [
     name: '배송완료',
   },
   {
-    id: 'completed',
-    name: '배송완료',
-  },
-  {
     id: 'cancel',
     name: '취소/교환/반품',
   },
 ]
 
-const MyOrderList = [
+const myOrderList = [
   {
     date: '2023.02.23',
     state: '배송준비중',
@@ -123,7 +68,7 @@ const MyOrderList = [
     img: sofa04,
     brand: 'HC ART',
     optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파', 
+    name: '블랙 모던 소파',
   },
   {
     date: '2022.03.13',
@@ -131,7 +76,7 @@ const MyOrderList = [
     img: sofa04,
     brand: 'HC ART',
     optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파', 
+    name: '블랙 모던 소파',
   },
 ]
 
@@ -196,47 +141,8 @@ const MyOrder = () => {
             </RectCheckbox>
           ))}
         </Box>
-        <Box sx={{ p: 2 }}>
-          {
-            MyOrderList.map((el) => (
-              <>
-                <OrderCard>
-                  <CardHeader title={el.date} />
-                  <div className="card_content">
-                    <p className="state">{el.state}</p>
-                    <Box className="product">
-                      <CardMedia
-                        component="img"
-                        height="80"
-                        image={el.img}
-                        alt="chair"
-                      />
-                      <Box
-                        sx={{
-                          flex: '1 1 auto'
-                        }}
-                      >
-                        <Box className="delivery">빠른배송</Box>
-                        <Box className="brand">{el.brand}</Box>
-                        <Box className="name">
-                          {el.optionCode}<br />
-                          {el.name}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </div>
-                  <CardActions>
-                    <OutlineButton onClick={goToOrderDetail}>
-                      주문 상세
-                    </OutlineButton>
-                    <OutlineButton onClick={goToDeliveryDetail}>
-                      배송 상세
-                    </OutlineButton>
-                  </CardActions>
-                </OrderCard>
-              </>
-            ))
-          }
+        <Box sx={{ p: 2, pt: 3 }}>
+          <OrderList myOrderList={myOrderList} />
         </Box>
       </Box>
       <NavigationBar />

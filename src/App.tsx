@@ -28,6 +28,7 @@ import MyOrder from "./pages/mypage/MyOrder"
 import RecentlyProduct from "./pages/mypage/RecentlyProduct"
 import OrderDetail from "./pages/mypage/OrderDetail"
 import Coupon from "./pages/mypage/Coupon"
+import Review from "./pages/mypage/Review"
 import DeliveryDetail from "./pages/mypage/DeliveryDetail"
 import BrandStory from "./pages/postmagazine/BrandStory"
 import EditorPick from "./pages/postmagazine/EditorPick"
@@ -166,6 +167,10 @@ const router = createBrowserRouter([
       {
         path: "/mypage/coupon",
         element: <Coupon />,
+      },
+      {
+        path: "/mypage/review",
+        element: <Review />,
       },
       {
         path: "/style",
