@@ -4,39 +4,7 @@ import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import WriteReviewPanel from "./WriteReviewPanel"
 import ReviewList from "./ReviewList"
-
-interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
-}
-
-function ReviewProps(index: number) {
-  return {
-    id: `Review-tab-${index}`,
-    'aria-controls': `Review-tabpanel-${index}`,
-  }
-}
-
-function ReviewTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`Review-tabpanel-${index}`}
-      aria-labelledby={`Review-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </div>
-  )
-}
+import { TabPanel, TabProps } from "../../components/Tabs"
 
 const title = ['리뷰 작성'];
 
@@ -63,21 +31,21 @@ const WriteReview: React.FC = () => {
             onChange={handleReviewTab} 
             aria-label="main category"
           >
-            <Tab label="작성 가능한 리뷰" {...ReviewProps(0)} />
-            <Tab label="작성한 리뷰" {...ReviewProps(1)} />
+            <Tab label="작성 가능한 리뷰" {...TabProps(0)} />
+            <Tab label="작성한 리뷰" {...TabProps(1)} />
           </Tabs>
         </Box>
 
-        <ReviewTabPanel value={tabValue} index={0}>
+        <TabPanel value={tabValue} index={0}>
           <Box sx={{p:2}}>
             <WriteReviewPanel/>
           </Box>
-        </ReviewTabPanel>
-        <ReviewTabPanel value={tabValue} index={1}>
+        </TabPanel>
+        <TabPanel value={tabValue} index={1}>
           <Box sx={{p:2, pt:6}}>
             <ReviewList/>
           </Box>
-        </ReviewTabPanel>
+        </TabPanel>
       </Box>
       <NavigationBar />
     </>

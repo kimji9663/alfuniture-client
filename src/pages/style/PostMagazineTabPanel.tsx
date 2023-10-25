@@ -1,68 +1,13 @@
 import React, { useState } from "react"
-import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import { styleBanner06, styleBanner07 } from "../../assets/images/banner"
+import { Box, Typography, Button } from "@mui/material"
 import { HalfArrowRigth } from "../../assets/images/"
-import { aerobiey01, designer, brandStory } from "../../assets/images/brand"
-import { brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03 } from "../../assets/images/banner"
+import { designer, brandStory } from "../../assets/images/brand"
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"
+import { monthlyPostSwiperData, videoSwiperData } from "../../data"
+import { ISwiperProps } from "../../components/ISwiperProps"
 import MonthlyPostBox from "./MonthlyPostBox"
 
-
-export const testData = [
-  {
-    id: 1,
-    imgsrc: brandCollectionVideo01,
-  },
-  {
-    id: 2,
-    imgsrc: brandCollectionVideo02,
-  },
-  {
-    id: 3,
-    imgsrc: brandCollectionVideo01,
-  },
-  {
-    id: 4,
-    imgsrc: brandCollectionVideo02,
-  },
-  {
-    id: 5,
-    imgsrc: brandCollectionVideo01,
-  },
-]
-
-const MonthlyPostDataArray = [
-  {
-    imageUrl: aerobiey01,
-    title: "따듯한 가구",
-    description: "일상속에서 자연스러운 아름다움을 느껴보세요.",
-    author: "Aerobiey - 23s",
-  },
-  {
-    imageUrl: styleBanner06,
-    title: "유니크한 가구",
-    description: "포인트를 더해 집 안에 생기를 불어 넣어보세요.",
-    author: "NIXO - 23s",
-  },
-  {
-    imageUrl: styleBanner07,
-    title: "모던한 가구",
-    description: "카페테라스에 모던하면서 시크한 매력을 더하다.",
-    author: "SAKIRO - 23s",
-  },
-];
-
-type ISwiperProps = { 
-  loop?: boolean
-  spaceBetween?: number 
-  scrollbar?: { 
-    draggable: boolean 
-    el: null 
-  }
-  slidesPerView?: "auto" | number | undefined
-  onSlideChange?: (swiper: any) => void
-}
 const brandCollectionSettings:ISwiperProps = {
   loop: false,
   scrollbar: { draggable: true, el: null },
@@ -85,7 +30,7 @@ const PostMagazineTabPanel = () => {
           Monthly Post
         </Typography>
         <Swiper {...MonthlyPostBoxSettings}>
-          {MonthlyPostDataArray.map((data, index) => (
+          {monthlyPostSwiperData.map((data, index) => (
             <SwiperSlide key={index} >
               <MonthlyPostBox key={index} data={data} />
             </SwiperSlide>
@@ -149,7 +94,7 @@ const PostMagazineTabPanel = () => {
       <Box sx={{mt:"60px", pl:2, mb:2, overflow:"hidden"}}>
         <Typography sx={{ fontSize: 22, fontWeight: "600", color:"#333333", lineHeight:"28px"}}>Brand Collection Video</Typography>
         <Swiper {...brandCollectionSettings}  style={{maxWidth: "420px",width: "100vw"}}>
-          {testData.map((item, index) => (
+          {videoSwiperData.map((item, index) => (
             <SwiperSlide key={index} >
               <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
                 <img src={item.imgsrc} alt="" style={{ width: "100%" }} />

@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { HalfArrowRigth } from "../../assets/images"
-import { Link } from 'react-router-dom';
 
 interface AerobieyBestWorkProps {
   title?: string;

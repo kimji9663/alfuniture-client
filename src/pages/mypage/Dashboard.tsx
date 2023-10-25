@@ -8,15 +8,12 @@ const title = ['My page']
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  
   const goToMyInfo = () => {
     navigate("/mypage/my_info")
   }
-
   const goToMyOrder = () => {
     navigate("/mypage/my_order")
   }
-
   const goToRecentlyProduct = () => {
     navigate("/mypage/recently_product")
   }

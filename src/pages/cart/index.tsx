@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { sofa01, table01 } from '../../assets/images/product';
 import { IconXblack } from '../../assets/images';
-import { Box, Typography, Checkbox, Input, IconButton, Button } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
-import { CustomCheckbox } from "./index.styles"
+import { CustomCheckbox } from "../../styles/checkbox.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
+import { cartProductData } from "../../data"
 
 interface cartData {
   imgsrc: any,
@@ -21,52 +22,22 @@ interface cartData {
   deliveryCharge: number,
   coupon?: Array<object>,
 }
-const testData = [
-  {
-    imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '베이지',
-    option2: '라탄',
-    count: 2,
-    price: 240000,
-    deliveryCharge: 100000,
-    coupon: [
-      {
-        name: '쿠폰1',
-        discount: 14000,
-      },
-    ],
-  },
-  {
-    imgsrc: table01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '모닝 데스크',
-    option1: '옐로우 우든',
-    option2: null,
-    count: 1,
-    price: 300000,
-    deliveryCharge: 0,
-    coupon: [],
-  },
-];
+
 
 function CartPage() {
   const [data, setData] = useState<cartData[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
 
   const [selectedProducts, setSelectedProducts] = useState<number[]>(
-    Array(testData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
+    Array(cartProductData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
   );
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...testData]);
+    setData([...data, ...cartProductData]);
   }, []); 
 
   useEffect(() => {
-    const length = testData.length;
+    const length = cartProductData.length;
     const indexArray = Array.from({ length }, (_, index) => index);
   
     setSelectedProducts(indexArray);

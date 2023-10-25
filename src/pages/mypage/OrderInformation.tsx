@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Box, Typography, Accordion, AccordionDetails, AccordionSummary, FormControl, Input } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Box, Typography, AccordionDetails, AccordionSummary } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { EllipsisTypography } from "../../components/Typography"
+import { OrderInfoAccordionMenu } from "../../styles/accordion.styles"
 import { Link } from "react-router-dom";
 interface OrderInfo {
   data:{
@@ -16,43 +16,6 @@ interface OrderInfo {
   }  
 }
 
-export const AccordionMenu = styled(Accordion)(() => ({
-  margin: '0 16px',
-  boxShadow: 'none',
-  // borderBottom: '1px solid #dadada',
-  '&.Mui-expanded': {
-    margin: '0 16px',
-  },
-  '&:before': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiAccordionSummary-root': {
-    padding: 0,
-    borderBottom: '1px solid #dadada',
-    '&.Mui-expanded': {
-      minHeight: 0,
-    },
-    '& > div': {
-      margin: '16px 0',
-      justifyContent: 'space-between',
-    },
-    '& > div.Mui-expanded': {
-      margin: '16px 0',
-    },
-    '& p': {
-      color: '#999',
-    },
-    '& .title, & .total_amount': {
-      color: '#333',
-      fontWeight: 'bold',
-    },
-  },
-  '& .MuiAccordionDetails-root': {
-    padding: '16px 0',
-    borderTop: '1px solid #333',
-  }
-}))
-
 const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -62,7 +25,7 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
 
   return (
     <>
-      <AccordionMenu
+      <OrderInfoAccordionMenu
         expanded={expanded === 'panel1'} 
         onChange={handleChange('panel1')}
       >
@@ -98,9 +61,9 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
             </Box>
           {/* </Box> */}
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderInfoAccordionMenu>
 
-      <AccordionMenu
+      <OrderInfoAccordionMenu
         expanded={expanded === 'panel2'} 
         onChange={handleChange('panel2')}
       >
@@ -123,7 +86,7 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
             </Box>
           </Box>
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderInfoAccordionMenu>
     </>
   );
 };

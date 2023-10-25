@@ -1,149 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react"
-import { ExampleStyle1, ExampleStyle2, exampleStyle } from "./home.styles"
 import LogoTitle from '../../components/title/LogoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import { chair04 } from "../../assets/images/product"
-import { ArrowDown, IconLikeOff, IconLikeOn, HalfArrowRigth } from "../../assets/images"
+import { ISwiperProps } from "../../components/ISwiperProps"
+import { ArrowDown, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
-import { sofa04, sofa05, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06 } from "../../assets/images/product"
-import {Paper, IconButton, Typography, Box } from '@mui/material'
+import { IconButton, Typography, Box } from '@mui/material'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
+import { homeBannerData, homeBrandProductData, rankingProductData, brandRankingData } from "../../data"
 import HorizontalRanking from "../../components/product/HorizontalRanking"
-import { Pagination } from 'swiper/modules';
-
-
-type ISwiperProps = { 
-  loop?: boolean
-  spaceBetween?: number 
-  scrollbar?: { 
-    draggable: boolean 
-    el: null 
-  }
-  slidesPerView?: "auto" | number | undefined
-  onSlideChange?: (swiper: any) => void
-}
-
-export const section2Data = [
-  {
-    id: 0,
-    imgsrc: sofa04,
-    like: true,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'Basic Sofa',
-    price: 969000,
-  },
-  {
-    id: 1,
-    imgsrc: sofa05,
-    like: false,
-    likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'soft_sofa',
-    price: 230000,
-  },
-]
-
-export const section3Data = [
-  {
-    id: 1,
-    imgsrc: rankingItem01,
-  },
-  {
-    id: 2,
-    imgsrc: rankingItem02,
-  },
-  {
-    id: 3,
-    imgsrc: rankingItem03,
-  },
-  {
-    id: 4,
-    imgsrc: rankingItem04,
-  },
-  {
-    id: 5,
-    imgsrc: rankingItem05,
-  },
-  
-]
-export const section4Data = [
-  {
-    id: 1,
-    imgsrc: rankingItem06,
-    title: "일상속에 스며든 가구, Aerobiey1",
-    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
-  },
-  {
-    id: 2,
-    imgsrc: rankingItem06,
-    title: "일상속에 스며든 가구, Aerobiey2",
-    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
-  },
-  {
-    id: 3,
-    imgsrc: rankingItem06,
-    title: "일상속에 스며든 가구, Aerobiey3",
-    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
-  },
-  {
-    id: 4,
-    imgsrc: rankingItem06,
-    title: "일상속에 스며든 가구, Aerobiey4",
-    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
-  },
-  {
-    id: 5,
-    imgsrc: rankingItem06,
-    title: "일상속에 스며든 가구, Aerobiey5",
-    discription: "일상속에서 자연스러운 아름다움을 느껴보세요"
-  },
-  
-]
-
 
 const Home = () => {
-  const imageList = [
-    {
-      discription: "chair01",
-      img: chair04
-    },
-    {
-      discription: "chair02",
-      img: chair04
-    },
-    {
-      discription: "chair03",
-      img: chair04
-    },
-    {
-      discription: "chair04",
-      img: chair04
-    },
-  ]
-  const [position, setPosition] = useState(0); // 화면의 현재 위치
-  const [count, setCount] = useState(0); // 화면의 현재 위치
-  const slideWidth = 323; // 한 번에 슬라이드되는 픽셀 수
-  const maxPosition = (section4Data.length - 1) * slideWidth; // 최대 슬라이드 위치
-
-  const handleNextClick = () => {
-    // "Next" 버튼 클릭 시 화면을 오른쪽으로 이동
-    setPosition((prevPosition) => {
-      const nextPosition = prevPosition - slideWidth
-      if(count < 4){
-        setCount(count + 1);
-      }else{
-        setCount(0);
-        return 0
-      }
-      return nextPosition
-    });
-  };
+  
   const brandRankingSettings:ISwiperProps = {
     loop: false,
     scrollbar: { draggable: true, el: null },
@@ -167,7 +37,7 @@ const Home = () => {
           overflow: 'hidden',
         }}>
           <Swiper {...photoBannerSettings} >
-            {imageList.map((photoReview, index) => (
+            {homeBannerData.map((photoReview, index) => (
               <SwiperSlide key={`photo_review_${index}`}>
                 <img src={photoReview.img} alt={photoReview.discription} />
               </SwiperSlide>
@@ -222,7 +92,7 @@ const Home = () => {
         <Box sx={{ mx:2 }}>
           <Box>
             {/* 가구리스트 */}
-          {section2Data.map((product: any, index) =>
+          {homeBrandProductData.map((product: any, index: any) =>
             <ListItem
               key={index}
               id={product.id}
@@ -242,7 +112,7 @@ const Home = () => {
       {/* 세번째 섹션 */}
       <Box sx={{mt:10}}>
         <Link to="/style/ranking"style={{ textDecoration: 'none', color: 'inherit' }}>
-          <HorizontalRanking data={section3Data} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
+          <HorizontalRanking data={rankingProductData} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
         </Link>
       </Box>
       {/* 네번째 섹션 */}
@@ -261,12 +131,11 @@ const Home = () => {
           }}
         >
           <Swiper {...brandRankingSettings}  style={{maxWidth: "420px",width: "100vw"}}>
-            {section4Data.map((item, index) => (
+            {brandRankingData.map((item, index) => (
               <SwiperSlide key={`photo_review_${index}`} style={{marginRight: 0}}>
                 <Box key={index}   sx={{
                   flexBasis: "323px",
                   transition: "transform 0.3s ease-in-out",
-                  transform: `translateX(${position}px)`,
                 }}>
                   {/* 이미지 */}
                   <Box sx={{ mt: 2, width: "275px", height: "222px", mr: 6 }}>
@@ -286,14 +155,6 @@ const Home = () => {
           </Swiper>
         </Box>
       </Box>
-
-
-      {/* <ExampleStyle1>
-        홈
-      </ExampleStyle1>
-      <ExampleStyle2>
-        홈
-      </ExampleStyle2> */}
       <NavigationBar/>
     </>
   )

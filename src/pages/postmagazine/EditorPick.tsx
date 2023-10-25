@@ -1,61 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import NoTitle from '../../components/title/NoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } from '@mui/material'
-
+import { Typography, Box } from '@mui/material'
 import {henredn01, henredn02, henredn03} from "../../assets/images/brand"
-import {henredn04, henredn05, henredn06, henredn07, } from "../../assets/images/product"
 import RightImageCard from './RightImageCard'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
-
-
-export const testData = [
-  {
-    id: 0,
-    imgsrc: henredn04,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[3Color] AB-201',
-    productName: '그린쇼파',
-    price: 3230000,
-    colors: ['#CBC6C3']
-  },
-  {
-    id: 1,
-    imgsrc: henredn05,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-102',
-    productName: '1인 클래식 의자',
-    price: 1430000,
-    colors: ['#192552', '#CBC6C3']
-  },
-  {
-    id: 2,
-    imgsrc: henredn06,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
-    price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
-  },
-  {
-    id: 3,
-    imgsrc: henredn07,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
-    price: 1430000,
-    colors: ['#292522']
-  },
-]
+import { editorPickData } from '../../data'
 
 const EditorPick = () => {
   
@@ -113,7 +64,7 @@ const EditorPick = () => {
       {/* 네번째 섹션 */}
       <Box sx={{mt:10}}>
         <BestWorkAllButton title='Henredn'/>
-        <List data={testData} />
+        <List data={editorPickData} />
       </Box>
       <NavigationBar/>
     </Box>

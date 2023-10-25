@@ -1,44 +1,13 @@
 import React, { useState } from "react"
-import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import WhiteTitle from '../../components/title/WhiteTitle'
-import { onerain03 } from "../../assets/images/product"
 import { IconRadioOn, IconRadioOff } from "../../assets/images"
 import onerainDetail from "../../assets/images/brand/onerainDetail.png"
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
-import { chair02, table01 } from "../../assets/images/product"
-
-export const brandItemData = [
-  {
-    id: 0,
-    imgsrc: onerain03,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-512',
-    productName: '원레인 더티 러그',
-    price: 230000
-  },
-  {
-    id: 1,
-    imgsrc: chair02,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-309',
-    productName: '원레인 아트체어',
-    price: 230000
-  },
-  {
-    id: 2,
-    imgsrc: table01,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-555',
-    productName: '원레인 테이블',
-    price: 420000
-  },
-]
+import { homeStylingProductData } from "../../data"
 
 const HomeStyling = () => {
-  function formatPrice(price: any) {
-    return price.toLocaleString();
-  }
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
   const iconCoordinates = [
     { top: "500px", left: "200px" }, // 아이콘 0의 좌표
@@ -53,7 +22,7 @@ const HomeStyling = () => {
   const selectedIconCoordinates = iconCoordinates[selectedIconIndex] || {}; // 선택된 아이콘의 좌표
 
   // 선택된 아이콘의 데이터 가져오기
-  const selectedBrandData = brandItemData[selectedIconIndex] || {};
+  const selectedBrandData = homeStylingProductData[selectedIconIndex] || {};
 
   return (
     <>

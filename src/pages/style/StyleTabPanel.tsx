@@ -1,38 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Box, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
-import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../../assets/images/filterIcon/styles";
+import { RectCheckbox } from "../../styles/checkbox.styles";
+import { styleTabPanelStyleTypes } from "../../data";
 
-const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
-  },
-  '& label': {
-    padding: '3px 12px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-  },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
-  },
-}))
-
-const StyleTypes = [
-  {avatar: modern, name: '모던', discription: '혼자 사는 자취방'},
-  {avatar: northernEU, name: '북유럽', discription: '아이들이 좋아하는'},
-  {avatar: classic, name: '클래식', discription: '잔잔한 바이브'},
-  {avatar: casual, name: '캐주얼', discription: '에너지 넘치는'},
-  {avatar: cen, name: '첸', discription: '고요함이 좋다면'},
-  {avatar: plant, name: '플랜테리어', discription: '생기를 불어넣는'},
-  {avatar: minimal, name: '미니멀', discription: '깔끔함이 최고'},
-  {avatar: romantic, name: '로맨틱', discription: '달달한 신혼'},
-];
-
-const itemList = StyleTypes.map(style => ({
-  id: (StyleTypes.indexOf(style) + 1).toString(),
+const itemList = styleTabPanelStyleTypes.map(style => ({
+  id: (styleTabPanelStyleTypes.indexOf(style) + 1).toString(),
   name: style.name,
 }));
 
@@ -41,7 +14,7 @@ const StyleTabPanel = () => {
   const [isAllChecked, setIsAllChecked] = useState(true);
 
   const filteredItemIds = filterItem;
-  const filteredStyles = StyleTypes.filter(style => filteredItemIds.includes(style.name));
+  const filteredStyles = styleTabPanelStyleTypes.filter(style => filteredItemIds.includes(style.name));
   const evenIndexStyles = filteredStyles.filter((_, index) => index % 2 === 0);
   const oddIndexStyles = filteredStyles.filter((_, index) => index % 2 !== 0);
 
@@ -49,7 +22,7 @@ const StyleTabPanel = () => {
     setFilterItem(itemList.map(el => el.name));
   }, []);
   useEffect(() => {
-    if (filterItem.length === StyleTypes.length) {
+    if (filterItem.length === styleTabPanelStyleTypes.length) {
       setIsAllChecked(true);
     } else {
       setIsAllChecked(false);
@@ -116,8 +89,6 @@ const StyleTabPanel = () => {
           borderBottom: '1px solid #DADADA',
         }}
       >
-        {/* <List data={testData} /> */}
-        
         <Box sx={{ mr: 1, width: 'calc(50vw - 20px)'}}>
           {/* 반복1 */}
           {evenIndexStyles.map((style, index) => (

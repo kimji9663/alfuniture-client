@@ -1,56 +1,10 @@
 import React, { useState, useRef } from "react";
 import { Box, Typography, Button, TextareaAutosize, FormControl } from "@mui/material";
-import { styled } from "@mui/material/styles"
 import { IconReviewStarBlackSmall, IconReviewStarGraySmall } from "../../assets/images/";
-
-const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
-  },
-  '& label': {
-    padding: '6px 14px',
-    border: '1px solid #DADADA',
-    fontSize: '14px',
-    color: '#999999',
-  },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
-  },
-}))
+import { RectCheckbox } from "../../styles/checkbox.styles";
+import { WriteReviewTagData } from "../../data";
 
 const WriteReviewPanel: React.FC = () => {
-
-  const tagList = [
-    {
-      name: '생각보다 커요',
-    },
-    {
-      name: '적당해요',
-    },
-    {
-      name: '조금 작아요',
-    },
-    {
-      name: '색감 예뻐요',
-    },
-    {
-      name: '분위기 있어요',
-    },
-    {
-      name: '실용적이에요',
-    },
-    {
-      name: '무거워요',
-    },
-    {
-      name: '가벼워요',
-    },
-    {
-      name: '선물하기 좋아요',
-    },
-  ]
 
   const [rating, setRating] = useState(0);
   const [userPhoto, setUserPhoto] = useState<string[]>([])
@@ -169,7 +123,7 @@ const WriteReviewPanel: React.FC = () => {
           상품 태그 선택
         </Typography>
         
-          {tagList.map((el, index) => (
+          {WriteReviewTagData.map((el, index) => (
             <RectCheckbox key={index} sx={{ ml: 1, mb: 1 }}>
               <input
                 type="checkbox"

@@ -1,61 +1,8 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom"
-import { Box, FormControl, Card, CardHeader, CardMedia, CardActions, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles" 
+import { Box, CardHeader, CardMedia, CardActions, Typography } from "@mui/material"
 import { OutlineButton } from "../../styles/buttons.styles"
-
-const OrderCard = styled(Card)(() => ({
-  marginBottom: '16px',
-  borderRadius: 0,
-  border: '1px solid #dadada', 
-  boxShadow: 'none', 
-  '& .MuiCardHeader-root': {
-    padding: '8px 16px',
-    borderBottom: '1px solid #dadada',
-    '& .MuiCardHeader-title': {
-      color: '#666',
-      fontSize: '.875rem',
-    },
-  },
-  '& .MuiCardMedia-root': {
-    marginRight: '24px',
-    flex: '0 0 100px',
-  },
-  '& .card_content': {
-    padding: '16px',
-  },
-  '& .card_content .state': {
-    fontSize: '.75rem', 
-    color: '#333', 
-    fontWeight: 'bold',
-  },
-  '& .card_content .product': {
-    display: 'flex',
-    marginTop: '16px', 
-    '& .delivery': {
-      fontSize: '.6rem', 
-      fontWeight: 'bold',
-    },
-    '& .brand': {
-      marginTop: '8px', 
-      fontSize: '.875rem', 
-      fontWeight: 'bold',
-    },
-    '& .name': {
-      fontSize: '.75rem',
-    },
-  },
-  '& .MuiCardActions-root': {
-    padding: '8px 16px 24px',
-    '& > button': {
-      flex: '1 1 auto',
-      borderRadius: 0,
-      borderColor: '#dadada',
-      color: '#666',
-    },
-  },
-}))
+import { MyPageOrderCard } from "../../styles/card.style"
 
 type myOrder = {
   date: string;
@@ -73,7 +20,6 @@ type OrderListProps = {
 
 const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
   const navigate = useNavigate()
-  
   const goToOrderDetail = () => {
     navigate("/mypage/order_detail")
   }
@@ -87,7 +33,7 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
     <>
       {myOrderList.map((order, index) => (
         <Box key={index}>
-          <OrderCard>
+          <MyPageOrderCard>
             <CardHeader title={order.date} />
             <div className="card_content">
               <p className="state">{order.state}</p>
@@ -122,7 +68,7 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
               <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>배송 상세</Typography>
             </OutlineButton>)}
             </CardActions>
-          </OrderCard>
+          </MyPageOrderCard>
         </Box>
       ))}
     </>

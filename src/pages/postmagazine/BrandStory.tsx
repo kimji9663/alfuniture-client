@@ -1,61 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import NoTitle from '../../components/title/NoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } from '@mui/material'
-
+import { Typography, Box } from '@mui/material'
 import {aerobiey02, aerobiey03, aerobiey04, aerobiey05} from "../../assets/images/brand"
-import {aerobiey06, aerobiey07, aerobiey08, aerobiey09, } from "../../assets/images/product"
 import PostMagazineHeader from './PostMagazineHeader'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
-
-
-export const testData = [
-  {
-    id: 0,
-    imgsrc: aerobiey06,
-    like: false,
-    likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[3Color] AB-201',
-    productName: '화이트 아크 체어',
-    price: 3230000,
-    colors: ['#CBC6C3']
-  },
-  {
-    id: 1,
-    imgsrc: aerobiey07,
-    like: false,
-    likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-102',
-    productName: '클래식 무드등',
-    price: 1430000,
-    colors: ['#192552', '#CBC6C3']
-  },
-  {
-    id: 2,
-    imgsrc: aerobiey08,
-    like: false,
-    likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
-    price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
-  },
-  {
-    id: 3,
-    imgsrc: aerobiey09,
-    like: false,
-    likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
-    price: 1430000,
-    colors: ['#292522']
-  },
-]
+import { brandStoryData } from '../../data'
 
 const BrandStory = () => {
   
@@ -110,7 +60,7 @@ const BrandStory = () => {
       {/* 세번째 섹션 */}
       <Box sx={{mt:10}}>
         <BestWorkAllButton title='Aerobiey'/>
-        <List data={testData} />
+        <List data={brandStoryData} />
       </Box>
       <NavigationBar/>
     </Box>

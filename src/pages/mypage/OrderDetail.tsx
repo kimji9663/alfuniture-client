@@ -3,8 +3,8 @@ import { Box, Typography } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { Link } from "react-router-dom";
-import { sofa01 } from '../../assets/images/product';
 import OrderInformation from "./OrderInformation"
+import { myPageOrderDetailData } from "../../data"
 
 interface cartData {
   imgsrc: any,
@@ -21,54 +21,12 @@ interface cartData {
   coupon?: Array<object>,
 }
 
-const testData = [
-  {
-    imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '브라운,블랙',
-    option2: '월넛',
-    count: 1,
-    price: 1594500,
-    discount: 159450,
-    totalPrice: 1435050,
-    deliveryCharge: 0,
-    coupon: [
-      {
-        name: '쿠폰1',
-        discount: 14000,
-      },
-    ],
-    deliveryInfo: {
-      recipient: "홍길동",
-      contact: "010-0000-0000",
-      address: "서울특별시 00로 00아파트 000동 000호",
-    },
-    paymentCard: "국민카드",
-    paymentMethod: "일시불",
-  },
-  // {
-  //   imgsrc: table01,
-  //   shopName: 'ALFDEN',
-  //   modelName: '[23Series] AD-388',
-  //   productName: '모닝 데스크',
-  //   option1: '옐로우 우든',
-  //   option2: null,
-  //   count: 1,
-  //   price: 300000,
-  //   deliveryCharge: 0,
-  //   coupon: [],
-  // },
-];
-
-
 const OrderDetail = () => {
 
   const [data, setData] = useState<cartData[]>([]);
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...testData]);
+    setData([...data, ...myPageOrderDetailData]);
   }, []); 
   
   return (
@@ -162,7 +120,7 @@ const OrderDetail = () => {
             ))}
 
             {/* 아코디언 */}
-            <OrderInformation data={testData[0]}/>
+            <OrderInformation data={myPageOrderDetailData[0]}/>
         </Box>
       </Box>
       <Box sx={{position:"sticky", bottom:0, width:"100%"}}>

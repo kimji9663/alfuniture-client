@@ -1,61 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import NoTitle from '../../components/title/NoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 import RightImageCard from './RightImageCard'
 import {umasqu01, umasqu02, umasqu03} from "../../assets/images/brand"
-import {umasqu04, umasqu05, umasqu06, umasqu07, } from "../../assets/images/product"
 import PostMagazineHeader from './PostMagazineHeader'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
-
-
-export const testData = [
-  {
-    id: 0,
-    imgsrc: umasqu04,
-    like: false,
-    likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[3Color] AB-201',
-    productName: '그린쇼파',
-    price: 3230000,
-    colors: ['#CBC6C3']
-  },
-  {
-    id: 1,
-    imgsrc: umasqu05,
-    like: false,
-    likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[23s] AB-102',
-    productName: '1인 클래식 의자',
-    price: 1430000,
-    colors: ['#192552', '#CBC6C3']
-  },
-  {
-    id: 2,
-    imgsrc: umasqu06,
-    like: false,
-    likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
-    price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
-  },
-  {
-    id: 3,
-    imgsrc: umasqu07,
-    like: false,
-    likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
-    price: 1430000,
-    colors: ['#292522']
-  },
-]
+import { monthlyPostData } from '../../data'
 
 const MonthlyPost = () => {
   
@@ -87,7 +38,7 @@ const MonthlyPost = () => {
       </Box>
       <Box>
         <BestWorkAllButton/>
-        <List data={testData} />
+        <List data={monthlyPostData} />
       </Box>
       <NavigationBar/>
     </Box>

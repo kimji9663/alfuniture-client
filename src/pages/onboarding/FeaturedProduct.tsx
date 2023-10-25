@@ -1,10 +1,10 @@
 import React from "react"
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import ListItem from "../../components/product/ListItem"
-import { testData } from "../shop/ProductList"
+import { shopProductData } from "../../data"
 import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
 
 const FeaturedProduct = () => {
@@ -22,7 +22,7 @@ const FeaturedProduct = () => {
         <TitleTwoLine2 title={title}/>
         <Box sx={{ px: 2, alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           {/* 가구리스트 */}
-          {testData.map((product: any, index) =>
+          {shopProductData.map((product: any, index: any) =>
             <ListItem
               key={index}
               id={product.id}
