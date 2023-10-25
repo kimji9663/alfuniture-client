@@ -5,16 +5,17 @@ import List from "./List"
 import { CustomCheckbox } from "../../../styles/checkbox.styles"
 import {likeProductData, styleTypes} from "../../../data/index"
 import {RectCheckbox} from "../../../styles/checkbox.styles"
+import { handleCheckedFilterItem } from "../../../components/filterUtils";
+
+const itemList = styleTypes.map(style => ({
+  id: (styleTypes.indexOf(style) + 1).toString(),
+  name: style.name,
+}));
 
 const ProductList = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
   const [isAllChecked, setIsAllChecked] = useState(true);
   const [filteredStyles, setFilteredStyles] = useState(likeProductData);
-
-  const itemList = styleTypes.map(style => ({
-    id: (styleTypes.indexOf(style) + 1).toString(),
-    name: style.name,
-  }));
 
   useEffect(() => {
     setFilterItem(itemList.map(el => el.name));
@@ -33,20 +34,8 @@ const ProductList = () => {
     }
   }, [filterItem]);
 
-  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    if (name === 'all') {
-      if (e.currentTarget.checked) {
-        setFilterItem(itemList.map(el => el.name))
-      } else {
-        setFilterItem([])
-      }
-    } else {
-      if (e.currentTarget.checked) {
-        setFilterItem([...filterItem, name])
-      } else {
-        setFilterItem(filterItem.filter(el => el !== name))
-      }
-    }
+  const handleCheckFilterItem  = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    handleCheckedFilterItem(filterItem, setFilterItem, itemList, e, name);
   }
 
   return (
@@ -64,7 +53,7 @@ const ProductList = () => {
           <input
             type="checkbox"
             id={`check_all`}
-            onChange={e => handleCheckedFilterItem(e, 'all')}
+            onChange={e => handleCheckFilterItem(e, 'all')}
             checked={isAllChecked}
           />
           <label htmlFor={`check_all`}>전체</label>
@@ -74,10 +63,10 @@ const ProductList = () => {
             <input
               type="checkbox"
               id={el.name}
-              onChange={e => handleCheckedFilterItem(e, el.name)}
+              onChange={e => handleCheckFilterItem(e, el.name)}
               checked={filterItem.includes(el.name)}
             />
-            <label htmlFor={`check_${el.name}`}>{el.name}</label>
+            <label htmlFor={el.name}>{el.name}</label>
           </RectCheckbox>
         ))}
       </Box>

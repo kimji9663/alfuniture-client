@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
 import { RectCheckbox } from "../../styles/checkbox.styles";
 import { styleTabPanelStyleTypes } from "../../data";
+import { handleCheckedFilterItem } from "../../components/filterUtils";
 
 const itemList = styleTabPanelStyleTypes.map(style => ({
   id: (styleTabPanelStyleTypes.indexOf(style) + 1).toString(),
@@ -29,20 +30,8 @@ const StyleTabPanel = () => {
     }
   }, [filterItem]);
 
-  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    if (name === 'all') {
-      if (e.currentTarget.checked) {
-        setFilterItem(itemList.map(el => el.name))
-      } else {
-        setFilterItem([])
-      }
-    } else {
-      if (e.currentTarget.checked) {
-        setFilterItem([...filterItem, name])
-      } else {
-        setFilterItem(filterItem.filter(el => el !== name))
-      }
-    }
+  const handleCheckFilterItem  = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    handleCheckedFilterItem(filterItem, setFilterItem, itemList, e, name);
   }
 
   return (
@@ -62,7 +51,7 @@ const StyleTabPanel = () => {
           <input
             type="checkbox"
             id={`check_all`}
-            onChange={e => handleCheckedFilterItem(e, 'all')}
+            onChange={e => handleCheckFilterItem(e, 'all')}
             checked={isAllChecked}
           />
           <label htmlFor={`check_all`}>전체</label>
@@ -72,7 +61,7 @@ const StyleTabPanel = () => {
             <input
               type="checkbox"
               id={`check_${el.name}`}
-              onChange={e => handleCheckedFilterItem(e, el.name)}
+              onChange={e => handleCheckFilterItem(e, el.name)}
               checked={filterItem.includes(el.name)}
             />
             <label htmlFor={`check_${el.name}`}>{el.name}</label>

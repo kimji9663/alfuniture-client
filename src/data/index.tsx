@@ -1,7 +1,7 @@
 import { sofa01, sofa02, sofa03, sofa04, sofa05, table01, table02, table03, chair01, chair02, chair03, chair04, closet01, closet02, closet03, bed01, bed02, bed03, light01, light02, light03, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06, jamesLee01, jamesLee02, jamesLee03, jamesLee04, onerain01, onerain02, onerain03, aerobiey06, aerobiey07, aerobiey08, aerobiey09, henredn04, henredn05, henredn06, henredn07, umasqu04, umasqu05, umasqu06, umasqu07, recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, onerain_coupon03, deliveryProduct,
 } from "./../assets/images/product"
 import { aerobiey, alfdn, clods, jameslee, onerain } from "../assets/images/logo"
-import { jamesLee, unknown, onerainDetail, aerobiey01, designer, brandStory, aerobiey02, aerobiey03, aerobiey04, aerobiey05, henredn01, henredn02, henredn03, umasqu01, umasqu02, umasqu03, alfdn01, alfdn02, alfdn03, alfdn04, alfdn05,
+import { onerainBrand, jamesLee, unknown, onerainDetail, aerobiey01, designer, brandStory, aerobiey02, aerobiey03, aerobiey04, aerobiey05, henredn01, henredn02, henredn03, umasqu01, umasqu02, umasqu03, alfdn01, alfdn02, alfdn03, alfdn04, alfdn05,
 } from "../assets/images/brand"
 import { thumb_brand01 } from "../assets/images"
 import { styleBanner01, styleBanner02, styleBanner03, styleBanner04, styleBanner05, styleBanner06, styleBanner07, brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03,
@@ -1609,7 +1609,7 @@ export const videoSwiperData = [
 export const brandRakingSwiperData = [
   {
     id: 0,
-    imgsrc: onerain,
+    imgsrc: onerainBrand,
     shopName: 'ONERAIN',
     productList: [
       {
@@ -1630,7 +1630,7 @@ export const brandRakingSwiperData = [
   },
   {
     id: 1,
-    imgsrc: onerain,
+    imgsrc: onerainBrand,
     shopName: 'ONERAIN',
     productList: [
       {
@@ -1651,7 +1651,7 @@ export const brandRakingSwiperData = [
   },
   {
     id: 3,
-    imgsrc: onerain,
+    imgsrc: onerainBrand,
     shopName: 'ONERAIN',
     productList: [
       {
