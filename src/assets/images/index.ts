@@ -42,8 +42,8 @@ import { ReactComponent as IconEdit } from './icon_edit.svg'
 import { ReactComponent as IconDownWhite } from './icon_down_white.svg'
 import { ReactComponent as IconCircleGray } from './icon_circle_gray.svg'
 import { ReactComponent as IconTelGray } from './icon_tel_gray.svg'
-
-
+import { ReactComponent as IconReviewStarBlackSmall } from './icon_review_star_black_small.svg'
+import { ReactComponent as IconReviewStarGraySmall } from './icon_review_star_gray_small.svg'
 
 // Image
 import logo from "./logo.png"
@@ -95,6 +95,8 @@ export {
   IconDownWhite,
   IconCircleGray,
   IconTelGray,
+  IconReviewStarBlackSmall,
+  IconReviewStarGraySmall,
 
   // Image
   logo,

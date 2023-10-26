@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { sofa01, table01 } from '../../assets/images/product';
 import { IconXblack } from '../../assets/images';
-import { Box, Typography, Checkbox, Input, IconButton, Button } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
-import { CustomCheckbox } from "./index.styles"
+import { CustomCheckbox } from "../../styles/checkbox.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
+import { cartProductData } from "../../data"
+import { C999Fs12Typography, C333Fs12Typography, C333Fs16Typography } from "../../components/Typography"
 
 interface cartData {
   imgsrc: any,
@@ -21,65 +22,41 @@ interface cartData {
   deliveryCharge: number,
   coupon?: Array<object>,
 }
-const testData = [
-  {
-    imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '베이지',
-    option2: '라탄',
-    count: 2,
-    price: 240000,
-    deliveryCharge: 100000,
-    coupon: [
-      {
-        name: '쿠폰1',
-        discount: 14000,
-      },
-    ],
-  },
-  {
-    imgsrc: table01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '모닝 데스크',
-    option1: '옐로우 우든',
-    option2: null,
-    count: 1,
-    price: 300000,
-    deliveryCharge: 0,
-    coupon: [],
-  },
-];
+
 
 function CartPage() {
-  const [selectedProducts, setSelectedProducts] = useState<number[]>(
-    Array(testData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
-  );
   const [data, setData] = useState<cartData[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
-
+  const [selectedProducts, setSelectedProducts] = useState<number[]>(
+    Array(cartProductData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
+  );
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...testData]);
+    setData([...data, ...cartProductData]);
   }, []); 
 
   useEffect(() => {
-    const length = testData.length;
+    const length = cartProductData.length;
     const indexArray = Array.from({ length }, (_, index) => index);
   
     setSelectedProducts(indexArray);
   }, []);
+
+  useEffect(() => {
+    setTotalCount(calculateTotalCount());
+  }, [selectedProducts]);
   
 
   // 선택된 상품을 토글하는 함수
   const toggleProduct = (productId: number) => {
-    if (selectedProducts.includes(productId)) {
-      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
-    } else {
-      setSelectedProducts([...selectedProducts, productId]);
-    }
+    setSelectedProducts((prevSelected) => {
+      if (prevSelected.includes(productId)) {
+        return prevSelected.filter((id) => id !== productId);
+      } else {
+        return [...prevSelected, productId];
+      }
+    });
   };
 
   // 선택된 상품들의 가격을 합산하는 함수
@@ -106,6 +83,7 @@ function CartPage() {
     const updatedData = [...data];
     updatedData[index].count += 1;
     setData(updatedData);
+    setTotalCount(calculateTotalCount());
   };
   
   // - 버튼 클릭 시 수량 감소
@@ -114,9 +92,16 @@ function CartPage() {
     if (updatedData[index].count > 1) {
       updatedData[index].count -= 1;
       setData(updatedData);
+      setTotalCount(calculateTotalCount());
     }
   };
   
+  const calculateTotalCount = () => {
+    return data
+      .filter((product, index) => selectedProducts.includes(index))
+      .reduce((total, product) => total + product.count, 0);
+  }
+
   const handleActiveOrder = selectedProducts.length === 0;
   const navigate = useNavigate()
   const handleGoToOrder = () => {
@@ -136,10 +121,8 @@ function CartPage() {
       // 데이터 배열과 선택된 상품 목록 상태 업데이트
       setData(updatedItems);
       setSelectedProducts(updatedSelectedProducts);
+      setTotalCount(calculateTotalCount());
     }
-
-
-
   }
   return (
     <>
@@ -194,12 +177,12 @@ function CartPage() {
                       sx={{flexGrow: "1", position:"relative", height: "100px"}}>
                       <Box sx={{height: "20px", display:"flex", width:"100%", justifyContent:"space-between"}}>
                         <Box >
-                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"600"}}>{product.shopName}</Typography>
+                          <C333Fs12Typography sx={{fontWeight:"600"}}>{product.shopName}</C333Fs12Typography>
                         </Box>
                         {/* 닫기 버튼 예정 */}
                         <IconXblack onClick={() => deleteItem(index)} />
                       </Box>
-                      <Typography sx={{fontSize: "16px", lineHeight: "23px", letterSpacing: "0.15px", height: "23px", color:"#333333", fontWeight:"600"}}>{product.productName}</Typography>
+                      <C333Fs16Typography>{product.productName}</C333Fs16Typography>
                       <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999"}}>
                         <span style={{marginRight: "8px"}}>{product.option1}</span>
                         <span style={{fontSize: "14px", marginRight: "8px"}}>|</span>
@@ -306,18 +289,18 @@ function CartPage() {
             <Box sx={{pt:2, px:2, pb:5}}>
               <Box sx={{borderTop:"1px solid #DADADA", py:3}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#999999", fontWeight:"400"}}>총 상품금액</Typography>
-                  <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"400"}}>{calculateProductPrice().toLocaleString()+"원"}</Typography>
+                  <C999Fs12Typography>총 상품금액</C999Fs12Typography>
+                  <C333Fs12Typography>{calculateProductPrice().toLocaleString()+"원"}</C333Fs12Typography>
                 </Box>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#999999", fontWeight:"400"}}>배송비</Typography>
-                  <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"400"}}>{calculateDeliveryCharge().toLocaleString()+"원"}</Typography>
+                  <C999Fs12Typography>배송비</C999Fs12Typography>
+                  <C333Fs12Typography>{calculateDeliveryCharge().toLocaleString()+"원"}</C333Fs12Typography>
                 </Box>
               </Box>
               <Box sx={{borderTop:"1px solid #333333", py:2}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-                  <Typography sx={{fontSize: "16px", lineHeight: "24px", letterSpacing: "0.15px", color:"#333333", fontWeight:"600"}}>결제금액</Typography>
-                  <Typography sx={{fontSize: "16px", lineHeight: "24px", letterSpacing: "0.15px", color:"#333333", fontWeight:"600"}}>{calculateTotalPrice().toLocaleString()+"원"}</Typography>
+                  <C333Fs16Typography>결제금액</C333Fs16Typography>
+                  <C333Fs16Typography>{calculateTotalPrice().toLocaleString()+"원"}</C333Fs16Typography>
                 </Box>
               </Box>
             </Box>
@@ -328,7 +311,7 @@ function CartPage() {
                 disabled={handleActiveOrder}
                 onClick={handleGoToOrder}
               >
-                {selectedProducts.length+"개 선택상품 구매하기"}
+                {totalCount+"개 선택상품 구매하기"}
               </PrimaryButton>
             </NaviWrap>
           </Box>

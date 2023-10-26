@@ -20,6 +20,7 @@ import Order from "./pages/order/Order"
 import Dashboard from "./pages/mypage/Dashboard"
 import Style from "./pages/style/Style"
 import RankingList from "./pages/style/RankingList"
+import HomeStyling from "./pages/style/HomeStyling"
 import Brand from "./pages/style/Brand"
 import LoadingCuration from "./pages/onboarding/LoadingCuration"
 import MyInformation from "./pages/mypage/MyInformation"
@@ -27,10 +28,24 @@ import MyOrder from "./pages/mypage/MyOrder"
 import RecentlyProduct from "./pages/mypage/RecentlyProduct"
 import OrderDetail from "./pages/mypage/OrderDetail"
 import Coupon from "./pages/mypage/Coupon"
+import Review from "./pages/mypage/Review"
+import WriteReview from "./pages/mypage/WriteReview"
 import DeliveryDetail from "./pages/mypage/DeliveryDetail"
-import FurniturePick from "./pages/postmagazine/FurniturePick"
+import BrandStory from "./pages/postmagazine/BrandStory"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 페이지 이동 후 스크롤 위치를 최상단으로 이동
+  }, [pathname]);
+
+  return null;
+}
 
 const router = createBrowserRouter([
   {
@@ -167,6 +182,18 @@ const router = createBrowserRouter([
         element: <Coupon />,
       },
       {
+        path: "/mypage/review",
+        element: <Review />,
+      },
+      {
+        path: "/mypage/write_review",
+        element: <WriteReview />,
+      },
+      {
+        path: "/mypage/modify_review",
+        element: <WriteReview />,
+      },
+      {
         path: "/style",
         element: <Style />,
       },
@@ -175,19 +202,23 @@ const router = createBrowserRouter([
         element: <RankingList />,
       },
       {
+        path: "/style/home_styling",
+        element: <HomeStyling />,
+      },
+      {
         path: "/style/brand",
         element: <Brand />,
       },
       {
-        path: "/furniturePick/aerobiey",
-        element: <FurniturePick />,
+        path: "/brand_story/aerobiey",
+        element: <BrandStory />,
       },
       {
-        path: "/editorPick/henredn",
+        path: "/editor_pick/henredn",
         element: <EditorPick />,
       },
       {
-        path: "/monthlyPost/umasqu",
+        path: "/monthly_post/umasqu",
         element: <MonthlyPost />,
       },
     ],

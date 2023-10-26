@@ -1,129 +1,41 @@
-import React, { useState } from "react"
-import { Box, FormControl, FormControlLabel, Checkbox, Button } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import React, { useState, useEffect } from "react"
+import { Box, FormControlLabel, Button } from "@mui/material"
 import { IconShift } from "../../../assets/images"
 import List from "./List"
-import { chair03, sofa01, sofa02, sofa03 } from "../../../assets/images/product"
+import { CustomCheckbox } from "../../../styles/checkbox.styles"
+import {likeProductData, styleTypes} from "../../../data/index"
+import {RectCheckbox} from "../../../styles/checkbox.styles"
+import { handleCheckedFilterItem } from "../../../components/filterUtils";
 
-const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
-  },
-  '& label': {
-    padding: '3px 12px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-  },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
-  },
-}))
-
-const itemList = [
-  {
-    id: 'sofa',
-    name: '소파',
-  },
-  {
-    id: 'bed',
-    name: '침대',
-  },
-  {
-    id: 'desk',
-    name: '책상',
-  },
-  {
-    id: 'table',
-    name: '테이블',
-  },
-  {
-    id: 'chair',
-    name: '의자',
-  },
-  {
-    id: 'lights',
-    name: '조명',
-  },
-  {
-    id: 'kids',
-    name: '키즈',
-  },
-  {
-    id: 'closet',
-    name: '수납장',
-  },
-  {
-    id: 'home_deco',
-    name: '홈데코',
-  }
-]
-
-export const testData = [
-  {
-    id: 0,
-    imgsrc: chair03,
-    like: true,
-    likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-0152',
-    productName: '릴렉스 체어 (3colors)',
-    price: 4834000,
-    colors: ['#A55555', '#192552', '#494A4C']
-  },
-  {
-    id: 1,
-    imgsrc: sofa02,
-    like: false,
-    likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[22s] HRD-210',
-    productName: '1인 모던 쇼파 ',
-    price: 6790000,
-    colors: ['#864000']
-  },
-  {
-    id: 2,
-    imgsrc: sofa03,
-    like: false,
-    likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-251',
-    productName: '기획전 시티 쇼파',
-    price: 2230000,
-    colors: ['#CBC6C3']
-  },
-  {
-    id: 3,
-    imgsrc: sofa01,
-    like: false,
-    likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-123',
-    productName: '올드 가죽쇼파',
-    price: 1230000,
-    colors: ['#A55555']
-  },
-]
+const itemList = styleTypes.map(style => ({
+  id: (styleTypes.indexOf(style) + 1).toString(),
+  name: style.name,
+}));
 
 const ProductList = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
+  const [isAllChecked, setIsAllChecked] = useState(true);
+  const [filteredStyles, setFilteredStyles] = useState(likeProductData);
 
-  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-    if (id === 'all') {
-      if (e.currentTarget.checked) {
-        setFilterItem(itemList.map(el => el.id))
-      } else {
-        setFilterItem([])
-      }
+  useEffect(() => {
+    setFilterItem(itemList.map(el => el.name));
+  }, []);
+
+  useEffect(() => {
+    const updatedFilteredStyles = likeProductData.filter((style) => filterItem.includes(style.name));
+    setFilteredStyles(updatedFilteredStyles);
+  }, [filterItem]);
+
+  useEffect(() => {
+    if (filterItem.length === styleTypes.length) {
+      setIsAllChecked(true);
     } else {
-      if (e.currentTarget.checked) {
-        setFilterItem([...filterItem, id])
-      } else {
-        setFilterItem(filterItem.filter(el => el !== id))
-      }
+      setIsAllChecked(false);
     }
+  }, [filterItem]);
+
+  const handleCheckFilterItem  = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    handleCheckedFilterItem(filterItem, setFilterItem, itemList, e, name);
   }
 
   return (
@@ -141,7 +53,8 @@ const ProductList = () => {
           <input
             type="checkbox"
             id={`check_all`}
-            onChange={e => handleCheckedFilterItem(e, 'all')}
+            onChange={e => handleCheckFilterItem(e, 'all')}
+            checked={isAllChecked}
           />
           <label htmlFor={`check_all`}>전체</label>
         </RectCheckbox>
@@ -149,11 +62,11 @@ const ProductList = () => {
           <RectCheckbox key={el.id} sx={{ ml: 1 }}>
             <input
               type="checkbox"
-              id={`check_${el.id}`}
-              onChange={e => handleCheckedFilterItem(e, el.id)}
-              checked={filterItem.includes(el.id)}
+              id={el.name}
+              onChange={e => handleCheckFilterItem(e, el.name)}
+              checked={filterItem.includes(el.name)}
             />
-            <label htmlFor={`check_${el.id}`}>{el.name}</label>
+            <label htmlFor={el.name}>{el.name}</label>
           </RectCheckbox>
         ))}
       </Box>
@@ -169,14 +82,8 @@ const ProductList = () => {
         }}
       >
         <FormControlLabel
-          control={<Checkbox color="default" sx={{ p: '0px 4px 0px 8px' }} />}
+          control={<CustomCheckbox type="checkbox" style={{marginLeft:"12px", marginRight: "8px"}}/>}
           label="품절 제외"
-          sx={{
-            '& > .MuiTypography-root': {
-              color: '#333',
-              fontSize: '.875rem'
-            }
-          }}
         />
         <Button
           sx={{
@@ -193,7 +100,7 @@ const ProductList = () => {
         </Button>
       </Box>
       <Box>
-        <List data={testData} />
+        <List data={filteredStyles} />
       </Box>
     </>
   )
