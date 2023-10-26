@@ -7,9 +7,10 @@ import PostMagazineHeader from './PostMagazineHeader'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
 import { monthlyPostData } from '../../data'
+import { ScrollToTop } from '../../App'
 
 const MonthlyPost = () => {
-  
+  ScrollToTop();
   return (
     <Box>
       {/* 첫번째 섹션 */}

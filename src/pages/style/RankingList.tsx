@@ -6,6 +6,7 @@ import NavigationBar from "../../components/NavigationBar"
 import {rankingProductData, styleTypes} from "../../data/index"
 import {RectCheckbox} from "../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
+import { ScrollToTop } from '../../App'
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -34,11 +35,11 @@ const RankingList = () => {
     }
   }, [filterItem]);
 
-
   const handleCheckFilterItem  = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
     handleCheckedFilterItem(filterItem, setFilterItem, itemList, e, name);
   }
-  
+
+  ScrollToTop();
   return (
     <>
       <LeftTitleNoIcon title={["TOP5 가구랭킹"]}/>

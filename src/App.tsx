@@ -34,6 +34,18 @@ import DeliveryDetail from "./pages/mypage/DeliveryDetail"
 import BrandStory from "./pages/postmagazine/BrandStory"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 페이지 이동 후 스크롤 위치를 최상단으로 이동
+  }, [pathname]);
+
+  return null;
+}
 
 const router = createBrowserRouter([
   {

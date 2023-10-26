@@ -6,6 +6,7 @@ import onerainDetail from "../../assets/images/brand/onerainDetail.png"
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
 import { homeStylingProductData } from "../../data"
+import { ScrollToTop } from '../../App'
 
 const HomeStyling = () => {
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
@@ -23,7 +24,7 @@ const HomeStyling = () => {
 
   // 선택된 아이콘의 데이터 가져오기
   const selectedBrandData = homeStylingProductData[selectedIconIndex] || {};
-
+  ScrollToTop();
   return (
     <>
     <Box sx={{position:"relative", height: "100vh"}}>

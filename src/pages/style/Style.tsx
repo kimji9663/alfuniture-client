@@ -10,6 +10,7 @@ import RankingTabPanel from './RankingTabPanel';
 import PostMagazineTabPanel from './PostMagazineTabPanel';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
+import { ScrollToTop } from '../../App'
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -22,7 +23,8 @@ const Style = () => {
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
-  
+
+  ScrollToTop();
   return (
     <Box sx={{height: 'calc(100vh - 74px)'}}>
       <LogoTitle/>

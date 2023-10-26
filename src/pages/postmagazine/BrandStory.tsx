@@ -6,9 +6,10 @@ import PostMagazineHeader from './PostMagazineHeader'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
 import { brandStoryData } from '../../data'
+import { ScrollToTop } from '../../App'
 
 const BrandStory = () => {
-  
+  ScrollToTop();
   return (
     <Box>
       {/* 첫번째 섹션 */}

@@ -5,9 +5,10 @@ import NavigationBar from "../../components/NavigationBar"
 import List from "../like/Like/List"
 import LeftTitle from "../../components/title/LeftTitle"
 import { styleBrandProductData } from "../../data"
+import { ScrollToTop } from '../../App'
 
 const Brand = () => {
-  
+  ScrollToTop();
   return (
     <Box sx={{minHeight:"100vh", position:"relative", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
       <Box>

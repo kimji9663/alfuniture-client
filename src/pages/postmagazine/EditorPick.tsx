@@ -7,9 +7,10 @@ import RightImageCard from './RightImageCard'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
 import { editorPickData } from '../../data'
+import { ScrollToTop } from '../../App'
 
 const EditorPick = () => {
-  
+  ScrollToTop();
   return (
     <Box>
       {/* 첫번째 섹션 */}
