@@ -4,13 +4,14 @@ import LogoTitle from '../../components/title/LogoTitle'
 import {TabPanel, TabProps} from '../../components/Tabs'
 import { ISwiperProps } from '../../components/ISwiperProps'
 import NavigationBar from "../../components/NavigationBar"
-import { Typography, Box, Tabs, Tab } from '@mui/material'
+import { Box, Tabs, Tab } from '@mui/material'
 import StyleTabPanel from './StyleTabPanel';
 import RankingTabPanel from './RankingTabPanel';
 import PostMagazineTabPanel from './PostMagazineTabPanel';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
 import { ScrollToTop } from '../../App'
+import { Fs14Fw400Typography, C333Fs50Fw400Typography, C666Fs14Fw400Typography } from '../../components/Typography'
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -42,13 +43,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Typography sx={{ fontSize: 14, fontWeight: "400", lineHeight: "16.8px" }}>NEW</Typography>
+                              <Fs14Fw400Typography >NEW</Fs14Fw400Typography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <Typography sx={{ fontSize: 50, fontWeight: "400", lineHeight: "19px", mb: 3, color: "#333333" }}>{item.brandName}</Typography>
-                          <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>{item.discription}</Typography>
+                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
+                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
                         </Box>
                       </>
                     )}
@@ -58,13 +59,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Typography sx={{ fontSize: 14, fontWeight: "400", lineHeight: "16.8px" }}>NEW</Typography>
+                              <Fs14Fw400Typography>NEW</Fs14Fw400Typography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <Typography sx={{ fontSize: 50, fontWeight: "400", lineHeight: "19px", mb: 3, color: "#333333" }}>{item.brandName}</Typography>
-                          <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>{item.discription}</Typography>
+                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
+                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
                         </Box>
                       </>
                     )}

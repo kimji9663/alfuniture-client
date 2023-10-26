@@ -5,12 +5,13 @@ import NavigationBar from "../../components/NavigationBar"
 import { ISwiperProps } from "../../components/ISwiperProps"
 import { ArrowDown, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
-import { IconButton, Typography, Box } from '@mui/material'
+import { IconButton, Box } from '@mui/material'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
 import { homeBannerData, homeBrandProductData, rankingProductData, brandRankingData } from "../../data"
 import HorizontalRanking from "../../components/product/HorizontalRanking"
+import { Fs32Fw700Typography, Fs16Fw400Typography, Fs35Fw700Typography, Fs22Fw700Typography, Fs16Fw700Typography, Fs12Fw700Typography } from "../../components/Typography"
 
 const Home = () => {
   
@@ -46,8 +47,8 @@ const Home = () => {
         </Box>
         
         <Box sx={{ mt: 3, mb: "39px", ml: 2 }}>
-          <Typography sx={{ fontSize: 32, fontWeight: "700" }}>2023 Furniture</Typography>
-          <Typography sx={{ fontSize: 32, fontWeight: "700" }}>Collection</Typography>
+          <Fs32Fw700Typography>2023 Furniture</Fs32Fw700Typography>
+          <Fs32Fw700Typography>Collection</Fs32Fw700Typography>
         </Box>
         <Box sx={{
             display: 'flex',
@@ -76,14 +77,14 @@ const Home = () => {
       <Box>
         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
           <Box sx={{ mt: 10, mb: "39px", ml: 5, }}>
-            <Typography sx={{ fontSize: 22, fontWeight: "700", letterSpacing: "-2%", mb: "17px"}}>이달의 아티스트</Typography>
+            <Fs22Fw700Typography sx={{letterSpacing: "-2%", mb: "17px"}}>이달의 아티스트</Fs22Fw700Typography>
             <Box sx={{position:"relative", display:"flex"}}>
               <Link to="/profile">
                 <img src={jamesLee}/>
                 <Box sx={{ ml: 4, mb: "33px", position:"absolute", bottom:0, left:0, color:"white"}}>
-                  <Typography sx={{ fontSize: 35, fontWeight: "700", mb: 1}}>James Lee</Typography>
-                  <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>알퍼니처가 선정한</Typography>
-                  <Typography sx={{ fontSize: 16, fontWeight: "400", letterSpacing: "-0.25%"}}>노르웨이 출신의 이달의 작가</Typography>
+                  <Fs35Fw700Typography sx={{ mb: 1}}>James Lee</Fs35Fw700Typography>
+                  <Fs16Fw400Typography>알퍼니처가 선정한</Fs16Fw400Typography>
+                  <Fs16Fw400Typography>노르웨이 출신의 이달의 작가</Fs16Fw400Typography>
                 </Box>
               </Link>
             </Box>
@@ -118,9 +119,9 @@ const Home = () => {
       {/* 네번째 섹션 */}
       <Box sx={{ mt: 10, mb: 5 }}>
         {/* 타이틀 */}
-        <Typography sx={{ fontSize: 22, fontWeight: "700", ml: 2 }}>
+        <Fs22Fw700Typography sx={{ ml: 2 }}>
           TOP5 브랜드랭킹
-        </Typography>
+        </Fs22Fw700Typography>
         {/* 리스트 */}
         <Box
           sx={{
@@ -143,8 +144,8 @@ const Home = () => {
                   </Box>
                   {/* 텍스트 */}
                   <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA", borderLeft: "none" }}>
-                    <Typography sx={{ fontSize: 16, fontWeight: "700" }}>{item.title}</Typography>
-                    <Typography sx={{ fontSize: 12, fontWeight: "700", letterSpacing: "-0.25px", color: "#999999" }}>{item.discription}</Typography>
+                    <Fs16Fw700Typography>{item.title}</Fs16Fw700Typography>
+                    <Fs12Fw700Typography sx={{letterSpacing: "-0.25px", color: "#999999" }}>{item.discription}</Fs12Fw700Typography>
                     <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
                       <HalfArrowRigth/>
                     </Box>

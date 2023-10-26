@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { RectCheckbox } from "../../styles/checkbox.styles";
 import { styleTabPanelStyleTypes } from "../../data";
 import { handleCheckedFilterItem } from "../../components/filterUtils";
+import { Fs14Fw700NoLhTypography, Fs14Typography } from "../../components/Typography";
 
 const itemList = styleTabPanelStyleTypes.map(style => ({
   id: (styleTabPanelStyleTypes.indexOf(style) + 1).toString(),
@@ -108,8 +109,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "white" }}>
-                  <Typography sx={{ fontSize: 14, fontWeight: "700", letterSpacing: "-0.25px", mb: "4px" }}>{style.discription}</Typography>
-                  <Typography sx={{ fontSize: 14, fontWeight: "400", letterSpacing: "-0.25px" }}>{"# "+style.name}</Typography>
+                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
+                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
                 </Box>
               </Link>
             </Box>
@@ -145,8 +146,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "#FAFAFA" }}>
-                  <Typography sx={{ fontSize: 14, fontWeight: "700", letterSpacing: "-0.25px", mb: "4px" }}>{style.discription}</Typography>
-                  <Typography sx={{ fontSize: 14, fontWeight: "400", letterSpacing: "-0.25px" }}>{"# "+style.name}</Typography>
+                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
+                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
                 </Box>
               </Link>
             </Box>

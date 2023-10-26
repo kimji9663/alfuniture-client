@@ -7,6 +7,7 @@ import {rankingProductData} from "../../data"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { brandRakingSwiperData } from "../../data"
 import { ISwiperProps } from "../../components/ISwiperProps"
+import { C333Fs22Fw700Ls1Typography, CFAFFs40Typography } from "../../components/Typography"
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -23,7 +24,7 @@ const RankingTabPanel = () => {
           <HorizontalRanking data={rankingProductData} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
         </Link>
         <Box sx={{mt:"60px", ml:2, mb:2}}>
-          <Typography sx={{ fontSize: 22, fontWeight: "700", color:"#333333", letterSpacing: "-1px" }}>실시간 인기 브랜드</Typography>
+          <C333Fs22Fw700Ls1Typography>실시간 인기 브랜드</C333Fs22Fw700Ls1Typography>
           <Swiper {...brandCollectionSettings}>
           {brandRakingSwiperData.map((item, index) => (
             <SwiperSlide key={index}>
@@ -36,9 +37,9 @@ const RankingTabPanel = () => {
                           <Link to="/style/brand">
                             <Box sx={{ width: 'calc(100vw - 48px)', height: 'calc(94vw - 48px)',maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
                               <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                              <Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
+                              <CFAFFs40Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
                                 {item.shopName}
-                              </Typography>
+                              </CFAFFs40Typography>
                             </Box>
                           </Link>
                         </Box>
@@ -63,9 +64,9 @@ const RankingTabPanel = () => {
                           <Link to="/style/brand">
                             <Box sx={{ width: 'calc(100vw - 48px)', height: 'calc(94vw - 48px)',maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
                               <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                              <Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
+                              <CFAFFs40Typography>
                                 {item.shopName}
-                              </Typography>
+                              </CFAFFs40Typography>
                             </Box>
                           </Link>
                         </Box>
@@ -89,9 +90,9 @@ const RankingTabPanel = () => {
                         <Link to="/style/brand">
                           <Box sx={{ width: 'calc(100vw - 48px)', height: 'calc(94vw - 48px)',maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
                             <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                            <Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
+                            <CFAFFs40Typography>
                               {item.shopName}
-                            </Typography>
+                            </CFAFFs40Typography>
                           </Box>
                         </Link>
                       </Box>

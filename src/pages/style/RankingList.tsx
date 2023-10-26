@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import LeftTitleNoIcon from '../../components/title/LeftTitleNoIcon'
 import ListItemType2 from "../../components/product/ListItemType2"
 import NavigationBar from "../../components/NavigationBar"
@@ -7,6 +7,7 @@ import {rankingProductData, styleTypes} from "../../data/index"
 import {RectCheckbox} from "../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
 import { ScrollToTop } from '../../App'
+import { Fs16Fw400Typography } from '../../components/Typography'
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -85,7 +86,7 @@ const RankingList = () => {
           modelName={product.modelName}
           productName={product.productName}
         />
-      )) : (<Typography sx={{ fontSize: 16, fontWeight: "500", letterSpacing: "-0.25px" }}>데이터가 없습니다</Typography>)}
+      )) : (<Fs16Fw400Typography sx={{ fontSize: 16, fontWeight: "500", letterSpacing: "-0.25px" }}>데이터가 없습니다</Fs16Fw400Typography>)}
       </Box>
       <NavigationBar/>
     </>

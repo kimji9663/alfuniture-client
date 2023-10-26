@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom"
-import { Box, CardHeader, CardMedia, CardActions, Typography } from "@mui/material"
+import { Box, CardHeader, CardMedia, CardActions } from "@mui/material"
 import { OutlineButton } from "../../styles/buttons.styles"
 import { MyPageOrderCard } from "../../styles/card.style"
+import { C666Fs12Lh16BoldTypography } from "../../components/Typography"
 
 type myOrder = {
   date: string;
@@ -57,15 +58,15 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
             </div>
             <CardActions>
               <OutlineButton onClick={goToOrderDetail} sx={{p:"13px 42px"}}>
-                <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>주문 상세</Typography>
+                <C666Fs12Lh16BoldTypography>주문 상세</C666Fs12Lh16BoldTypography>
               </OutlineButton>
               {review ? 
               (<OutlineButton onClick={goToWriteReview} sx={{p:"13px 42px"}}>
-                <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>리뷰 쓰기</Typography>
+                <C666Fs12Lh16BoldTypography>리뷰 쓰기</C666Fs12Lh16BoldTypography>
               </OutlineButton>)
               :
               (<OutlineButton onClick={goToDeliveryDetail} sx={{p:"13px 42px"}}>
-              <Typography sx={{ fontSize: "12px", lineHeight:"16px", letterSpacing: "-0.25px", color: "#666666", fontWeight: "700" }}>배송 상세</Typography>
+              <C666Fs12Lh16BoldTypography>배송 상세</C666Fs12Lh16BoldTypography>
             </OutlineButton>)}
             </CardActions>
           </MyPageOrderCard>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { C333Fs22Fw700Lh28Typography, C999Fs14NoLhTypography } from '../../components/Typography';
 
 interface CardProps {
   imageSrc: string;
@@ -16,12 +17,12 @@ const RightImageCard: React.FC<CardProps> = ({ imageSrc, title, description }) =
         <img src={imageSrc} alt="" style={{ flex: 1 }} />
       </Box>
       <Box sx={{ height: "55px", width: "54px", borderBottom: "1px solid #868686", mb: 3 }}></Box>
-      <Typography sx={{ fontSize: 22, fontWeight: "700", color: "#333333", mb: 2, lineHeight: "28px" }}>
+      <C333Fs22Fw700Lh28Typography sx={{ mb: 2 }}>
         {title}
-      </Typography>
-      <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#999999", letterSpacing: "-0.25px", mr: 5 }}>
+      </C333Fs22Fw700Lh28Typography>
+      <C999Fs14NoLhTypography sx={{ mr: 5 }}>
         {description}
-      </Typography>
+      </C999Fs14NoLhTypography>
     </Box>
   );
 };

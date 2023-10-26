@@ -1,11 +1,12 @@
 import React, { useState, useEffect  } from "react"
-import { Box, Tabs, Tab, Typography, Button } from "@mui/material"
+import { Box, Tabs, Tab, Button } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { hasCouponData, getCouponData} from "../../data"
 import { TabPanel, TabProps} from "../../components/Tabs"
 import { HalfArrowDownGray } from "../../assets/images"
 import CouponCard from "./CouponCard"
+import { C333Fs12Typography, C999Fs12Typography } from "../../components/Typography"
 
 type CouponData = {
   imgsrc: string;
@@ -121,7 +122,7 @@ const Coupon: React.FC = () => {
         <TabPanel value={tabValue} index={0}>
           <Box sx={{mx:"20px", mt:6}}>
             <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
-              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+formattedHasCouponData.length+"개"}</Typography>
+              <C333Fs12Typography>{"쿠폰 "+formattedHasCouponData.length+"개"}</C333Fs12Typography>
               <Box sx={{display:"flex"}}>
                 <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
                   const sortedDataCopy = sortData(hasCouponDataPanel);
@@ -133,7 +134,7 @@ const Coupon: React.FC = () => {
                     setIsSortedHasCouponPanel(false);
                   }
                 }}>
-                  <Typography sx={{fontSize: "12px", lineHeight: "16px", color:"#999999", fontWeight:"400"}}>최신순</Typography>
+                  <C999Fs12Typography>최신순</C999Fs12Typography>
                   <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
                 </Button>
               </Box>  
@@ -151,7 +152,7 @@ const Coupon: React.FC = () => {
         <TabPanel value={tabValue} index={1}>
           <Box sx={{mx:"20px", mt:6}}>
             <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
-              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{"쿠폰 "+couponCount+"개"}</Typography>
+              <C333Fs12Typography>{"쿠폰 "+couponCount+"개"}</C333Fs12Typography>
               <Box sx={{display:"flex"}}>
                 <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
                   const sortedDataCopy = sortData(getCouponDataPanel);
@@ -163,9 +164,9 @@ const Coupon: React.FC = () => {
                     setIsSortedGetCouponPanel(false);
                   }
                 }}>
-                <Typography sx={{fontSize: "12px", lineHeight: "16px", color:"#999999", fontWeight:"400"}}>최신순</Typography>
-                <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
-              </Button>
+                  <C999Fs12Typography>최신순</C999Fs12Typography>
+                  <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
+                </Button>
               </Box>  
             </Box>
             

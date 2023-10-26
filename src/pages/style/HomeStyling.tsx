@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import WhiteTitle from '../../components/title/WhiteTitle'
 import { IconRadioOn, IconRadioOff } from "../../assets/images"
 import onerainDetail from "../../assets/images/brand/onerainDetail.png"
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
 import { homeStylingProductData } from "../../data"
 import { ScrollToTop } from '../../App'
+import { C333Fs14Fw500Ls20Typography, C999Fs12Lh20Typography, C666Fs12Lh20Typography } from '../../components/Typography'
 
 const HomeStyling = () => {
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
@@ -69,12 +70,10 @@ const HomeStyling = () => {
           <img src={selectedBrandData.imgsrc} alt="" style={{width: "100px", height: "100px", objectFit: "cover", zIndex:10, opacity: 1, }}/>
         </Box>
         <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", pl:2}}>
-          <Typography sx={{ fontSize: 14, fontWeight: "500", lineHeight:"20px", letterSpacing: "2%", color:"#333333" }}>{selectedBrandData.shopName}</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", lineHeight:"20px", letterSpacing: "-0.25px", color:"#999999" }}>{selectedBrandData.modelName}</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", lineHeight:"20px", letterSpacing: "-0.25px", color:"#999999" }}>{selectedBrandData.productName}</Typography>
-          <Typography sx={{ fontSize: 12, fontWeight: "400", lineHeight: "20px", letterSpacing: "-0.25px", color: "#666666" }}>
-            {selectedBrandData.price.toLocaleString()} won
-          </Typography>
+          <C333Fs14Fw500Ls20Typography>{selectedBrandData.shopName}</C333Fs14Fw500Ls20Typography>
+          <C999Fs12Lh20Typography>{selectedBrandData.modelName}</C999Fs12Lh20Typography>
+          <C999Fs12Lh20Typography>{selectedBrandData.productName}</C999Fs12Lh20Typography>
+          <C666Fs12Lh20Typography>{selectedBrandData.price.toLocaleString()} won</C666Fs12Lh20Typography>
         </Box>
       </Box>
       </Link>

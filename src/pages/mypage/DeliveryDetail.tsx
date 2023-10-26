@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Box, CardHeader, CardMedia, CardActions, Typography, Button } from "@mui/material"
+import { Box, CardHeader, CardMedia, CardActions, Button } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { myDeliveryInfo } from "../../data"
 import { OutlineButton } from "../../styles/buttons.styles"
 import { DeliveryInfoOrderCard } from "../../styles/card.style"
 import { IconCircleGray, IconDeliveryCompleted, IconTelGray } from "../../assets/images"
+import { C666Fs10Fw700Typography, C333Fs14Fw500Typography, C999Fs12NoLhTypography, C333Fs12NoLhTypography, C7E7E7EFs10Fw400Typography, C000Fs14Fw700Lh20Typography, C999Fs14Fw400Typography } from "../../components/Typography"
 
 const centerTitle = ['배송 조회']
 
@@ -42,22 +43,22 @@ const DeliveryDetail = () => {
                           justifyContent:"space-between"
                         }}
                       >
-                        <Typography sx={{ fontSize: '10px', fontWeight: '700', color:"#666666", letterSpacing:"0.4px" ,minWidth:"65px"}}>빠른배송</Typography>
+                        <C666Fs10Fw700Typography sx={{ minWidth:"65px" }}>빠른배송</C666Fs10Fw700Typography>
                         
                         <Box sx={{display:"flex"}}>
-                          <Typography sx={{ fontSize: '14px', fontWeight: '500', color:"#333333", letterSpacing:"-0.25px" ,minWidth:"65px"}}>{el.brand}</Typography>
+                          <C333Fs14Fw500Typography sx={{ minWidth:"65px" }}>{el.brand}</C333Fs14Fw500Typography>
                           <Box>
-                            <Typography sx={{ fontSize: '12px', fontWeight: '500', color:"#999999", letterSpacing:"-0.25px" }}>{el.optionCode}</Typography>
-                            <Typography sx={{ fontSize: '12px', fontWeight: '500', color:"#999999", letterSpacing:"-0.25px" }}>{el.name}</Typography>
+                            <C999Fs12NoLhTypography>{el.optionCode}</C999Fs12NoLhTypography>
+                            <C999Fs12NoLhTypography>{el.name}</C999Fs12NoLhTypography>
                           </Box>
                         </Box>
                         
                         <Box sx={{display:"flex", width:"100%"}}>
-                          <Typography sx={{ fontSize: '12px', fontWeight: '500', color:"#333333", letterSpacing:"-0.25px" ,minWidth:"65px"}}>운송장 번호</Typography>
+                          <C333Fs12NoLhTypography sx={{ minWidth:"65px"}}>운송장 번호</C333Fs12NoLhTypography>
                           <Box sx={{display:"flex", justifyContent:"space-between", width: "100%"}}>
-                            <Typography sx={{ fontSize: '12px', fontWeight: '500', color:"#999999", letterSpacing:"-0.25px" }}>{el.deliveryNum}</Typography>
+                            <C999Fs12NoLhTypography>{el.deliveryNum}</C999Fs12NoLhTypography>
                             <Button sx={{borderRadius:0, border:"0.5px solid #D9D9D9", display:"flex", p:"1px 5px", minWidth:"30px", color:"#666"}}>
-                              <Typography sx={{ fontSize: '10px', fontWeight: '400', color:"#7E7E7E", letterSpacing:"-0.25px" }}>복사</Typography>
+                              <C7E7E7EFs10Fw400Typography>복사</C7E7E7EFs10Fw400Typography>
                             </Button>
                           </Box>
                         </Box>
@@ -84,8 +85,8 @@ const DeliveryDetail = () => {
                       <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.date}</Typography>
+                      <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
+                      <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
                     </Box>
                   </>
                 ) : index === 0 ? (
@@ -95,8 +96,8 @@ const DeliveryDetail = () => {
                       <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.date}</Typography>
+                      <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
+                      <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
                     </Box>
                   </>
                   ) : item.deliveryStatus === "배송완료" ? (
@@ -106,8 +107,8 @@ const DeliveryDetail = () => {
                     <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                   </Box>
                   <Box sx={{ml: 5}}>
-                    <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                    <Typography sx={{ fontSize: '14px', fontWeight: '700', color:"#000000", lineHeight:"20px" }}>{item.date}</Typography>
+                    <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
+                    <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
                   </Box>
                 </>
                 ) : index === myDeliveryInfo[0].deliveryData.length - 1 ? (
@@ -117,8 +118,8 @@ const DeliveryDetail = () => {
                       <IconCircleGray style={{position:"absolute", top:4,left:0}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                      <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.date}</Typography>
+                      <C999Fs14Fw400Typography>{item.location + " | " + item.deliveryStatus}</C999Fs14Fw400Typography>
+                      <C999Fs14Fw400Typography>{item.date}</C999Fs14Fw400Typography>
                     </Box>
                   </>
                 ) : (
@@ -128,8 +129,8 @@ const DeliveryDetail = () => {
                     <IconCircleGray style={{position:"absolute", top:4,left:0}}/>
                   </Box>
                   <Box sx={{ml: 5}}>
-                    <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.location + " | " + item.deliveryStatus}</Typography>
-                    <Typography sx={{ fontSize: '14px', fontWeight: '400', color:"#999999", lineHeight:"20px" }}>{item.date}</Typography>
+                    <C999Fs14Fw400Typography>{item.location + " | " + item.deliveryStatus}</C999Fs14Fw400Typography>
+                    <C999Fs14Fw400Typography>{item.date}</C999Fs14Fw400Typography>
                   </Box>
                 </>
                 )}

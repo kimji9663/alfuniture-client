@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import { alfdn05 } from "../../assets/images/brand"
 import NavigationBar from "../../components/NavigationBar"
 import List from "../like/Like/List"
 import LeftTitle from "../../components/title/LeftTitle"
 import { styleBrandProductData } from "../../data"
 import { ScrollToTop } from '../../App'
+import { CFFFFs20Fw700Typography } from '../../components/Typography'
 
 const Brand = () => {
   ScrollToTop();
@@ -15,7 +16,7 @@ const Brand = () => {
         <LeftTitle title={["브랜드"]} />
         <Box sx={{ position: "relative", overflow: 'hidden' }}>
           <Box sx={{ position: "absolute", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", top: "55px" }}>
-            <Typography sx={{ fontSize: 20, fontWeight: "700", color: "#FFFFFF" }}>ALFDN</Typography>
+            <CFFFFs20Fw700Typography>ALFDN</CFFFFs20Fw700Typography>
           </Box>
           <Box sx={{ width: "100%", display: "flex" }}>
             <img src={alfdn05} alt="" style={{ objectFit: "cover", width: "100%" }} />
