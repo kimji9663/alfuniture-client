@@ -6,8 +6,8 @@ import { OrderTitle } from "./order.styles"
 import { AvatarList } from "./couponSelector.styles"
 
 interface CompleteProps {
-  complete: number
-  setComplete: React.Dispatch<React.SetStateAction<number>>
+  complete: string
+  setComplete: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface ToggleProps extends CompleteProps {
@@ -21,8 +21,8 @@ interface OptionsProps {
 }
 
 interface OptionSelectProps extends CompleteProps {
-  complete: number
-  setComplete: React.Dispatch<React.SetStateAction<number>>
+  complete: string
+  setComplete: React.Dispatch<React.SetStateAction<string>>
   selectedCoupon: OptionsProps | null
   setSelectedCoupon: React.Dispatch<React.SetStateAction<OptionsProps>>
 }
@@ -63,9 +63,6 @@ const OptionSelectType = ({selectedCoupon, setSelectedCoupon, complete, setCompl
   const [selected, setSelected] = useState<OptionsProps>(
     { name: '쿠폰을 선택해 주세요', img: '' }
   )
-  // const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
-  //   { id: '', brand: '', title: '쿠폰을 선택해 주세요', logo: '', expiration: 0 }
-  // )
   const dropMenuRef = useRef<HTMLDivElement | null>(null)
   const [open, setOpen] = useState(false)
 
@@ -90,12 +87,12 @@ const OptionSelectType = ({selectedCoupon, setSelectedCoupon, complete, setCompl
     selectedCoupon = selected
     setSelectedCoupon(selected)
 
-    // 옵션 선택 시 complete[1] = ture
+    // 옵션 선택 시 complete = ture
     if (selectedCoupon !== null) {
-      complete = 0
+      complete = brand + title
       setComplete(complete)
     } else {
-      complete = 0
+      complete = brand + title
       setComplete(complete)
     }
     console.log(selectedCoupon)
