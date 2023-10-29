@@ -1,16 +1,24 @@
 import React, { useState } from "react"
 import { Box, AccordionDetails, AccordionSummary, Input } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import SelectBox from "../../components/SelectBox"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
 import { OrderCardSelectWrap } from "../../styles/card.style"
+import CardSelector from "./CardSelector"
 
-const OrderInfomation = () => {
+interface CompleteProps {
+  complete: string
+  setComplete: React.Dispatch<React.SetStateAction<string>>
+}
+
+const OrderInfomation = ({complete, setComplete}: CompleteProps) => {
   const [expanded, setExpanded] = useState<string | false>(false)
   const [selectDelivery, setSelectDelivery] = useState('check_quick')
-  const [selectCard, setSelectCard] = useState()
+  const [selectCard, setSelectCard] = useState('')
+  const [selectComplete, setSelectComplete] = useState([false, false])
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
@@ -85,7 +93,7 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          <OrderCardSelectWrap
+          {/* <OrderCardSelectWrap
             variant="standard"
             margin="normal"
           >
@@ -103,7 +111,14 @@ const OrderInfomation = () => {
             >
               선택
             </PrimaryButton>
-          </OrderCardSelectWrap>
+          </OrderCardSelectWrap> */}
+
+          <CardSelector
+            selectedOption={selectCard}
+            setSelectedOption={setSelectCard}
+            complete={selectComplete}
+            setComplete={setSelectComplete}
+          />
         </AccordionDetails>
       </OrderAccordionMenu>
 

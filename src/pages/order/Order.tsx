@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography, Button } from "@mui/material"
-import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
+import { SecondaryButton, PrimaryButton, PrimaryLightButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
 import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
@@ -35,6 +35,8 @@ const Order = () => {
   })
   const [modalOpen, setModalOpen] = useState(false)
   const [couponOpen, setCouponOpen] = useState(false)
+  const [selectCoupon, setSelectCoupon] = useState('')
+  const [selectCard, setSelectCard] = useState('')
   const [finalAmount, setFinalAmount] = useState(0)
 
   const handleClose = () => {
@@ -342,16 +344,37 @@ const Order = () => {
                   <span className="title">상품 금액</span>
                   <span className="total">1,594,500원</span>
                 </p>
-                <p>
-                  <span className="title">쿠폰적용</span>
-                  <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
-                </p>
+                {selectCoupon === '' ? (
+                  <p>
+                    <span className="title">쿠폰적용</span>
+                    <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
+                  </p>
+                ) : (
+                  <p>
+                    <span className="title">쿠폰적용</span>
+                    <div>
+                      <span>-3000원</span>
+                      <Button 
+                        onClick={() => setCouponOpen(true)}
+                        sx={{
+                          backgroundColor: '#bdbdbd',
+                          color: '#fff',
+                        }}
+                      >
+                        취소
+                      </Button>
+                    </div>
+                  </p>
+                )}
               </Box>
             </Box>
           </Box>
         </Box>
 
-        <OrderInfomation />
+        <OrderInfomation 
+          complete={selectCard}
+          setComplete={setSelectCard}
+        />
 
         <OrderTermsAgreement 
           termsAgree={orderData.termsAgree}
@@ -362,8 +385,8 @@ const Order = () => {
       <CouponSelector
         drawerOpen={couponOpen} 
         toggleDrawer={toggleDrawer} 
-        complete={finalAmount}
-        setComplete={setFinalAmount}
+        complete={selectCoupon}
+        setComplete={setSelectCoupon}
       />
 
       <NaviWrap className="single">
