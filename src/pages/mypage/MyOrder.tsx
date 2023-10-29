@@ -9,63 +9,6 @@ import { handleCheckedFilterItem } from "../../components/filterUtils";
 
 const centerTitle = ['주문배송']
 
-<<<<<<< HEAD
-const filterList = [
-  {
-    id: 'waiting',
-    name: '배송준비중',
-  },
-  {
-    id: 'shipping',
-    name: '배송중',
-  },
-  {
-    id: 'completed',
-    name: '배송완료',
-  },
-  {
-    id: 'cancel',
-    name: '취소/교환/반품',
-  },
-]
-
-const MyOrderList = [
-  {
-    date: '2023.02.23',
-    state: '배송준비중',
-    img: chair03,
-    brand: 'OneRain',
-    optionCode: '[23s] OR-045',
-    name: '2인 릴렉스 체어',
-  },
-  {
-    date: '2022.03.13',
-    state: '배송완료',
-    img: chair02,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
-  },
-  {
-    date: '2022.03.13',
-    state: '취소',
-    img: sofa04,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파', 
-  },
-  {
-    date: '2022.03.13',
-    state: '반품',
-    img: sofa04,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파', 
-  },
-]
-
-=======
->>>>>>> d4ada5d25eb487ebef3e0e884c56ca58afc3a9bb
 const MyOrder = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
   const [isAllChecked, setIsAllChecked] = useState(true);
