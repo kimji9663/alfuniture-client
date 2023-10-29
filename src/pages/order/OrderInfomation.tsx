@@ -1,107 +1,11 @@
 import React, { useState } from "react"
-import { Box, Accordion, AccordionDetails, AccordionSummary, FormControl, Input } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Box, AccordionDetails, AccordionSummary, Input } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
-
-export const AccordionMenu = styled(Accordion)(() => ({
-  margin: '16px 16px 0',
-  boxShadow: 'none',
-  borderBottom: '1px solid #dadada',
-  '&.Mui-expanded': {
-    margin: '16px 16px 0',
-  },
-  '&:before': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiAccordionSummary-root': {
-    padding: 0,
-    '&.Mui-expanded': {
-      minHeight: 0,
-    },
-    '& > div': {
-      margin: '16px 0',
-      justifyContent: 'space-between',
-    },
-    '& > div.Mui-expanded': {
-      margin: '16px 0',
-    },
-    '& p': {
-      color: '#999',
-    },
-    '& .title, & .total_amount': {
-      color: '#333',
-      fontWeight: 'bold',
-    },
-  },
-  '& .MuiAccordionDetails-root': {
-    padding: '8px 0 16px',
-    borderTop: '1px solid #333',
-  }
-}))
-
-const DeliveryCheckBox = styled(FormControl)(() => ({
-  margin: '0 0 16px',
-  '& > input': {
-    display: 'none',
-  },
-  '& > label': {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '16px',
-    height: '84px',
-    boxSizing: 'border-box',
-    border: '1px solid #dadada',
-  },
-  '& > label svg': {
-    color: '#999',
-  },
-  '& > label .price': {
-    fontSize: '1rem',
-  },
-  '& > label .additional': {
-    fontSize: '.875rem',
-    color: '#999',
-    letterSpacing: '-0.05rem',
-  },
-  '& > label .additional > span': {
-    color: '#FF6737',
-  },
-  '& input:checked + label': {
-    border: '1px solid #999',
-    backgroundColor: '#242223',
-    color: '#fafafa',
-  },
-  '& input:checked + label svg': {
-    color: '#fff',
-  }
-}))
-
-const CardSelectWrap = styled(FormControl)(() => ({
-  display: 'flex',
-  flexDirection: 'row',
-  height: '52px',
-
-  '& > .MuiBox-root, & .MuiButtonBase-root': {
-    display: 'flex',
-  },
-  '& > .MuiBox-root': {
-    flex: '1 1 auto',
-  },
-  '& .MuiInputBase-root': {
-    width: '100%',
-  },
-  '& .MuiInputBase-root > input': {
-    fontSize: '.875rem',
-  },
-  '& .MuiButtonBase-root': {
-    flex: '1 1 18%',
-    padding: 0,
-    borderRadius: 0,
-    fontSize: '.875rem',
-  },
-}))
+import { OrderAccordionMenu } from "../../styles/accordion.styles"
+import { DeliveryCheckBox } from "../../styles/checkbox.styles"
+import { OrderCardSelectWrap } from "../../styles/card.style"
 
 const OrderInfomation = () => {
   const [expanded, setExpanded] = useState<string | false>(false)
@@ -118,7 +22,7 @@ const OrderInfomation = () => {
 
   return (
     <>
-      <AccordionMenu
+      <OrderAccordionMenu
         expanded={expanded === 'panel2'} 
         onChange={handleChange('panel2')}
       >
@@ -168,9 +72,9 @@ const OrderInfomation = () => {
             </label>
           </DeliveryCheckBox>
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderAccordionMenu>
 
-      <AccordionMenu
+      <OrderAccordionMenu
         expanded={expanded === 'panel3'} 
         onChange={handleChange('panel3')}
       >
@@ -181,7 +85,7 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          <CardSelectWrap
+          <OrderCardSelectWrap
             variant="standard"
             margin="normal"
           >
@@ -199,11 +103,11 @@ const OrderInfomation = () => {
             >
               선택
             </PrimaryButton>
-          </CardSelectWrap>
+          </OrderCardSelectWrap>
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderAccordionMenu>
 
-      <AccordionMenu
+      <OrderAccordionMenu
         expanded={expanded === 'panel4'} 
         onChange={handleChange('panel4')}
       >
@@ -241,7 +145,7 @@ const OrderInfomation = () => {
             <p>1,435,050원</p>
           </Box>
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderAccordionMenu>
     </>
   )
 }

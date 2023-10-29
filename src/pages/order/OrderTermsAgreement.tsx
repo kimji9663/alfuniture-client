@@ -2,38 +2,21 @@ import React, { useState } from "react"
 import { Box, Divider, FormControl } from "@mui/material"
 import {AgreeCheckbox } from "./order.styles"
 import CheckboxIcon from "../../components/CheckBoxIcon"
+import { orderTermsAgreementData } from "../../data"
 
 interface OrderTermsProps {
   termsAgree: boolean
   changeOrderData: (val:boolean) => void
 }
 
-const agreeItems = [
-  {
-    id: 'check_agree_age',
-    require: true,
-    label: '개인정보 수집/이용 동의'
-  },
-  {
-    id: 'check_terms_of_use',
-    require: true,
-    label: '개인정보 수집/이용 동의'
-  },
-  {
-    id: 'check_privacy',
-    require: true,
-    label: '결제대행 서비스 이용약관 (주)KG이니시스'
-  },
-]
-
 const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
-  const required = agreeItems.filter((el) => el.require === true).map(el => el.id)
+  const required = orderTermsAgreementData.filter((el) => el.require === true).map(el => el.id)
   const [checkedAgreeList, setCheckedAgreeList] = useState<string[]>([])
   const [checkedAgreeAll, setCheckedAgreeAll] = useState(false)
 
   const handleCheckAgreeAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked){
-      setCheckedAgreeList([...checkedAgreeList, ...agreeItems.map(el => el.id)])
+      setCheckedAgreeList([...checkedAgreeList, ...orderTermsAgreementData.map(el => el.id)])
       if (event.currentTarget.id === 'check_agree_all'){
         setCheckedAgreeAll(true)
         termsAgree = true
@@ -51,7 +34,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
     if (event.currentTarget.checked){
       setCheckedAgreeList([...checkedAgreeList, id])
       console.log(checkListLength, required.length)
-      if (checkedAgreeList.length === agreeItems.length - 1){
+      if (checkedAgreeList.length === orderTermsAgreementData.length - 1){
         setCheckedAgreeAll(true)
         termsAgree = true
       }
@@ -65,7 +48,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
   
   const children = (
     <Box sx={{ py: 2, background: '#FAFAFA' }}>
-      {agreeItems.map((el, index) => (
+      {orderTermsAgreementData.map((el: any, index: any) => (
         <AgreeCheckbox
           sx={index === 0 ? { mt: 2 } : null}
           key={el.id}

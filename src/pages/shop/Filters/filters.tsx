@@ -38,7 +38,7 @@ const TextureTypes = [
   {avatar: rattan, name: '라탄'},
 ];
 
-const StyleTypes = [
+export const StyleTypes = [
   {avatar: modern, name: '모던'},
   {avatar: northernEU, name: '북유럽'},
   {avatar: classic, name: '클래식'},

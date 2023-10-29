@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { Box, Typography, Accordion, AccordionDetails, AccordionSummary, FormControl, Input } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Box, AccordionDetails, AccordionSummary } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { EllipsisTypography } from "../../components/Typography"
+import { OrderInfoAccordionMenu } from "../../styles/accordion.styles"
 import { Link } from "react-router-dom";
+import { C999Fs12BoldTypography, C333Fs12Lh12Typography, C333Fs12Typography, C06FFs12Typography } from "../../components/Typography"
 interface OrderInfo {
   data:{
     deliveryInfo: {
@@ -16,43 +17,6 @@ interface OrderInfo {
   }  
 }
 
-export const AccordionMenu = styled(Accordion)(() => ({
-  margin: '0 16px',
-  boxShadow: 'none',
-  // borderBottom: '1px solid #dadada',
-  '&.Mui-expanded': {
-    margin: '0 16px',
-  },
-  '&:before': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiAccordionSummary-root': {
-    padding: 0,
-    borderBottom: '1px solid #dadada',
-    '&.Mui-expanded': {
-      minHeight: 0,
-    },
-    '& > div': {
-      margin: '16px 0',
-      justifyContent: 'space-between',
-    },
-    '& > div.Mui-expanded': {
-      margin: '16px 0',
-    },
-    '& p': {
-      color: '#999',
-    },
-    '& .title, & .total_amount': {
-      color: '#333',
-      fontWeight: 'bold',
-    },
-  },
-  '& .MuiAccordionDetails-root': {
-    padding: '16px 0',
-    borderTop: '1px solid #333',
-  }
-}))
-
 const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -62,7 +26,7 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
 
   return (
     <>
-      <AccordionMenu
+      <OrderInfoAccordionMenu
         expanded={expanded === 'panel1'} 
         onChange={handleChange('panel1')}
       >
@@ -79,28 +43,28 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
         <AccordionDetails>
           {/* <Box sx={{mb:2}}> */}
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", mb: 2 }}>
-              <Typography sx={{ fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999", fontWeight: "500" }}>받으시는 분</Typography>
+              <C999Fs12BoldTypography>받으시는 분</C999Fs12BoldTypography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography sx={{ fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color: "#333333", fontWeight: "500" }}>{data.deliveryInfo.recipient}</Typography>
+                <C333Fs12Lh12Typography>{data.deliveryInfo.recipient}</C333Fs12Lh12Typography>
               </Box>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", mb: 2 }}>
-              <Typography sx={{ fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999", fontWeight: "500" }}>연락처</Typography>
+              <C999Fs12BoldTypography>연락처</C999Fs12BoldTypography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography sx={{ fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color: "#333333", fontWeight: "500" }}>{data.deliveryInfo.contact}</Typography>
+                <C333Fs12Lh12Typography>{data.deliveryInfo.contact}</C333Fs12Lh12Typography>
               </Box>
             </Box>
             <Box sx={{ bottom: "0", display: "flex", justifyContent: "space-between", width: "100%" }}>
-              <Typography sx={{ fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999", fontWeight: "500" }}>배송지</Typography>
+              <C999Fs12BoldTypography>배송지</C999Fs12BoldTypography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography sx={{ fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color: "#333333", fontWeight: "500" }}>{data.deliveryInfo.address}</Typography>
+                <C333Fs12Lh12Typography>{data.deliveryInfo.address}</C333Fs12Lh12Typography>
               </Box>
             </Box>
           {/* </Box> */}
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderInfoAccordionMenu>
 
-      <AccordionMenu
+      <OrderInfoAccordionMenu
         expanded={expanded === 'panel2'} 
         onChange={handleChange('panel2')}
       >
@@ -113,17 +77,17 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
         <AccordionDetails>
           <Box>
             <Box sx={{ bottom: "0", display: "flex", justifyContent: "space-between", width: "100%" }}>
-              <Typography sx={{ fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#333333", fontWeight: "500" }}>결제 방법</Typography>
+              <C333Fs12Typography>결제 방법</C333Fs12Typography>
               <Box sx={{ display: "flex", alignItems: "end", flexDirection:"column" }}>
-                <Typography sx={{ fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color: "#333333", fontWeight: "500", mb:2}}>{"(" +data.paymentCard + ") " + data.paymentMethod}</Typography>
-                <Link to={"/"} style={{display:"flex", alignItems:"center"}}>
-                  <Typography sx={{fontSize: "12px", lineHeight: "13px", letterSpacing: "-0.25px", color:"#0066FF", fontWeight:"500", borderBottom:"1px solid #0066FF"}}>영수증 보기</Typography>
+                <C333Fs12Lh12Typography sx={{mb:2}}>{"(" +data.paymentCard + ") " + data.paymentMethod}</C333Fs12Lh12Typography>
+                <Link to={"/"} style={{display:"flex", alignItems:"center"}} onClick={(e) => {e.preventDefault()}}>
+                  <C06FFs12Typography>영수증 보기</C06FFs12Typography>
                 </Link>
               </Box>
             </Box>
           </Box>
         </AccordionDetails>
-      </AccordionMenu>
+      </OrderInfoAccordionMenu>
     </>
   );
 };

@@ -1,96 +1,49 @@
 /** @jsxImportSource @emotion/react */
 import NoTitle from '../../components/title/NoTitle'
 import NavigationBar from "../../components/NavigationBar"
-import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab, Button } from '@mui/material'
-
+import { Box } from '@mui/material'
 import {henredn01, henredn02, henredn03} from "../../assets/images/brand"
-import {henredn04, henredn05, henredn06, henredn07, } from "../../assets/images/product"
-import RigthImageCard from './RigthImageCard'
+import RightImageCard from './RightImageCard'
 import BestWorkAllButton from './BestWorkAllButton'
 import List from '../like/Like/List'
-
-
-export const testData = [
-  {
-    id: 0,
-    imgsrc: henredn04,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[3Color] AB-201',
-    productName: '그린쇼파',
-    price: 3230000,
-    colors: ['#CBC6C3']
-  },
-  {
-    id: 1,
-    imgsrc: henredn05,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-102',
-    productName: '1인 클래식 의자',
-    price: 1430000,
-    colors: ['#192552', '#CBC6C3']
-  },
-  {
-    id: 2,
-    imgsrc: henredn06,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
-    price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
-  },
-  {
-    id: 3,
-    imgsrc: henredn07,
-    like: false,
-    likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
-    price: 1430000,
-    colors: ['#292522']
-  },
-]
+import { editorPickData } from '../../data'
+import { ScrollToTop } from '../../App'
+import { C333Fs16Typography, C242Fs55Typography, CFFFFs14Fw700Typography, C666Fs14Lh22Typography, C333Fs22Fw700Lh28Typography, C999Fs14NoLhTypography } from '../../components/Typography'
 
 const EditorPick = () => {
-  
+  ScrollToTop();
   return (
     <Box>
       {/* 첫번째 섹션 */}
       <NoTitle/>
       <Box sx={{mt:"50px", mx:2}}>
         <Box sx={{display:"flex", width:"100", flexDirection:"row-reverse"}}>
-          <Typography sx={{ fontSize: 16, fontWeight: "400", color: "#333333", mb: "11px", letterSpacing:"0.15px" }}>소중한 추억의 기억을 담는 가구</Typography>
+          <C333Fs16Typography sx={{ mb: "11px" }}>소중한 추억의 기억을 담는 가구</C333Fs16Typography>
         </Box>
         <Box sx={{display:"flex", position:"relative"}}>
           <Box sx={{ width: "70px", display: "flex"}}>
             <Box sx={{ width: "70px", display: "flex", flexDirection: "column-reverse", transform: "rotate(270deg)", transformOrigin: "left bottom", position:'absolute', bottom:0, left:35}}>
-              <Typography sx={{ fontSize: 55, fontWeight: "700", color: "#242223", letterSpacing: "-0.2px", lineHeight: "19px" }}>Henredn</Typography>
+              <C242Fs55Typography>Henredn</C242Fs55Typography>
             </Box>
           </Box>
 
           <Box sx={{minWidth:"259px", flex:1, position:'relative', display:"flex"}}>
             <img src={henredn01} alt="" style={{width:"100%", objectFit:"cover"}}/>
             <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", right:"0", px:2, py:1 }}>
-              <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#FFFFFF", textAlign: "center" }}>에디터 pick</Typography>
+              <CFFFFs14Fw700Typography sx={{ fontSize: 14, fontWeight: "400", color: "#FFFFFF", textAlign: "center" }}>에디터 pick</CFFFFs14Fw700Typography>
             </Box>
           </Box>
         </Box>
         <Box sx={{display:"flex", mt:"21px", pb:"84px"}}>
           <Box sx={{width: "70px"}}></Box>
           <Box sx={{flex:1}}>
-            <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666", lineHeight:"22px"}}>프렌치 헤리티지는 가구 형태의 예술작품을 만드는데 탁월합니다.</Typography>
-            <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666", lineHeight:"22px"}}>세부와 완벽에 대한 그들의 시선은 나머지 부분에서 눈에 띄는 것입니다.</Typography>
+            <C666Fs14Lh22Typography>프렌치 헤리티지는 가구 형태의 예술작품을 만드는데 탁월합니다.</C666Fs14Lh22Typography>
+            <C666Fs14Lh22Typography>세부와 완벽에 대한 그들의 시선은 나머지 부분에서 눈에 띄는 것입니다.</C666Fs14Lh22Typography>
           </Box>
         </Box>
       </Box>
       {/* 두번째 섹션 */}
-      <RigthImageCard
+      <RightImageCard
         imageSrc={henredn02}
         title="친환경적 브랜드계의 거장"
         description="Aerobiey 의 브랜드 제품 생산 시 환경 개선을 위해
@@ -101,19 +54,19 @@ const EditorPick = () => {
       {/* 세번째 섹션 */}
       <Box sx={{mt:10, px:2, pb:"26px", borderBottom:"0.5px solid #868686"}}>
         <img src={henredn03} alt="" style={{width:"100%", objectFit:"cover"}}/>
-        <Typography sx={{ fontSize: 22, fontWeight: "700", color: "#333333", mb: 1, mt:2, lineHeight: "28px" }}>Brand story</Typography>
-        <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#999999", letterSpacing: "-0.25px" }}>
+        <C333Fs22Fw700Lh28Typography sx={{ mb: 1, mt:2 }}>Brand story</C333Fs22Fw700Lh28Typography>
+        <C999Fs14NoLhTypography>
           Aerobiey의 핵심 가치 중 하나는 존중입니다.우수한 디자인과 품질을 고객에게 적절한 가격에 제공함
           으로써 고객을 존중하고 싶습니다.본사는 프랑스를 거점으로 하고 있으며, 품질, 환경,
           작업 프로세스에 관해서, 소비자의 기대를 만족시키기
           위해 노력하고 있습니다.
-        </Typography>
+        </C999Fs14NoLhTypography>
       </Box>
       
       {/* 네번째 섹션 */}
       <Box sx={{mt:10}}>
         <BestWorkAllButton title='Henredn'/>
-        <List data={testData} />
+        <List data={editorPickData} />
       </Box>
       <NavigationBar/>
     </Box>

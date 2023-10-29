@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { Link } from "react-router-dom";
-import { sofa01 } from '../../assets/images/product';
 import OrderInformation from "./OrderInformation"
+import { myPageOrderDetailData } from "../../data"
+import { C333Fs12BoldTypography, C06FFs12Typography, C333Fs16Typography, C333Fs12Typography, C999Fs12Lh12Typography, C333Fs12Lh12Typography } from "../../components/Typography"
 
 interface cartData {
   imgsrc: any,
@@ -21,54 +22,12 @@ interface cartData {
   coupon?: Array<object>,
 }
 
-const testData = [
-  {
-    imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '브라운,블랙',
-    option2: '월넛',
-    count: 1,
-    price: 1594500,
-    discount: 159450,
-    totalPrice: 1435050,
-    deliveryCharge: 100000,
-    coupon: [
-      {
-        name: '쿠폰1',
-        discount: 14000,
-      },
-    ],
-    deliveryInfo: {
-      recipient: "홍길동",
-      contact: "010-0000-0000",
-      address: "서울특별시 00로 00아파트 000동 000호",
-    },
-    paymentCard: "국민카드",
-    paymentMethod: "일시불",
-  },
-  // {
-  //   imgsrc: table01,
-  //   shopName: 'ALFDEN',
-  //   modelName: '[23Series] AD-388',
-  //   productName: '모닝 데스크',
-  //   option1: '옐로우 우든',
-  //   option2: null,
-  //   count: 1,
-  //   price: 300000,
-  //   deliveryCharge: 0,
-  //   coupon: [],
-  // },
-];
-
-
 const OrderDetail = () => {
 
   const [data, setData] = useState<cartData[]>([]);
   useEffect(() => {
     // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...testData]);
+    setData([...data, ...myPageOrderDetailData]);
   }, []); 
   
   return (
@@ -109,14 +68,14 @@ const OrderDetail = () => {
                       sx={{flexGrow: "1"}}>
                       <Box sx={{height: "20px", display:"flex", width:"100%", justifyContent:"space-between"}}>
                         <Box >
-                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"600"}}>{product.shopName}</Typography>
+                          <C333Fs12BoldTypography>{product.shopName}</C333Fs12BoldTypography>
                         </Box>
                         {/* 판매자 정보 버튼 예정 */}
-                        <Link to={"/"} style={{display:"flex", alignItems:"center"}}>
-                          <Typography sx={{fontSize: "12px", lineHeight: "13px", letterSpacing: "-0.25px", color:"#0066FF", fontWeight:"500", borderBottom:"1px solid #0066FF"}}>판매자 정보</Typography>
+                        <Link to={"/"} style={{display:"flex", alignItems:"center"}} onClick={(e) => {e.preventDefault()}}>
+                          <C06FFs12Typography>판매자 정보</C06FFs12Typography>
                         </Link>
                       </Box>
-                      <Typography sx={{fontSize: "16px", lineHeight: "23px", letterSpacing: "0.15px", height: "23px", color:"#333333", fontWeight:"600"}}>{product.productName}</Typography>
+                      <C333Fs16Typography >{product.productName}</C333Fs16Typography>
                       <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999"}}>
                         <span style={{marginRight: "8px"}}>{product.option1}</span>
                         <span style={{fontSize: "14px", marginRight: "8px"}}>|</span>
@@ -129,21 +88,29 @@ const OrderDetail = () => {
                       </Box>
                       <Box sx={{mt:2}}>
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
-                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>상품 금액</Typography>
+                          <C333Fs12Typography>상품 금액</C333Fs12Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{product.price.toLocaleString()+"원"}</Typography>
+                            <C999Fs12Lh12Typography>{product.price.toLocaleString()+"원"}</C999Fs12Lh12Typography>
                           </Box>
                         </Box>
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
-                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>상품 할인</Typography>
+                          <C333Fs12Typography>상품 할인</C333Fs12Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#999999", fontWeight:"500"}}>{"-"+product.discount.toLocaleString()+"원"}</Typography>
+                            <C999Fs12Lh12Typography>{"-"+product.discount.toLocaleString()+"원"}</C999Fs12Lh12Typography>
+                          </Box>
+                        </Box>
+                        <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
+                          <C333Fs12Typography>배송비</C333Fs12Typography>
+                          <Box sx={{display:"flex", alignItems:"center"}}>
+                            {product.deliveryCharge === 0 ? <C999Fs12Lh12Typography>무료배송</C999Fs12Lh12Typography>
+                            : 
+                            <C999Fs12Lh12Typography>{product.deliveryCharge.toLocaleString()+"원"}</C999Fs12Lh12Typography>}
                           </Box>
                         </Box>
                         <Box sx={{bottom: "0", display: "flex", justifyContent: "space-between", width: "100%"}}>
-                          <Typography sx={{fontSize: "12px", lineHeight: "20px", letterSpacing: "-0.25px", color:"#333333", fontWeight:"500"}}>결제 금액</Typography>
+                          <C333Fs12Typography>결제 금액</C333Fs12Typography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                              <Typography sx={{fontSize: "12px", lineHeight: "12px", letterSpacing: "0.4px", color:"#333333", fontWeight:"500"}}>{product.totalPrice.toLocaleString()+"원"}</Typography>
+                            <C333Fs12Lh12Typography>{product.totalPrice.toLocaleString()+"원"}</C333Fs12Lh12Typography>
                           </Box>
                         </Box>
                       </Box>
@@ -154,7 +121,7 @@ const OrderDetail = () => {
             ))}
 
             {/* 아코디언 */}
-            <OrderInformation data={testData[0]}/>
+            <OrderInformation data={myPageOrderDetailData[0]}/>
         </Box>
       </Box>
       <Box sx={{position:"sticky", bottom:0, width:"100%"}}>
