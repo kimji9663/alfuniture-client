@@ -1,38 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { Box, FormControl, Typography, Checkbox, Button } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Box, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
-import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../../assets/images/filterIcon/styles";
+import { RectCheckbox } from "../../styles/checkbox.styles";
+import { styleTabPanelStyleTypes } from "../../data";
+import { handleCheckedFilterItem } from "../../components/filterUtils";
+import { Fs14Fw700NoLhTypography, Fs14Typography } from "../../components/Typography";
 
-const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
-  },
-  '& label': {
-    padding: '3px 12px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-  },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
-  },
-}))
-
-const StyleTypes = [
-  {avatar: modern, name: '모던', discription: '혼자 사는 자취방'},
-  {avatar: northernEU, name: '북유럽', discription: '아이들이 좋아하는'},
-  {avatar: classic, name: '클래식', discription: '잔잔한 바이브'},
-  {avatar: casual, name: '캐주얼', discription: '에너지 넘치는'},
-  {avatar: cen, name: '첸', discription: '고요함이 좋다면'},
-  {avatar: plant, name: '플랜테리어', discription: '생기를 불어넣는'},
-  {avatar: minimal, name: '미니멀', discription: '깔끔함이 최고'},
-  {avatar: romantic, name: '로맨틱', discription: '달달한 신혼'},
-];
-
-const itemList = StyleTypes.map(style => ({
-  id: (StyleTypes.indexOf(style) + 1).toString(),
+const itemList = styleTabPanelStyleTypes.map(style => ({
+  id: (styleTabPanelStyleTypes.indexOf(style) + 1).toString(),
   name: style.name,
 }));
 
@@ -41,7 +16,7 @@ const StyleTabPanel = () => {
   const [isAllChecked, setIsAllChecked] = useState(true);
 
   const filteredItemIds = filterItem;
-  const filteredStyles = StyleTypes.filter(style => filteredItemIds.includes(style.name));
+  const filteredStyles = styleTabPanelStyleTypes.filter(style => filteredItemIds.includes(style.name));
   const evenIndexStyles = filteredStyles.filter((_, index) => index % 2 === 0);
   const oddIndexStyles = filteredStyles.filter((_, index) => index % 2 !== 0);
 
@@ -49,27 +24,15 @@ const StyleTabPanel = () => {
     setFilterItem(itemList.map(el => el.name));
   }, []);
   useEffect(() => {
-    if (filterItem.length === StyleTypes.length) {
+    if (filterItem.length === styleTabPanelStyleTypes.length) {
       setIsAllChecked(true);
     } else {
       setIsAllChecked(false);
     }
   }, [filterItem]);
 
-  const handleCheckedFilterItem = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    if (name === 'all') {
-      if (e.currentTarget.checked) {
-        setFilterItem(itemList.map(el => el.name))
-      } else {
-        setFilterItem([])
-      }
-    } else {
-      if (e.currentTarget.checked) {
-        setFilterItem([...filterItem, name])
-      } else {
-        setFilterItem(filterItem.filter(el => el !== name))
-      }
-    }
+  const handleCheckFilterItem  = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    handleCheckedFilterItem(filterItem, setFilterItem, itemList, e, name);
   }
 
   return (
@@ -89,7 +52,7 @@ const StyleTabPanel = () => {
           <input
             type="checkbox"
             id={`check_all`}
-            onChange={e => handleCheckedFilterItem(e, 'all')}
+            onChange={e => handleCheckFilterItem(e, 'all')}
             checked={isAllChecked}
           />
           <label htmlFor={`check_all`}>전체</label>
@@ -99,7 +62,7 @@ const StyleTabPanel = () => {
             <input
               type="checkbox"
               id={`check_${el.name}`}
-              onChange={e => handleCheckedFilterItem(e, el.name)}
+              onChange={e => handleCheckFilterItem(e, el.name)}
               checked={filterItem.includes(el.name)}
             />
             <label htmlFor={`check_${el.name}`}>{el.name}</label>
@@ -116,8 +79,6 @@ const StyleTabPanel = () => {
           borderBottom: '1px solid #DADADA',
         }}
       >
-        {/* <List data={testData} /> */}
-        
         <Box sx={{ mr: 1, width: 'calc(50vw - 20px)'}}>
           {/* 반복1 */}
           {evenIndexStyles.map((style, index) => (
@@ -131,7 +92,7 @@ const StyleTabPanel = () => {
                 mb: 1
               }}
             >
-              <Link to="/">
+              <Link to="/style/home_styling">
                 <img
                   src={style.avatar}
                   alt={style.name}
@@ -148,8 +109,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "white" }}>
-                  <Typography sx={{ fontSize: 14, fontWeight: "700", letterSpacing: "-0.25px", mb: "4px" }}>{style.discription}</Typography>
-                  <Typography sx={{ fontSize: 14, fontWeight: "400", letterSpacing: "-0.25px" }}>{"# "+style.name}</Typography>
+                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
+                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
                 </Box>
               </Link>
             </Box>
@@ -168,7 +129,7 @@ const StyleTabPanel = () => {
                 mb: 1
               }}
             >
-              <Link to="/">
+              <Link to="/style/home_styling">
                 <img
                   src={style.avatar}
                   alt={style.name}
@@ -185,8 +146,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "#FAFAFA" }}>
-                  <Typography sx={{ fontSize: 14, fontWeight: "700", letterSpacing: "-0.25px", mb: "4px" }}>{style.discription}</Typography>
-                  <Typography sx={{ fontSize: 14, fontWeight: "400", letterSpacing: "-0.25px" }}>{"# "+style.name}</Typography>
+                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
+                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
                 </Box>
               </Link>
             </Box>

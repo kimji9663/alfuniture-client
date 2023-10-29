@@ -6,17 +6,7 @@ import "swiper/css"
 import { ViewTitle } from "./index.styles"
 import { AverageGrade, DetailGrade, PhotoReviewWrap, ReviewerInfo, UserPhotoWrap, ProductOptions } from "./reviewPanel.styles"
 import { sofa01, sofa02, light01, light02, chair01, chair02, table01, table02 } from "../../../assets/images/product"
-
-type ISwiperProps = { 
-  loop?: boolean
-  spaceBetween?: number 
-  scrollbar?: { 
-    draggable: boolean 
-    el: null 
-  }
-  slidesPerView?: "auto" | number | undefined
-  onSlideChange?: (swiper: any) => void
-}
+import { ISwiperProps } from "../../../components/ISwiperProps"
 
 const photoReviewList = [
   {

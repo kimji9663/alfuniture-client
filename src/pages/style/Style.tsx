@@ -1,112 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react"
 import LogoTitle from '../../components/title/LogoTitle'
+import {TabPanel, TabProps} from '../../components/Tabs'
+import { ISwiperProps } from '../../components/ISwiperProps'
 import NavigationBar from "../../components/NavigationBar"
-
-import {Paper, IconButton, Typography, Box, FormControl, Tabs, Tab } from '@mui/material'
-import { styled, withStyles } from "@mui/material/styles"
+import { Box, Tabs, Tab } from '@mui/material'
 import StyleTabPanel from './StyleTabPanel';
 import RankingTabPanel from './RankingTabPanel';
 import PostMagazineTabPanel from './PostMagazineTabPanel';
-import { styleBanner01, styleBanner02, styleBanner03, styleBanner04, styleBanner05 } from "../../assets/images/banner"
 import { Swiper, SwiperSlide } from "swiper/react"
-
-export const testData = [
-  {
-    img: styleBanner03,
-    newItem: true,
-    brandName: "Redon",
-    discription: "혁신적인 가구 디자인의 한획을 긋다",
-  },
-  {
-    img: styleBanner04,
-    newItem: true,
-    brandName: "Pianoa",
-    discription: "가구의 예술성과 실용성을 더했다",
-  },
-  {
-    img: styleBanner05,
-    newItem: true,
-    brandName: "Rily",
-    discription: "미니멀과 모던함의 조화를 이루다",
-  },
-  {
-    img: styleBanner01,
-    newItem: true,
-    brandName: "One Rain",
-    discription: "미니멀과 디테일의 균형적인 가구",
-  },
-]
-
-const imageList = [
-  {
-    discription: "styleBanner01",
-    img: styleBanner01
-  },
-  {
-    discription: "styleBanner02",
-    img: styleBanner02
-  },
-]
-
-interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
-}
-
-const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
-  },
-  '& label': {
-    padding: '6px 16px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-    color: '#999999',
-  },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
-  },
-}))
-
-function profileProps(index: number) {
-  return {
-    id: `like-tab-${index}`,
-    'aria-controls': `like-tabpanel-${index}`,
-  }
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`like-tabpanel-${index}`}
-      aria-labelledby={`like-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </div>
-  )
-}
-type ISwiperProps = { 
-  loop?: boolean
-  scrollbar?: { 
-    draggable: boolean 
-    el: null 
-  }
-  slidesPerView?: "auto" | number | undefined
-  onSlideChange?: (swiper: any) => void
-}
+import { styleBannerData } from "../../data"
+import { ScrollToTop } from '../../App'
+import { Fs14Fw400Typography, C333Fs50Fw400Typography, C666Fs14Fw400Typography } from '../../components/Typography'
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -119,14 +24,15 @@ const Style = () => {
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
-  
+
+  ScrollToTop();
   return (
     <Box sx={{height: 'calc(100vh - 74px)'}}>
       <LogoTitle/>
       {/* 첫번째 섹션 */}
       <Box sx={{pt:"57px", borderTop: "1px solid #EEEEEE", pb:3}}>
         <Swiper {...brandCollectionSettings} style={{ marginLeft: "16px", marginRight: "16px" }}>
-          {testData.map((item, index) => (
+          {styleBannerData.map((item, index) => (
             <SwiperSlide key={index}>
               {({ isActive, isNext, isPrev }) => (
                 <Box sx={{ mt: 2, height: "100%", objectFit: "cover" }}>
@@ -137,13 +43,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Typography sx={{ fontSize: 14, fontWeight: "400", lineHeight: "16.8px" }}>NEW</Typography>
+                              <Fs14Fw400Typography >NEW</Fs14Fw400Typography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <Typography sx={{ fontSize: 50, fontWeight: "400", lineHeight: "19px", mb: 3, color: "#333333" }}>{item.brandName}</Typography>
-                          <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>{item.discription}</Typography>
+                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
+                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
                         </Box>
                       </>
                     )}
@@ -153,13 +59,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Typography sx={{ fontSize: 14, fontWeight: "400", lineHeight: "16.8px" }}>NEW</Typography>
+                              <Fs14Fw400Typography>NEW</Fs14Fw400Typography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <Typography sx={{ fontSize: 50, fontWeight: "400", lineHeight: "19px", mb: 3, color: "#333333" }}>{item.brandName}</Typography>
-                          <Typography sx={{ fontSize: 14, fontWeight: "400", color: "#666666" }}>{item.discription}</Typography>
+                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
+                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
                         </Box>
                       </>
                     )}
@@ -192,9 +98,9 @@ const Style = () => {
               onChange={handleLikeTab} 
               aria-label="main category"
             >
-              <Tab label="스타일" {...profileProps(0)} />
-              <Tab label="랭킹" {...profileProps(1)} />
-              <Tab label="포스트매거진" {...profileProps(2)} />
+              <Tab label="스타일" {...TabProps(0)} />
+              <Tab label="랭킹" {...TabProps(1)} />
+              <Tab label="포스트매거진" {...TabProps(2)} />
             </Tabs>
           </Box>
 

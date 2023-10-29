@@ -8,23 +8,21 @@ const title = ['My page']
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  
   const goToMyInfo = () => {
     navigate("/mypage/my_info")
   }
-
   const goToMyOrder = () => {
     navigate("/mypage/my_order")
   }
-
   const goToRecentlyProduct = () => {
     navigate("/mypage/recently_product")
   }
   const goToMyCoupon = () => {
     navigate("/mypage/coupon")
   }
-  
-
+  const goToMyReview = () => {
+    navigate("/mypage/review")
+  }
 
   return (
     <>
@@ -101,7 +99,7 @@ const Dashboard = () => {
                 <p>주문/배송</p>
               </Button>
               <Divider orientation="vertical" flexItem />
-              <Button>
+              <Button onClick={goToMyReview}>
                 <div><IconMyReview /></div>
                 <p>리뷰</p>
               </Button>

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { Tabs, Tab, Typography, Box } from "@mui/material"
+import { Tabs, Tab, Box } from "@mui/material"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -8,9 +7,8 @@ interface TabPanelProps {
   value: number
 }
 
-function CustomTabPanel(props: TabPanelProps) {
+export function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -20,15 +18,15 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
+        <Box>
+          {children}
+      </Box>
       )}
     </div>
   )
 }
 
-function a11yProps(index: number) {
+export function TabProps(index: number) {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -56,20 +54,20 @@ const NormalTabs = () => {
           onChange={handleChange} 
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item One" {...TabProps(0)} />
+          <Tab label="Item Two" {...TabProps(1)} />
+          <Tab label="Item Three" {...TabProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
+      <TabPanel value={value} index={0}>
         Item One
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
         Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
         Item Three
-      </CustomTabPanel>
+      </TabPanel>
     </Box>
   )
 }

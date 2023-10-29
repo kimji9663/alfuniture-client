@@ -6,40 +6,9 @@ import { PrimaryButton } from "../../styles/buttons.styles"
 import { SwiperWrap } from "./featuredBrand.styles"
 import { useNavigate } from "react-router-dom"
 import "swiper/css"
-import { thumb_brand01 } from "../../assets/images"
-import { chair01, light01 } from "../../assets/images/product"
 import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
-
-type ISwiperProps = { 
-  loop?: boolean
-  spaceBetween?: number 
-  scrollbar?: { 
-    draggable: boolean 
-    el: null 
-  }
-  slidesPerView?: "auto" | number | undefined
-}
-
-const itemList = [
-  {
-    id: 1,
-    img: light01,
-    name: 'Aerobiey',
-    description: '60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드'
-  },
-  {
-    id: 2,
-    img: chair01,
-    name: 'OneRain',
-    description: '미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드'
-  },
-  {
-    id: 3,
-    img: thumb_brand01,
-    name: 'James Lee',
-    description: '디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드'
-  }
-]
+import { ISwiperProps } from '../../components/ISwiperProps'
+import { featuredBrandData } from '../../data'
 
 const FeaturedBrand = () => {
   const navigate = useNavigate()
@@ -71,7 +40,7 @@ const FeaturedBrand = () => {
         <Box sx={{ px: 2, display: 'flex', alignItems: 'center', height: 'calc(100vh - 202px)' }}>
           <SwiperWrap>
             <Swiper {...settings}>
-              {itemList.map((el) => (
+              {featuredBrandData.map((el) => (
                 <SwiperSlide key={el.id}>
                   <Box className="slide_item">
                     <img src={el.img} alt={el.name} className={getImgRatio(el.img)} />
