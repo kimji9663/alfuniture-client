@@ -320,9 +320,7 @@ function CartPage() {
         //
       ) : (
         // 데이터가 없을 때 렌더링
-        <Box sx={{height:"100%", display:"flex", alignItems:"center", justifyContent:"center"}}>
-          <NoData  message={"장바구니에 담은 상품이 없습니다."} linkText={"상품 보러가기"} linkTo={"/shop"}/>
-        </Box>
+        <NoData  message={"장바구니에 담은 상품이 없습니다."} linkText={"상품 보러가기"} linkTo={"/shop"}/>
       )}
       
     </>

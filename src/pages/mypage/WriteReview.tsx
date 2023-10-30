@@ -42,9 +42,7 @@ const WriteReview: React.FC = () => {
           </Box>
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          <Box sx={{p:2, pt:6}}>
-            <ReviewList/>
-          </Box>
+          <ReviewList/>
         </TabPanel>
       </Box>
       <NavigationBar />
