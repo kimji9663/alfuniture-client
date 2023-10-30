@@ -75,7 +75,7 @@ const MyOrder = () => {
           </RectCheckbox>
           ))}
         </Box>
-        <Box sx={{ p: 2, pt: 3 }}>
+        <Box sx={{ p: 2, pt: 5 }}>
           {filteredOrders.length == 0 ? ("데이터가 없습니다.") : (<OrderList myOrderList={filteredOrders} review={false} />)}
           
         </Box>

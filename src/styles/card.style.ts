@@ -42,7 +42,7 @@ export const DeliveryInfoOrderCard = styled(Card)(() => ({
 }))
 
 export const MyPageOrderCard = styled(Card)(() => ({
-  marginBottom: '16px',
+  marginBottom: '24px',
   borderRadius: 0,
   border: '1px solid #dadada', 
   boxShadow: 'none', 
