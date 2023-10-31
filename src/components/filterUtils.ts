@@ -6,17 +6,9 @@ export const handleCheckedFilterItem = (
   e: React.ChangeEvent<HTMLInputElement>,
   name: string
 ) => {
-  if (name === 'all') {
-    if (e.currentTarget.checked) {
-      setFilterItem(itemList.map((el) => el.name));
-    } else {
-      setFilterItem([]);
-    }
+  if (e.currentTarget.checked) {
+    setFilterItem([...filterItem, name]);
   } else {
-    if (e.currentTarget.checked) {
-      setFilterItem([...filterItem, name]);
-    } else {
-      setFilterItem(filterItem.filter((el) => el !== name));
-    }
+    setFilterItem(filterItem.filter((el) => el !== name));
   }
 };
