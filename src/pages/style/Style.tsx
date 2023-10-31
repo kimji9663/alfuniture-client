@@ -11,7 +11,7 @@ import PostMagazineTabPanel from './PostMagazineTabPanel';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
 import { ScrollToTop } from '../../App'
-import { Fs14Fw400Typography, C333Fs50Fw400Typography, C666Fs14Fw400Typography } from '../../components/Typography'
+import { TitleSmallTypography, HeadlineExtraLargeGray9Typography, TitleSmallGray8Typography } from '../../components/Typography'
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -43,13 +43,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Fs14Fw400Typography >NEW</Fs14Fw400Typography>
+                              <TitleSmallTypography sx={{lineHeight: "17px"}}>NEW</TitleSmallTypography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
-                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
+                          <HeadlineExtraLargeGray9Typography sx={{ mb: 3 }}>{item.brandName}</HeadlineExtraLargeGray9Typography>
+                          <TitleSmallGray8Typography>{item.discription}</TitleSmallGray8Typography>
                         </Box>
                       </>
                     )}
@@ -59,13 +59,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Fs14Fw400Typography>NEW</Fs14Fw400Typography>
+                              <TitleSmallTypography sx={{lineHeight: "17px"}}>NEW</TitleSmallTypography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
-                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
+                          <HeadlineExtraLargeGray9Typography sx={{ mb: 3 }}>{item.brandName}</HeadlineExtraLargeGray9Typography>
+                          <TitleSmallGray8Typography>{item.discription}</TitleSmallGray8Typography>
                         </Box>
                       </>
                     )}

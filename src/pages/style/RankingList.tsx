@@ -7,7 +7,7 @@ import {rankingProductData, styleTypes} from "../../data/index"
 import {RectCheckbox} from "../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
 import { ScrollToTop } from '../../App'
-import { Fs16Fw400Typography } from '../../components/Typography'
+import { TitleMediumTypography } from '../../components/Typography'
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -114,9 +114,9 @@ const RankingList = () => {
             productName={product.productName}
           />)
           ) : (
-          <Fs16Fw400Typography sx={{ fontSize: 16, fontWeight: "500", letterSpacing: "-0.25px" }}>
+          <TitleMediumTypography sx={{ fontSize: 16, fontWeight: "500", letterSpacing: "-0.25px" }}>
             데이터가 없습니다
-          </Fs16Fw400Typography>
+          </TitleMediumTypography>
           )}
       </Box>
       <NavigationBar/>

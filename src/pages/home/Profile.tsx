@@ -10,7 +10,7 @@ import {RectCheckboxNonChecked} from "../../styles/checkbox.styles"
 import {profileTagData} from "../../data"
 import { ScrollToTop } from "../../App"
 import { TabPanel, TabProps } from "../../components/Tabs"
-import { C333Fs12Typography, Fs24Fw400Typography } from "../../components/Typography"
+import { LabelMediumGray9ypography, HeadlineSmallTypography } from "../../components/Typography"
 
 const Profile = () => {
   const [tabValue, setTabValue] = useState(0)
@@ -27,8 +27,8 @@ const Profile = () => {
       <img src={jamesLee} style={{width: "100vw", maxWidth: "420px"}}/>
       <Box sx={{mt: 3, ml: 2, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Box>
-          <Fs24Fw400Typography>James Lee</Fs24Fw400Typography>
-          <C333Fs12Typography>노르웨이 출신의 작가</C333Fs12Typography>
+          <HeadlineSmallTypography>James Lee</HeadlineSmallTypography>
+          <LabelMediumGray9ypography>노르웨이 출신의 작가</LabelMediumGray9ypography>
         </Box>
         <Box sx={{ mr: 2}}>
           

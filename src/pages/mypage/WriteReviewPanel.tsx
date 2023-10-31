@@ -3,7 +3,7 @@ import { Box, Button, TextareaAutosize } from "@mui/material";
 import { IconReviewStarBlackSmall, IconReviewStarGraySmall } from "../../assets/images/";
 import { RectCheckbox } from "../../styles/checkbox.styles";
 import { WriteReviewTagData } from "../../data";
-import { C333Fs14Fw700Typography } from "../../components/Typography";
+import { TitleSmallBoldGray9Typography } from "../../components/Typography";
 
 const WriteReviewPanel: React.FC = () => {
 
@@ -30,9 +30,9 @@ const WriteReviewPanel: React.FC = () => {
   return (
     <>
       <Box sx={{ mt: 4 }}>
-        <C333Fs14Fw700Typography sx={{mb: 1}}>
+        <TitleSmallBoldGray9Typography sx={{mb: 1}}>
           상품에 대한 만족도
-        </C333Fs14Fw700Typography>
+        </TitleSmallBoldGray9Typography>
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           {[0, 1, 2, 3, 4].map((starIndex) => (
             <Box
@@ -46,9 +46,9 @@ const WriteReviewPanel: React.FC = () => {
         </Box>
       </Box>
       <Box sx={{ mt: 4 }}>
-        <C333Fs14Fw700Typography sx={{mb: 1}}>
+        <TitleSmallBoldGray9Typography sx={{mb: 1}}>
           상세 사진
-        </C333Fs14Fw700Typography>
+        </TitleSmallBoldGray9Typography>
         <Box sx={{ }}>
           <Box sx={{ mt: 2, display: "flex", position: 'relative' }}>
             <Box sx={{ minHeight: "113px", width:"100%" }}>
@@ -104,9 +104,9 @@ const WriteReviewPanel: React.FC = () => {
         </Box>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <C333Fs14Fw700Typography sx={{ mb: 2 }}>
+        <TitleSmallBoldGray9Typography sx={{ mb: 2 }}>
           상품 후기
-        </C333Fs14Fw700Typography>
+        </TitleSmallBoldGray9Typography>
         <TextareaAutosize 
           minRows={2}
           placeholder="사이즈 / 재질 / 색감 등 상품 디테일을 작성해주세요."
@@ -120,9 +120,9 @@ const WriteReviewPanel: React.FC = () => {
         />
       </Box>
       <Box sx={{ mt: 5 }}>
-        <C333Fs14Fw700Typography sx={{ mb: 2 }}>
+        <TitleSmallBoldGray9Typography sx={{ mb: 2 }}>
           상품 태그 선택
-        </C333Fs14Fw700Typography>
+        </TitleSmallBoldGray9Typography>
         
           {WriteReviewTagData.map((el, index) => (
             <RectCheckbox key={index} sx={{ ml: 1, mb: 1 }}>

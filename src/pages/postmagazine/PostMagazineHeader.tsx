@@ -2,7 +2,7 @@
 import NoTitle from '../../components/title/NoTitle'
 import { Box } from '@mui/material'
 import { IconDownWhite } from "../../assets/images"
-import { C000Fs55Fw700Typography, C242Fs12Typography, CFFFFs20Fw700Typography, CFFFFs20Ls24Fw700Typography, CFFFFs14Typography } from "../../components/Typography"
+import { HeadlineExtraLargeBoldTypography, LabelMediumGray9Typography, TitleLargeBoldWhiteTypography, TitleSmallWhiteTypography } from "../../components/Typography"
 
 interface PostMagazineHeaderProps {
   title: string;
@@ -21,18 +21,18 @@ const PostMagazineHeader: React.FC<PostMagazineHeaderProps> = (props) => {
         <NoTitle />
       </Box>
       <Box sx={{ position: "absolute", top: "97px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <C000Fs55Fw700Typography>{title}</C000Fs55Fw700Typography>
+        <HeadlineExtraLargeBoldTypography>{title}</HeadlineExtraLargeBoldTypography>
         
-        {subtitle && (<C242Fs12Typography>{subtitle}</C242Fs12Typography>)}
+        {subtitle && (<LabelMediumGray9Typography>{subtitle}</LabelMediumGray9Typography>)}
       </Box>
       <Box sx={{ position: "absolute", bottom: "39px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
         {ctaTitle && ctaSubtitle && (
           <>
-            <CFFFFs20Ls24Fw700Typography>{ctaTitle}</CFFFFs20Ls24Fw700Typography>
-            <CFFFFs20Fw700Typography sx={{ mb: 2 }}>{ctaSubtitle}</CFFFFs20Fw700Typography>
+            <TitleLargeBoldWhiteTypography sx={{lineHeight: "24px"}}>{ctaTitle}</TitleLargeBoldWhiteTypography>
+            <TitleLargeBoldWhiteTypography sx={{ mb: 2 }}>{ctaSubtitle}</TitleLargeBoldWhiteTypography>
           </> 
         )}
-        <CFFFFs14Typography sx={{ mb: 2 }}>브랜드 스토리 보러가기</CFFFFs14Typography>
+        <TitleSmallWhiteTypography sx={{ mb: 2 }}>브랜드 스토리 보러가기</TitleSmallWhiteTypography>
         <Box sx={{ border: "1px solid #FFFFFF", borderRadius: 100, width: "26px", height: "26px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <IconDownWhite />
         </Box>

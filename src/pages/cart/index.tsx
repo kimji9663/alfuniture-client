@@ -8,7 +8,7 @@ import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import { cartProductData } from "../../data"
-import { C999Fs12Typography, C333Fs12Typography, C333Fs16Typography } from "../../components/Typography"
+import { LabelMediumGray7Typography, LabelMediumGray9ypography, TitleMediumBoldGray9Typography } from "../../components/Typography"
 
 interface cartData {
   imgsrc: any,
@@ -177,12 +177,12 @@ function CartPage() {
                       sx={{flexGrow: "1", position:"relative", height: "100px"}}>
                       <Box sx={{height: "20px", display:"flex", width:"100%", justifyContent:"space-between"}}>
                         <Box >
-                          <C333Fs12Typography sx={{fontWeight:"600"}}>{product.shopName}</C333Fs12Typography>
+                          <LabelMediumGray9ypography sx={{fontWeight:"600"}}>{product.shopName}</LabelMediumGray9ypography>
                         </Box>
                         {/* 닫기 버튼 예정 */}
                         <IconXblack onClick={() => deleteItem(index)} />
                       </Box>
-                      <C333Fs16Typography>{product.productName}</C333Fs16Typography>
+                      <TitleMediumBoldGray9Typography>{product.productName}</TitleMediumBoldGray9Typography>
                       <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999"}}>
                         <span style={{marginRight: "8px"}}>{product.option1}</span>
                         <span style={{fontSize: "14px", marginRight: "8px"}}>|</span>
@@ -289,18 +289,18 @@ function CartPage() {
             <Box sx={{pt:2, px:2, pb:5}}>
               <Box sx={{borderTop:"1px solid #DADADA", py:3}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <C999Fs12Typography>총 상품금액</C999Fs12Typography>
-                  <C333Fs12Typography>{calculateProductPrice().toLocaleString()+"원"}</C333Fs12Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: '16px',}}>총 상품금액</LabelMediumGray7Typography>
+                  <LabelMediumGray9ypography>{calculateProductPrice().toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <C999Fs12Typography>배송비</C999Fs12Typography>
-                  <C333Fs12Typography>{calculateDeliveryCharge().toLocaleString()+"원"}</C333Fs12Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: '16px',}}>배송비</LabelMediumGray7Typography>
+                  <LabelMediumGray9ypography>{calculateDeliveryCharge().toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
               </Box>
               <Box sx={{borderTop:"1px solid #333333", py:2}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-                  <C333Fs16Typography>결제금액</C333Fs16Typography>
-                  <C333Fs16Typography>{calculateTotalPrice().toLocaleString()+"원"}</C333Fs16Typography>
+                  <TitleMediumBoldGray9Typography>결제금액</TitleMediumBoldGray9Typography>
+                  <TitleMediumBoldGray9Typography>{calculateTotalPrice().toLocaleString()+"원"}</TitleMediumBoldGray9Typography>
                 </Box>
               </Box>
             </Box>

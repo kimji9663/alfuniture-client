@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RectCheckbox } from "../../styles/checkbox.styles";
 import { styleTabPanelStyleTypes } from "../../data";
 import { handleCheckedFilterItem } from "../../components/filterUtils";
-import { Fs14Fw700NoLhTypography, Fs14Typography } from "../../components/Typography";
+import { TitleSmallBoldTypography, TitleSmallTypography } from "../../components/Typography";
 
 const itemList = styleTabPanelStyleTypes.map(style => ({
   id: (styleTabPanelStyleTypes.indexOf(style) + 1).toString(),
@@ -138,8 +138,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "white" }}>
-                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
-                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
+                  <TitleSmallBoldTypography sx={{ mb: "4px" }}>{style.discription}</TitleSmallBoldTypography>
+                  <TitleSmallTypography>{"# "+style.name}</TitleSmallTypography>
                 </Box>
               </Link>
             </Box>
@@ -175,8 +175,8 @@ const StyleTabPanel = () => {
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "#FAFAFA" }}>
-                  <Fs14Fw700NoLhTypography sx={{ mb: "4px" }}>{style.discription}</Fs14Fw700NoLhTypography>
-                  <Fs14Typography>{"# "+style.name}</Fs14Typography>
+                  <TitleSmallBoldTypography sx={{ mb: "4px" }}>{style.discription}</TitleSmallBoldTypography>
+                  <TitleSmallTypography>{"# "+style.name}</TitleSmallTypography>
                 </Box>
               </Link>
             </Box>
