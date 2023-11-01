@@ -5,13 +5,16 @@ import { styled } from '@mui/material/styles';
 // HeadlineLarge	32
 // HeadlineMedium	28
 // HeadlineSmall	24
+// TitleLarge     22
+// TitleMedium    16
+// TitleSmall     14
+// LabelMedium    12
+// LabelSmall     11
 
-// TitleLarge 	22
-// TitleMedium	16
-// TitleSmall	  14
-
-// LabelMedium	12
-// LabelSmall	  11
+//color
+//Gray9 #333333
+//Gray8 #666666
+//Gray7 #999999
 
 export const SpanTypography = styled((props: TypographyProps) => (
   <Typography component="span" {...props}>
