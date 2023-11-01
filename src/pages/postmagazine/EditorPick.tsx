@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import NoTitle from '../../components/title/NoTitle'
+import NoTitle from "../../components/title/NoTitle"
 import NavigationBar from "../../components/NavigationBar"
-import { Box } from '@mui/material'
+import { Box } from "@mui/material"
 import {henredn01, henredn02, henredn03} from "../../assets/images/brand"
-import RightImageCard from './RightImageCard'
-import BestWorkAllButton from './BestWorkAllButton'
-import List from '../like/Like/List'
-import { editorPickData } from '../../data'
-import { ScrollToTop } from '../../App'
-import { TitleMediumBoldGray9Typography, HeadlineExtraLargeBoldGray9Typography, TitleSmallWhiteTypography, TitleSmallGray8Typography, TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from '../../components/Typography'
+import RightImageCard from "./RightImageCard"
+import BestWorkAllButton from "./BestWorkAllButton"
+import List from "../like/Like/List"
+import { editorPickData } from "../../data"
+import { ScrollToTop } from "../../App"
+import { TitleMediumBoldGray9Typography, HeadlineExtraLargeBoldGray9Typography, TitleSmallWhiteTypography, TitleSmallGray8Typography, TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from "../../components/Typography"
 
 const EditorPick = () => {
   ScrollToTop();
@@ -22,12 +22,12 @@ const EditorPick = () => {
         </Box>
         <Box sx={{display:"flex", position:"relative"}}>
           <Box sx={{ width: "70px", display: "flex"}}>
-            <Box sx={{ width: "70px", display: "flex", flexDirection: "column-reverse", transform: "rotate(270deg)", transformOrigin: "left bottom", position:'absolute', bottom:0, left:35}}>
-              <HeadlineExtraLargeBoldGray9Typography sx={{lineHeight: '19px', letterSpacing: '-0.25px',}}>Henredn</HeadlineExtraLargeBoldGray9Typography>
+            <Box sx={{ width: "70px", display: "flex", flexDirection: "column-reverse", transform: "rotate(270deg)", transformOrigin: "left bottom", position:"absolute", bottom:0, left:35}}>
+              <HeadlineExtraLargeBoldGray9Typography sx={{lineHeight: "19px", letterSpacing: "-0.25px",}}>Henredn</HeadlineExtraLargeBoldGray9Typography>
             </Box>
           </Box>
 
-          <Box sx={{minWidth:"259px", flex:1, position:'relative', display:"flex"}}>
+          <Box sx={{minWidth:"259px", flex:1, position:"relative", display:"flex"}}>
             <img src={henredn01} alt="" style={{width:"100%", objectFit:"cover"}}/>
             <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", right:"0", px:2, py:1 }}>
               <TitleSmallWhiteTypography sx={{textAlign: "center"}}>에디터 pick</TitleSmallWhiteTypography>
@@ -65,7 +65,7 @@ const EditorPick = () => {
       
       {/* 네번째 섹션 */}
       <Box sx={{mt:10}}>
-        <BestWorkAllButton title='Henredn'/>
+        <BestWorkAllButton title="Henredn"/>
         <List data={editorPickData} />
       </Box>
       <NavigationBar/>

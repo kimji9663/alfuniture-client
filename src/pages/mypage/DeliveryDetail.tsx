@@ -8,7 +8,7 @@ import { DeliveryInfoOrderCard } from "../../styles/card.style"
 import { IconCircleGray, IconDeliveryCompleted, IconTelGray } from "../../assets/images"
 import { LabelSmallBoldGray8Typography, TitleSmallGray9Typography, LabelMediumGray7Typography, LabelMediumGray9Typography, LabelSmallGray8Typography, TitleSmallBoldTypography, TitleSmallGray7Typography } from "../../components/Typography"
 
-const centerTitle = ['배송 조회']
+const centerTitle = ["배송 조회"]
 
 myDeliveryInfo.forEach((info) => {
   info.deliveryData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -19,7 +19,7 @@ const DeliveryDetail = () => {
   return (
     <>
       <CenterTitle title={centerTitle}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ p: 2 }}>
           {
             myDeliveryInfo.map((el, index) => (
@@ -37,7 +37,7 @@ const DeliveryDetail = () => {
                       />
                       <Box
                         sx={{
-                          flex: '1 1 auto',
+                          flex: "1 1 auto",
                           display:"flex",
                           flexDirection:"column",
                           justifyContent:"space-between"
@@ -46,7 +46,7 @@ const DeliveryDetail = () => {
                         <LabelSmallBoldGray8Typography sx={{ minWidth:"65px" }}>빠른배송</LabelSmallBoldGray8Typography>
                         
                         <Box sx={{display:"flex"}}>
-                          <TitleSmallGray9Typography sx={{ minWidth:"65px", letterSpacing: '-0.25px', }}>{el.brand}</TitleSmallGray9Typography>
+                          <TitleSmallGray9Typography sx={{ minWidth:"65px", letterSpacing: "-0.25px", }}>{el.brand}</TitleSmallGray9Typography>
                           <Box>
                             <LabelMediumGray7Typography>{el.optionCode}</LabelMediumGray7Typography>
                             <LabelMediumGray7Typography>{el.name}</LabelMediumGray7Typography>

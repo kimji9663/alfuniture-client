@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import NavigationBar from "../../components/NavigationBar"
-import { Box } from '@mui/material'
-import RightImageCard from './RightImageCard'
+import { Box } from "@mui/material"
+import RightImageCard from "./RightImageCard"
 import {umasqu01, umasqu02, umasqu03} from "../../assets/images/brand"
-import PostMagazineHeader from './PostMagazineHeader'
-import BestWorkAllButton from './BestWorkAllButton'
-import List from '../like/Like/List'
-import { monthlyPostData } from '../../data'
-import { ScrollToTop } from '../../App'
-import { TitleLargeBoldGray9Typography, TitleLargeBoldWhiteUmasquTypography } from '../../components/Typography'
+import PostMagazineHeader from "./PostMagazineHeader"
+import BestWorkAllButton from "./BestWorkAllButton"
+import List from "../like/Like/List"
+import { monthlyPostData } from "../../data"
+import { ScrollToTop } from "../../App"
+import { TitleLargeBoldGray9Typography, TitleLargeBoldWhiteUmasquTypography } from "../../components/Typography"
 
 const MonthlyPost = () => {
   ScrollToTop();

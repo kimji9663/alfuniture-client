@@ -2,40 +2,40 @@ import { styled } from "@mui/material/styles"
 import { Box, FormControl } from "@mui/material"
 
 export const OutlinedTag = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  flex: '1 1 auto',
-  boxSizing: 'border-box',
-  padding: '12.7px 8px 12.7px 16px',
-  maxWidth: '48%',
+  display: "flex",
+  alignItems: "center",
+  flex: "1 1 auto",
+  boxSizing: "border-box",
+  padding: "12.7px 8px 12.7px 16px",
+  maxWidth: "48%",
   borderRadius: 0,
-  border: '1px solid #DADADA',
-  color: '#999999',
-  '& > img': {
-    width: '18px',
-    marginRight: '4px',
+  border: "1px solid #DADADA",
+  color: "#999999",
+  "& > img": {
+    width: "18px",
+    marginRight: "4px",
   }
 }))
 
 export const OutlinedCheckbox = styled(FormControl)(() => ({
-  '& input': {
-    display: 'none',
+  "& input": {
+    display: "none",
   },
-  '& label': {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '6.5px 12px',
-    borderRadius: '18px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
+  "& label": {
+    display: "flex",
+    alignItems: "center",
+    padding: "6.5px 12px",
+    borderRadius: "18px",
+    border: "1px solid #DADADA",
+    fontSize: "0.875rem",
   },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
+  "& input:checked + label": {
+    border: "1px solid #242223",
+    backgroundColor: "#242223",
+    color: "#fff",
   },
-  '& label > img': {
-    width: '18px',
-    marginRight: '4px',
+  "& label > img": {
+    width: "18px",
+    marginRight: "4px",
   },
 }))

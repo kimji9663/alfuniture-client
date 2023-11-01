@@ -52,9 +52,9 @@ const StyleTabPanel = () => {
         pl: 2,
         pt: 5,
         pb: 3,
-        overflow: 'auto',
-        whiteSpace: 'nowrap',
-        '.MuiFormControl-root:first-of-type': {
+        overflow: "auto",
+        whiteSpace: "nowrap",
+        ".MuiFormControl-root:first-of-type": {
           ml: 0
         }
       }}
@@ -103,12 +103,12 @@ const StyleTabPanel = () => {
           mt: 3,
           mx: 2,
           pb: 2,
-          display: 'flex',
-          justifyContent: 'space-between',
-          borderBottom: '1px solid #DADADA',
+          display: "flex",
+          justifyContent: "space-between",
+          borderBottom: "1px solid #DADADA",
         }}
       >
-        <Box sx={{ mr: 1, width: 'calc(50vw - 20px)'}}>
+        <Box sx={{ mr: 1, width: "calc(50vw - 20px)"}}>
           {/* 반복1 */}
           {evenIndexStyles.map((style, index) => (
             <Box
@@ -125,7 +125,7 @@ const StyleTabPanel = () => {
                 <img
                   src={style.avatar}
                   alt={style.name}
-                  style={{ objectFit: "cover", objectPosition: "center", width: '100%', height: '100%' }}
+                  style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: "100%" }}
                 />
                 <Box
                   sx={{
@@ -134,7 +134,7 @@ const StyleTabPanel = () => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))',
+                    background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "white" }}>
@@ -145,7 +145,7 @@ const StyleTabPanel = () => {
             </Box>
           ))}
         </Box>
-        <Box sx={{ width: 'calc(50vw - 20px)'}}>
+        <Box sx={{ width: "calc(50vw - 20px)"}}>
           {/* 반복2 */}
           {oddIndexStyles.map((style, index) => (
             <Box
@@ -162,7 +162,7 @@ const StyleTabPanel = () => {
                 <img
                   src={style.avatar}
                   alt={style.name}
-                  style={{ objectFit: "cover", objectPosition: "center", width: '100%', height: '100%' }}
+                  style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: "100%" }}
                 />
                 <Box
                   sx={{
@@ -171,7 +171,7 @@ const StyleTabPanel = () => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))',
+                    background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
                   }}
                 />
                 <Box sx={{ ml: 2, mb: 2, position: "absolute", bottom: 0, left: 0, color: "#FAFAFA" }}>

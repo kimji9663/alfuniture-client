@@ -83,7 +83,7 @@ const PostMagazineTabPanel = () => {
         <Box sx={{width: "100%", pl:2, pt:2}}>
           <TitleLargeBoldGray9Typography>봄이 시작되는 3월</TitleLargeBoldGray9Typography>
           <TitleLargeBoldGray9Typography sx={{ mb:1}}>화사함이 어울리는 가구</TitleLargeBoldGray9Typography>
-          <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>일상속에서 자연스러운 아름다움을 느껴보세요.</LabelMediumGray7Typography>
+          <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>일상속에서 자연스러운 아름다움을 느껴보세요.</LabelMediumGray7Typography>
         </Box>
         <Box sx={{width: "100%", display:"flex"}}>
           <Box sx={{width: "49px", height: "29px", borderBottom: "1px solid #3D3D3D"}}></Box>

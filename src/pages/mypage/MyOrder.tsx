@@ -7,7 +7,7 @@ import OrderList from "./OrderList"
 import { deliveryStatusFilterData, myOrderList } from "../../data"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
 
-const centerTitle = ['주문배송']
+const centerTitle = ["주문배송"]
 
 const itemList = deliveryStatusFilterData.map(style => ({
   id: (deliveryStatusFilterData.indexOf(style) + 1).toString(),
@@ -59,12 +59,12 @@ const MyOrder = () => {
   return (
     <>
       <CenterTitle title={centerTitle}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{
           p: 2,
-          overflow: 'auto',
-          whiteSpace: 'nowrap',
-          '.MuiFormControl-root:first-of-type': {
+          overflow: "auto",
+          whiteSpace: "nowrap",
+          ".MuiFormControl-root:first-of-type": {
             ml: 0
           }
         }}

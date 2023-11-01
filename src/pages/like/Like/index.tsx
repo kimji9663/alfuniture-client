@@ -6,7 +6,7 @@ import ProductList from "./ProductList"
 import BrandList from "./BrandList"
 import TitleOneLine from "../../../components/title/TitleOneLine"
 
-const title = ['Like'];
+const title = ["Like"];
 const Like = () => {
   const [tabValue, setTabValue] = useState(0)
   const handleLikeTab = (event:React.SyntheticEvent, newValue: number) => {
@@ -16,12 +16,12 @@ const Like = () => {
   return (
     <>
       <TitleOneLine title={title}/>
-      <Box sx={{ height: 'calc(100vh - 138px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 138px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333' },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}

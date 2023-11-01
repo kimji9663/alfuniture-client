@@ -14,7 +14,7 @@ const DetailViewPanel = () => {
 
   return (
     <Box sx={{mx:2, mt:7, mb: "22px"}}>
-      <DetailView sx={{ height: viewMore ? 'auto' : '370px', pb: viewMore ? '58px' : 0 }}>
+      <DetailView sx={{ height: viewMore ? "auto" : "370px", pb: viewMore ? "58px" : 0 }}>
         <TitleSmallGray8Typography>
           James Lee는 아트, 디자인의 경계에서 미적 가치를 재해석하며 일상과 흔한 것들에 대한 이면을 찾는 작가입니다.<br/>
           <br/>
@@ -36,11 +36,11 @@ const DetailViewPanel = () => {
             sx={{borderRadius: 0, height: "60px", fontSize: "1rem", fontWeight: "500"}}
             fullWidth 
             endIcon={
-              viewMore ? <Box sx={{ transform: 'rotate(180deg)' }}><ArrowBottom/></Box> : <ArrowBottom />
+              viewMore ? <Box sx={{ transform: "rotate(180deg)" }}><ArrowBottom/></Box> : <ArrowBottom />
             }
             onClick={handleViewHeight}
           >
-            {viewMore ? '접기' : '더보기'}
+            {viewMore ? "접기" : "더보기"}
           </PrimaryButton>
         </CoverBox>
       </DetailView>

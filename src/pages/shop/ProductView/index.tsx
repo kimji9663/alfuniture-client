@@ -9,7 +9,7 @@ import { IconLikeOff, IconLikeOn } from "../../../assets/images"
 import { BasicModal } from "../../../styles/modal.styles"
 import { sofa01 } from "../../../assets/images/product"
 import { alfdn } from "../../../assets/images/logo"
-import NoTitle from '../../../components/title/NoTitle'
+import NoTitle from "../../../components/title/NoTitle"
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQnaPanel from "./PersonalQnaPanel"
@@ -25,21 +25,21 @@ const brandData = {
 
 
 const globalStyle = {
-  '.MuiModal-root': {
-    maxWidth: '420px',
-    margin: 'auto',
+  ".MuiModal-root": {
+    maxWidth: "420px",
+    margin: "auto",
 
-    '.MuiBackdrop-root': {
-      maxWidth: '420px',
-      margin: 'auto',
+    ".MuiBackdrop-root": {
+      maxWidth: "420px",
+      margin: "auto",
     },
-    '.MuiDrawer-paper': {
-      maxWidth: '420px',
-      margin: 'auto',
+    ".MuiDrawer-paper": {
+      maxWidth: "420px",
+      margin: "auto",
     },
   },
-  '#basic-menu.MuiModal-root': {
-    maxWidth: 'none',
+  "#basic-menu.MuiModal-root": {
+    maxWidth: "none",
   }
 }
 
@@ -52,7 +52,7 @@ interface TabPanelProps {
 const viewProps = (index: number) => {
   return {
     id: `view-tab-${index}`,
-    'aria-controls': `view-tabpanel-${index}`,
+    "aria-controls": `view-tabpanel-${index}`,
   }
 }
 
@@ -83,18 +83,18 @@ const ProductView = () => {
   const [optionOpen, setOptionOpen] = useState(false)
   const [selectComplete, setSelectComplete] = useState([false, false])
   const [modalOpen, setModalOpen] = useState(false)
-  const [modalType, setModalType] = useState('')
+  const [modalType, setModalType] = useState("")
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후
       if (selectComplete[0] && selectComplete[1]) {
         // 장바구니로 이동하시겠습니까? 모달 띄움
-        setModalType('cart')
+        setModalType("cart")
         setModalOpen(true)
       } else {
         // 필수 옵션 체크 에러
-        setModalType('error')
+        setModalType("error")
         setModalOpen(true)
       }
     }
@@ -109,7 +109,7 @@ const ProductView = () => {
         navigate("/order")
       } else {
         // 필수 옵션 체크 에러
-        setModalType('error')
+        setModalType("error")
         setModalOpen(true)
       }
     }
@@ -141,8 +141,8 @@ const ProductView = () => {
     <>
       <Global styles={globalStyle} />
       <NoTitle/>
-      <Box sx={{ height: 'calc(100vh - 74px)', overflow: 'auto' }}>
-        <Box sx={{ '& > img': { width: '100%' } }}>
+      <Box sx={{ height: "calc(100vh - 74px)", overflow: "auto" }}>
+        <Box sx={{ "& > img": { width: "100%" } }}>
           <img src={sofa01} alt="소파" />
         </Box>
         <Box sx={{ p: 2 }}>
@@ -159,9 +159,9 @@ const ProductView = () => {
               <Typography>카멜프튼</Typography>
               <Box className="color_info">
                 <Box component="span" className="text">3 COLOR</Box>
-                <Box component="span" className="color" sx={{ backgroundColor: '#494A4C' }}></Box>
-                <Box component="span" className="color" sx={{ backgroundColor: '#192552' }}></Box>
-                <Box component="span" className="color" sx={{ backgroundColor: '#D67531' }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: "#494A4C" }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: "#192552" }}></Box>
+                <Box component="span" className="color" sx={{ backgroundColor: "#D67531" }}></Box>
               </Box>
             </Box>
             <Box className="product_price">
@@ -177,10 +177,10 @@ const ProductView = () => {
                   배송정보
                 </Box>
                 <Box component="p" className="delivery_info">
-                  <Box component="span" sx={{ color: '#666' }}>
+                  <Box component="span" sx={{ color: "#666" }}>
                     빠른배송
                   </Box>
-                  <Box component="span" sx={{ ml: 1, color: '#FD6868' }}>
+                  <Box component="span" sx={{ ml: 1, color: "#FD6868" }}>
                     불가능
                   </Box>
                 </Box>
@@ -234,7 +234,7 @@ const ProductView = () => {
       
       <BasicModal open={modalOpen} onClose={handleClose}>
         <Box>
-          {modalType === 'error' && (
+          {modalType === "error" && (
             <>
               <div className="content">필수 옵션을 선택해주세요.</div>
               <ButtonGroup fullWidth>
@@ -242,7 +242,7 @@ const ProductView = () => {
               </ButtonGroup>
             </>
           )}
-          {modalType === 'cart' && (
+          {modalType === "cart" && (
             <>
               <div className="content">선택된 상품을 장바구니에 담으시겠습까?</div>
               <ButtonGroup fullWidth>

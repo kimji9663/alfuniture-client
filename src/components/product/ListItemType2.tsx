@@ -29,11 +29,11 @@ const ListItemType2: React.FC<PreviewProps> = ({
       {/* 가로형 상품 리스트 */}
         <GridBox
           sx={{
-            gridTemplateColumns: '96px auto',
-            borderTop: '1px solid #DADADA',
+            gridTemplateColumns: "96px auto",
+            borderTop: "1px solid #DADADA",
           }}
         >
-          <Link href='/shop/product_view' underline='none'>
+          <Link href="/shop/product_view" underline="none">
             <ListImageBoxType2>
               <img
                 src={imgsrc}
@@ -48,7 +48,7 @@ const ListItemType2: React.FC<PreviewProps> = ({
           </Link>
           <FlexAlignItemsCenterBox>
             <ListDetailBoxType2>
-              <Link href='/shop/product_view' underline='none'>
+              <Link href="/shop/product_view" underline="none">
                 <Box>
                   <Box sx={{mb:"5px"}}>
                     <BoldGray9Typography>

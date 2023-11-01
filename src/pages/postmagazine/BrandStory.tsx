@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import NavigationBar from "../../components/NavigationBar"
-import { Typography, Box } from '@mui/material'
+import { Typography, Box } from "@mui/material"
 import {aerobiey02, aerobiey03, aerobiey04, aerobiey05} from "../../assets/images/brand"
-import PostMagazineHeader from './PostMagazineHeader'
-import BestWorkAllButton from './BestWorkAllButton'
-import List from '../like/Like/List'
-import { brandStoryData } from '../../data'
-import { ScrollToTop } from '../../App'
-import { TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from '../../components/Typography'
+import PostMagazineHeader from "./PostMagazineHeader"
+import BestWorkAllButton from "./BestWorkAllButton"
+import List from "../like/Like/List"
+import { brandStoryData } from "../../data"
+import { ScrollToTop } from "../../App"
+import { TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from "../../components/Typography"
 
 const BrandStory = () => {
   ScrollToTop();
@@ -61,7 +61,7 @@ const BrandStory = () => {
       </Box>
       {/* 세번째 섹션 */}
       <Box sx={{mt:10}}>
-        <BestWorkAllButton title='Aerobiey'/>
+        <BestWorkAllButton title="Aerobiey"/>
         <List data={brandStoryData} />
       </Box>
       <NavigationBar/>

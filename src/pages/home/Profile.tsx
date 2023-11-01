@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import NavigationBar from "../../components/NavigationBar"
 import { jamesLee } from "../../assets/images/brand"
 import { IconHeartBig, IconHeartBigRed } from "../../assets/images"
-import { IconButton, Box, Tabs, Tab } from '@mui/material'
+import { IconButton, Box, Tabs, Tab } from "@mui/material"
 import DetailViewPanel from "./DetailViewPanel"
 import BrandShopPanel from "./BrandShopPanel"
 import {RectCheckboxNonChecked} from "../../styles/checkbox.styles"
@@ -52,9 +52,9 @@ const Profile = () => {
       </Box>
       <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight: "700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight: "700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}

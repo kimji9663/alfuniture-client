@@ -27,8 +27,8 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
   return (
     <>
       <OrderInfoAccordionMenu
-        expanded={expanded === 'panel1'} 
-        onChange={handleChange('panel1')}
+        expanded={expanded === "panel1"} 
+        onChange={handleChange("panel1")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -43,21 +43,21 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
         <AccordionDetails>
           {/* <Box sx={{mb:2}}> */}
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", mb: 2 }}>
-              <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>받으시는 분</LabelMediumGray7Typography>
+              <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>받으시는 분</LabelMediumGray7Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <LabelMediumGray9ypography sx={{lineHeight: '12px', letterSpacing: '0.4px'}}>{data.deliveryInfo.recipient}</LabelMediumGray9ypography>
+                <LabelMediumGray9ypography sx={{lineHeight: "12px", letterSpacing: "0.4px"}}>{data.deliveryInfo.recipient}</LabelMediumGray9ypography>
               </Box>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", mb: 2 }}>
-              <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>연락처</LabelMediumGray7Typography>
+              <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>연락처</LabelMediumGray7Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <LabelMediumGray9ypography sx={{lineHeight: '12px', letterSpacing: '0.4px'}}>{data.deliveryInfo.contact}</LabelMediumGray9ypography>
+                <LabelMediumGray9ypography sx={{lineHeight: "12px", letterSpacing: "0.4px"}}>{data.deliveryInfo.contact}</LabelMediumGray9ypography>
               </Box>
             </Box>
             <Box sx={{ bottom: "0", display: "flex", justifyContent: "space-between", width: "100%" }}>
-              <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>배송지</LabelMediumGray7Typography>
+              <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>배송지</LabelMediumGray7Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <LabelMediumGray9ypography sx={{lineHeight: '12px', letterSpacing: '0.4px'}}>{data.deliveryInfo.address}</LabelMediumGray9ypography>
+                <LabelMediumGray9ypography sx={{lineHeight: "12px", letterSpacing: "0.4px"}}>{data.deliveryInfo.address}</LabelMediumGray9ypography>
               </Box>
             </Box>
           {/* </Box> */}
@@ -65,8 +65,8 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
       </OrderInfoAccordionMenu>
 
       <OrderInfoAccordionMenu
-        expanded={expanded === 'panel2'} 
-        onChange={handleChange('panel2')}
+        expanded={expanded === "panel2"} 
+        onChange={handleChange("panel2")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -79,7 +79,7 @@ const OrderInformation: React.FC<OrderInfo> = ({ data }) => {
             <Box sx={{ bottom: "0", display: "flex", justifyContent: "space-between", width: "100%" }}>
               <LabelMediumGray9ypography>결제 방법</LabelMediumGray9ypography>
               <Box sx={{ display: "flex", alignItems: "end", flexDirection:"column" }}>
-                <LabelMediumGray9ypography sx={{mb:2, lineHeight: '12px', letterSpacing: '0.4px'}}>{"(" +data.paymentCard + ") " + data.paymentMethod}</LabelMediumGray9ypography>
+                <LabelMediumGray9ypography sx={{mb:2, lineHeight: "12px", letterSpacing: "0.4px"}}>{"(" +data.paymentCard + ") " + data.paymentMethod}</LabelMediumGray9ypography>
                 <Link to={"/"} style={{display:"flex", alignItems:"center"}} onClick={(e) => {e.preventDefault()}}>
                   <LabelMediumRoyalBlueTypography>영수증 보기</LabelMediumRoyalBlueTypography>
                 </Link>

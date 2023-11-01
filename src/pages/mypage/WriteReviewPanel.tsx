@@ -50,7 +50,7 @@ const WriteReviewPanel: React.FC = () => {
           상세 사진
         </TitleSmallBoldGray9Typography>
         <Box sx={{ }}>
-          <Box sx={{ mt: 2, display: "flex", position: 'relative' }}>
+          <Box sx={{ mt: 2, display: "flex", position: "relative" }}>
             <Box sx={{ minHeight: "113px", width:"100%" }}>
               {userPhoto.length < 2 && (
                 <Button sx={{
@@ -58,11 +58,11 @@ const WriteReviewPanel: React.FC = () => {
                   top: 0,
                   left: 0,
                   minHeight: "113px",
-                  width: '100%',
-                  height: '100%',
+                  width: "100%",
+                  height: "100%",
                   borderRadius: 0,
-                  backgroundColor: '#F7F7F7',
-                  color: '#BDBDBD',
+                  backgroundColor: "#F7F7F7",
+                  color: "#BDBDBD",
                   border: "0.5px solid #BDBDBD",
                 }}
                 >
@@ -73,11 +73,11 @@ const WriteReviewPanel: React.FC = () => {
                     onChange={handleUploadPhoto}
                     style={{
                       opacity: 0,
-                      position: 'absolute',
+                      position: "absolute",
                       top: 0,
                       left: 0,
-                      width: '100%',
-                      height: '100%',
+                      width: "100%",
+                      height: "100%",
                     }}
                   />
                 </Button>
@@ -111,11 +111,11 @@ const WriteReviewPanel: React.FC = () => {
           minRows={2}
           placeholder="사이즈 / 재질 / 색감 등 상품 디테일을 작성해주세요."
           style={{
-          width: '100%',
-          border: '1px solid #BDBDBD',
-          fontSize: '.75rem',
-          padding: '14px',
-          boxSizing: 'border-box',
+          width: "100%",
+          border: "1px solid #BDBDBD",
+          fontSize: ".75rem",
+          padding: "14px",
+          boxSizing: "border-box",
         }}
         />
       </Box>

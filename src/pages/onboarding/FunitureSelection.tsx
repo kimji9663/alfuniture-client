@@ -14,11 +14,11 @@ const FunitureSelection = () => {
     navigate("/onboarding/style_selection")
   }
 
-  const title = ['찾고 싶은 가구를', '선택해주세요.'];
+  const title = ["찾고 싶은 가구를", "선택해주세요."];
 
   return (
     <>
-      <Box sx={{height: '100%', overflow: 'auto' }}>
+      <Box sx={{height: "100%", overflow: "auto" }}>
         <TitleTwoLine1 title={title} onClick={goToNext} />
 
         <Box sx={{ px: 2}}>

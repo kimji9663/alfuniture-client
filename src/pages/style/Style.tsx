@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react"
-import LogoTitle from '../../components/title/LogoTitle'
-import {TabPanel, TabProps} from '../../components/Tabs'
-import { ISwiperProps } from '../../components/ISwiperProps'
+import LogoTitle from "../../components/title/LogoTitle"
+import {TabPanel, TabProps} from "../../components/Tabs"
+import { ISwiperProps } from "../../components/ISwiperProps"
 import NavigationBar from "../../components/NavigationBar"
-import { Box, Tabs, Tab } from '@mui/material'
-import StyleTabPanel from './StyleTabPanel';
-import RankingTabPanel from './RankingTabPanel';
-import PostMagazineTabPanel from './PostMagazineTabPanel';
+import { Box, Tabs, Tab } from "@mui/material"
+import StyleTabPanel from "./StyleTabPanel";
+import RankingTabPanel from "./RankingTabPanel";
+import PostMagazineTabPanel from "./PostMagazineTabPanel";
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
-import { ScrollToTop } from '../../App'
-import { TitleSmallTypography, HeadlineExtraLargeGray9Typography, TitleSmallGray8Typography } from '../../components/Typography'
+import { ScrollToTop } from "../../App"
+import { TitleSmallTypography, HeadlineExtraLargeGray9Typography, TitleSmallGray8Typography } from "../../components/Typography"
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -27,7 +27,7 @@ const Style = () => {
 
   ScrollToTop();
   return (
-    <Box sx={{height: 'calc(100vh - 74px)'}}>
+    <Box sx={{height: "calc(100vh - 74px)"}}>
       <LogoTitle/>
       {/* 첫번째 섹션 */}
       <Box sx={{pt:"57px", borderTop: "1px solid #EEEEEE", pb:3}}>
@@ -88,9 +88,9 @@ const Style = () => {
       {/* 두번째 섹션 */}
         <Box sx={{ 
             borderBottom: 1, 
-            borderColor: 'divider',
-            '.MuiTab-root.Mui-selected': { color: '#333', fontWeight: "700" },
-            '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+            borderColor: "divider",
+            ".MuiTab-root.Mui-selected": { color: "#333", fontWeight: "700" },
+            ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
           }}>
             <Tabs 
               value={tabValue}

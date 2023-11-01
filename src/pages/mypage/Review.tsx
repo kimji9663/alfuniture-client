@@ -8,7 +8,7 @@ import { TabPanel, TabProps } from "../../components/Tabs"
 import { reviewMyOrderData } from "../../data"
 import NoData from "../../components/NoData"
 
-const title = ['리뷰'];
+const title = ["리뷰"];
 
 const Review: React.FC = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -20,12 +20,12 @@ const Review: React.FC = () => {
   return (
     <>
       <CenterTitle title={title}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight:"700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight:"700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}

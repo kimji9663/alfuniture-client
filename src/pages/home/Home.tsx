@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react"
-import LogoTitle from '../../components/title/LogoTitle'
+import LogoTitle from "../../components/title/LogoTitle"
 import NavigationBar from "../../components/NavigationBar"
 import { ISwiperProps } from "../../components/ISwiperProps"
 import { ArrowDown, HalfArrowRigth } from "../../assets/images"
 import { jamesLee } from "../../assets/images/brand"
-import { IconButton, Box } from '@mui/material'
+import { IconButton, Box } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Link } from "react-router-dom";
 import ListItem from "../../components/product/ListItem"
@@ -31,11 +31,11 @@ const Home = () => {
       <LogoTitle/>
       
       {/* 첫번째 섹션 */}
-      <Box sx={{ height: 'calc(100vh - 74px - 57px)', overflow: 'hidden' }}>
+      <Box sx={{ height: "calc(100vh - 74px - 57px)", overflow: "hidden" }}>
         <Box sx={{ 
           width: "301px",
-          height: 'calc(100vh - 159px - 53px - 74px - 57px)',
-          overflow: 'hidden',
+          height: "calc(100vh - 159px - 53px - 74px - 57px)",
+          overflow: "hidden",
         }}>
           <Swiper {...photoBannerSettings} >
             {homeBannerData.map((photoReview, index) => (
@@ -51,20 +51,20 @@ const Home = () => {
           <HeadlineLargeBoldTypography>Collection</HeadlineLargeBoldTypography>
         </Box>
         <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             pb:3,
             borderBottom: "1px solid #DADADA"
           }}>
           <IconButton sx={{
-            border: '0.5px solid #616161',
-            borderRadius: '50%', 
-            width: '28px', 
-            height: '28px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            border: "0.5px solid #616161",
+            borderRadius: "50%", 
+            width: "28px", 
+            height: "28px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             p:0,
             pl:"5px",
           }}>
@@ -75,7 +75,7 @@ const Home = () => {
       
       {/* 두번째 섹션 */}
       <Box>
-        <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+        <Box sx={{display: "flex", justifyContent: "flex-end"}}>
           <Box sx={{ mt: 10, mb: "39px", ml: 5, }}>
             <TitleLargeBoldTypography sx={{letterSpacing: "-2%", mb: "17px"}}>이달의 아티스트</TitleLargeBoldTypography>
             <Box sx={{position:"relative", display:"flex"}}>
@@ -112,7 +112,7 @@ const Home = () => {
       
       {/* 세번째 섹션 */}
       <Box sx={{mt:10}}>
-        <Link to="/style/ranking"style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to="/style/ranking"style={{ textDecoration: "none", color: "inherit" }}>
           <HorizontalRanking data={rankingProductData} title="TOP5 가구랭킹" subTitle="MZ 세대를 위한 가구" discription= "심플한 디자인을 선호하는 MZ세대를 위한 가구"/>
         </Link>
       </Box>

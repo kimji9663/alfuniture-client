@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
@@ -39,29 +39,29 @@ const OrderDetail = () => {
               <Box
                 key={index}
                 sx={{
-                  p: '24px 16px',
-                  display: 'flex',
-                  background: '#F7F7F7',
+                  p: "24px 16px",
+                  display: "flex",
+                  background: "#F7F7F7",
                   mb: "26px",
-                  alignItems: 'flex-start',
+                  alignItems: "flex-start",
                 }}
               >
                 
                 <Box sx={{flexGrow: "1"}}>
                   <Box 
                     sx={{
-                    display: 'flex'
+                    display: "flex"
                   }}>
                     <Box 
                       sx={{
-                      width: '100px',
-                      height: '100px',
+                      width: "100px",
+                      height: "100px",
                       mr: 2
                     }}>
                       <img
                         src={product.imgsrc}
                         alt={product.productName}
-                        style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
                       />
                     </Box>
                     <Box 
@@ -90,21 +90,21 @@ const OrderDetail = () => {
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
                           <LabelMediumGray9ypography>상품 금액</LabelMediumGray9ypography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                            <LabelMediumGray7Typography sx={{lineHeight: '12px', letterSpacing: '0.4px',}}>{product.price.toLocaleString()+"원"}</LabelMediumGray7Typography>
+                            <LabelMediumGray7Typography sx={{lineHeight: "12px", letterSpacing: "0.4px",}}>{product.price.toLocaleString()+"원"}</LabelMediumGray7Typography>
                           </Box>
                         </Box>
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
                           <LabelMediumGray9ypography>상품 할인</LabelMediumGray9ypography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                            <LabelMediumGray7Typography sx={{lineHeight: '12px', letterSpacing: '0.4px',}}>{"-"+product.discount.toLocaleString()+"원"}</LabelMediumGray7Typography>
+                            <LabelMediumGray7Typography sx={{lineHeight: "12px", letterSpacing: "0.4px",}}>{"-"+product.discount.toLocaleString()+"원"}</LabelMediumGray7Typography>
                           </Box>
                         </Box>
                         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%", mb:"4px"}}>
                           <LabelMediumGray9ypography>배송비</LabelMediumGray9ypography>
                           <Box sx={{display:"flex", alignItems:"center"}}>
-                            {product.deliveryCharge === 0 ? <LabelMediumGray7Typography sx={{lineHeight: '12px', letterSpacing: '0.4px',}}>무료배송</LabelMediumGray7Typography>
+                            {product.deliveryCharge === 0 ? <LabelMediumGray7Typography sx={{lineHeight: "12px", letterSpacing: "0.4px",}}>무료배송</LabelMediumGray7Typography>
                             : 
-                            <LabelMediumGray7Typography sx={{lineHeight: '12px', letterSpacing: '0.4px',}}>{product.deliveryCharge.toLocaleString()+"원"}</LabelMediumGray7Typography>}
+                            <LabelMediumGray7Typography sx={{lineHeight: "12px", letterSpacing: "0.4px",}}>{product.deliveryCharge.toLocaleString()+"원"}</LabelMediumGray7Typography>}
                           </Box>
                         </Box>
                         <Box sx={{bottom: "0", display: "flex", justifyContent: "space-between", width: "100%"}}>

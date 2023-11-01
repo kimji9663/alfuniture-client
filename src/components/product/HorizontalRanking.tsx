@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {Typography, Box, Link } from '@mui/material'
+import {Typography, Box, Link } from "@mui/material"
 
 interface RankingItem {
   id: number;
@@ -25,7 +25,7 @@ const HorizontalRanking: React.FC<HorizontalRankingProps> = ({ data, title, subT
       {/* 랭킹형 가로 */}
       <Box sx={{ px: 2 }}>
         <Typography sx={{ fontSize: 22, fontWeight: "700" }}>{title}</Typography>
-        {/* <Link href='/shop/product_view' underline='none'> */}
+        {/* <Link href="/shop/product_view" underline="none"> */}
           <Box sx={{ mt: 2, mb: 3, position: "relative", display: "flex" }}>
             <img src={data[0].imgsrc} alt={`1순위 이미지`} style={{ width: "100%" }}/>
             <Box sx={{width:"40px", height: "40px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -40,7 +40,7 @@ const HorizontalRanking: React.FC<HorizontalRankingProps> = ({ data, title, subT
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {data.slice(1, 5).map((item: any, index: any) => (
-            // <Link href='/shop/product_view' underline='none' key={index}>
+            // <Link href="/shop/product_view" underline="none" key={index}>
               <Box sx={{borderTop: item.rank === 2 ? "1px solid #DADADA" : "none",}} key={index}>
                 <Box  sx={{position: "relative", display: "flex", mt:3 }}>
                   <img  src={item.imgsrc} alt={`순위 ${item.id}`} style={{ width: "76px", height: "76px" }} />

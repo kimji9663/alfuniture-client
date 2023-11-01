@@ -49,9 +49,9 @@ const ProductList = () => {
     <>
       <Box sx={{
         p: 2,
-        overflow: 'auto',
-        whiteSpace: 'nowrap',
-        '.MuiFormControl-root:first-of-type': {
+        overflow: "auto",
+        whiteSpace: "nowrap",
+        ".MuiFormControl-root:first-of-type": {
           ml: 0
         }
       }}
@@ -100,10 +100,10 @@ const ProductList = () => {
           mt: 3,
           mx: 2,
           pb: 2,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottom: '1px solid #DADADA',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderBottom: "1px solid #DADADA",
         }}
       >
         <FormControlLabel
@@ -112,11 +112,11 @@ const ProductList = () => {
         />
         <Button
           sx={{
-            color: '#333',
-            fontSize: '.875rem',
-            '& > svg': {
+            color: "#333",
+            fontSize: ".875rem",
+            "& > svg": {
               ml: 1 / 2,
-              verticalAlign: 'middle'
+              verticalAlign: "middle"
             }
           }}
         >

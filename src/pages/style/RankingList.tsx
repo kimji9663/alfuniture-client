@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { Box } from "@mui/material"
-import LeftTitleNoIcon from '../../components/title/LeftTitleNoIcon'
+import LeftTitleNoIcon from "../../components/title/LeftTitleNoIcon"
 import ListItemType2 from "../../components/product/ListItemType2"
 import NavigationBar from "../../components/NavigationBar"
 import {rankingProductData, styleTypes} from "../../data/index"
 import {RectCheckbox} from "../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
-import { ScrollToTop } from '../../App'
-import { TitleMediumTypography } from '../../components/Typography'
+import { ScrollToTop } from "../../App"
+import { TitleMediumTypography } from "../../components/Typography"
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -54,9 +54,9 @@ const RankingList = () => {
       <Box sx={{
         py: 3,
         px: 2,
-        overflow: 'auto',
-        whiteSpace: 'nowrap',
-        '.MuiFormControl-root:first-of-type': {
+        overflow: "auto",
+        whiteSpace: "nowrap",
+        ".MuiFormControl-root:first-of-type": {
           ml: 0
         },
       }}
@@ -101,7 +101,7 @@ const RankingList = () => {
         )}
         
       </Box>
-      <Box sx={{px: 2, minHeight: 'calc(100vh - 213.6px)'}}>
+      <Box sx={{px: 2, minHeight: "calc(100vh - 213.6px)"}}>
         {/* 가구리스트 */}
         {filteredStyles.length != 0 ? (
           filteredStyles.map((product: any, index: any) =>

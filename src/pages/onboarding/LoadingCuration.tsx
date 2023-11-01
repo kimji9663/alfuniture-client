@@ -18,16 +18,16 @@ const LoadingCuration = () => {
   return (
     <>
       <Box sx={{
-        height: '100%',
-        overflow: 'auto',
+        height: "100%",
+        overflow: "auto",
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%), url(${backGroundImg})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
+        backgroundPosition: "center",
+        backgroundSize: "cover",
       }}>
         <LoadingBox>
           <CircularProgress
           // disableShrink
-            size={'51px'}
+            size={"51px"}
             thickness={2}
           />
           <Typography>

@@ -98,16 +98,16 @@ const Coupon: React.FC = () => {
     }
   };
 
-  const title = ['쿠폰'];
+  const title = ["쿠폰"];
   return (
     <>
       <CenterTitle title={title}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight:"700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight:"700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}
@@ -136,7 +136,7 @@ const Coupon: React.FC = () => {
                     setIsSortedHasCouponPanel(false);
                   }
                 }}>
-                  <LabelMediumGray7Typography sx={{lineHeight: '16px'}}>최신순</LabelMediumGray7Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>최신순</LabelMediumGray7Typography>
                   <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
                 </Button>
               </Box>  
@@ -170,7 +170,7 @@ const Coupon: React.FC = () => {
                   setIsSortedGetCouponPanel(false);
                 }
               }}>
-                <LabelMediumGray7Typography sx={{lineHeight: '16px'}}>최신순</LabelMediumGray7Typography>
+                <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>최신순</LabelMediumGray7Typography>
                 <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
               </Button>
             </Box>  

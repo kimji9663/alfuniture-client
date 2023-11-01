@@ -10,17 +10,17 @@ type IvalidatedProps = {
 }
 
 const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [requestDisabled, setReqeustDisabled] = useState(true)
   const [number, setNumber] = useState({
     errorActive: false,
-    errorText: ''
+    errorText: ""
   })
   const [complete, setComplete] = useState({
     completeActive: false,
-    completeText: ''
+    completeText: ""
   })
-  const [verificationCode, setVerificationCode] = useState('')
+  const [verificationCode, setVerificationCode] = useState("")
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
   const [time, setTime] = useState(0)
@@ -39,51 +39,51 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
     if (countStrat && time === 0){
       setComplete({
         completeActive: true,
-        completeText: '인증시간 초과'
+        completeText: "인증시간 초과"
       })
     }
   }, [countStrat, time])
 
   const handleRequestField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     const phoneNumberPattern = /^(010)[0-9]{3,4}[0-9]{4}$/
-    const onlyNumber = event.target.value.replace(/[^-0-9]/g, '')
+    const onlyNumber = event.target.value.replace(/[^-0-9]/g, "")
     setPhoneNumber(onlyNumber)
 
     if (phoneNumberPattern.test(onlyNumber)) {
       setReqeustDisabled(false)
       setNumber({
         errorActive: false,
-        errorText: ''
+        errorText: ""
       })
     } else {
       setReqeustDisabled(true)
       
-      if (event.target.value !== '') {
+      if (event.target.value !== "") {
         setNumber({
           errorActive: false,
-          errorText: ''
+          errorText: ""
         })
       }
       setNumber({
         errorActive: true,
-        errorText: '휴대전화 형식이 올바르지 않습니다.'
+        errorText: "휴대전화 형식이 올바르지 않습니다."
       })
     }
   }
 
   const requestVerificationCode = () => {
-    if (verificationCode !== '') {
-      setVerificationCode('')
+    if (verificationCode !== "") {
+      setVerificationCode("")
     }
     setComplete({
       completeActive: true,
-      completeText: '인증번호가 발송되었습니다.'
+      completeText: "인증번호가 발송되었습니다."
     })
     setCountStart(true)
     setTime(90)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
-    // 만약 카운트가 0이면 completeText: '인증시간 초과'
+    // 만약 카운트가 0이면 completeText: "인증시간 초과"
     // input 입력 안되게 할 지 
     // 아니면 alert 띄우고 인증번호 입력창 숨길 지
   }
@@ -92,11 +92,11 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
     setVerificationCode(event.currentTarget.value)
     //console.log(verificationCode)
 
-    if (event.target.value !== '') {
+    if (event.target.value !== "") {
       setVerificationDisabled(false)
       setComplete({
         completeActive: false,
-        completeText: ''
+        completeText: ""
       })
     } else {
       setVerificationDisabled(true)
@@ -104,7 +104,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
   }
 
   const checkVerificationCode = () => {
-    const codeNumber = '1234'
+    const codeNumber = "1234"
     // 인증번호 검증은 어떻게 ?
 
     if (verificationCode === codeNumber) {
@@ -114,13 +114,13 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
       setTime(0)
       setComplete({
         completeActive: true,
-        completeText: '인증완료'
+        completeText: "인증완료"
       })
     } else {
       // 인증실패 시
       setComplete({
         completeActive: true,
-        completeText: '인증실패'
+        completeText: "인증실패"
       })
       validated[3] = false
     }
@@ -150,7 +150,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
             />
             <FormHelperText
               sx={{
-              '&.error': { color: '#d32f2f' } 
+              "&.error": { color: "#d32f2f" } 
               }}
               className="error"
             >
@@ -159,7 +159,7 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
           </Box>
           <PrimaryButton 
             disabled={requestDisabled} 
-            sx={{ maxWidth: '100px' }}
+            sx={{ maxWidth: "100px" }}
             onClick={requestVerificationCode}
           >
             인증번호요청
@@ -171,34 +171,34 @@ const PhoneVerification = ({validated, changeValidated}:IvalidatedProps) => {
           margin="normal"
           sx={{ mt: 7 }}
         >
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: "relative" }}>
             <Input
               name="verification_code"
               placeholder="인증번호를 입력해주세요."
               type="text"
               onChange={handleCodeField}
               value={verificationCode}
-              disabled={!countStrat || complete.completeText === '인증시간 초과'}
+              disabled={!countStrat || complete.completeText === "인증시간 초과"}
             />
             <FormHelperText
               sx={{
-              '&.error': { color: '#d32f2f' } 
+              "&.error": { color: "#d32f2f" } 
               }}
               className={
-                complete.completeText === '인증실패' ? 'error' : 
-                (complete.completeText === '인증시간 초과' ? 'error' : '')
+                complete.completeText === "인증실패" ? "error" : 
+                (complete.completeText === "인증시간 초과" ? "error" : "")
               }
             >
               {complete.completeText}
             </FormHelperText>
 
-            <Box sx={{ display: countStrat ? 'block' : 'none' }}>
+            <Box sx={{ display: countStrat ? "block" : "none" }}>
               <CountDown time={time} />
             </Box>
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
-            sx={{ maxWidth: '72px' }}
+            sx={{ maxWidth: "72px" }}
             onClick={e => checkVerificationCode()}
           >
             인증

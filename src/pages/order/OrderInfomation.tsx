@@ -18,21 +18,21 @@ interface OptionsProps {
 
 const AvatarList = styled(List)(() => ({
   padding: 0,
-  '& > .MuiButtonBase-root.Mui-selected': {
-    backgroundColor: 'transparent',
+  "& > .MuiButtonBase-root.Mui-selected": {
+    backgroundColor: "transparent",
   },
-  '& .MuiTypography-root': {
-    color: '#666',
-    fontSize: '.875rem',
+  "& .MuiTypography-root": {
+    color: "#666",
+    fontSize: ".875rem",
   },
 }))
 
 const OrderInfomation = () => {
   const [expanded, setExpanded] = useState<string | false>(false)
   const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
-    { name: '쿠폰 선택', img: '' }
+    { name: "쿠폰 선택", img: "" }
   )
-  const [selectDelivery, setSelectDelivery] = useState('check_quick')
+  const [selectDelivery, setSelectDelivery] = useState("check_quick")
   const [selectCard, setSelectCard] = useState()
   const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
   const [open, setOpen] = useState(false)
@@ -47,7 +47,7 @@ const OrderInfomation = () => {
     title: string,
   ) => {
     setOpen(false)
-    const option = {...selectCoupon,  name: brand + '\u00A0' + title, img: logo}
+    const option = {...selectCoupon,  name: brand + "\u00A0" + title, img: logo}
     setSelectCoupon(option)
     setSelectedOption(selectCoupon)
   }
@@ -59,8 +59,8 @@ const OrderInfomation = () => {
   return (
     <>
       <OrderAccordionMenu
-        expanded={expanded === 'panel1'} 
-        onChange={handleChange('panel1')}
+        expanded={expanded === "panel1"} 
+        onChange={handleChange("panel1")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -89,7 +89,7 @@ const OrderInfomation = () => {
                     <ListItemText primary={el.brand} />
                     <ListItemText primary={el.title} />
                   </Box>
-                  <Box sx={{ ml: 'auto', fontSize: '.875rem' }}>
+                  <Box sx={{ ml: "auto", fontSize: ".875rem" }}>
                     D-{el.expiration}
                   </Box>
                 </ListItemButton>
@@ -100,8 +100,8 @@ const OrderInfomation = () => {
       </OrderAccordionMenu>
 
       <OrderAccordionMenu
-        expanded={expanded === 'panel2'} 
-        onChange={handleChange('panel2')}
+        expanded={expanded === "panel2"} 
+        onChange={handleChange("panel2")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -115,14 +115,14 @@ const OrderInfomation = () => {
               type="checkbox" 
               name="delivery_type" 
               id="check_quick" 
-              checked={selectDelivery === 'check_quick' && true} 
+              checked={selectDelivery === "check_quick" && true} 
               onChange={handleCheckDelivery}
             />
             <Box 
               component="label" 
               htmlFor="check_quick"
             >
-              <Box sx={{ pr: 2, display: 'flex' }}>
+              <Box sx={{ pr: 2, display: "flex" }}>
                 <IconDeliveryQuick />
               </Box>
               <Box>
@@ -136,11 +136,11 @@ const OrderInfomation = () => {
               type="checkbox" 
               name="delivery_type" 
               id="check_normal" 
-              checked={selectDelivery === 'check_normal' && true} 
+              checked={selectDelivery === "check_normal" && true} 
               onChange={handleCheckDelivery}
             />
             <label htmlFor="check_normal">
-              <Box sx={{ pr: 2, display: 'flex' }}>
+              <Box sx={{ pr: 2, display: "flex" }}>
                 <IconDeliveryNormal />
               </Box>
               <Box>
@@ -152,8 +152,8 @@ const OrderInfomation = () => {
       </OrderAccordionMenu>
 
       <OrderAccordionMenu
-        expanded={expanded === 'panel3'} 
-        onChange={handleChange('panel3')}
+        expanded={expanded === "panel3"} 
+        onChange={handleChange("panel3")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -176,7 +176,7 @@ const OrderInfomation = () => {
               />
             </Box>
             <PrimaryButton
-              sx={{ maxWidth: '100px' }}
+              sx={{ maxWidth: "100px" }}
             >
               선택
             </PrimaryButton>
@@ -185,8 +185,8 @@ const OrderInfomation = () => {
       </OrderAccordionMenu>
 
       <OrderAccordionMenu
-        expanded={expanded === 'panel4'} 
-        onChange={handleChange('panel4')}
+        expanded={expanded === "panel4"} 
+        onChange={handleChange("panel4")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -195,27 +195,27 @@ const OrderInfomation = () => {
           <p className="total_amount">1,435,050원</p>
         </AccordionSummary>
         <AccordionDetails>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1, fontSize: '.75rem' }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>총 상품금액</p>
             <p>1,594,500원</p>
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1, fontSize: '.75rem' }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>쿠폰 사용</p>
             <p>159,450원</p>
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1, fontSize: '.75rem' }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>배송비</p>
             <p>100,000원</p>
           </Box>
           <Box 
             sx={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              marginTop: '8px',
-              paddingTop: '16px',
-              borderTop: '1px solid #dadada',
-              fontSize: '.875rem',
-              fontWeight: 'bold',
+              display: "flex", 
+              justifyContent: "space-between", 
+              marginTop: "8px",
+              paddingTop: "16px",
+              borderTop: "1px solid #dadada",
+              fontSize: ".875rem",
+              fontWeight: "bold",
             }}
           >
             <p>총 결제금액</p>

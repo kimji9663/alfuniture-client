@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { TitleLargeBoldGray9Typography, LabelMediumGray7Typography, TitleSmallGray9Typography } from "../../components/Typography";
 
@@ -19,13 +19,13 @@ const MonthlyPostBox: React.FC<MonthlyPostBoxProps> = ({data}) => {
     <>
       <img src={imageUrl} alt="" style={{ width: "100%", objectFit: "cover" }} />
       <Box sx={{ my: 3 }}>
-        <TitleLargeBoldGray9Typography sx={{ mb: 1, lineHeight: '24px', letterSpacing: "-0.25px", }}>
+        <TitleLargeBoldGray9Typography sx={{ mb: 1, lineHeight: "24px", letterSpacing: "-0.25px", }}>
           {title}
         </TitleLargeBoldGray9Typography>
-        <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>
+        <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>
           {description}
         </LabelMediumGray7Typography>
-        <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>
+        <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>
           {author}
         </LabelMediumGray7Typography>
       </Box>

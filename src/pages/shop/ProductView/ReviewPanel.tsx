@@ -12,42 +12,42 @@ const photoReviewList = [
   {
     id: 1,
     img: light01,
-    discription: '조명01'
+    discription: "조명01"
   },
   {
     id: 2,
     img: chair01,
-    discription: '의자01'
+    discription: "의자01"
   },
   {
     id: 3,
     img: sofa01,
-    discription: '소파01'
+    discription: "소파01"
   },
   {
     id: 4,
     img: table01,
-    discription: '테이블01'
+    discription: "테이블01"
   },
   {
     id: 5,
     img: light02,
-    discription: '조명02'
+    discription: "조명02"
   },
   {
     id: 6,
     img: chair02,
-    discription: '의자02'
+    discription: "의자02"
   },
   {
     id: 7,
     img: sofa02,
-    discription: '소파02'
+    discription: "소파02"
   },
   {
     id: 8,
     img: table02,
-    discription: '테이블02'
+    discription: "테이블02"
   }
 ]
 
@@ -55,22 +55,22 @@ const userPhotoList = [
   {
     id: 1,
     img: light01,
-    discription: '조명01'
+    discription: "조명01"
   },
   {
     id: 2,
     img: chair01,
-    discription: '의자01'
+    discription: "의자01"
   },
   {
     id: 3,
     img: sofa01,
-    discription: '소파01'
+    discription: "소파01"
   },
   {
     id: 4,
     img: sofa02,
-    discription: '소파02'
+    discription: "소파02"
   }
 ]
 
@@ -97,7 +97,7 @@ const ReviewPanel = () => {
         <span>(182)</span>
       </ViewTitle>
 
-      <Box sx={{ display: 'flex', '& > .MuiBox-root': { flex: '1 1 50%' } }}>
+      <Box sx={{ display: "flex", "& > .MuiBox-root": { flex: "1 1 50%" } }}>
         <AverageGrade>
           <div>
             <span className="now">4.0</span>
@@ -109,7 +109,7 @@ const ReviewPanel = () => {
               value={4}
               readOnly
               precision={0.5}
-              emptyIcon={<StarIcon style={{ color: '#eee' }} fontSize="inherit" />}
+              emptyIcon={<StarIcon style={{ color: "#eee" }} fontSize="inherit" />}
             />
           </div>
         </AverageGrade>
@@ -118,31 +118,31 @@ const ReviewPanel = () => {
           <div>
             <span className="grade_number">5점</span>
             <span className="grade_pipe">
-              <Box component='span' sx={{ width: '80%' }}></Box>
+              <Box component="span" sx={{ width: "80%" }}></Box>
             </span>
           </div>
           <div>
             <span className="grade_number">4점</span>
             <span className="grade_pipe">
-              <Box component='span' sx={{ width: '60%' }}></Box>
+              <Box component="span" sx={{ width: "60%" }}></Box>
             </span>
           </div>
           <div>
             <span className="grade_number">3점</span>
             <span className="grade_pipe">
-              <Box component='span' sx={{ width: '50%' }}></Box>
+              <Box component="span" sx={{ width: "50%" }}></Box>
             </span>
           </div>
           <div>
             <span className="grade_number">2점</span>
             <span className="grade_pipe">
-              <Box component='span' sx={{ width: '20%' }}></Box>
+              <Box component="span" sx={{ width: "20%" }}></Box>
             </span>
           </div>
           <div>
             <span className="grade_number">1점</span>
             <span className="grade_pipe">
-              <Box component='span' sx={{ width: '10%' }}></Box>
+              <Box component="span" sx={{ width: "10%" }}></Box>
             </span>
           </div>
         </DetailGrade>
@@ -175,7 +175,7 @@ const ReviewPanel = () => {
             value={4}
             readOnly
             precision={0.5}
-            emptyIcon={<StarIcon style={{ color: '#eee' }} fontSize="inherit" />}
+            emptyIcon={<StarIcon style={{ color: "#eee" }} fontSize="inherit" />}
           />
         </Box>
       </ReviewerInfo>
@@ -194,14 +194,14 @@ const ReviewPanel = () => {
       </UserPhotoWrap>
 
       <ProductOptions sx={{ mt: 5 }}>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: "flex" }}>
           <div className="title">선택옵션</div>
           <div className="options">
             <span>아이보리</span>
             <span>134*60</span>
           </div>
         </Box>
-        <Box sx={{ display: 'flex', mt: 2 }}>
+        <Box sx={{ display: "flex", mt: 2 }}>
           <div className="title">해쉬태그</div>
           <div className="hash_tags">
             <span>생각보다 커요</span>
@@ -214,7 +214,7 @@ const ReviewPanel = () => {
         </Box>
       </ProductOptions>
 
-      <Box sx={{ mt: 3, color: '#999', fontSize: '.875rem' }}>
+      <Box sx={{ mt: 3, color: "#999", fontSize: ".875rem" }}>
         한 달 걸려서 받았네요. 아이보리 할까 브라운 할까 고민 많이 했는데 아이보리 하길 너무 잘한 것 같아요. 기다린 보람이 있습니다. 
         사진에서 보시다 시피 전체 인테리어와 조화를 잘 이루고 또 적당히 포인트가 되는게 정말로 취향저격입니다. 
         조금 힙하면서도 단정한  분위기를 선호한다면 저는 강추드립니다 :)

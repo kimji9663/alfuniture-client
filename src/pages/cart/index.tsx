@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { IconXblack } from '../../assets/images';
-import { Box, IconButton } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { IconXblack } from "../../assets/images";
+import { Box, IconButton } from "@mui/material";
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
 import { CustomCheckbox } from "../../styles/checkbox.styles"
@@ -105,7 +105,7 @@ function CartPage() {
   const handleActiveOrder = selectedProducts.length === 0;
   const navigate = useNavigate()
   const handleGoToOrder = () => {
-    navigate('/order')
+    navigate("/order")
   }
 
   const deleteItem = (index: number) => {
@@ -135,18 +135,18 @@ function CartPage() {
               <Box
                 key={index}
                 sx={{
-                  p: '24px 16px',
-                  display: 'flex',
-                  background: '#F7F7F7',
+                  p: "24px 16px",
+                  display: "flex",
+                  background: "#F7F7F7",
                   mb: "26px",
-                  alignItems: 'flex-start',
+                  alignItems: "flex-start",
                   pb: 1,
                 }}
               >
                 <Box
                   sx={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
+                    display: "flex",
+                    alignItems: "flex-start",
                     width: "16px",
                     mr: 2
                   }}>
@@ -159,18 +159,18 @@ function CartPage() {
                 <Box sx={{flexGrow: "1"}}>
                   <Box 
                     sx={{
-                    display: 'flex'
+                    display: "flex"
                   }}>
                     <Box 
                       sx={{
-                      width: '100px',
-                      height: '100px',
+                      width: "100px",
+                      height: "100px",
                       mr: 2
                     }}>
                       <img
                         src={product.imgsrc}
                         alt={product.productName}
-                        style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
                       />
                     </Box>
                     <Box 
@@ -289,11 +289,11 @@ function CartPage() {
             <Box sx={{pt:2, px:2, pb:5}}>
               <Box sx={{borderTop:"1px solid #DADADA", py:3}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <LabelMediumGray7Typography sx={{lineHeight: '16px',}}>총 상품금액</LabelMediumGray7Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: "16px",}}>총 상품금액</LabelMediumGray7Typography>
                   <LabelMediumGray9ypography>{calculateProductPrice().toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
-                  <LabelMediumGray7Typography sx={{lineHeight: '16px',}}>배송비</LabelMediumGray7Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: "16px",}}>배송비</LabelMediumGray7Typography>
                   <LabelMediumGray9ypography>{calculateDeliveryCharge().toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
               </Box>

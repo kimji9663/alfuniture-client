@@ -17,7 +17,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
   const handleCheckAgreeAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked){
       setCheckedAgreeList([...checkedAgreeList, ...orderTermsAgreementData.map(el => el.id)])
-      if (event.currentTarget.id === 'check_agree_all'){
+      if (event.currentTarget.id === "check_agree_all"){
         setCheckedAgreeAll(true)
         termsAgree = true
       }
@@ -47,7 +47,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
   }
   
   const children = (
-    <Box sx={{ py: 2, background: '#FAFAFA' }}>
+    <Box sx={{ py: 2, background: "#FAFAFA" }}>
       {orderTermsAgreementData.map((el: any, index: any) => (
         <AgreeCheckbox
           sx={index === 0 ? { mt: 2 } : null}
@@ -60,7 +60,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
             />
           } 
           labelPlacement="end" 
-          label={<><span className="sub">{el.require ? '[필수]' : '[선택]'}</span> {el.label}</>}
+          label={<><span className="sub">{el.require ? "[필수]" : "[선택]"}</span> {el.label}</>}
         />
       ))}
     </Box>
@@ -73,14 +73,14 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
           fullWidth 
           component="fieldset"
           sx={{
-            '& label': {
+            "& label": {
               margin: 0,
             },
-            '& label span': {
-              fontSize: '.75rem'
+            "& label span": {
+              fontSize: ".75rem"
             },
-            '& > label > span': {
-              fontSize: '.875rem'
+            "& > label > span": {
+              fontSize: ".875rem"
             }
           }}
         >
@@ -96,7 +96,7 @@ const OrderTermsAgreement = ({termsAgree, changeOrderData}:OrderTermsProps) => {
             labelPlacement="end" 
             label="주문 내용 모두 동의"
           />
-          <Divider sx={{ borderColor: '#333' }} />
+          <Divider sx={{ borderColor: "#333" }} />
           {children}
         </FormControl>
       </Box>

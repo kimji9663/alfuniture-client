@@ -5,8 +5,8 @@ import NavigationBar from "../../components/NavigationBar"
 import List from "../like/Like/List"
 import LeftTitle from "../../components/title/LeftTitle"
 import { styleBrandProductData } from "../../data"
-import { ScrollToTop } from '../../App'
-import { TitleLargeBoldWhiteTypography } from '../../components/Typography'
+import { ScrollToTop } from "../../App"
+import { TitleLargeBoldWhiteTypography } from "../../components/Typography"
 
 const Brand = () => {
   ScrollToTop();
@@ -14,7 +14,7 @@ const Brand = () => {
     <Box sx={{minHeight:"100vh", position:"relative", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
       <Box>
         <LeftTitle title={["브랜드"]} />
-        <Box sx={{ position: "relative", overflow: 'hidden' }}>
+        <Box sx={{ position: "relative", overflow: "hidden" }}>
           <Box sx={{ position: "absolute", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", top: "55px" }}>
             <TitleLargeBoldWhiteTypography>ALFDN</TitleLargeBoldWhiteTypography>
           </Box>

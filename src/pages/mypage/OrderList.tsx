@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom"
 import { Box, CardHeader, CardMedia, CardActions } from "@mui/material"
 import { OutlineButton } from "../../styles/buttons.styles"
@@ -45,7 +45,7 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
                   image={order.img}
                   alt="chair"
                 />
-                <Box sx={{ flex: '1 1 auto' }}>
+                <Box sx={{ flex: "1 1 auto" }}>
                   <Box className="delivery">빠른배송</Box>
                   <Box className="brand">{order.brand}</Box>
                   <Box className="name">

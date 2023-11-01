@@ -39,13 +39,13 @@ const ReviewList: React.FC = () => {
     <>
       {myReviewList.length > 0 ? (
         <Box sx={{p:2, pt:6}}>
-          <LabelMediumGray7Typography sx={{lineHeight: '20px'}}>작성한 리뷰({myReviewList.length})</LabelMediumGray7Typography>
+          <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>작성한 리뷰({myReviewList.length})</LabelMediumGray7Typography>
           {myReviewList.map((review, index) => (
             <Box key={index} sx={{pt:2}}>  
             <Box sx={{border:"1px solid #DADADA", display:"flex", justifyContent:"space-between", p:2, alignItems:"center", mb:3}}>
               <Box>
-                <TitleSmallBoldGray9Typography sx={{mb:"4px", letterSpacing: '0.1px'}}>{review.brand}</TitleSmallBoldGray9Typography>
-                <LabelMediumGray7Typography sx={{mb:1, lineHeight: '18px'}}>{review.optionCode + " " + review.name}</LabelMediumGray7Typography>
+                <TitleSmallBoldGray9Typography sx={{mb:"4px", letterSpacing: "0.1px"}}>{review.brand}</TitleSmallBoldGray9Typography>
+                <LabelMediumGray7Typography sx={{mb:1, lineHeight: "18px"}}>{review.optionCode + " " + review.name}</LabelMediumGray7Typography>
                 {renderStarIcons(review.score)}
               </Box>
               <Box sx={{display:"flex"}}>
