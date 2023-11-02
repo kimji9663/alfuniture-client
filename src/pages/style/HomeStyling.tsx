@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Box } from "@mui/material"
 import WhiteTitle from "../../components/title/WhiteTitle"
 import { IconRadioOn, IconRadioOff } from "../../assets/images"
-import onerainDetail from "../../assets/images/brand/onerainDetail.png"
+import { onerainDetail } from "../../assets/images/brand"
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
 import { homeStylingProductData } from "../../data"
