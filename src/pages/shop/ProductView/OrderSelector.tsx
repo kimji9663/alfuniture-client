@@ -119,7 +119,7 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
                 sx={{ 
                   padding: '0 8px', 
                   marginLeft: 'auto', 
-                  '& > svg': { display: 'block', cursor: 'pointer' } 
+                  '& > svg': { display: 'block', cursor: 'pointer', color: '#DADADA' } 
                 }}
               >
                 <IconX />

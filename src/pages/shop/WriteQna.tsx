@@ -7,7 +7,7 @@ import { BasicModal } from "../../styles/modal.styles"
 import { ViewTitle } from "./ProductView/index.styles"
 import { ProductInfomation, QnaImageField, QnaTextField, VisuallyHiddenInput, UploadNotice } from "./writeQna.styles"
 import { sofa01 } from "../../assets/images/product"
-import { IconPlus } from "../../assets/images"
+import { IconPlus, IconX } from "../../assets/images"
 import CenterTitle from "../../components/title/CenterTitle"
 
 const WriteQna = () => {
@@ -49,6 +49,13 @@ const WriteQna = () => {
     const blob = new Blob([e.target.files[0]], {type: "image/png"})
     photoUrl = URL.createObjectURL(blob)
     setUserPhoto([...userPhoto, photoUrl])
+    console.log(userPhoto)
+  }
+
+  const handleRemovePhoto = (url: string) => () => {
+    let removePhoto = userPhoto.filter((el) => el !== url)
+    setUserPhoto(removePhoto)
+    console.log(url)
   }
 
   return (
@@ -90,6 +97,7 @@ const WriteQna = () => {
                 <div>
                   <img src={photo} alt="" />
                 </div>
+                <IconX onClick={handleRemovePhoto(photo)} />
               </Box>
             ))}
             {userPhoto.length < 2 && (

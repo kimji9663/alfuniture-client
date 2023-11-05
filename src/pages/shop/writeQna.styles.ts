@@ -85,6 +85,13 @@ export const QnaImageField = styled(Box)(() => ({
       maxWidth: '100%',
       maxHeight: '100%',
     },
+    '& > svg': {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      color: '#fff',
+      backgroundColor: '#242223',
+    }
   },
   '& > .MuiButtonBase-root': {
     position: 'relative',      

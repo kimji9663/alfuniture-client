@@ -25,6 +25,10 @@ const ShopAll = () => {
     navigate("/shop/product_list")
   } 
 
+  const goToBrandList = () => {
+    navigate("/style/brand")
+  } 
+
   return (
     <>
       <TitleOneLine title={title}/>
@@ -73,7 +77,7 @@ const ShopAll = () => {
                 <List>
                   {el.children?.map((el, index) => (
                     <ListItem disablePadding key={`${el}_${index}`}>
-                      <ListItemButton onClick={goToProductList}>
+                      <ListItemButton onClick={goToBrandList}>
                         <ListItemText primary={el.category} />
                         <ArrowForwardIosIcon />
                       </ListItemButton>
