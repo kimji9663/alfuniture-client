@@ -22,13 +22,13 @@ const ProductList: React.FC<ProductListProps> = ({ data }) => {
 
   return (
     <>
-      <Box padding='1.5rem 1rem'>
+      <Box padding="1.5rem 1rem">
         <GridBox
           sx={{
-            gridTemplateColumns: '1fr 1fr 1fr'
+            gridTemplateColumns: "1fr 1fr 1fr"
           }}
-          columnGap='0.5rem'
-          rowGap='1.5rem'
+          columnGap="0.5rem"
+          rowGap="1.5rem"
         >
           {data.map((product: ProductData) =>
             <PreviewItem

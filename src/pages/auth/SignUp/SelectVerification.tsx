@@ -7,10 +7,10 @@ import PhoneVerification from "./PhoneVerification"
 import EmailVerification from "./EmailVerification"
 
 export const VerificationButtonWrap = styled(Box)(() => ({
-  '& > button': {
+  "& > button": {
     borderRadius: 0, 
-    height: '60px', 
-    fontSize: '1rem',
+    height: "60px", 
+    fontSize: "1rem",
   }
 }))
 
@@ -21,7 +21,7 @@ type IvalidatedProps = {
 }
 
 const SelectVerification = ({validated, changeValidated, getUserId}:IvalidatedProps) => {
-  const [verification, setVerification] = useState('')
+  const [verification, setVerification] = useState("")
 
   const handleVerification = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setVerification(e.currentTarget.id)
@@ -29,14 +29,14 @@ const SelectVerification = ({validated, changeValidated, getUserId}:IvalidatedPr
 
   return(
     <Box sx={{ p: 2 }}>
-      {verification === 'email_verification' ? (
+      {verification === "email_verification" ? (
           <EmailVerification
             validated={validated}
             changeValidated={changeValidated}
             getUserId={getUserId}
           />
         ) : (
-        verification === 'phone_verification' ? (
+        verification === "phone_verification" ? (
           <PhoneVerification
             validated={validated}
             changeValidated={changeValidated}

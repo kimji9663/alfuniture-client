@@ -6,9 +6,9 @@ function CheckboxIcon(props: CheckboxProps) {
   return (
     <Checkbox
       disableRipple
-      checkedIcon={<Check sx={{ color: '#000' }} />}
-      icon={<Check sx={{ color: '#BDBDBD' }} />}
-      inputProps={{ 'id': props.id }}
+      checkedIcon={<Check sx={{ color: "#000" }} />}
+      icon={<Check sx={{ color: "#BDBDBD" }} />}
+      inputProps={{ "id": props.id }}
       checked={props.checked}
       onChange={props.onChange}
     />

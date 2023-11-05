@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom"
 import { Box, CardHeader, CardMedia, CardActions } from "@mui/material"
 import { OutlineButton } from "../../styles/buttons.styles"
 import { MyPageOrderCard } from "../../styles/card.style"
-import { C666Fs12Lh16BoldTypography } from "../../components/Typography"
+import { LabelMediumBoldGray8Typography } from "../../components/Typography"
 
 type myOrder = {
   date: string;
@@ -45,7 +45,7 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
                   image={order.img}
                   alt="chair"
                 />
-                <Box sx={{ flex: '1 1 auto' }}>
+                <Box sx={{ flex: "1 1 auto" }}>
                   <Box className="delivery">빠른배송</Box>
                   <Box className="brand">{order.brand}</Box>
                   <Box className="name">
@@ -58,15 +58,15 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
             </div>
             <CardActions>
               <OutlineButton onClick={goToOrderDetail} sx={{p:"13px 42px"}}>
-                <C666Fs12Lh16BoldTypography>주문 상세</C666Fs12Lh16BoldTypography>
+                <LabelMediumBoldGray8Typography>주문 상세</LabelMediumBoldGray8Typography>
               </OutlineButton>
               {review ? 
               (<OutlineButton onClick={goToWriteReview} sx={{p:"13px 42px"}}>
-                <C666Fs12Lh16BoldTypography>리뷰 쓰기</C666Fs12Lh16BoldTypography>
+                <LabelMediumBoldGray8Typography>리뷰 쓰기</LabelMediumBoldGray8Typography>
               </OutlineButton>)
               :
               (<OutlineButton onClick={goToDeliveryDetail} sx={{p:"13px 42px"}}>
-              <C666Fs12Lh16BoldTypography>배송 상세</C666Fs12Lh16BoldTypography>
+              <LabelMediumBoldGray8Typography>배송 상세</LabelMediumBoldGray8Typography>
             </OutlineButton>)}
             </CardActions>
           </MyPageOrderCard>

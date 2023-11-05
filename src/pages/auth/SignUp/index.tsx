@@ -11,14 +11,14 @@ import SelectVerification from "./SelectVerification"
 import ArrowTitle from "../../../components/title/ArrowTitle"
 
 
-const steps = ['SignUp01', 'SignUp02', 'SignUp03', 'SignUp04']
+const steps = ["SignUp01", "SignUp02", "SignUp03", "SignUp04"]
 
 const SignUp = () => {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = useState(0)
   const [validated, setValidated] = useState<boolean[]>([])
   const [userData, setUserData] = useState({
-    userId: ''
+    userId: ""
   })
 
   const goToBack = () => {
@@ -31,7 +31,7 @@ const SignUp = () => {
   
   const stepNext = (step:number) => {
     if (validated[step] === true){
-      console.log('index value1 : ', activeStep, validated[step])
+      console.log("index value1 : ", activeStep, validated[step])
       setActiveStep((prevActiveStep) => prevActiveStep + 1)
     }
   }
@@ -77,14 +77,14 @@ const SignUp = () => {
         </Stepper>
       </Box>
 
-      <Box sx={{ height: 'calc(100vh - 132px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 132px)", overflow: "auto" }}>
         {activeStep === steps.length ? (
           <>
             <Typography sx={{ mt: 2, mb: 1 }}>
               회원가입이 완료되었습니다.
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+              <Box sx={{ flex: "1 1 auto" }} />
             </Box>
           </>
         ) : (

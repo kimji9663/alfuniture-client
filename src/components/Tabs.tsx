@@ -29,7 +29,7 @@ export function TabPanel(props: TabPanelProps) {
 export function TabProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   }
 }
 
@@ -41,12 +41,12 @@ const NormalTabs = () => {
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <Box sx={{ 
         borderBottom: 1, 
-        borderColor: 'divider',
-        '.MuiTab-root.Mui-selected': { color: '#333' },
-        '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+        borderColor: "divider",
+        ".MuiTab-root.Mui-selected": { color: "#333" },
+        ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
       }}>
         <Tabs 
           value={value}

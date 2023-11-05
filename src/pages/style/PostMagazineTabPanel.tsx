@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { monthlyPostSwiperData, videoSwiperData } from "../../data"
 import { ISwiperProps } from "../../components/ISwiperProps"
 import MonthlyPostBox from "./MonthlyPostBox"
-import { C000Fs36Fw700Typography, CFFFFs14Fw700Typography, C333Fs50Typography, C666Fs14Fw400Typography, C333Fs12Fw400Typography, C333Fs20Fw700Lh29Typography, C999Fs12Lh20Typography, C333Fs22Fw700Lh28Typography } from "../../components/Typography"
+import { HeadlineLargeBoldTypography, TitleSmallWhiteTypography, HeadlineExtraLargeBoldGray9Typography, TitleSmallGray8Typography, LabelMediumGray9Typography, LabelMediumGray7Typography, TitleLargeBoldGray9Typography } from "../../components/Typography"
 
 const brandCollectionSettings:ISwiperProps = {
   loop: false,
@@ -27,9 +27,9 @@ const PostMagazineTabPanel = () => {
     <>
       {/* 첫번째 섹션 */}
       <Box sx={{ mt: 10, px: 2, mb: "30px" }}>
-        <C000Fs36Fw700Typography sx={{ py: 1 }}>
+        <HeadlineLargeBoldTypography sx={{ py: 1 }}>
           Monthly Post
-        </C000Fs36Fw700Typography>
+        </HeadlineLargeBoldTypography>
         <Swiper {...MonthlyPostBoxSettings}>
           {monthlyPostSwiperData.map((data, index) => (
             <SwiperSlide key={index} >
@@ -47,18 +47,18 @@ const PostMagazineTabPanel = () => {
             {/* 이미지 */}
             <img src={designer} alt="" style={{ objectFit: "cover", width: "100%" }} />
             <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", left:"16px", px:2, py:1 }}>
-              <CFFFFs14Fw700Typography>에디터 pick</CFFFFs14Fw700Typography>
+              <TitleSmallWhiteTypography sx={{textAlign: "center"}}>에디터 pick</TitleSmallWhiteTypography>
             </Box>
           </Box>
           <Box sx={{display: "flex", width:"135px", alignItems:"center", justifyContent: "center" }}>
             <Box sx={{transform: "rotate(270deg)", display: "flex"}}>
-              <C333Fs50Typography>Bradley</C333Fs50Typography>
+              <HeadlineExtraLargeBoldGray9Typography>Bradley</HeadlineExtraLargeBoldGray9Typography>
             </Box>
           </Box>
         </Box>
         <Box sx={{borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
           <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", px: 2, py: 2, position: "relative" }}>
-            <C666Fs14Fw400Typography>새로운 감각의 가구 디자이너</C666Fs14Fw400Typography>
+            <TitleSmallGray8Typography>새로운 감각의 가구 디자이너</TitleSmallGray8Typography>
           </Box>
           <Box sx={{display: "flex", width:"135px" , alignItems:"center", justifyContent: "center"}}>
           </Box>
@@ -67,12 +67,12 @@ const PostMagazineTabPanel = () => {
       {/* 세번째 섹션 */}
       <Box sx={{borderLeft: "0.5px solid #868686", width: "calc(100% - 32px)", display:"flex", ml:2, pt: 10, pr:2, flexDirection:"column"}}>
         <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
-          <C000Fs36Fw700Typography sx={{ py:1 }}>Brand Story</C000Fs36Fw700Typography>
+          <HeadlineLargeBoldTypography sx={{ py:1 }}>Brand Story</HeadlineLargeBoldTypography>
           <Link to="/brand_story/aerobiey" style={{display:"flex", alignItems:"center"}}>
             <Button sx={{borderRadius:0, display: "flex", p:0, color:"#333333"}}>
-              <C333Fs12Fw400Typography sx={{ pr:1}}>
+              <LabelMediumGray9Typography sx={{ pr:1}}>
                 ALL
-              </C333Fs12Fw400Typography>
+              </LabelMediumGray9Typography>
               <HalfArrowRigth/>
             </Button>
           </Link>
@@ -81,9 +81,9 @@ const PostMagazineTabPanel = () => {
           <img src={brandStory} alt="" style={{width: "100%", objectFit:"cover", maxHeight:"230px"}}/>
         </Box>
         <Box sx={{width: "100%", pl:2, pt:2}}>
-          <C333Fs20Fw700Lh29Typography>봄이 시작되는 3월</C333Fs20Fw700Lh29Typography>
-          <C333Fs20Fw700Lh29Typography sx={{ mb:1}}>화사함이 어울리는 가구</C333Fs20Fw700Lh29Typography>
-          <C999Fs12Lh20Typography>일상속에서 자연스러운 아름다움을 느껴보세요.</C999Fs12Lh20Typography>
+          <TitleLargeBoldGray9Typography>봄이 시작되는 3월</TitleLargeBoldGray9Typography>
+          <TitleLargeBoldGray9Typography sx={{ mb:1}}>화사함이 어울리는 가구</TitleLargeBoldGray9Typography>
+          <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>일상속에서 자연스러운 아름다움을 느껴보세요.</LabelMediumGray7Typography>
         </Box>
         <Box sx={{width: "100%", display:"flex"}}>
           <Box sx={{width: "49px", height: "29px", borderBottom: "1px solid #3D3D3D"}}></Box>
@@ -93,7 +93,7 @@ const PostMagazineTabPanel = () => {
 
       {/* 네번째 섹션 */}
       <Box sx={{mt:"60px", pl:2, mb:2, overflow:"hidden"}}>
-        <C333Fs22Fw700Lh28Typography>Brand Collection Video</C333Fs22Fw700Lh28Typography>
+        <TitleLargeBoldGray9Typography>Brand Collection Video</TitleLargeBoldGray9Typography>
         <Swiper {...brandCollectionSettings}  style={{maxWidth: "420px",width: "100vw"}}>
           {videoSwiperData.map((item, index) => (
             <SwiperSlide key={index} >

@@ -13,7 +13,7 @@ import CenterTitle from "../../components/title/CenterTitle"
 const WriteQna = () => {
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
-  const [modalType, setModalType] = useState('')
+  const [modalType, setModalType] = useState("")
   const [userPhoto, setUserPhoto] = useState<string[]>([])
   let photoUrl: string | undefined
 
@@ -58,8 +58,8 @@ const WriteQna = () => {
 
   return (
     <>
-      <CenterTitle title={['문의하기']} />
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <CenterTitle title={["문의하기"]} />
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ p: 2 }}>
           <ViewTitle>문의상품</ViewTitle>
           <ProductInfomation sx={{ mt: 2 }}>
@@ -122,13 +122,13 @@ const WriteQna = () => {
       </Box>
 
       <NaviWrap className="pair" sx={{ zIndex: 2 }}>
-        <SecondaryButton onClick={handleModalOpen('cancel')}>취소하기</SecondaryButton>
-        <PrimaryButton onClick={handleModalOpen('upload')}>작성완료</PrimaryButton>
+        <SecondaryButton onClick={handleModalOpen("cancel")}>취소하기</SecondaryButton>
+        <PrimaryButton onClick={handleModalOpen("upload")}>작성완료</PrimaryButton>
       </NaviWrap>
 
       <BasicModal open={modalOpen} onClose={handleClose}>
         <Box>
-          {modalType === 'cancel' && (
+          {modalType === "cancel" && (
             <>
               <div className="content">작성을 취소하시겠습니까?</div>
               <ButtonGroup fullWidth>
@@ -137,7 +137,7 @@ const WriteQna = () => {
               </ButtonGroup>
             </>
           )}
-          {modalType === 'upload' && (
+          {modalType === "upload" && (
             <>
               <div className="content">문의를 등록하시겠습니까?</div>
               <ButtonGroup fullWidth>

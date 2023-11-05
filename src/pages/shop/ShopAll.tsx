@@ -11,7 +11,7 @@ import { TabPanel, TabProps } from "../../components/Tabs"
 const ShopAll = () => {
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
-  const [menuOpen, setMenuOpen] = useState('')
+  const [menuOpen, setMenuOpen] = useState("")
 
   const handleShopTab = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
@@ -19,6 +19,7 @@ const ShopAll = () => {
   const handleMenuOpen = (event: React.SyntheticEvent, name: string) => {
     setMenuOpen(name)
   }
+
   const title = ['SHOP ALL'];
   
   const goToProductList = () => {
@@ -32,12 +33,12 @@ const ShopAll = () => {
   return (
     <>
       <TitleOneLine title={title}/>
-      <Box sx={{ height: 'calc(100vh - 138px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 138px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333' },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}
@@ -51,7 +52,7 @@ const ShopAll = () => {
         </Box>
         <TabPanel value={tabValue} index={0}>
           {shopJson.funiture.map((el) => (
-            <ShopAllList key={el.id} className={menuOpen === el.id ? 'open' : ''}>
+            <ShopAllList key={el.id} className={menuOpen === el.id ? "open" : ""}>
               <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
               <Box className="subdivision"> 
                 <List>
@@ -71,7 +72,7 @@ const ShopAll = () => {
 
         <TabPanel value={tabValue} index={1}>
           {shopJson.alphabet.map((el) => (
-            <ShopAllList key={el.id} className={menuOpen === el.id ? 'open' : ''}>
+            <ShopAllList key={el.id} className={menuOpen === el.id ? "open" : ""}>
               <Box className="middle_category" onClick={e => handleMenuOpen(e, el.id)}>{el.category}</Box>
               <Box className="subdivision"> 
                 <List>

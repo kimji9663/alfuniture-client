@@ -18,9 +18,9 @@ export const exampleStyle = css`
 
 // 방법2. mui/material/styles
 export const ExampleStyle1 = styled(Box)(() => ({
-  fontSize: '1.5rem'
+  fontSize: "1.5rem"
 }))
 
-export const ExampleStyle2 = styled('div')(() => ({
-  fontSize: '1rem'
+export const ExampleStyle2 = styled("div")(() => ({
+  fontSize: "1rem"
 }))

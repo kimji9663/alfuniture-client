@@ -3,7 +3,7 @@ import PreviewItem from "../../components/product/Preview"
 import { Box, Button } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import { GridBox } from "../../components/Box"
-import LeftTitle from '../../components/title/LeftTitle'
+import LeftTitle from "../../components/title/LeftTitle"
 import { FilterButton, FilterContainer, FilterTypeContainer } from "./productList.styles"
 import { Gray9Typography } from "../../components/Typography"
 import FilterMenu from "./Filters"
@@ -12,7 +12,7 @@ import { shopProductData } from "../../data"
 
 const ProductList = () => {
   const title = ["가구"];
-  const [filterType, setFilterType] = useState('원목');
+  const [filterType, setFilterType] = useState("원목");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -31,7 +31,7 @@ const ProductList = () => {
   return (
     <>
       <LeftTitle title={title} />
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <FilterContainer ref={filterRef}>
           <FilterButton
             onClick={handleOpenFilter}
@@ -42,7 +42,7 @@ const ProductList = () => {
             {Object.keys(FilterTypes).map((type, idx) => (
               <Button
                 key={`filter-type-${idx}`}
-                variant={filterType == type ? 'contained' : 'outlined'}
+                variant={filterType == type ? "contained" : "outlined"}
                 onClick={() => setFilterType(type)}
               >
                 {type}
@@ -56,13 +56,13 @@ const ProductList = () => {
             clickShowProduct={handleClickShow}
           />
           :
-          <Box padding='1.5rem 1rem'>
+          <Box padding="1.5rem 1rem">
             <GridBox
               sx={{
-                gridTemplateColumns: '1fr 1fr'
+                gridTemplateColumns: "1fr 1fr"
               }}
-              columnGap='0.5rem'
-              rowGap='1.5rem'
+              columnGap="0.5rem"
+              rowGap="1.5rem"
             >
               {shopProductData.map((product: any) =>
                 <PreviewItem

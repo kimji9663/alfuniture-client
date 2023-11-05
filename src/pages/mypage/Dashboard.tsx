@@ -4,7 +4,7 @@ import LeftTitle from "../../components/title/LeftTitle"
 import { HalfArrow, IconMyCoupon, IconMyOrder, IconMyPoint, IconMyReview, img_Aclass } from "../../assets/images"
 import { useNavigate } from "react-router-dom"
 
-const title = ['My page']
+const title = ["My page"]
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -27,19 +27,19 @@ const Dashboard = () => {
   return (
     <>
       <LeftTitle title={title}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ 
         }}>
           <Button fullWidth
             sx={{
-              justifyContent: 'space-between',
-              padding: '16px',
+              justifyContent: "space-between",
+              padding: "16px",
               borderBottom: 1, 
-              borderColor: 'divider',
+              borderColor: "divider",
               borderRadius: 0,
-              color: '#666',
-              fontSize: '1rem',
-              '& > .MuiButton-endIcon': {
+              color: "#666",
+              fontSize: "1rem",
+              "& > .MuiButton-endIcon": {
                 marginRight: 0
               } 
             }}
@@ -49,20 +49,20 @@ const Dashboard = () => {
             홍길동님 안녕하세요!
           </Button>
 
-          <Box sx={{ padding: '32px 16px', borderBottom: '1px solid #D9D9D9'}}>
-            <Box sx={{ display: 'flex', alignItems: 'center', '& > div': { width: '50%' } }}>
+          <Box sx={{ padding: "32px 16px", borderBottom: "1px solid #D9D9D9"}}>
+            <Box sx={{ display: "flex", alignItems: "center", "& > div": { width: "50%" } }}>
               <Box>
                 <img src={img_Aclass} alt="" />
               </Box>
               <Box 
                 sx={{ 
-                  '& > button': { 
-                    flexDirection: 'column',
-                    alignItems: 'start',
-                    color: '#999', 
-                    fontSize: '0.75rem' 
+                  "& > button": { 
+                    flexDirection: "column",
+                    alignItems: "start",
+                    color: "#999", 
+                    fontSize: "0.75rem" 
                   }, 
-                  '& > button > span': { color: '#242223' },
+                  "& > button > span": { color: "#242223" },
                 }}
               >
                 <Button fullWidth sx={{ borderRadius: 0 }}>
@@ -74,23 +74,23 @@ const Dashboard = () => {
             <Box 
               sx={{
                 mt: 5,
-                display: 'flex',
-                borderTop: '1px solid #dadada',
-                '& > button': {
+                display: "flex",
+                borderTop: "1px solid #dadada",
+                "& > button": {
                   flexDirection: "column",
-                  padding: '16px 8px 0',
-                  width: '25%',
+                  padding: "16px 8px 0",
+                  width: "25%",
                   borderRadius: 0,
                 },
-                '& > button > div': {
-                  display: 'flex',
-                  alignItems: 'center',
-                  height: '27px',
+                "& > button > div": {
+                  display: "flex",
+                  alignItems: "center",
+                  height: "27px",
                 },
-                '& > button > p': {
-                  marginTop: '11px',
-                  color: '#666',
-                  fontSize: '.75rem',
+                "& > button > p": {
+                  marginTop: "11px",
+                  color: "#666",
+                  fontSize: ".75rem",
                 }
               }}
             >
@@ -119,17 +119,17 @@ const Dashboard = () => {
           <Box
             sx={{
               mt: 2.5,
-              '& .MuiBox-root': {
+              "& .MuiBox-root": {
                 px: 2,
                 py: 2.5,
-                color: '#333',
-                fontSize: '.875rem',
-                fontWeight: 'bold',
+                color: "#333",
+                fontSize: ".875rem",
+                fontWeight: "bold",
               },
-              '& .MuiButtonBase-root': {
+              "& .MuiButtonBase-root": {
                 py: 2.5,
-                color: '#999',
-                fontSize: '.875rem',
+                color: "#999",
+                fontSize: ".875rem",
               }
             }}
           >

@@ -13,9 +13,9 @@ type IvalidatedProps = {
 const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedProps) => {
   const [complete, setComplete] = useState({
     completeActive: false,
-    completeText: ''
+    completeText: ""
   })
-  const [verificationCode, setVerificationCode] = useState('')
+  const [verificationCode, setVerificationCode] = useState("")
   const [verificationDisabled, setVerificationDisabled] = useState(true)
   const [countStrat, setCountStart] = useState(false)
   const [time, setTime] = useState(0)
@@ -34,25 +34,25 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
     if (countStrat && time === 0){
       setComplete({
         completeActive: true,
-        completeText: '인증시간 초과'
+        completeText: "인증시간 초과"
       })
     }
   }, [countStrat, time])
 
   const requestVerificationCode = () => {
     console.log(getUserId)
-    if (verificationCode !== '') {
-      setVerificationCode('')
+    if (verificationCode !== "") {
+      setVerificationCode("")
     }
     setComplete({
       completeActive: true,
-      completeText: '인증번호가 발송되었습니다.'
+      completeText: "인증번호가 발송되었습니다."
     })
     setCountStart(true)
     setTime(90)
     // 인증번호 입력필드 안보였다가 버튼 클릭 시 보이는지 ?
     // 1:30 카운트다운 시작
-    // 만약 카운트가 0이면 completeText: '인증시간 초과'
+    // 만약 카운트가 0이면 completeText: "인증시간 초과"
     // input 입력 안되게 할 지 
     // 아니면 alert 띄우고 인증번호 입력창 숨길 지
   }
@@ -61,11 +61,11 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
     setVerificationCode(event.currentTarget.value)
     //console.log(verificationCode)
 
-    if (event.target.value !== '') {
+    if (event.target.value !== "") {
       setVerificationDisabled(false)
       setComplete({
         completeActive: false,
-        completeText: ''
+        completeText: ""
       })
     } else {
       setVerificationDisabled(true)
@@ -73,7 +73,7 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
   }
 
   const checkVerificationCode = () => {
-    const codeNumber = '1234'
+    const codeNumber = "1234"
     // 인증번호 검증은 어떻게 ?
 
     if (verificationCode === codeNumber) {
@@ -83,13 +83,13 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
       setTime(0)
       setComplete({
         completeActive: true,
-        completeText: '인증완료'
+        completeText: "인증완료"
       })
     } else {
       // 인증실패 시
       setComplete({
         completeActive: true,
-        completeText: '인증실패'
+        completeText: "인증실패"
       })
       validated[3] = false
     }
@@ -122,34 +122,34 @@ const EmailVerification = ({validated, changeValidated, getUserId}:IvalidatedPro
           margin="normal"
           sx={{ mt: 7 }}
         >
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: "relative" }}>
             <Input
               name="verification_code"
               placeholder="인증번호를 입력해주세요."
               type="text"
               onChange={handleCodeField}
               value={verificationCode}
-              disabled={!countStrat || complete.completeText === '인증시간 초과'}
+              disabled={!countStrat || complete.completeText === "인증시간 초과"}
             />
             <FormHelperText
               sx={{
-              '&.error': { color: '#d32f2f' } 
+              "&.error": { color: "#d32f2f" } 
               }}
               className={
-                complete.completeText === '인증실패' ? 'error' : 
-                (complete.completeText === '인증시간 초과' ? 'error' : '')
+                complete.completeText === "인증실패" ? "error" : 
+                (complete.completeText === "인증시간 초과" ? "error" : "")
               }
             >
               {complete.completeText}
             </FormHelperText>
             
-            <Box sx={{ display: countStrat ? 'block' : 'none' }}>
+            <Box sx={{ display: countStrat ? "block" : "none" }}>
               <CountDown time={time} />
             </Box>
           </Box>
           <OutlineButton 
             disabled={verificationDisabled}
-            sx={{ maxWidth: '72px' }}
+            sx={{ maxWidth: "72px" }}
             onClick={e => checkVerificationCode()}
           >
             인증
