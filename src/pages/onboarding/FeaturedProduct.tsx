@@ -5,7 +5,7 @@ import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import ListItem from "../../components/product/ListItem"
 import { shopProductData } from "../../data"
-import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
+import TitleTwoLine2 from "../../components/title/TitleTwoLine2"
 
 const FeaturedProduct = () => {
   const navigate = useNavigate()
@@ -14,13 +14,13 @@ const FeaturedProduct = () => {
     navigate("/onboarding/featured_brand")
   }
 
-  const title = ['회원님을 위한', '가구를 소개해드려요.'];
+  const title = ["회원님을 위한", "가구를 소개해드려요."];
 
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
+      <Box sx={{ height: "100%", overflow: "auto" }}>
         <TitleTwoLine2 title={title}/>
-        <Box sx={{ px: 2, alignItems: 'center', height: 'calc(100vh - 202px)' }}>
+        <Box sx={{ px: 2, alignItems: "center", height: "calc(100vh - 202px)" }}>
           {/* 가구리스트 */}
           {shopProductData.map((product: any, index: any) =>
             <ListItem

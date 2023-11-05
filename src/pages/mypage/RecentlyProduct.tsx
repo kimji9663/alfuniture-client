@@ -4,7 +4,7 @@ import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { recentlyProductData } from "../../data"
 import ProductList from "./ProductList"
-import { C666Fs12BoldTypography } from "../../components/Typography"
+import { LabelMediumBoldGray8Typography } from "../../components/Typography"
 
 const RecentlyProduct = () => {
   const [count, setCount] = useState(recentlyProductData.length)
@@ -14,9 +14,9 @@ const RecentlyProduct = () => {
       <Box>
         <CenterTitle title={["최근 본 상품"]}/>
         <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mx:"20px", mb:2, mt:3, mr:1}}>
-          <C666Fs12BoldTypography>최근 본 상품 {count}</C666Fs12BoldTypography>
+          <LabelMediumBoldGray8Typography>최근 본 상품 {count}</LabelMediumBoldGray8Typography>
           <Button sx={{borderRadius:0, color:"#333", minWidth:0, px:1, py:0}}>
-            <C666Fs12BoldTypography>편집</C666Fs12BoldTypography>
+            <LabelMediumBoldGray8Typography>편집</LabelMediumBoldGray8Typography>
           </Button>
         </Box>
         <Box>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { C333Fs20Fw700Typography, C999Fs12Lh20Typography, C333Fs14Typography } from "../../components/Typography";
+import { TitleLargeBoldGray9Typography, LabelMediumGray7Typography, TitleSmallGray9Typography } from "../../components/Typography";
 
 interface MonthlyPostBoxProps {
   data: {
@@ -19,20 +19,20 @@ const MonthlyPostBox: React.FC<MonthlyPostBoxProps> = ({data}) => {
     <>
       <img src={imageUrl} alt="" style={{ width: "100%", objectFit: "cover" }} />
       <Box sx={{ my: 3 }}>
-        <C333Fs20Fw700Typography sx={{ mb: 1 }}>
+        <TitleLargeBoldGray9Typography sx={{ mb: 1, lineHeight: "24px", letterSpacing: "-0.25px", }}>
           {title}
-        </C333Fs20Fw700Typography>
-        <C999Fs12Lh20Typography>
+        </TitleLargeBoldGray9Typography>
+        <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>
           {description}
-        </C999Fs12Lh20Typography>
-        <C999Fs12Lh20Typography>
+        </LabelMediumGray7Typography>
+        <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>
           {author}
-        </C999Fs12Lh20Typography>
+        </LabelMediumGray7Typography>
       </Box>
       {/* <Link to={linkTo}> */}
       <Link to="/monthly_post/umasqu">
         <Button sx={{ color: "#333333", fontSize: "14px", border: "1px solid #999999", borderRadius: 0, px: 2 }}>
-          <C333Fs14Typography>보러가기 &gt;</C333Fs14Typography>
+          <TitleSmallGray9Typography>보러가기 &gt;</TitleSmallGray9Typography>
         </Button>
       </Link>
     </>

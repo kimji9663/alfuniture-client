@@ -3,14 +3,14 @@ import React, { useState } from "react"
 import NavigationBar from "../../components/NavigationBar"
 import { jamesLee } from "../../assets/images/brand"
 import { IconHeartBig, IconHeartBigRed } from "../../assets/images"
-import { IconButton, Box, Tabs, Tab } from '@mui/material'
+import { IconButton, Box, Tabs, Tab } from "@mui/material"
 import DetailViewPanel from "./DetailViewPanel"
 import BrandShopPanel from "./BrandShopPanel"
 import {RectCheckboxNonChecked} from "../../styles/checkbox.styles"
 import {profileTagData} from "../../data"
 import { ScrollToTop } from "../../App"
 import { TabPanel, TabProps } from "../../components/Tabs"
-import { C333Fs12Typography, Fs24Fw400Typography } from "../../components/Typography"
+import { LabelMediumGray9ypography, HeadlineSmallTypography } from "../../components/Typography"
 
 const Profile = () => {
   const [tabValue, setTabValue] = useState(0)
@@ -27,8 +27,8 @@ const Profile = () => {
       <img src={jamesLee} style={{width: "100vw", maxWidth: "420px"}}/>
       <Box sx={{mt: 3, ml: 2, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Box>
-          <Fs24Fw400Typography>James Lee</Fs24Fw400Typography>
-          <C333Fs12Typography>노르웨이 출신의 작가</C333Fs12Typography>
+          <HeadlineSmallTypography>James Lee</HeadlineSmallTypography>
+          <LabelMediumGray9ypography>노르웨이 출신의 작가</LabelMediumGray9ypography>
         </Box>
         <Box sx={{ mr: 2}}>
           
@@ -52,9 +52,9 @@ const Profile = () => {
       </Box>
       <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight: "700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight: "700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}

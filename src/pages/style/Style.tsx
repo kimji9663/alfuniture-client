@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react"
-import LogoTitle from '../../components/title/LogoTitle'
-import {TabPanel, TabProps} from '../../components/Tabs'
-import { ISwiperProps } from '../../components/ISwiperProps'
+import LogoTitle from "../../components/title/LogoTitle"
+import {TabPanel, TabProps} from "../../components/Tabs"
+import { ISwiperProps } from "../../components/ISwiperProps"
 import NavigationBar from "../../components/NavigationBar"
-import { Box, Tabs, Tab } from '@mui/material'
-import StyleTabPanel from './StyleTabPanel';
-import RankingTabPanel from './RankingTabPanel';
-import PostMagazineTabPanel from './PostMagazineTabPanel';
+import { Box, Tabs, Tab } from "@mui/material"
+import StyleTabPanel from "./StyleTabPanel";
+import RankingTabPanel from "./RankingTabPanel";
+import PostMagazineTabPanel from "./PostMagazineTabPanel";
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
-import { ScrollToTop } from '../../App'
-import { Fs14Fw400Typography, C333Fs50Fw400Typography, C666Fs14Fw400Typography } from '../../components/Typography'
+import { ScrollToTop } from "../../App"
+import { TitleSmallTypography, HeadlineExtraLargeGray9Typography, TitleSmallGray8Typography } from "../../components/Typography"
 
 const brandCollectionSettings:ISwiperProps = {
   loop: true,
@@ -27,7 +27,7 @@ const Style = () => {
 
   ScrollToTop();
   return (
-    <Box sx={{height: 'calc(100vh - 74px)'}}>
+    <Box sx={{height: "calc(100vh - 74px)"}}>
       <LogoTitle/>
       {/* 첫번째 섹션 */}
       <Box sx={{pt:"57px", borderTop: "1px solid #EEEEEE", pb:3}}>
@@ -43,13 +43,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Fs14Fw400Typography >NEW</Fs14Fw400Typography>
+                              <TitleSmallTypography sx={{lineHeight: "17px"}}>NEW</TitleSmallTypography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
-                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
+                          <HeadlineExtraLargeGray9Typography sx={{ mb: 3 }}>{item.brandName}</HeadlineExtraLargeGray9Typography>
+                          <TitleSmallGray8Typography>{item.discription}</TitleSmallGray8Typography>
                         </Box>
                       </>
                     )}
@@ -59,13 +59,13 @@ const Style = () => {
                           <img src={item.img} alt="" style={{ width: "100%" }} />
                           {item.newItem && ( 
                             <Box sx={{ px: 2, py: 1, position: "absolute", bottom: 0, right: 0, color: "#FFFFFF", backgroundColor: "#242223" }}>
-                              <Fs14Fw400Typography>NEW</Fs14Fw400Typography>
+                              <TitleSmallTypography sx={{lineHeight: "17px"}}>NEW</TitleSmallTypography>
                             </Box>
                           )}
                         </Box>
                         <Box sx={{ pb: 3, mt: 4 }}>
-                          <C333Fs50Fw400Typography sx={{ mb: 3 }}>{item.brandName}</C333Fs50Fw400Typography>
-                          <C666Fs14Fw400Typography>{item.discription}</C666Fs14Fw400Typography>
+                          <HeadlineExtraLargeGray9Typography sx={{ mb: 3 }}>{item.brandName}</HeadlineExtraLargeGray9Typography>
+                          <TitleSmallGray8Typography>{item.discription}</TitleSmallGray8Typography>
                         </Box>
                       </>
                     )}
@@ -88,9 +88,9 @@ const Style = () => {
       {/* 두번째 섹션 */}
         <Box sx={{ 
             borderBottom: 1, 
-            borderColor: 'divider',
-            '.MuiTab-root.Mui-selected': { color: '#333', fontWeight: "700" },
-            '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+            borderColor: "divider",
+            ".MuiTab-root.Mui-selected": { color: "#333", fontWeight: "700" },
+            ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
           }}>
             <Tabs 
               value={tabValue}

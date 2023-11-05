@@ -39,7 +39,7 @@ const PreviewItem: React.FC<PreviewProps> = ({
 
   return (
     <Paper elevation={0} square>
-      <Link href='/shop/product_view' underline='none'>
+      <Link href="/shop/product_view" underline="none">
       <CardMedia
         component="img"
         image={imgsrc}

@@ -13,7 +13,7 @@ const DetailViewPanel = () => {
 
   return (
     <>
-      <DetailView sx={{ height: viewMore ? 'auto' : '502px', pb: viewMore ? '58px' : 0 }}>
+      <DetailView sx={{ height: viewMore ? "auto" : "502px", pb: viewMore ? "58px" : 0 }}>
         <img src={img_product_view} alt="" />
         <CoverBox>
           <MoreButton 
@@ -21,7 +21,7 @@ const DetailViewPanel = () => {
             fullWidth
             onClick={handleViewHeight}
           >
-            상품설명 {viewMore ? '접기' : '더보기'}
+            상품설명 {viewMore ? "접기" : "더보기"}
           </MoreButton>
         </CoverBox>
       </DetailView>

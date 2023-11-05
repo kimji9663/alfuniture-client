@@ -6,26 +6,26 @@ import { useNavigate } from "react-router-dom"
 const qnaList = [
   {
     id: 1,
-    userId: 'vani@naver.com',
-    text: '오늘 주문하면 3주 안에 배송받을 수 있나요?',
+    userId: "vani@naver.com",
+    text: "오늘 주문하면 3주 안에 배송받을 수 있나요?",
     answer: false
   },
   {
     id: 2,
-    userId: 'ai1212@me.com',
-    text: '조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.',
+    userId: "ai1212@me.com",
+    text: "조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.",
     answer: false
   },
   {
     id: 3,
-    userId: 'qpid3@daum.net',
-    text: '오늘 주문하면 3주 안에 배송받을 수 있나요?',
+    userId: "qpid3@daum.net",
+    text: "오늘 주문하면 3주 안에 배송받을 수 있나요?",
     answer: true
   },
   {
     id: 4,
-    userId: 'strawberryCake0113@gmail.com',
-    text: '조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.',
+    userId: "strawberryCake0113@gmail.com",
+    text: "조명 사이즈가 어떻게 되나요?? 그리고 멜란지화이트 색상은 품절인가요? 빠른 답변 부탁드려요.",
     answer: true
   },
 ]
@@ -33,20 +33,20 @@ const qnaList = [
 const PersonalQnaPanel = () => {
   const navigate = useNavigate()
   // 로그인한 유저 ID (임시)
-  const currentUserId = 'vani@naver.com'
+  const currentUserId = "vani@naver.com"
 
   const hideUserId = (id:string) => {
-    let maskedId = ''
-    let slicedId = id.split('@')[0] // @뒤 이메일 도메인 생략
+    let maskedId = ""
+    let slicedId = id.split("@")[0] // @뒤 이메일 도메인 생략
     if (slicedId.length < 7) {
       // 아이디가 7자리 미만일 경우 자릿수 절반 마스킹
       const regex = slicedId.slice(slicedId.length / 2)
-      maskedId = slicedId.replace(regex, '*'.repeat(regex.length))
+      maskedId = slicedId.replace(regex, "*".repeat(regex.length))
       console.log(id)
     } else {
       // 아이디가 7자리 이상일 경우 넷째자리부터 마스킹 & *표시는 4개 까지만
       const regex = slicedId.slice(3, slicedId.length)
-      maskedId = slicedId.replace(regex, '*'.repeat(4))
+      maskedId = slicedId.replace(regex, "*".repeat(4))
       console.log(id)
     }
 
@@ -71,13 +71,13 @@ const PersonalQnaPanel = () => {
         <Box sx={{ mt: 3 }}>
           {qnaList.map((qna) => (
             <QnaListItem key={qna.id}>
-              <div className={`content${currentUserId === qna.userId ? '' : ' locked'}`}>
-                {currentUserId === qna.userId ? qna.text : '작성자만 확인 할 수 있어요.'}
+              <div className={`content${currentUserId === qna.userId ? "" : " locked"}`}>
+                {currentUserId === qna.userId ? qna.text : "작성자만 확인 할 수 있어요."}
               </div>
               {/* 답변 완료되었을 경우 판매자 답변 위치 */}
               <div className="content_info">
                 <div className="answer">
-                  {qna.answer ? '답변완료' : '답변대기'}
+                  {qna.answer ? "답변완료" : "답변대기"}
                 </div>
                 {/* 작성자인 경우 본인 아이디 보여 줄 것인지 */}
                 <div className="user_id">{hideUserId(qna.userId)}</div>
@@ -93,7 +93,7 @@ const PersonalQnaPanel = () => {
       <Box sx={{ p: 2, mb: 5 }}>
         <ViewTitle>판매자 고객센터</ViewTitle>
         <CustomerService sx={{ mt: 3 }}>
-          <Box sx={{ display: 'flex' }}>
+          <Box sx={{ display: "flex" }}>
             <div className="title">운영시간</div>
             <div className="information">
               <span>평일11:00 ~ 17:00</span>
@@ -111,23 +111,23 @@ const PersonalQnaPanel = () => {
 
         <ViewTitle sx={{ mt: 4 }}>판매자 정보</ViewTitle>
         <SellerInfomation sx={{ mt: 3 }}>
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: "flex", mt: 1 }}>
             <div className="title">업체명</div>
             <div className="information">BARUA</div>
           </Box>
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: "flex", mt: 1 }}>
             <div className="title">대표장명</div>
             <div className="information">이은지</div>
           </Box>
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: "flex", mt: 1 }}>
             <div className="title">사업장 소재지</div>
             <div className="information">인천광역시 연수구 면우금로 188번길</div>
           </Box>
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: "flex", mt: 1 }}>
             <div className="title">사업자번호</div>
             <div className="information">12898403</div>
           </Box>
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: "flex", mt: 1 }}>
             <div className="title">통신판매업 신고번호</div>
             <div className="information">사업자 정보 확인</div>
           </Box>

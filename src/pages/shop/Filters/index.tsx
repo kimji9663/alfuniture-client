@@ -15,7 +15,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
   return <>
     <FilterMenuContainer>
       <Box>
-      {type != '가격' ? FilterTypes[type]?.map((item, idx) => (
+      {type != "가격" ? FilterTypes[type]?.map((item, idx) => (
         <FilterMenuItem key={`${item}-type-${idx}`}>
           <Avatar src={item.avatar} />
           <Gray8Typography>
@@ -23,12 +23,12 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           </Gray8Typography>
         </FilterMenuItem>
       )) : [
-        <FilterMenuItem key={'min-price'} className='priceType'>
+        <FilterMenuItem key={"min-price"} className="priceType">
           <Gray8Typography>
             {0}원 에서
           </Gray8Typography>
         </FilterMenuItem>,
-        <FilterMenuItem key={'max-price'} className='priceType'>
+        <FilterMenuItem key={"max-price"} className="priceType">
           <Gray8Typography>
             {0}원 까지
           </Gray8Typography>

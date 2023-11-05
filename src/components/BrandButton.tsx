@@ -18,13 +18,13 @@ const BrandButton: React.FC<BrandButtonProps> = ({ brandData }) => {
         <img src={brandData.image} alt={brandData.name} style={{ width: "100%", height: "100%" }} />
       </Box>
       <Box>
-        <Typography sx={{ color: '#333', fontSize: '.875rem', fontWeight: 'bold', '& > svg': { ml: 1 / 2 } }}>
+        <Typography sx={{ color: "#333", fontSize: ".875rem", fontWeight: "bold", "& > svg": { ml: 1 / 2 } }}>
           {brandData.name}
           <ArrowRight />
         </Typography>
-        <Typography sx={{ color: '#999', fontSize: '.75rem' }}>{brandData.description}</Typography>
+        <Typography sx={{ color: "#999", fontSize: ".75rem" }}>{brandData.description}</Typography>
       </Box>
-      <Box sx={{ ml: 'auto', px: 4, '& > svg': { display: 'block' } }}>
+      <Box sx={{ ml: "auto", px: 4, "& > svg": { display: "block" } }}>
         <IconHeartSmall />
       </Box>
     </Button>

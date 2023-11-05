@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import NavigationBar from "../../components/NavigationBar"
-import { Box } from '@mui/material'
-import RightImageCard from './RightImageCard'
+import { Box } from "@mui/material"
+import RightImageCard from "./RightImageCard"
 import {umasqu01, umasqu02, umasqu03} from "../../assets/images/brand"
-import PostMagazineHeader from './PostMagazineHeader'
-import BestWorkAllButton from './BestWorkAllButton'
-import List from '../like/Like/List'
-import { monthlyPostData } from '../../data'
-import { ScrollToTop } from '../../App'
-import { C333Fs22Fw700Lh28Typography, UmasquTypography } from '../../components/Typography'
+import PostMagazineHeader from "./PostMagazineHeader"
+import BestWorkAllButton from "./BestWorkAllButton"
+import List from "../like/Like/List"
+import { monthlyPostData } from "../../data"
+import { ScrollToTop } from "../../App"
+import { TitleLargeBoldGray9Typography, TitleLargeBoldWhiteUmasquTypography } from "../../components/Typography"
 
 const MonthlyPost = () => {
   ScrollToTop();
@@ -32,10 +32,10 @@ const MonthlyPost = () => {
         최고의 제품을 고객에게 전달합니다."/>
       {/* 세번째 섹션 */}
       <Box>
-        <C333Fs22Fw700Lh28Typography sx={{ pl:2, mt:10 }}>봄과 어울리는 브랜드</C333Fs22Fw700Lh28Typography>
+        <TitleLargeBoldGray9Typography sx={{ pl:2, mt:10 }}>봄과 어울리는 브랜드</TitleLargeBoldGray9Typography>
         <Box sx={{position:"relative", width:"100%", mt:"19px", display:"flex", mb:3}}>
           <img src={umasqu03} alt="" style={{width:"100%", objectFit:"cover"}}/>
-          <UmasquTypography>Umasqu</UmasquTypography>
+          <TitleLargeBoldWhiteUmasquTypography>Umasqu</TitleLargeBoldWhiteUmasquTypography>
         </Box>
       </Box>
       <Box>
