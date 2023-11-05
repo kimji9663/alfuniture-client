@@ -1,4 +1,4 @@
-import { Card, ButtonBase, FormControl } from "@mui/material"
+import { Card, ButtonBase } from "@mui/material"
 import { styled } from "@mui/material/styles" 
 
 export const DeliveryInfoOrderCard = styled(Card)(() => ({
@@ -129,29 +129,4 @@ export const StyleCardSelected = styled(ButtonBase)(() => ({
     lineHeight: "20px",
     letterSpacing: "-0.25px"
   }
-}))
-
-export const OrderCardSelectWrap = styled(FormControl)(() => ({
-  display: "flex",
-  flexDirection: "row",
-  height: "52px",
-
-  "& > .MuiBox-root, & .MuiButtonBase-root": {
-    display: "flex",
-  },
-  "& > .MuiBox-root": {
-    flex: "1 1 auto",
-  },
-  "& .MuiInputBase-root": {
-    width: "100%",
-  },
-  "& .MuiInputBase-root > input": {
-    fontSize: ".875rem",
-  },
-  "& .MuiButtonBase-root": {
-    flex: "1 1 18%",
-    padding: 0,
-    borderRadius: 0,
-    fontSize: ".875rem",
-  },
 }))

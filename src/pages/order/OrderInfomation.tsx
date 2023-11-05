@@ -1,17 +1,18 @@
 import React, { useState } from "react"
-import { Box, AccordionDetails, AccordionSummary, Input } from "@mui/material"
+import { Box, AccordionDetails, AccordionSummary, List, ListItemButton, ListItemText, Avatar, ListItemAvatar } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import SelectBox from "../../components/SelectBox"
-import { PrimaryButton } from "../../styles/buttons.styles"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
-import { OrderCardSelectWrap } from "../../styles/card.style"
 import CardSelector from "./CardSelector"
+import { styled } from "@mui/material/styles"
+import { orderCouponData } from "../../data"
 
-interface CompleteProps {
-  complete: string
-  setComplete: React.Dispatch<React.SetStateAction<string>>
+interface OptionsProps {
+  id?: string | undefined
+  name?: string | undefined
+  img?: string | undefined
 }
 
 const AvatarList = styled(List)(() => ({
@@ -31,7 +32,7 @@ const OrderInfomation = () => {
     { name: "쿠폰 선택", img: "" }
   )
   const [selectDelivery, setSelectDelivery] = useState("check_quick")
-  const [selectCard, setSelectCard] = useState()
+  const [selectCard, setSelectCard] = useState('')
   const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
   const [open, setOpen] = useState(false)
 
@@ -160,31 +161,9 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          {/* <OrderCardSelectWrap
-            variant="standard"
-            margin="normal"
-          >
-            <Box>
-              <Input
-                name="user_id"
-                placeholder="카드를 선택해주세요."
-                type="text"
-                value={selectCard}
-                readOnly
-              />
-            </Box>
-            <PrimaryButton
-              sx={{ maxWidth: "100px" }}
-            >
-              선택
-            </PrimaryButton>
-          </OrderCardSelectWrap> */}
-
           <CardSelector
             selectedOption={selectCard}
             setSelectedOption={setSelectCard}
-            complete={selectComplete}
-            setComplete={setSelectComplete}
           />
         </AccordionDetails>
       </OrderAccordionMenu>
