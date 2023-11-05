@@ -1,24 +1,11 @@
-import { MenuItem, MenuList } from '@mui/material'
+import { Box, Button, MenuItem, MenuList } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 export const FilterMenuContainer = styled(MenuList)(() => ({
-  padding: '.87rem 1rem 1rem',
-  minHeight: 'calc(100% - 131px)',
+  padding: '1.5rem 1rem',
+  maxHeight: '70vh',
   display: 'grid',
   alignContent: 'space-between',
-  '& .MuiButton-contained': {
-    borderRadius: 0,
-    width: '100%',
-    padding: '1.12rem',
-    color: '#FFF',
-    backgroundColor: '#000',
-    '&:hover': {
-      backgroundColor: '#000'
-    },
-    fontSize: '1rem',
-    fontWeight: 500,
-    lineHeight: '1.5rem'
-  }
 }))
 
 export const FilterMenuItem = styled(MenuItem)(() => ({
@@ -31,4 +18,21 @@ export const FilterMenuItem = styled(MenuItem)(() => ({
     paddingBottom: '1.12rem',
     justifyContent: 'right'
   }
+}))
+
+export const ShowProductButton = styled(Button)(() => ({  
+  borderRadius: 0,
+  width: '100%',
+  height: '74px',
+  padding: '1.12rem',
+  position: 'fixed',
+  bottom: 0,
+  color: '#FFF',
+  backgroundColor: '#000',
+  '&:hover': {
+    backgroundColor: '#000'
+  },
+  fontSize: '1rem',
+  fontWeight: 500,
+  lineHeight: '1.5rem'
 }))

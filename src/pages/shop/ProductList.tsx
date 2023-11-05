@@ -19,8 +19,9 @@ const ProductList = () => {
   const filterRef = useRef(null);
   const filterMenuOpen = Boolean(anchorEl)
 
-  const handleOpenFilter = () => {
+  const handleOpenFilter = (type: string) => () => {
     setIsFilterOpen(!isFilterOpen);
+    setFilterType(type);
     filterMenuOpen ? setAnchorEl(null) : setAnchorEl(filterRef.current)
   }
   const handleClickShow = (event: MouseEvent<HTMLElement>) => {
@@ -33,51 +34,45 @@ const ProductList = () => {
       <LeftTitle title={title} />
       <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
         <FilterContainer ref={filterRef}>
-          <FilterButton
-            onClick={handleOpenFilter}
-          >
-            <Gray9Typography>Filter +</Gray9Typography>
-          </FilterButton>
-          {isFilterOpen ? <FilterTypeContainer>
+          <FilterTypeContainer>
             {Object.keys(FilterTypes).map((type, idx) => (
               <Button
                 key={`filter-type-${idx}`}
                 variant={filterType == type ? 'contained' : 'outlined'}
-                onClick={() => setFilterType(type)}
+                onClick={handleOpenFilter(type)}
               >
                 {type}
               </Button>
             ))}
-          </FilterTypeContainer> : null}
+          </FilterTypeContainer>
         </FilterContainer>
-        {isFilterOpen ?
-          <FilterMenu
-            type={filterType}
-            clickShowProduct={handleClickShow}
-          />
-          :
-          <Box padding='1.5rem 1rem'>
-            <GridBox
-              sx={{
-                gridTemplateColumns: '1fr 1fr'
-              }}
-              columnGap='0.5rem'
-              rowGap='1.5rem'
-            >
-              {shopProductData.map((product: any) =>
-                <PreviewItem
-                  key={`product-${product.id}`}
-                  id={product.id}
-                  imgsrc={product.imgsrc}
-                  shopName={product.shopName}
-                  modelName={product.modelName}
-                  productName={product.productName}
-                  price={product.price}
-                  colors={product.colors}
-                />
-              )}
-            </GridBox>
-          </Box>}
+        <FilterMenu
+          open={isFilterOpen}
+          type={filterType}
+          clickShowProduct={handleClickShow}
+        />
+        <Box padding='1.5rem 1rem'>
+          <GridBox
+            sx={{
+              gridTemplateColumns: '1fr 1fr'
+            }}
+            columnGap='0.5rem'
+            rowGap='1.5rem'
+          >
+            {shopProductData.map((product: any) =>
+              <PreviewItem
+                key={`product-${product.id}`}
+                id={product.id}
+                imgsrc={product.imgsrc}
+                shopName={product.shopName}
+                modelName={product.modelName}
+                productName={product.productName}
+                price={product.price}
+                colors={product.colors}
+              />
+            )}
+          </GridBox>
+        </Box>
       </Box>
       <NavigationBar />
     </>
