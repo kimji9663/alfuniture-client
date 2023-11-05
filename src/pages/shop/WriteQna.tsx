@@ -49,13 +49,11 @@ const WriteQna = () => {
     const blob = new Blob([e.target.files[0]], {type: "image/png"})
     photoUrl = URL.createObjectURL(blob)
     setUserPhoto([...userPhoto, photoUrl])
-    console.log(userPhoto)
   }
 
   const handleRemovePhoto = (url: string) => () => {
     let removePhoto = userPhoto.filter((el) => el !== url)
     setUserPhoto(removePhoto)
-    console.log(url)
   }
 
   return (
