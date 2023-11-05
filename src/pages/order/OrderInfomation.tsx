@@ -1,19 +1,17 @@
 import React, { useState } from "react"
-import { Box, Avatar, List, ListItemAvatar, ListItemText, ListItemButton, AccordionDetails, AccordionSummary, Input } from "@mui/material"
-import SelectBox from "../../components/SelectBox"
-import { styled } from "@mui/material/styles"
+import { Box, AccordionDetails, AccordionSummary, Input } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import SelectBox from "../../components/SelectBox"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
 import { OrderCardSelectWrap } from "../../styles/card.style"
-import { orderCouponData } from "../../data"
+import CardSelector from "./CardSelector"
 
-interface OptionsProps {
-  id?: string | undefined
-  name?: string | undefined
-  img?: string | undefined
+interface CompleteProps {
+  complete: string
+  setComplete: React.Dispatch<React.SetStateAction<string>>
 }
 
 const AvatarList = styled(List)(() => ({
@@ -162,7 +160,7 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          <OrderCardSelectWrap
+          {/* <OrderCardSelectWrap
             variant="standard"
             margin="normal"
           >
@@ -180,7 +178,14 @@ const OrderInfomation = () => {
             >
               선택
             </PrimaryButton>
-          </OrderCardSelectWrap>
+          </OrderCardSelectWrap> */}
+
+          <CardSelector
+            selectedOption={selectCard}
+            setSelectedOption={setSelectCard}
+            complete={selectComplete}
+            setComplete={setSelectComplete}
+          />
         </AccordionDetails>
       </OrderAccordionMenu>
 

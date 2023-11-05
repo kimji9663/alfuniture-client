@@ -4,10 +4,12 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { ShopAllList } from "./shopAll.styles"
 import TitleOneLine from "../../components/title/TitleOneLine"
 import NavigationBar from "../../components/NavigationBar"
+import { useNavigate } from "react-router-dom"
 import { shopJson } from "../../data"
 import { TabPanel, TabProps } from "../../components/Tabs"
 
 const ShopAll = () => {
+  const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
   const [menuOpen, setMenuOpen] = useState("")
 
@@ -17,7 +19,12 @@ const ShopAll = () => {
   const handleMenuOpen = (event: React.SyntheticEvent, name: string) => {
     setMenuOpen(name)
   }
-  const title = ["SHOP ALL"];
+
+  const title = ['SHOP ALL'];
+  
+  const goToProductList = () => {
+    navigate("/shop/product_list")
+  } 
 
   return (
     <>
@@ -47,7 +54,7 @@ const ShopAll = () => {
                 <List>
                   {el.children?.map((el, index) => (
                     <ListItem disablePadding key={`${el}_${index}`}>
-                      <ListItemButton>
+                      <ListItemButton onClick={goToProductList}>
                         <ListItemText primary={el.category} />
                         <ArrowForwardIosIcon />
                       </ListItemButton>
@@ -67,7 +74,7 @@ const ShopAll = () => {
                 <List>
                   {el.children?.map((el, index) => (
                     <ListItem disablePadding key={`${el}_${index}`}>
-                      <ListItemButton>
+                      <ListItemButton onClick={goToProductList}>
                         <ListItemText primary={el.category} />
                         <ArrowForwardIosIcon />
                       </ListItemButton>
