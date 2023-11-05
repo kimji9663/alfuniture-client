@@ -18,8 +18,8 @@ const FunitureSelection = () => {
 
   return (
     <>
-      <Box sx={{height: "100%", overflow: "auto" }}>
-        <TitleTwoLine1 title={title} onClick={goToNext} />
+      <TitleTwoLine1 title={title} onClick={goToNext} />
+      <Box sx={{ height: "calc(100vh - 274px)", overflow: "auto" }}>
 
         <Box sx={{ px: 2}}>
           {

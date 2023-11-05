@@ -27,8 +27,8 @@ const StyleSelection = () => {
     
   return (
     <>
-      <Box sx={{ height: "100%", overflow: "auto" }}>
-        <TitleTwoLine2 title={title} />
+      <TitleTwoLine2 title={title} />
+      <Box sx={{ height: "calc(100vh - 274px)", overflow: "auto" }}>
         <GridBox
           gridTemplateColumns={"1fr 1fr"}
           columnGap={"20px"}

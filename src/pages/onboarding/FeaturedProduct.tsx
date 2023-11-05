@@ -18,8 +18,8 @@ const FeaturedProduct = () => {
 
   return (
     <>
-      <Box sx={{ height: "100%", overflow: "auto" }}>
-        <TitleTwoLine2 title={title}/>
+      <TitleTwoLine2 title={title} />
+      <Box sx={{ height: "calc(100vh - 274px)", overflow: "auto" }}>
         <Box sx={{ px: 2, alignItems: "center", height: "calc(100vh - 202px)" }}>
           {/* 가구리스트 */}
           {shopProductData.map((product: any, index: any) =>

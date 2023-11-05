@@ -9,7 +9,7 @@ interface TitleProps {
 
 const TitleTwoLine1: FC<TitleProps> = ({title, onClick}) => {
   return (
-    <Box sx={{p : "16px 16px 0 16px ", mb :"80px"}}>
+    <Box sx={{p : "16px 16px 0 16px ", pb :"80px"}}>
       <Box sx={{ textAlign: 'right', pr: 2, height: "24px", color: 'gray'}} onClick={onClick}>
         SKIP
       </Box>
