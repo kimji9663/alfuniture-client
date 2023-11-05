@@ -1,55 +1,27 @@
 import React, { useState } from "react"
-import { Box, Avatar, List, ListItemAvatar, ListItemText, ListItemButton, AccordionDetails, AccordionSummary, Input } from "@mui/material"
-import SelectBox from "../../components/SelectBox"
-import { styled } from "@mui/material/styles"
+import { Box, AccordionDetails, AccordionSummary, Input } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import SelectBox from "../../components/SelectBox"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
 import { OrderCardSelectWrap } from "../../styles/card.style"
-import { orderCouponData } from "../../data"
+import CardSelector from "./CardSelector"
 
-interface OptionsProps {
-  id?: string | undefined
-  name?: string | undefined
-  img?: string | undefined
+interface CompleteProps {
+  complete: string
+  setComplete: React.Dispatch<React.SetStateAction<string>>
 }
 
-const AvatarList = styled(List)(() => ({
-  padding: 0,
-  '& > .MuiButtonBase-root.Mui-selected': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiTypography-root': {
-    color: '#666',
-    fontSize: '.875rem',
-  },
-}))
-
-const OrderInfomation = () => {
+const OrderInfomation = ({complete, setComplete}: CompleteProps) => {
   const [expanded, setExpanded] = useState<string | false>(false)
-  const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
-    { name: '쿠폰 선택', img: '' }
-  )
   const [selectDelivery, setSelectDelivery] = useState('check_quick')
-  const [selectCard, setSelectCard] = useState()
-  const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
-  const [open, setOpen] = useState(false)
+  const [selectCard, setSelectCard] = useState('')
+  const [selectComplete, setSelectComplete] = useState([false, false])
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
-  }
-
-  const handleListItemClick = (
-    brand: string,
-    logo: string,
-    title: string,
-  ) => {
-    setOpen(false)
-    const option = {...selectCoupon,  name: brand + '\u00A0' + title, img: logo}
-    setSelectCoupon(option)
-    setSelectedOption(selectCoupon)
   }
 
   const handleCheckDelivery = (event: React.SyntheticEvent) => {
@@ -58,47 +30,6 @@ const OrderInfomation = () => {
 
   return (
     <>
-      <OrderAccordionMenu
-        expanded={expanded === 'panel1'} 
-        onChange={handleChange('panel1')}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <p className="title">사용가능 쿠폰조회</p>
-          <p>쿠폰 선택</p>
-        </AccordionSummary>
-        <AccordionDetails>
-          <SelectBox
-            selected={selectCoupon}
-            setSelected={setSelectCoupon}
-            open={open}
-            setOpen={setOpen}
-          >
-            <AvatarList>
-              {orderCouponData.map((el) => (
-                <ListItemButton
-                  component="li"
-                  key={el.id}
-                  onClick={() => handleListItemClick(el.brand, el.logo, el.title)}
-                >
-                  <ListItemAvatar>
-                    <Avatar alt={el.brand} src={el.logo} />
-                  </ListItemAvatar>
-                  <Box>
-                    <ListItemText primary={el.brand} />
-                    <ListItemText primary={el.title} />
-                  </Box>
-                  <Box sx={{ ml: 'auto', fontSize: '.875rem' }}>
-                    D-{el.expiration}
-                  </Box>
-                </ListItemButton>
-              ))}
-            </AvatarList>
-          </SelectBox>
-        </AccordionDetails>
-      </OrderAccordionMenu>
-
       <OrderAccordionMenu
         expanded={expanded === 'panel2'} 
         onChange={handleChange('panel2')}
@@ -162,7 +93,7 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          <OrderCardSelectWrap
+          {/* <OrderCardSelectWrap
             variant="standard"
             margin="normal"
           >
@@ -180,7 +111,14 @@ const OrderInfomation = () => {
             >
               선택
             </PrimaryButton>
-          </OrderCardSelectWrap>
+          </OrderCardSelectWrap> */}
+
+          <CardSelector
+            selectedOption={selectCard}
+            setSelectedOption={setSelectCard}
+            complete={selectComplete}
+            setComplete={setSelectComplete}
+          />
         </AccordionDetails>
       </OrderAccordionMenu>
 
