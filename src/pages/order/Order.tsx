@@ -371,10 +371,7 @@ const Order = () => {
           </Box>
         </Box>
 
-        <OrderInfomation 
-          complete={selectCard}
-          setComplete={setSelectCard}
-        />
+        <OrderInfomation />
 
         <OrderTermsAgreement 
           termsAgree={orderData.termsAgree}
