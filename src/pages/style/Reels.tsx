@@ -23,7 +23,7 @@ function Reels() {
             </TitleSmallWhiteTypography>
           </Box>
           <TitleSmallWhiteTypography sx={{mb:2}}>
-            모던하면서 클래식한 인테리어로 바꿧어요
+            모던하면서 클래식한 인테리어로 바꿨어요
           </TitleSmallWhiteTypography>
           <Box sx={{display:"flex", alignItems:"center", mb:4}}>
             <IconHeartWhite style={{marginRight:"8px"}}/>
