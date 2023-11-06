@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Box, Typography } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
@@ -12,10 +12,19 @@ import { featuredBrandData } from "../../data"
 
 const FeaturedBrand = () => {
   const navigate = useNavigate()
+  const imgRef = useRef<HTMLImageElement>(null)
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
 
   const goToNext = () => {
     navigate("/onboarding/featured_funiture")
   }
+
+  useEffect(() => {
+    if (!imgRef.current) {
+      setIsImgLoaded(true)
+      return;
+    }
+  }, [imgRef])
 
   const settings:ISwiperProps = {
     loop: true,
@@ -34,16 +43,16 @@ const FeaturedBrand = () => {
 
   return (
     <>
-      <Box sx={{ height: "100%", overflow: "auto" }}>
-        <TitleTwoLine2 title={title}/>
-
-        <Box sx={{ px: 2, display: "flex", alignItems: "center", height: "calc(100vh - 202px)" }}>
+      <TitleTwoLine2 title={title} />
+      <Box sx={{ px: 2, display: "flex", alignItems: "center", height: "calc(100vh - 274px)", overflow: "auto" }}>
           <SwiperWrap>
             <Swiper {...settings}>
               {featuredBrandData.map((el) => (
                 <SwiperSlide key={el.id}>
                   <Box className="slide_item">
-                    <img src={el.img} alt={el.name} className={getImgRatio(el.img)} />
+                    {isImgLoaded ? (
+                      <img src={el.img} alt={el.name} className={getImgRatio(el.img)} ref={imgRef} />
+                    ) : null }
                     <Box className="text">
                       <Typography component="p" className="title">
                         {el.name}
@@ -57,7 +66,6 @@ const FeaturedBrand = () => {
               ))}
             </Swiper>
           </SwiperWrap>
-        </Box>
       </Box>
       <NaviWrap className="single">
         <PrimaryButton onClick={goToNext}>다음으로</PrimaryButton>

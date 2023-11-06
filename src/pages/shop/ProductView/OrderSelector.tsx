@@ -117,9 +117,9 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
               <Box 
                 component="span" 
                 sx={{ 
-                  padding: "0 8px", 
-                  marginLeft: "auto", 
-                  "& > svg": { display: "block", cursor: "pointer" } 
+                  padding: '0 8px', 
+                  marginLeft: 'auto', 
+                  '& > svg': { display: 'block', cursor: 'pointer', color: '#DADADA' } 
                 }}
               >
                 <IconX />

@@ -7,7 +7,7 @@ import { BasicModal } from "../../styles/modal.styles"
 import { ViewTitle } from "./ProductView/index.styles"
 import { ProductInfomation, QnaImageField, QnaTextField, VisuallyHiddenInput, UploadNotice } from "./writeQna.styles"
 import { sofa01 } from "../../assets/images/product"
-import { IconPlus } from "../../assets/images"
+import { IconPlus, IconX } from "../../assets/images"
 import CenterTitle from "../../components/title/CenterTitle"
 
 const WriteQna = () => {
@@ -51,6 +51,11 @@ const WriteQna = () => {
     setUserPhoto([...userPhoto, photoUrl])
   }
 
+  const handleRemovePhoto = (url: string) => () => {
+    let removePhoto = userPhoto.filter((el) => el !== url)
+    setUserPhoto(removePhoto)
+  }
+
   return (
     <>
       <CenterTitle title={["문의하기"]} />
@@ -90,6 +95,7 @@ const WriteQna = () => {
                 <div>
                   <img src={photo} alt="" />
                 </div>
+                <IconX onClick={handleRemovePhoto(photo)} />
               </Box>
             ))}
             {userPhoto.length < 2 && (

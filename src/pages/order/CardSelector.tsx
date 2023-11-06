@@ -2,18 +2,13 @@ import React, { useEffect, useState, useRef } from "react"
 import { List, ListItem, ListItemButton } from "@mui/material"
 import SelectBox from "../../components/SelectBox"
 
-interface CompleteProps {
-  complete: boolean[]
-  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
-}
-
 interface OptionsProps {
   id?: string | undefined
   name?: string | undefined
   img?: string
 }
 
-interface OptionSelectProps extends CompleteProps {
+interface OptionSelectProps {
   selectedOption: string | null
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>
 }
@@ -52,7 +47,7 @@ const cardOptions = [
 ]
 
 // 셀렉트박스 타입
-const CardSelector = ({selectedOption, setSelectedOption, complete, setComplete }: OptionSelectProps) => {
+const CardSelector = ({selectedOption, setSelectedOption }: OptionSelectProps) => {
   const [selected, setSelected] = useState<OptionsProps>(
     { id: '', name: '카드 선택', img: '' }
   )
@@ -75,15 +70,6 @@ const CardSelector = ({selectedOption, setSelectedOption, complete, setComplete 
     setSelected(option)
     selectedOption = name
     setSelectedOption(selectedOption)
-
-    // 옵션 선택 시 complete[1] = ture
-    if (selectedOption !== null) {
-      complete[1] = true
-      setComplete(complete)
-    } else {
-      complete[1] = false
-      setComplete(complete)
-    }
     console.log(selectedOption)
   }
 
