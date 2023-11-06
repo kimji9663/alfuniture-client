@@ -44,6 +44,8 @@ import { ReactComponent as IconCircleGray } from "./icon_circle_gray.svg"
 import { ReactComponent as IconTelGray } from "./icon_tel_gray.svg"
 import { ReactComponent as IconReviewStarBlackSmall } from "./icon_review_star_black_small.svg"
 import { ReactComponent as IconReviewStarGraySmall } from "./icon_review_star_gray_small.svg"
+import { ReactComponent as IconSpeechBubble } from "./icon_speech_bubble.svg"
+import { ReactComponent as IconHeartWhite } from "./icon_heart_white.svg"
 
 // Image
 import logo from "./logo.png"
@@ -53,6 +55,7 @@ import icon_naver from "./icon_sns_naver.svg"
 import icon_facebook from "./icon_sns_facebook.svg"
 import icon_apple from "./icon_sns_apple.svg"
 import img_Aclass from "./img_a_class.png"
+import user_profile from "./user_profile.png"
 
 export {
   // Component
@@ -97,6 +100,8 @@ export {
   IconTelGray,
   IconReviewStarBlackSmall,
   IconReviewStarGraySmall,
+  IconSpeechBubble,
+  IconHeartWhite,
 
   // Image
   logo,
@@ -109,4 +114,5 @@ export {
   icon_notice,
   icon_back,
   img_Aclass,
+  user_profile,
 }
