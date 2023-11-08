@@ -18,7 +18,7 @@ export const SwiperWrap = styled(Box)(() => ({
     minWidth: '100%',
     minHeight: '100%',
     objectFit: 'cover',
-    height: 'calc(80vh - 74px - 120px)',
+    height: 'calc(70vh - 74px - 120px)',
   },
   "& .slide_item .text": {
     position: "absolute",

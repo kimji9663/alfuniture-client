@@ -13,7 +13,7 @@ const FeaturedBrand = () => {
   const navigate = useNavigate()
 
   const goToNext = () => {
-    navigate("/onboarding/featured_funiture")
+    navigate("/style/brand")
   }
 
   const settings:ISwiperProps = {
@@ -50,7 +50,7 @@ const FeaturedBrand = () => {
           </SwiperWrap>
       </Box>
       <NaviWrap className="single">
-        <PrimaryButton onClick={goToNext}>다음으로</PrimaryButton>
+        <PrimaryButton onClick={goToNext}>전체 상품 보러가기</PrimaryButton>
       </NaviWrap>
     </>
   )
