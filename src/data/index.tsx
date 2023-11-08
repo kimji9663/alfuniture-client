@@ -1723,4 +1723,37 @@ export const styleTabPanelStyleTypes = [
   {avatar: plant, name: "플랜테리어", discription: "생기를 불어넣는"},
   {avatar: minimal, name: "미니멀", discription: "깔끔함이 최고"},
   {avatar: romantic, name: "로맨틱", discription: "달달한 신혼"},
-];
+]
+
+export const cardOptions = [
+  {
+    id: 1,
+    name: '신한카드',
+    img: null
+  },
+  {
+    id: 2,
+    name: '국민카드',
+    img: null
+  },
+  {
+    id: 3,
+    name: 'NH카드',
+    img: null
+  },
+  {
+    id: 4,
+    name: 'BC카드',
+    img: null
+  },
+  {
+    id: 5,
+    name: '삼성카드',
+    img: null
+  },
+  {
+    id: 6,
+    name: '현대카드',
+    img: null
+  },
+]

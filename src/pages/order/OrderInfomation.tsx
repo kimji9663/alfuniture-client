@@ -5,14 +5,18 @@ import SelectBox from "../../components/SelectBox"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
-import CardSelector from "./CardSelector"
 import { styled } from "@mui/material/styles"
-import { orderCouponData } from "../../data"
+import { orderCouponData, cardOptions } from "../../data"
 
 interface OptionsProps {
   id?: string | undefined
   name?: string | undefined
-  img?: string | undefined
+  type?: string | undefined
+}
+interface SeledtedOptionsProps {
+  coupon?: string
+  delivery?: string
+  card?: string
 }
 
 const AvatarList = styled(List)(() => ({
@@ -29,18 +33,22 @@ const AvatarList = styled(List)(() => ({
 const OrderInfomation = () => {
   const [expanded, setExpanded] = useState<string | false>(false)
   const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
-    { name: "쿠폰 선택", img: "" }
+    { name: "쿠폰 선택" }
   )
   const [selectDelivery, setSelectDelivery] = useState("check_quick")
-  const [selectCard, setSelectCard] = useState('')
-  const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
+  const [selectCard, setSelectCard] = useState<OptionsProps>(
+    { name: "선택하기", type: "카드사" }
+  )
+  const [selectedOption, setSelectedOption] = useState<SeledtedOptionsProps>({
+    coupon: '', delivery: '빠른배송', card: '',
+  })
   const [open, setOpen] = useState(false)
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
   }
 
-  const handleListItemClick = (
+  const handleCouponListItem = (
     brand: string,
     logo: string,
     title: string,
@@ -48,11 +56,22 @@ const OrderInfomation = () => {
     setOpen(false)
     const option = {...selectCoupon,  name: brand + "\u00A0" + title, img: logo}
     setSelectCoupon(option)
-    setSelectedOption(selectCoupon)
+    setSelectedOption({...selectedOption, coupon: brand + "\u00A0" + title })
+  }
+  
+  const handleCardListItem = (
+    name: string,
+  ) => {
+    setOpen(false)
+    const option = {...selectCard,  name: name}
+    setSelectCard(option)
+    setSelectedOption({...selectedOption, card: name })
   }
 
   const handleCheckDelivery = (event: React.SyntheticEvent) => {
     setSelectDelivery(event.currentTarget.id)
+    let deliveryName = event.currentTarget.id === 'check_quick' ? '빠른배송' : '일반배송'
+    setSelectedOption({...selectedOption, delivery: deliveryName })
   }
 
   return (
@@ -65,7 +84,7 @@ const OrderInfomation = () => {
           expandIcon={<ExpandMoreIcon />}
         >
           <p className="title">사용가능 쿠폰조회</p>
-          <p>쿠폰 선택</p>
+          <p>{orderCouponData.length}개</p>
         </AccordionSummary>
         <AccordionDetails>
           <SelectBox
@@ -79,7 +98,7 @@ const OrderInfomation = () => {
                 <ListItemButton
                   component="li"
                   key={el.id}
-                  onClick={() => handleListItemClick(el.brand, el.logo, el.title)}
+                  onClick={() => handleCouponListItem(el.brand, el.logo, el.title)}
                 >
                   <ListItemAvatar>
                     <Avatar alt={el.brand} src={el.logo} />
@@ -106,7 +125,7 @@ const OrderInfomation = () => {
           expandIcon={<ExpandMoreIcon />}
         >
           <p className="title">배송방법 선택</p>
-          <p>일반배송</p>
+          <p>{selectedOption.delivery}</p>
         </AccordionSummary>
         <AccordionDetails>
           <DeliveryCheckBox fullWidth>
@@ -161,10 +180,29 @@ const OrderInfomation = () => {
           <p>신용카드</p>
         </AccordionSummary>
         <AccordionDetails>
-          <CardSelector
-            selectedOption={selectCard}
-            setSelectedOption={setSelectCard}
-          />
+          <SelectBox
+            selected={selectCard}
+            setSelected={setSelectCard}
+            open={open}
+            setOpen={setOpen}
+          >
+            <AvatarList>
+              {cardOptions.map((el) => (
+                <ListItemButton
+                  component="li"
+                  key={el.id}
+                  onClick={() => handleCardListItem(el.name)}
+                >
+                  <Box>
+                    <ListItemText primary="카드사" />
+                  </Box>
+                  <Box sx={{ ml: "auto", fontSize: ".875rem" }}>
+                    {el.name}
+                  </Box>
+                </ListItemButton>
+              ))}
+            </AvatarList>
+          </SelectBox>
         </AccordionDetails>
       </OrderAccordionMenu>
 
