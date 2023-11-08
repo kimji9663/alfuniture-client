@@ -3,32 +3,22 @@ import { Box } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
 export const SwiperWrap = styled(Box)(() => ({
+  width: '100%',
   "& .swiper-wrapper": {
     alignItems: "end",
   },
   "& .swiper-slide": {
-    width: "67%",
-    maxWidth: "260px",
-    transform: "scale(0.75) translateY(15%)",
+    transform: "scale(0.75) translate3d(-5%, 16%, 0)",
     transitionDuration: ".5s",
   },
   "& .slide_item": {
     overflow: "hidden",
-    width: "100%",
-    aspectRatio: "1/1.28",
   },
   "& .slide_item img": {
-    display: "block",
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  "& .slide_item .landscape": {
-    height: "100%",
-  },  
-  "& .slide_item .portrait": {
-    width: "100%",
+    minWidth: '100%',
+    minHeight: '100%',
+    objectFit: 'cover',
+    height: 'calc(80vh - 74px - 120px)',
   },
   "& .slide_item .text": {
     position: "absolute",

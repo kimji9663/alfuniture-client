@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
-import TitleTwoLine2 from "../../components/title/TitleTwoLine2"
+import TitleTwoLine from "../../components/title/TitleTwoLine"
 import { GridBox } from "../../components/Box"
 import { StyleTypes } from "../shop/Filters/filters"
 import { StyleCard, StyleCardSelected } from "../../styles/card.style"
@@ -27,8 +27,8 @@ const StyleSelection = () => {
     
   return (
     <>
-      <TitleTwoLine2 title={title} />
-      <Box sx={{ height: "calc(100vh - 274px)", overflow: "auto" }}>
+      <TitleTwoLine title={title} />
+      <Box sx={{ height: "calc(100vh - 194px)", overflow: "auto" }}>
         <GridBox
           gridTemplateColumns={"1fr 1fr"}
           columnGap={"20px"}

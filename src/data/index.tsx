@@ -849,6 +849,24 @@ export const featuredBrandData = [
     img: thumb_brand01,
     name: "James Lee",
     description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
+  },
+  {
+    id: 4,
+    img: light01,
+    name: "Aerobiey",
+    description: "60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드"
+  },
+  {
+    id: 5,
+    img: chair01,
+    name: "OneRain",
+    description: "미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드"
+  },
+  {
+    id: 6,
+    img: thumb_brand01,
+    name: "James Lee",
+    description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
   }
 ]
 
