@@ -6,7 +6,14 @@ import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
 import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
 import { styled } from "@mui/material/styles"
-import { orderCouponData, cardOptions } from "../../data"
+import { cardOptions } from "../../data"
+
+interface CompleteProps {
+  selectedCard: string
+  setSelectedCard: (val:string) => void
+  selectedDelivery: string
+  setSelectedDelivery: (val:string) => void
+}
 
 interface OptionsProps {
   id?: string | undefined
@@ -30,11 +37,8 @@ const AvatarList = styled(List)(() => ({
   },
 }))
 
-const OrderInfomation = () => {
+const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setSelectedDelivery }: CompleteProps) => {
   const [expanded, setExpanded] = useState<string | false>(false)
-  const [selectCoupon, setSelectCoupon] = useState<OptionsProps>(
-    { name: "쿠폰 선택" }
-  )
   const [selectDelivery, setSelectDelivery] = useState("check_quick")
   const [selectCard, setSelectCard] = useState<OptionsProps>(
     { name: "선택하기", type: "카드사" }
@@ -47,17 +51,6 @@ const OrderInfomation = () => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
   }
-
-  const handleCouponListItem = (
-    brand: string,
-    logo: string,
-    title: string,
-  ) => {
-    setOpen(false)
-    const option = {...selectCoupon,  name: brand + "\u00A0" + title, img: logo}
-    setSelectCoupon(option)
-    setSelectedOption({...selectedOption, coupon: brand + "\u00A0" + title })
-  }
   
   const handleCardListItem = (
     name: string,
@@ -65,13 +58,14 @@ const OrderInfomation = () => {
     setOpen(false)
     const option = {...selectCard,  name: name}
     setSelectCard(option)
-    setSelectedOption({...selectedOption, card: name })
+    setSelectedCard(name)
   }
 
   const handleCheckDelivery = (event: React.SyntheticEvent) => {
     setSelectDelivery(event.currentTarget.id)
     let deliveryName = event.currentTarget.id === 'check_quick' ? '빠른배송' : '일반배송'
     setSelectedOption({...selectedOption, delivery: deliveryName })
+    setSelectedDelivery(deliveryName)
   }
 
   return (
@@ -79,47 +73,6 @@ const OrderInfomation = () => {
       <OrderAccordionMenu
         expanded={expanded === "panel1"} 
         onChange={handleChange("panel1")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <p className="title">사용가능 쿠폰조회</p>
-          <p>{orderCouponData.length}개</p>
-        </AccordionSummary>
-        <AccordionDetails>
-          <SelectBox
-            selected={selectCoupon}
-            setSelected={setSelectCoupon}
-            open={open}
-            setOpen={setOpen}
-          >
-            <AvatarList>
-              {orderCouponData.map((el) => (
-                <ListItemButton
-                  component="li"
-                  key={el.id}
-                  onClick={() => handleCouponListItem(el.brand, el.logo, el.title)}
-                >
-                  <ListItemAvatar>
-                    <Avatar alt={el.brand} src={el.logo} />
-                  </ListItemAvatar>
-                  <Box>
-                    <ListItemText primary={el.brand} />
-                    <ListItemText primary={el.title} />
-                  </Box>
-                  <Box sx={{ ml: "auto", fontSize: ".875rem" }}>
-                    D-{el.expiration}
-                  </Box>
-                </ListItemButton>
-              ))}
-            </AvatarList>
-          </SelectBox>
-        </AccordionDetails>
-      </OrderAccordionMenu>
-
-      <OrderAccordionMenu
-        expanded={expanded === "panel2"} 
-        onChange={handleChange("panel2")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -170,8 +123,8 @@ const OrderInfomation = () => {
       </OrderAccordionMenu>
 
       <OrderAccordionMenu
-        expanded={expanded === "panel3"} 
-        onChange={handleChange("panel3")}
+        expanded={expanded === "panel2"} 
+        onChange={handleChange("panel2")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -207,8 +160,8 @@ const OrderInfomation = () => {
       </OrderAccordionMenu>
 
       <OrderAccordionMenu
-        expanded={expanded === "panel4"} 
-        onChange={handleChange("panel4")}
+        expanded={expanded === "panel3"} 
+        onChange={handleChange("panel3")}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

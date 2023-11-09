@@ -4,6 +4,7 @@ import SelectBox from "../../components/SelectBox"
 import { aerobiey, jameslee, onerain, clods } from "../../assets/images/logo"
 import { OrderTitle } from "./order.styles"
 import { AvatarList } from "./couponSelector.styles"
+import { couponItems } from "../../data"
 
 interface CompleteProps {
   complete: string
@@ -27,41 +28,10 @@ interface OptionSelectProps extends CompleteProps {
   setSelectedCoupon: React.Dispatch<React.SetStateAction<OptionsProps>>
 }
 
-const couponItems = [
-  {
-    id: 'rerobiey',
-    brand: 'Rerobiey',
-    title: '브랜드 10% 쿠폰',
-    logo: aerobiey,
-    expiration: 20,
-  },
-  {
-    id: 'onerain',
-    brand: 'ONERAIN',
-    title: '브랜드 10% 쿠폰',
-    logo: onerain,
-    expiration: 15,
-  },
-  {
-    id: 'james_lee',
-    brand: 'James Lee',
-    title: '브랜드 10% 쿠폰',
-    logo: jameslee,
-    expiration: 11,
-  },
-  {
-    id: 'clods',
-    brand: 'CLODS',
-    title: '브랜드 10% 쿠폰',
-    logo: clods,
-    expiration: 3,
-  }
-]
-
 // 셀렉트박스 타입
 const OptionSelectType = ({selectedCoupon, setSelectedCoupon, complete, setComplete }: OptionSelectProps) => {
   const [selected, setSelected] = useState<OptionsProps>(
-    { name: '쿠폰을 선택해 주세요', img: '' }
+    { name: "쿠폰을 선택해 주세요", img: "" }
   )
   const dropMenuRef = useRef<HTMLDivElement | null>(null)
   const [open, setOpen] = useState(false)

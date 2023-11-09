@@ -870,36 +870,37 @@ export const featuredBrandData = [
   }
 ]
 
-export const orderCouponData = [
+export const couponItems = [
   {
-    id: "rerobiey",
-    brand: "Rerobiey",
-    title: "브랜드 10% 쿠폰",
+    id: 'rerobiey',
+    brand: 'Rerobiey',
+    title: '브랜드 10% 쿠폰',
     logo: aerobiey,
     expiration: 20,
   },
   {
-    id: "onerain",
-    brand: "ONERAIN",
-    title: "브랜드 10% 쿠폰",
+    id: 'onerain',
+    brand: 'ONERAIN',
+    title: '브랜드 10% 쿠폰',
     logo: onerain,
     expiration: 15,
   },
   {
-    id: "james_lee",
-    brand: "James Lee",
-    title: "브랜드 10% 쿠폰",
+    id: 'james_lee',
+    brand: 'James Lee',
+    title: '브랜드 10% 쿠폰',
     logo: jameslee,
     expiration: 11,
   },
   {
-    id: "clods",
-    brand: "CLODS",
-    title: "브랜드 10% 쿠폰",
+    id: 'clods',
+    brand: 'CLODS',
+    title: '브랜드 10% 쿠폰',
     logo: clods,
     expiration: 3,
   }
 ]
+
 interface OrderTermAgreement {
   id: string;
   require: boolean;
