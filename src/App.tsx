@@ -34,6 +34,7 @@ import DeliveryDetail from "./pages/mypage/DeliveryDetail"
 import BrandStory from "./pages/postmagazine/BrandStory"
 import EditorPick from "./pages/postmagazine/EditorPick"
 import MonthlyPost from "./pages/postmagazine/MonthlyPost"
+import Reels from "./pages/style/Reels"
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -220,6 +221,10 @@ const router = createBrowserRouter([
       {
         path: "/monthly_post/umasqu",
         element: <MonthlyPost />,
+      },
+      {
+        path: "/style/reels",
+        element: <Reels />,
       },
     ],
   },

@@ -8,6 +8,7 @@ import { monthlyPostSwiperData, videoSwiperData } from "../../data"
 import { ISwiperProps } from "../../components/ISwiperProps"
 import MonthlyPostBox from "./MonthlyPostBox"
 import { HeadlineLargeBoldTypography, TitleSmallWhiteTypography, HeadlineExtraLargeBoldGray9Typography, TitleSmallGray8Typography, LabelMediumGray9Typography, LabelMediumGray7Typography, TitleLargeBoldGray9Typography } from "../../components/Typography"
+import { useNavigate } from "react-router-dom"
 
 const brandCollectionSettings:ISwiperProps = {
   loop: false,
@@ -22,6 +23,11 @@ const MonthlyPostBoxSettings:ISwiperProps = {
 }
 
 const PostMagazineTabPanel = () => {
+
+  const navigate = useNavigate()
+  const goToReels = () => {
+    navigate("/style/reels")
+  }
   
   return (
     <>
@@ -96,7 +102,7 @@ const PostMagazineTabPanel = () => {
         <TitleLargeBoldGray9Typography>Brand Collection Video</TitleLargeBoldGray9Typography>
         <Swiper {...brandCollectionSettings}  style={{maxWidth: "420px",width: "100vw"}}>
           {videoSwiperData.map((item, index) => (
-            <SwiperSlide key={index} >
+            <SwiperSlide key={index} onClick={goToReels}>
               <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
                 <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
               </Box>

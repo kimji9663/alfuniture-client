@@ -1563,8 +1563,8 @@ export const monthlyPostSwiperData = [
   {
     imageUrl: aerobiey01,
     title: "따듯한 가구",
-    description: "일상속에서 자연스러운 아름다움을 느껴보세요.",
-    author: "Aerobiey - 23s",
+    description: "일상속에서 자연스러운 아름다움을 느껴보세요. - 23s",
+    author: "umasqu - 23s",
   },
   {
     imageUrl: styleBanner06,
