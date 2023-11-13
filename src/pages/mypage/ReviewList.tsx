@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { RectCheckboxNonChecked } from "../../styles/checkbox.styles"
 import { reviewData } from "../../data"
 import NoData from "../../components/NoData"
+import NavigationBar from "../../components/NavigationBar"
 import { TitleSmallBoldGray9Typography, LabelMediumGray7Typography, TitleSmallGray7Typography, LabelMediumBoldGray8Typography} from "../../components/Typography"
 
 const ReviewList: React.FC = () => {
@@ -38,7 +39,8 @@ const ReviewList: React.FC = () => {
   return (
     <>
       {myReviewList.length > 0 ? (
-        <Box sx={{p:2, pt:6}}>
+        <>
+        <Box sx={{px:2, pt:6, pb:0}}>
           <LabelMediumGray7Typography sx={{lineHeight: "20px"}}>작성한 리뷰({myReviewList.length})</LabelMediumGray7Typography>
           {myReviewList.map((review, index) => (
             <Box key={index} sx={{pt:2}}>  
@@ -79,6 +81,8 @@ const ReviewList: React.FC = () => {
           </Box>
           ))}
         </Box>
+        <NavigationBar/>
+        </>
       ):(
         <NoData message={"작성한 리뷰가 없습니다."} linkText={"홈으로 가기"} linkTo={"/"} insideTheTab={true}/>
       )}

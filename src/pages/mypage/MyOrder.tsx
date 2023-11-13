@@ -6,6 +6,7 @@ import { RectCheckbox } from "../../styles/checkbox.styles"
 import OrderList from "./OrderList"
 import { deliveryStatusFilterData, myOrderList } from "../../data"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
+import NoData from "../../components/NoData"
 
 const centerTitle = ["주문배송"]
 
@@ -108,10 +109,13 @@ const MyOrder = () => {
           </>
         )}
         </Box>
-        <Box sx={{ p: 2, pt: 5 }}>
-          {filteredOrders.length == 0 ? ("데이터가 없습니다.") : (<OrderList myOrderList={filteredOrders} review={false} />)}
-          
-        </Box>
+        {filteredOrders.length == 0 ? (
+          <NoData message={"배송 정보가 없습니다."} linkText={"마이 페이지로 가기"} linkTo={"/mypage"} insideTheTab={true}/>
+        ) : (
+          <Box sx={{ p: 2, pt: 5 }}>
+            <OrderList myOrderList={filteredOrders} review={false} />
+          </Box>
+        )}
       </Box>
       <NavigationBar />
     </>
