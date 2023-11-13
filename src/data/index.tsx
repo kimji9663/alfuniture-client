@@ -849,39 +849,58 @@ export const featuredBrandData = [
     img: thumb_brand01,
     name: "James Lee",
     description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
+  },
+  {
+    id: 4,
+    img: light01,
+    name: "Aerobiey",
+    description: "60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드"
+  },
+  {
+    id: 5,
+    img: chair01,
+    name: "OneRain",
+    description: "미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드"
+  },
+  {
+    id: 6,
+    img: thumb_brand01,
+    name: "James Lee",
+    description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
   }
 ]
 
-export const orderCouponData = [
+export const couponItems = [
   {
-    id: "rerobiey",
-    brand: "Rerobiey",
-    title: "브랜드 10% 쿠폰",
+    id: 'rerobiey',
+    brand: 'Rerobiey',
+    title: '브랜드 10% 쿠폰',
     logo: aerobiey,
     expiration: 20,
   },
   {
-    id: "onerain",
-    brand: "ONERAIN",
-    title: "브랜드 10% 쿠폰",
+    id: 'onerain',
+    brand: 'ONERAIN',
+    title: '브랜드 10% 쿠폰',
     logo: onerain,
     expiration: 15,
   },
   {
-    id: "james_lee",
-    brand: "James Lee",
-    title: "브랜드 10% 쿠폰",
+    id: 'james_lee',
+    brand: 'James Lee',
+    title: '브랜드 10% 쿠폰',
     logo: jameslee,
     expiration: 11,
   },
   {
-    id: "clods",
-    brand: "CLODS",
-    title: "브랜드 10% 쿠폰",
+    id: 'clods',
+    brand: 'CLODS',
+    title: '브랜드 10% 쿠폰',
     logo: clods,
     expiration: 3,
   }
 ]
+
 interface OrderTermAgreement {
   id: string;
   require: boolean;
@@ -1705,4 +1724,37 @@ export const styleTabPanelStyleTypes = [
   {avatar: plant, name: "플랜테리어", discription: "생기를 불어넣는"},
   {avatar: minimal, name: "미니멀", discription: "깔끔함이 최고"},
   {avatar: romantic, name: "로맨틱", discription: "달달한 신혼"},
-];
+]
+
+export const cardOptions = [
+  {
+    id: 1,
+    name: '신한카드',
+    img: null
+  },
+  {
+    id: 2,
+    name: '국민카드',
+    img: null
+  },
+  {
+    id: 3,
+    name: 'NH카드',
+    img: null
+  },
+  {
+    id: 4,
+    name: 'BC카드',
+    img: null
+  },
+  {
+    id: 5,
+    name: '삼성카드',
+    img: null
+  },
+  {
+    id: 6,
+    name: '현대카드',
+    img: null
+  },
+]

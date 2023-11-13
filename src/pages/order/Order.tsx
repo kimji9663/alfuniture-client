@@ -16,7 +16,7 @@ import CouponSelector from "./CouponSelector"
 
 const Order = () => {
   const navigate = useNavigate()
-  // 입력한 모든 주소 저장
+  // 입력한 모든 정보 저장
   const [orderData, setOrderData] = useState({
     recipient: "",
     zipcode: "",
@@ -24,6 +24,9 @@ const Order = () => {
     phoneNumber: "",
     addressSave: false,
     termsAgree: false,
+    coupon: "",
+    deliveryType: "",
+    card: "",
   })
   const [recipientError, setRecipientError] = useState({
     errorActive: false,
@@ -36,7 +39,6 @@ const Order = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [couponOpen, setCouponOpen] = useState(false)
   const [selectCoupon, setSelectCoupon] = useState('')
-  const [selectCard, setSelectCard] = useState('')
   const [finalAmount, setFinalAmount] = useState(0)
 
   const handleClose = () => {
@@ -52,12 +54,14 @@ const Order = () => {
     // return 
   }
 
+  // 필수정보 체크 후 주문 버튼 활성화
   const handleActiveOrder = 
     orderData.recipient !== "" && 
     orderData.zipcode !== "" &&
     orderData.deliveryAddress !== "" &&
     orderData.phoneNumber !== "" &&
-    orderData.termsAgree === true
+    orderData.termsAgree === true &&
+    orderData.card !== ""
   ? (
     false
   ) : (
@@ -137,7 +141,6 @@ const Order = () => {
 
   const onCompletePost = (data:any) => {
     setModalOpen(false)
-    console.log(data)
     setOrderData({
       ...orderData, 
       zipcode: data.zonecode,
@@ -145,9 +148,16 @@ const Order = () => {
     })
   }
 
-  const changeOrderData = (val:boolean) => {
+  const changeOrderDataDelivery = (val:string) => {
+    setOrderData({...orderData, deliveryType: val})
+  }
+
+  const changeOrderDataCard = (val:string) => {
+    setOrderData({...orderData, card: val})
+  }
+
+  const changeOrderDataTermsAgree = (val:boolean) => {
     setOrderData({...orderData, termsAgree: val})
-    //console.log(val)
   }
 
   const toggleDrawer = (val:boolean) => {
@@ -355,7 +365,7 @@ const Order = () => {
                     <div>
                       <span>-3000원</span>
                       <Button 
-                        onClick={() => setCouponOpen(true)}
+                        onClick={() => setSelectCoupon('')}
                         sx={{
                           backgroundColor: '#bdbdbd',
                           color: '#fff',
@@ -371,11 +381,17 @@ const Order = () => {
           </Box>
         </Box>
 
-        <OrderInfomation />
+        {/* 배송방법, 결제방법, 결제금액 */}
+        <OrderInfomation 
+          selectedCard={orderData.card}
+          setSelectedCard={changeOrderDataCard}
+          selectedDelivery={orderData.deliveryType}
+          setSelectedDelivery={changeOrderDataDelivery}
+        />
 
         <OrderTermsAgreement 
           termsAgree={orderData.termsAgree}
-          changeOrderData={changeOrderData}
+          changeOrderData={changeOrderDataTermsAgree}
         />
       </Box>
 

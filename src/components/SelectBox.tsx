@@ -10,6 +10,7 @@ interface OptionsProps {
   id?: string | undefined
   name?: string | undefined
   img?: string | undefined
+  type?: string | undefined
 }
 
 interface SelectBoxProps {
@@ -89,10 +90,21 @@ const SelectBox = (props: SelectBoxProps) => {
         fullWidth
         onClick={handleOpen}
       >
-        {selected.img !== "" && (
+        {selected.img && (
           <img src={selected.img} alt={selected.name} />
         )}
-        <span>{selected.name}</span>
+        {selected.type ? (
+          <>
+            <Box component="span" sx={{ mr: 'auto', color: '#333' }}>
+              {selected.type}
+            </Box>
+            <Box component="span" sx={{ pr: 3 }}>
+              {selected.name}
+            </Box>
+          </>
+        ) : (
+          <span>{selected.name}</span>
+        )}
       </Button>
       <Box className="dropmenu">
         {props.children}
