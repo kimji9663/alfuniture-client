@@ -20,7 +20,7 @@ const Review: React.FC = () => {
   return (
     <>
       <CenterTitle title={title}/>
-      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
+      <Box sx={{ height: "calc(100vh - 57px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
           borderColor: "divider",
@@ -40,9 +40,12 @@ const Review: React.FC = () => {
 
         <TabPanel value={tabValue} index={0}>
           {reviewMyOrderData.length > 0 ? ( 
-            <Box sx={{p:2, pt:5}}>
-              <OrderList myOrderList={reviewMyOrderData} review={true} />
-            </Box>
+            <>
+              <Box sx={{p:2, pt:5}}>
+                <OrderList myOrderList={reviewMyOrderData} review={true} />
+              </Box>
+              <NavigationBar />
+            </>
             ) : (
             <NoData message={"작성 가능한 리뷰가 없습니다."} linkText={"홈으로 가기"} linkTo={"/"} insideTheTab={true}/>
             )}
@@ -52,7 +55,6 @@ const Review: React.FC = () => {
           <ReviewList />
         </TabPanel>
       </Box>
-      <NavigationBar />
     </>
   )
 }

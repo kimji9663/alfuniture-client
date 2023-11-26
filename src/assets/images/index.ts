@@ -9,6 +9,7 @@ import { ReactComponent as IconShop } from "./icon_shop.svg"
 import { ReactComponent as IconLike } from "./icon_like.svg"
 import { ReactComponent as IconMy } from "./icon_my.svg"
 import { ReactComponent as HalfArrow } from "./icon_half_arrow.svg"
+import { ReactComponent as IconArrowForwardIcon } from "./icon_arrow_forward_Icon.svg"
 import { ReactComponent as HalfArrowRigth } from "./icon_half_arrow_right.svg"
 import { ReactComponent as HalfArrowDownGray } from "./icon_half_arrow_down_gray.svg"
 import { ReactComponent as ArrowRight } from "./icon_arrow_right.svg"
@@ -102,6 +103,7 @@ export {
   IconReviewStarGraySmall,
   IconSpeechBubble,
   IconHeartWhite,
+  IconArrowForwardIcon,
 
   // Image
   logo,
