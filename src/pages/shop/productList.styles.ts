@@ -1,9 +1,11 @@
 import { Box, ListItemButton } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { FlexSpaceBetweenBox } from "../../components/Box"
+import { FlexBox, FlexSpaceBetweenBox } from "../../components/Box"
 
 export const FilterContainer = styled(Box)(() => ({
-  display: 'block',
+  // display: 'block',
+  overflow: 'auto',
+  whiteSpace: 'nowrap',
   padding: '0.5rem 0',
   borderTop: '1px solid #DDDDDD',
   borderBottom: '1px solid #DDDDDD',
@@ -19,8 +21,11 @@ export const FilterButton = styled(ListItemButton)(({}) => ({
   }
 }))
 
-export const FilterTypeContainer = styled(FlexSpaceBetweenBox)(() => ({
+export const FilterTypeContainer = styled(FlexBox)(() => ({
   padding: '0.5rem 1rem',
+  columnGap: '0.5rem',
+  overflow: 'auto',
+  whiteSpace: 'nowrap',
   '& .MuiButton-root': {
     borderRadius: 0,
     padding: '.375rem 1rem',

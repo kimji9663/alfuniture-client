@@ -1,7 +1,13 @@
+import { Filter } from "@mui/icons-material";
 import { beige, black, blue, brown, green, grey, pattern, pink, purple, red, white, yellow } from "../../../assets/images/filterIcon/colors";
 import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../../../assets/images/filterIcon/styles";
 import { fabric, leather, marble, rattan, silver, wood } from "../../../assets/images/filterIcon/textures";
 import { chinese_mahogany, ebony, etc, maple, solid, teak, walnut } from "../../../assets/images/filterIcon/woods";
+
+export interface FilterOption {
+  avatar: string;
+  name: string;
+};
 
 const WoodTypes = [
   {avatar: etc, name: '기타수종'},
@@ -14,7 +20,7 @@ const WoodTypes = [
   {avatar: beige, name: '베이지'},
 ];
 
-const ColorTypes: {avatar: string; name: string}[] = [
+const ColorTypes: FilterOption[] = [
   {avatar: black, name: '블랙'},
   {avatar: white, name: '화이트'},
   {avatar: grey, name: '그레이'},
@@ -49,10 +55,10 @@ export const StyleTypes = [
   {avatar: romantic, name: '로맨틱'},
 ];
 
-export const FilterTypes: {[key: string]: Array<{avatar: string; name: string}> | null} = {
+export const FilterTypes: {[key: string]: Array<FilterOption> | undefined} = {
   '원목': WoodTypes,
   '컬러': ColorTypes,
   '재질': TextureTypes,
-  '가격': null,
+  '가격': undefined,
   '스타일': StyleTypes
 };
