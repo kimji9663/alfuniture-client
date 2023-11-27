@@ -53,13 +53,13 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
   const handleClickOption = (item: FilterOption) => () => {
     let copy = [...selected]
     let idx = copy.indexOf(item)
-    idx == -1 ? copy.push(item) : copy.splice(idx, 1)
+    idx === -1 ? copy.push(item) : copy.splice(idx, 1)
     setSelected(copy)
   };
   const handleClickX = (item: FilterOption) => {
     let copy = [...selected]
     let idx = copy.indexOf(item)
-    if (idx != -1) copy.splice(idx, 1)
+    if (idx !== -1) copy.splice(idx, 1)
     setSelected(copy)
   }
 
@@ -81,7 +81,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
           /> : null}
         </Box>
         <Box sx={{ maxHeight: 'calc(100% - 164px)', overflow: 'auto' }}>
-          {type != '가격' ? FilterTypes[type]?.map((item, idx) => (
+          {type !== '가격' ? FilterTypes[type]?.map((item, idx) => (
             <FilterMenuItem
               key={`${item}-type-${idx}`}
               selected={selected.includes(item)}

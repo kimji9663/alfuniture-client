@@ -1,6 +1,6 @@
 import { Box, ListItemButton } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { FlexBox, FlexSpaceBetweenBox } from "../../components/Box"
+import { FlexBox } from "../../components/Box"
 
 export const FilterContainer = styled(Box)(() => ({
   overflow: 'auto',

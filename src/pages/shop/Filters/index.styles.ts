@@ -1,6 +1,6 @@
-import { Box, Button, MenuItem, MenuList } from '@mui/material';
+import { Button, MenuItem, MenuList } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { FlexAlignItemsCenterBox, FlexBox, FlexSpaceBetweenBox, FlexSpaceBetweenCenterBox } from '../../../components/Box';
+import { FlexAlignItemsCenterBox, FlexBox } from '../../../components/Box';
 
 export const OptionTagContainer = styled(FlexBox)(() => ({
   columnGap: '0.5rem',
@@ -50,7 +50,7 @@ export const FilterMenuItem = styled(MenuItem)(() => ({
   },
 }))
 
-export const ShowProductButton = styled(Button)(() => ({  
+export const ShowProductButton = styled(Button)(() => ({
   borderRadius: 0,
   width: '100%',
   height: '74px',

@@ -11,14 +11,14 @@ import brandCollectionVideo02 from "./brand_collection_video02.png"
 import brandCollectionVideo03 from "./brand_collection_video03.png"
 
 export {
-    styleBanner01,
-    styleBanner02,
-    styleBanner03,
-    styleBanner04,
-    styleBanner05,
-    styleBanner06,
-    styleBanner07,
-    brandCollectionVideo01,
-    brandCollectionVideo02,
-    brandCollectionVideo03,
+  styleBanner01,
+  styleBanner02,
+  styleBanner03,
+  styleBanner04,
+  styleBanner05,
+  styleBanner06,
+  styleBanner07,
+  brandCollectionVideo01,
+  brandCollectionVideo02,
+  brandCollectionVideo03,
 }
