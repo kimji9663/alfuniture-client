@@ -7,13 +7,13 @@ import { BasicModal } from "../../styles/modal.styles"
 import { ViewTitle } from "./ProductView/index.styles"
 import { ProductInfomation, QnaImageField, QnaTextField, VisuallyHiddenInput, UploadNotice } from "./writeQna.styles"
 import { sofa01 } from "../../assets/images/product"
-import { IconPlus } from "../../assets/images"
+import { IconPlus, IconX } from "../../assets/images"
 import CenterTitle from "../../components/title/CenterTitle"
 
 const WriteQna = () => {
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
-  const [modalType, setModalType] = useState('')
+  const [modalType, setModalType] = useState("")
   const [userPhoto, setUserPhoto] = useState<string[]>([])
   let photoUrl: string | undefined
 
@@ -51,10 +51,15 @@ const WriteQna = () => {
     setUserPhoto([...userPhoto, photoUrl])
   }
 
+  const handleRemovePhoto = (url: string) => () => {
+    let removePhoto = userPhoto.filter((el) => el !== url)
+    setUserPhoto(removePhoto)
+  }
+
   return (
     <>
-      <CenterTitle title={['문의하기']} />
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <CenterTitle title={["문의하기"]} />
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ p: 2 }}>
           <ViewTitle>문의상품</ViewTitle>
           <ProductInfomation sx={{ mt: 2 }}>
@@ -90,6 +95,7 @@ const WriteQna = () => {
                 <div>
                   <img src={photo} alt="" />
                 </div>
+                <IconX onClick={handleRemovePhoto(photo)} />
               </Box>
             ))}
             {userPhoto.length < 2 && (
@@ -116,13 +122,13 @@ const WriteQna = () => {
       </Box>
 
       <NaviWrap className="pair" sx={{ zIndex: 2 }}>
-        <SecondaryButton onClick={handleModalOpen('cancel')}>취소하기</SecondaryButton>
-        <PrimaryButton onClick={handleModalOpen('upload')}>작성완료</PrimaryButton>
+        <SecondaryButton onClick={handleModalOpen("cancel")}>취소하기</SecondaryButton>
+        <PrimaryButton onClick={handleModalOpen("upload")}>작성완료</PrimaryButton>
       </NaviWrap>
 
       <BasicModal open={modalOpen} onClose={handleClose}>
         <Box>
-          {modalType === 'cancel' && (
+          {modalType === "cancel" && (
             <>
               <div className="content">작성을 취소하시겠습니까?</div>
               <ButtonGroup fullWidth>
@@ -131,7 +137,7 @@ const WriteQna = () => {
               </ButtonGroup>
             </>
           )}
-          {modalType === 'upload' && (
+          {modalType === "upload" && (
             <>
               <div className="content">문의를 등록하시겠습니까?</div>
               <ButtonGroup fullWidth>

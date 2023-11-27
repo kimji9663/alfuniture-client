@@ -4,11 +4,11 @@ import { styled } from "@mui/material/styles"
 import CheckboxIcon from "../../../components/CheckBoxIcon"
 
 export const AgreeCheckbox = styled(FormControlLabel)(() => ({
-  '& > span': {
-    color: '#333',
+  "& > span": {
+    color: "#333",
   },
-  '& .sub': {
-    color: '#999',
+  "& .sub": {
+    color: "#999",
   }
 }))
 
@@ -19,24 +19,24 @@ type IvalidatedProps = {
 
 const agreeItems = [
   {
-    id: 'check_agree_age',
+    id: "check_agree_age",
     require: true,
-    label: '만 14세 이상'
+    label: "만 14세 이상"
   },
   {
-    id: 'check_terms_of_use',
+    id: "check_terms_of_use",
     require: true,
-    label: '이용약관 동의'
+    label: "이용약관 동의"
   },
   {
-    id: 'check_privacy',
+    id: "check_privacy",
     require: true,
-    label: '개인정보 수집 및 이용동의'
+    label: "개인정보 수집 및 이용동의"
   },
   {
-    id: 'check_marketing',
+    id: "check_marketing",
     require: false,
-    label: '광고성 정보 수신 및 마케팅 활용 동의'
+    label: "광고성 정보 수신 및 마케팅 활용 동의"
   },
 ]
 
@@ -49,7 +49,7 @@ const TermsAgreement = ({validated, changeValidated}:IvalidatedProps) => {
   const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked){
       setCheckedList([...checkedList, ...agreeItems.map(el => el.id)])
-      if (event.currentTarget.id === 'check_agree_all'){
+      if (event.currentTarget.id === "check_agree_all"){
         setCheckedAll(true)
         validated[0] = true
         console.log(validated)
@@ -98,7 +98,7 @@ const TermsAgreement = ({validated, changeValidated}:IvalidatedProps) => {
             />
           } 
           labelPlacement="end" 
-          label={<><span className="sub">{el.require ? '[필수]' : '[선택]'}</span> {el.label}</>}
+          label={<><span className="sub">{el.require ? "[필수]" : "[선택]"}</span> {el.label}</>}
         />
       ))}
     </>
@@ -125,7 +125,7 @@ const TermsAgreement = ({validated, changeValidated}:IvalidatedProps) => {
             labelPlacement="end" 
             label={<>모두동의 <span className="sub">[선택정보 포함]</span></>}
           />
-          <Divider sx={{ borderColor: '#333' }} />
+          <Divider sx={{ borderColor: "#333" }} />
           {children}
         </FormControl>
       </Box>

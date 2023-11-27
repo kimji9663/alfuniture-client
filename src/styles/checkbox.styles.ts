@@ -2,35 +2,35 @@ import { FormControl} from "@mui/material"
 import { styled, useTheme } from "@mui/material/styles"
 
 export const RectCheckbox = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
+  "& input": {
+    display: "none",
   },
-  '& label': {
-    padding: '6px 16px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-    color: '#999999',
+  "& label": {
+    padding: "6px 16px",
+    border: "1px solid #DADADA",
+    fontSize: "0.875rem",
+    color: "#999999",
   },
-  '& input:checked + label': {
-    border: '1px solid #242223',
-    backgroundColor: '#242223',
-    color: '#fff',
+  "& input:checked + label": {
+    border: "1px solid #242223",
+    backgroundColor: "#242223",
+    color: "#fff",
   },
 }))
 
 export const RectCheckboxNonChecked = styled(FormControl)(({ }) => ({
-  '& input': {
-    display: 'none',
+  "& input": {
+    display: "none",
   },
-  '& label': {
-    padding: '6px 16px',
-    border: '1px solid #DADADA',
-    fontSize: '0.875rem',
-    color: '#999999',
+  "& label": {
+    padding: "6px 16px",
+    border: "1px solid #DADADA",
+    fontSize: "0.875rem",
+    color: "#999999",
   },
 }))
 
-export const CustomCheckbox = styled('input')(() => {
+export const CustomCheckbox = styled("input")(() => {
   const theme = useTheme(); 
   return {
     "-webkit-appearance": "none",
@@ -45,7 +45,7 @@ export const CustomCheckbox = styled('input')(() => {
     "&:after": {
       border: `solid ${theme.palette.common.white}`,
       borderWidth: "0 1px 1px 0",
-      content: '""',
+      content: "''",
       display: "block",
       height: "45%",
       left: "35%",
@@ -66,38 +66,38 @@ export const CustomCheckbox = styled('input')(() => {
 });
 
 export const DeliveryCheckBox = styled(FormControl)(() => ({
-  margin: '0 0 16px',
-  '& > input': {
-    display: 'none',
+  margin: "0 0 16px",
+  "& > input": {
+    display: "none",
   },
-  '& > label': {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '16px',
-    height: '84px',
-    boxSizing: 'border-box',
-    border: '1px solid #dadada',
+  "& > label": {
+    display: "flex",
+    alignItems: "center",
+    padding: "16px",
+    height: "84px",
+    boxSizing: "border-box",
+    border: "1px solid #dadada",
   },
-  '& > label svg': {
-    color: '#999',
+  "& > label svg": {
+    color: "#999",
   },
-  '& > label .price': {
-    fontSize: '1rem',
+  "& > label .price": {
+    fontSize: "1rem",
   },
-  '& > label .additional': {
-    fontSize: '.875rem',
-    color: '#999',
-    letterSpacing: '-0.05rem',
+  "& > label .additional": {
+    fontSize: ".875rem",
+    color: "#999",
+    letterSpacing: "-0.05rem",
   },
-  '& > label .additional > span': {
-    color: '#FF6737',
+  "& > label .additional > span": {
+    color: "#FF6737",
   },
-  '& input:checked + label': {
-    border: '1px solid #999',
-    backgroundColor: '#242223',
-    color: '#fafafa',
+  "& input:checked + label": {
+    border: "1px solid #999",
+    backgroundColor: "#242223",
+    color: "#fafafa",
   },
-  '& input:checked + label svg': {
-    color: '#fff',
+  "& input:checked + label svg": {
+    color: "#fff",
   }
 }))

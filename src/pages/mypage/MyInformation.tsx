@@ -6,50 +6,50 @@ import { IconEdit, HalfArrow } from "../../assets/images"
 import { styled } from "@mui/material/styles" 
 
 const IdSection = styled(Box)(() => ({
-  paddingTop: '32px', 
-  paddingBottom: '40px', 
-  textAlign: 'center',
+  paddingTop: "32px", 
+  paddingBottom: "40px", 
+  textAlign: "center",
 
-  '& > .nickname': {
-    display: 'inline-block', 
-    position: 'relative', 
-    fontSize: '1.5rem',
+  "& > .nickname": {
+    display: "inline-block", 
+    position: "relative", 
+    fontSize: "1.5rem",
   },
-  '& > .nickname > svg': {
-    position: 'absolute',
-    top: '9px',
-    right: '-26px',
+  "& > .nickname > svg": {
+    position: "absolute",
+    top: "9px",
+    right: "-26px",
   },
-  '& > .email': {
-    marginTop: '4px', 
-    textAlign: 'center', 
-    fontSize: '.875rem',
+  "& > .email": {
+    marginTop: "4px", 
+    textAlign: "center", 
+    fontSize: ".875rem",
   },
 })) 
 
 const InfomationList = styled(Box)(() => ({
-  '& > button': {
-    justifyContent: 'space-between',
-    padding: '12px 16px',
+  "& > button": {
+    justifyContent: "space-between",
+    padding: "12px 16px",
     borderRadius: 0,
-    color: '#333',
-    fontSize: '.875rem',
+    color: "#333",
+    fontSize: ".875rem",
   },
-  '& > button.gray': {
-    color: '#BDBDBD',
+  "& > button.gray": {
+    color: "#BDBDBD",
   },
-  '& > .MuiDivider-root': {
-    margin: '6px 0'
+  "& > .MuiDivider-root": {
+    margin: "6px 0"
   }, 
 }))
 
-const centerTitle = ['내 정보']
+const centerTitle = ["내 정보"]
 
 const MyInformation = () => {
   return (
     <>
       <CenterTitle title={centerTitle}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <IdSection>
           <Box component="p" className="nickname">
             Hongroad

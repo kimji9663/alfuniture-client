@@ -1,11 +1,8 @@
-import { sofa01, sofa02, sofa03, sofa04, sofa05, table01, table02, table03, chair01, chair02, chair03, chair04, closet01, closet02, closet03, bed01, bed02, bed03, light01, light02, light03, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06, jamesLee01, jamesLee02, jamesLee03, jamesLee04, onerain01, onerain02, onerain03, aerobiey06, aerobiey07, aerobiey08, aerobiey09, henredn04, henredn05, henredn06, henredn07, umasqu04, umasqu05, umasqu06, umasqu07, recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, onerain_coupon03, deliveryProduct,
-} from "./../assets/images/product"
+import { sofa01, sofa02, sofa03, sofa04, sofa05, table01, chair01, chair02, chair03, chair04, light01, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06, jamesLee01, jamesLee02, jamesLee03, jamesLee04, onerain01, onerain02, onerain03, aerobiey06, aerobiey07, aerobiey08, aerobiey09, henredn04, henredn05, henredn06, henredn07, umasqu04, umasqu05, umasqu06, umasqu07, recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, onerain_coupon03, deliveryProduct } from "./../assets/images/product"
 import { aerobiey, alfdn, clods, jameslee, onerain } from "../assets/images/logo"
-import { onerainBrand, jamesLee, unknown, onerainDetail, aerobiey01, designer, brandStory, aerobiey02, aerobiey03, aerobiey04, aerobiey05, henredn01, henredn02, henredn03, umasqu01, umasqu02, umasqu03, alfdn01, alfdn02, alfdn03, alfdn04, alfdn05,
-} from "../assets/images/brand"
+import { onerainBrand, aerobiey01, alfdn01, alfdn02, alfdn03, alfdn04} from "../assets/images/brand"
 import { thumb_brand01 } from "../assets/images"
-import { styleBanner01, styleBanner02, styleBanner03, styleBanner04, styleBanner05, styleBanner06, styleBanner07, brandCollectionVideo01, brandCollectionVideo02, brandCollectionVideo03,
-} from "../assets/images/banner"
+import { styleBanner01, styleBanner03, styleBanner04, styleBanner05, styleBanner06, styleBanner07, brandCollectionVideo01, brandCollectionVideo02 } from "../assets/images/banner"
 import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../assets/images/filterIcon/styles";
 
 export const likeProductData = [
@@ -14,48 +11,48 @@ export const likeProductData = [
     imgsrc: chair03,
     like: true,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-0152',
-    productName: '릴렉스 체어 (3colors)',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-0152",
+    productName: "릴렉스 체어 (3colors)",
     price: 4834000,
-    colors: ['#A55555', '#192552', '#494A4C'],
-    name: '의자',
+    colors: ["#A55555", "#192552", "#494A4C"],
+    name: "의자",
   },
   {
     id: 1,
     imgsrc: sofa02,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[22s] HRD-210',
-    productName: '1인 모던 쇼파 ',
+    shopName: "Henredo",
+    modelName: "[22s] HRD-210",
+    productName: "1인 모던 쇼파 ",
     price: 6790000,
-    colors: ['#864000'],
-    name: '소파',
+    colors: ["#864000"],
+    name: "소파",
   },
   {
     id: 2,
     imgsrc: sofa03,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-251',
-    productName: '기획전 시티 쇼파',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-251",
+    productName: "기획전 시티 쇼파",
     price: 2230000,
-    colors: ['#CBC6C3'],
-    name: '소파',
+    colors: ["#CBC6C3"],
+    name: "소파",
   },
   {
     id: 3,
     imgsrc: sofa01,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-123',
-    productName: '올드 가죽쇼파',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-123",
+    productName: "올드 가죽쇼파",
     price: 1230000,
-    colors: ['#A55555'],
-    name: '소파',
+    colors: ["#A55555"],
+    name: "소파",
   },
 ]
 
@@ -64,73 +61,73 @@ export const rankingProductData = [
     id: 0,
     rank: 1,
     imgsrc: rankingItem01,
-    shopName: 'ONERAIN',
-    modelName: '[23Series] OR-102',
-    productName: '원레인 우든 테이블',
-    name: '테이블',
+    shopName: "ONERAIN",
+    modelName: "[23Series] OR-102",
+    productName: "원레인 우든 테이블",
+    name: "테이블",
   },
   {
     id: 1,
     rank: 2,
     imgsrc: rankingItem02,
-    shopName: 'ONERAIN',
-    modelName: '[22Series] OR-210',
-    productName: '원레인 그랑프리 체어',
-    name: '의자',
+    shopName: "ONERAIN",
+    modelName: "[22Series] OR-210",
+    productName: "원레인 그랑프리 체어",
+    name: "의자",
   },
   {
     id: 2,
     rank: 3,
     imgsrc: rankingItem03,
-    shopName: 'ONERAIN',
-    modelName: '[23Series] OR-110',
-    productName: '원레인 우든 테이블',
-    name: '테이블',
+    shopName: "ONERAIN",
+    modelName: "[23Series] OR-110",
+    productName: "원레인 우든 테이블",
+    name: "테이블",
   },
   {
     id: 3,
     rank: 4,
     imgsrc: rankingItem04,
-    shopName: 'ONERAIN',
-    modelName: '[22Series] OR-214',
-    productName: '원레인 커러드 체어',
-    name: '의자',
+    shopName: "ONERAIN",
+    modelName: "[22Series] OR-214",
+    productName: "원레인 커러드 체어",
+    name: "의자",
   },
   {
     id: 4,
     rank: 5,
     imgsrc: rankingItem05,
-    shopName: 'ONERAIN',
-    modelName: '[23Series] OR-217',
-    productName: '원레인 럭커드 화이트 체어',
-    name: '의자',
+    shopName: "ONERAIN",
+    modelName: "[23Series] OR-217",
+    productName: "원레인 럭커드 화이트 체어",
+    name: "의자",
   },
 ]
 
 export const cartProductData = [
   {
     imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '베이지',
-    option2: '라탄',
+    shopName: "ALFDEN",
+    modelName: "[23Series] AD-388",
+    productName: "카멜피아",
+    option1: "베이지",
+    option2: "라탄",
     count: 2,
     price: 240000,
     deliveryCharge: 100000,
     coupon: [
       {
-        name: '쿠폰1',
+        name: "쿠폰1",
         discount: 14000,
       },
     ],
   },
   {
     imgsrc: table01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '모닝 데스크',
-    option1: '옐로우 우든',
+    shopName: "ALFDEN",
+    modelName: "[23Series] AD-388",
+    productName: "모닝 데스크",
+    option1: "옐로우 우든",
     option2: null,
     count: 1,
     price: 300000,
@@ -141,40 +138,40 @@ export const cartProductData = [
 
 export const styleTypes = [
   {
-    id: 'sofa',
-    name: '소파',
+    id: "sofa",
+    name: "소파",
   },
   {
-    id: 'bed',
-    name: '침대',
+    id: "bed",
+    name: "침대",
   },
   {
-    id: 'desk',
-    name: '책상',
+    id: "desk",
+    name: "책상",
   },
   {
-    id: 'table',
-    name: '테이블',
+    id: "table",
+    name: "테이블",
   },
   {
-    id: 'chair',
-    name: '의자',
+    id: "chair",
+    name: "의자",
   },
   {
-    id: 'lights',
-    name: '조명',
+    id: "lights",
+    name: "조명",
   },
   {
-    id: 'kids',
-    name: '키즈',
+    id: "kids",
+    name: "키즈",
   },
   {
-    id: 'closet',
-    name: '수납장',
+    id: "closet",
+    name: "수납장",
   },
   {
-    id: 'home_deco',
-    name: '홈데코',
+    id: "home_deco",
+    name: "홈데코",
   }
 ]
 
@@ -184,44 +181,44 @@ export const brandShopPanelProductData = [
     imgsrc: jamesLee01,
     like: true,
     likeCount: 556,
-    shopName: 'James Lee',
-    modelName: '[23Series]JL-302',
-    productName: 'Basic Wooden Table',
+    shopName: "James Lee",
+    modelName: "[23Series]JL-302",
+    productName: "Basic Wooden Table",
     price: 4834000,
-    colors: ['#512C2C', '#A55555']
+    colors: ["#512C2C", "#A55555"]
   },
   {
     id: 1,
     imgsrc: jamesLee02,
     like: false,
     likeCount: 556,
-    shopName: 'James Lee',
-    modelName: '[23Series]JL-303',
-    productName: 'Circular Table',
+    shopName: "James Lee",
+    modelName: "[23Series]JL-303",
+    productName: "Circular Table",
     price: 6790000,
-    colors: ['#A55555']
+    colors: ["#A55555"]
   },
   {
     id: 2,
     imgsrc: jamesLee03,
     like: false,
     likeCount: 556,
-    shopName: 'James Lee',
-    modelName: '[23Series]JL-354',
-    productName: 'Basic Cabinet',
+    shopName: "James Lee",
+    modelName: "[23Series]JL-354",
+    productName: "Basic Cabinet",
     price: 510000,
-    colors: ['#DED3D1', '#054A5A', '#67765B']
+    colors: ["#DED3D1", "#054A5A", "#67765B"]
   },
   {
     id: 3,
     imgsrc: jamesLee04,
     like: false,
     likeCount: 556,
-    shopName: 'James Lee',
-    modelName: '[23Series]JL-201',
-    productName: 'Basic Lighting',
+    shopName: "James Lee",
+    modelName: "[23Series]JL-201",
+    productName: "Basic Lighting",
     price: 230000,
-    colors: ['#A55555', '#192552', '#494A4C']
+    colors: ["#A55555", "#192552", "#494A4C"]
   },
 ]
 
@@ -257,9 +254,9 @@ export const homeBrandProductData = [
     imgsrc: sofa04,
     like: true,
     likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'Basic Sofa',
+    shopName: "James Lee - Sofa",
+    modelName: "[23Series] JL-305",
+    productName: "Basic Sofa",
     price: 969000,
   },
   {
@@ -267,9 +264,9 @@ export const homeBrandProductData = [
     imgsrc: sofa05,
     like: false,
     likeCount: 556,
-    shopName: 'James Lee - Sofa',
-    modelName: '[23Series] JL-305',
-    productName: 'soft_sofa',
+    shopName: "James Lee - Sofa",
+    modelName: "[23Series] JL-305",
+    productName: "soft_sofa",
     price: 230000,
   },
 ]
@@ -309,50 +306,50 @@ export const brandRankingData = [
 
 export const profileTagData = [
   {
-    id: '1',
-    name: '금속디자인',
+    id: "1",
+    name: "금속디자인",
   },
   {
-    id: '2',
-    name: '미드센추리',
+    id: "2",
+    name: "미드센추리",
   },
   {
-    id: '3',
-    name: '스테인리스 스틸',
+    id: "3",
+    name: "스테인리스 스틸",
   },
   {
-    id: '4',
-    name: '반짝이는 가구',
+    id: "4",
+    name: "반짝이는 가구",
   },
   {
-    id: '5',
-    name: '금속 가구',
+    id: "5",
+    name: "금속 가구",
   },
   {
-    id: '6',
-    name: '북유럽',
+    id: "6",
+    name: "북유럽",
   },
 ]
 
 export const brandListData = [
   {
-    id: 'james_lee',
-    name: 'James Lee',
+    id: "james_lee",
+    name: "James Lee",
     logo: jameslee
   },
   {
-    id: 'alfdn',
-    name: 'ALFDN',
+    id: "alfdn",
+    name: "ALFDN",
     logo: alfdn
   },
   {
-    id: 'rerobiey',
-    name: 'Rerobiey',
+    id: "rerobiey",
+    name: "Rerobiey",
     logo: aerobiey
   },
   {
-    id: 'clods',
-    name: 'CLODS',
+    id: "clods",
+    name: "CLODS",
     logo: clods
   }
 ]
@@ -360,60 +357,60 @@ export const brandListData = [
 export const hasCouponData = [
   {
     imgsrc: onerain_coupon03,
-    shopName: 'Aerobiey',
-    couponName: '에어로우뷔 브랜드 10% 쿠폰',
-    startDate: '20230925',
-    endDate: '20231120',
+    shopName: "Aerobiey",
+    couponName: "에어로우뷔 브랜드 10% 쿠폰",
+    startDate: "20230925",
+    endDate: "20231120",
   },
   {
     imgsrc: onerain_coupon03,
-    shopName: 'James Lee',
-    couponName: '제임스 리  브랜드 10% 쿠폰',
-    startDate: '20230920',
-    endDate: '20231115',
+    shopName: "James Lee",
+    couponName: "제임스 리  브랜드 10% 쿠폰",
+    startDate: "20230920",
+    endDate: "20231115",
   },
   {
     imgsrc: onerain_coupon03,
-    shopName: 'One rain',
-    couponName: '원레인  브랜드 10% 쿠폰',
-    startDate: '20230922',
-    endDate: '20231128',
+    shopName: "One rain",
+    couponName: "원레인  브랜드 10% 쿠폰",
+    startDate: "20230922",
+    endDate: "20231128",
   },
 ]
 
 export const getCouponData = [
   {
     imgsrc: onerain_coupon03,
-    shopName: 'James Lee',
-    couponName: '제임스 리  브랜드 10% 쿠폰',
-    startDate: '20230920',
-    endDate: '20231118',
+    shopName: "James Lee",
+    couponName: "제임스 리  브랜드 10% 쿠폰",
+    startDate: "20230920",
+    endDate: "20231118",
   },
   {
     imgsrc: onerain_coupon03,
-    shopName: 'Aerobiey',
-    couponName: '에어로우뷔 브랜드 10% 쿠폰',
-    startDate: '20230925',
-    endDate: '20231118',
+    shopName: "Aerobiey",
+    couponName: "에어로우뷔 브랜드 10% 쿠폰",
+    startDate: "20230925",
+    endDate: "20231118",
   },
   {
     imgsrc: onerain_coupon03,
-    shopName: 'One rain',
-    couponName: '원레인  브랜드 10% 쿠폰',
-    startDate: '20230822',
-    endDate: '20231128',
+    shopName: "One rain",
+    couponName: "원레인  브랜드 10% 쿠폰",
+    startDate: "20230822",
+    endDate: "20231128",
   },
 ]
 
 
 export const myDeliveryInfo = [
   {
-    date: '2023.02.23',
-    state: '배송준비중',
+    date: "2023.02.23",
+    state: "배송준비중",
     img: deliveryProduct,
-    brand: 'HC ART',
-    optionCode: '[21Series] HCA-309',
-    name: 'HC 아트 우든체어',
+    brand: "HC ART",
+    optionCode: "[21Series] HCA-309",
+    name: "HC 아트 우든체어",
     deliveryNum: "158290398",
     deliveryData: 
       [
@@ -453,66 +450,66 @@ export const myDeliveryInfo = [
 
 export const deliveryStatusFilterData = [
   {
-    id: 'waiting',
-    name: '배송준비중',
+    id: "waiting",
+    name: "배송준비중",
   },
   {
-    id: 'shipping',
-    name: '배송중',
+    id: "shipping",
+    name: "배송중",
   },
   {
-    id: 'completed',
-    name: '배송완료',
+    id: "completed",
+    name: "배송완료",
   },
   {
-    id: 'cancel',
-    name: '취소/교환/반품',
+    id: "cancel",
+    name: "취소/교환/반품",
   },
 ]
 
 export const myOrderList = [
   {
-    date: '2023.02.23',
-    state: '배송준비중',
+    date: "2023.02.23",
+    state: "배송준비중",
     img: chair03,
-    brand: 'OneRain',
-    optionCode: '[23s] OR-045',
-    name: '2인 릴렉스 체어',
+    brand: "OneRain",
+    optionCode: "[23s] OR-045",
+    name: "2인 릴렉스 체어",
   },
   {
-    date: '2022.03.13',
-    state: '배송완료',
+    date: "2022.03.13",
+    state: "배송완료",
     img: chair02,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "HC ART",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
   },
   {
-    date: '2022.03.13',
-    state: '취소',
+    date: "2022.03.13",
+    state: "취소",
     img: sofa04,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "HC ART",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
   },
   {
-    date: '2022.03.13',
-    state: '반품',
+    date: "2022.03.13",
+    state: "반품",
     img: sofa04,
-    brand: 'HC ART',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "HC ART",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
   },
 ]
 
 export const myPageOrderDetailData = [
   {
     imgsrc: sofa01,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '카멜피아',
-    option1: '브라운,블랙',
-    option2: '월넛',
+    shopName: "ALFDEN",
+    modelName: "[23Series] AD-388",
+    productName: "카멜피아",
+    option1: "브라운,블랙",
+    option2: "월넛",
     count: 1,
     price: 1594500,
     discount: 159450,
@@ -520,7 +517,7 @@ export const myPageOrderDetailData = [
     deliveryCharge: 0,
     coupon: [
       {
-        name: '쿠폰1',
+        name: "쿠폰1",
         discount: 14000,
       },
     ],
@@ -540,172 +537,172 @@ export const recentlyProductData = [
     imgsrc: recentlyProduct01,
     like: true,
     likeCount: 556,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-098',
-    productName: '골드 무드등',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-098",
+    productName: "골드 무드등",
     price: 2300000,
-    colors: ['#A55555', '#192552', '#494A4C']
+    colors: ["#A55555", "#192552", "#494A4C"]
   },
   {
     id: 1,
     imgsrc: recentlyProduct02,
     like: false,
     likeCount: 556,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-198',
-    productName: '옐로우 체어',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-198",
+    productName: "옐로우 체어",
     price: 1230000,
-    colors: ['#864000']
+    colors: ["#864000"]
   },
   {
     id: 2,
     imgsrc: recentlyProduct03,
     like: false,
     likeCount: 556,
-    shopName: 'OneRain',
-    modelName: '[23s] OR-398',
-    productName: '클래식 체어',
+    shopName: "OneRain",
+    modelName: "[23s] OR-398",
+    productName: "클래식 체어",
     price: 230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 3,
     imgsrc: recentlyProduct04,
     like: true,
     likeCount: 556,
-    shopName: 'OneRain',
-    modelName: '[23s] OR-198',
-    productName: '화이트 데스크',
+    shopName: "OneRain",
+    modelName: "[23s] OR-198",
+    productName: "화이트 데스크",
     price: 1000000,
-    colors: ['#A55555', '#192552', '#494A4C']
+    colors: ["#A55555", "#192552", "#494A4C"]
   },
   {
     id: 4,
     imgsrc: recentlyProduct05,
     like: false,
     likeCount: 556,
-    shopName: 'OneRain',
-    modelName: '[23s] OR-198',
-    productName: '원목 인테리어',
+    shopName: "OneRain",
+    modelName: "[23s] OR-198",
+    productName: "원목 인테리어",
     price: 2230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 5,
     imgsrc: recentlyProduct06,
     like: false,
     likeCount: 556,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-088',
-    productName: '클래식 스탠딩 등',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-088",
+    productName: "클래식 스탠딩 등",
     price: 370000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 6,
     imgsrc: recentlyProduct07,
     like: false,
     likeCount: 556,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-498',
-    productName: '모던 화병',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-498",
+    productName: "모던 화병",
     price: 300000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 7,
     imgsrc: recentlyProduct08,
     like: false,
     likeCount: 556,
-    shopName: 'ALFDN',
-    modelName: '[Set] AD-012',
-    productName: '알프든 테이블 도자기',
+    shopName: "ALFDN",
+    modelName: "[Set] AD-012",
+    productName: "알프든 테이블 도자기",
     price: 230000,
-    colors: ['#A55555']
+    colors: ["#A55555"]
   },
   {
     id: 8,
     imgsrc: recentlyProduct09,
     like: true,
     likeCount: 556,
-    shopName: 'OneRain',
-    modelName: '[23s] OR-398',
-    productName: '클래식 체어',
+    shopName: "OneRain",
+    modelName: "[23s] OR-398",
+    productName: "클래식 체어",
     price: 230000,
-    colors: ['#A55555', '#192552', '#494A4C']
+    colors: ["#A55555", "#192552", "#494A4C"]
   },
   {
     id: 9,
     imgsrc: sofa02,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[22s] HRD-210',
-    productName: '1인 모던 쇼파 ',
+    shopName: "Henredo",
+    modelName: "[22s] HRD-210",
+    productName: "1인 모던 쇼파 ",
     price: 6790000,
-    colors: ['#864000']
+    colors: ["#864000"]
   },
   {
     id: 10,
     imgsrc: sofa03,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-251',
-    productName: '기획전 시티 쇼파',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-251",
+    productName: "기획전 시티 쇼파",
     price: 2230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 11,
     imgsrc: sofa01,
     like: false,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-123',
-    productName: '올드 가죽쇼파',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-123",
+    productName: "올드 가죽쇼파",
     price: 1230000,
-    colors: ['#A55555']
+    colors: ["#A55555"]
   },
   {
     id: 12,
     imgsrc: chair03,
     like: true,
     likeCount: 556,
-    shopName: 'Henredo',
-    modelName: '[23s] HRD-0152',
-    productName: '릴렉스 체어 (3colors)',
+    shopName: "Henredo",
+    modelName: "[23s] HRD-0152",
+    productName: "릴렉스 체어 (3colors)",
     price: 4834000,
-    colors: ['#A55555', '#192552', '#494A4C']
+    colors: ["#A55555", "#192552", "#494A4C"]
   },
 ]
 
 export const reviewMyOrderData = [
   {
-    date: '2023.02.23',
-    state: '배송완료',
+    date: "2023.02.23",
+    state: "배송완료",
     img: chair03,
-    brand: 'Aerobiey',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "Aerobiey",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
   },
   {
-    date: '2022.03.13',
-    state: '배송완료',
+    date: "2022.03.13",
+    state: "배송완료",
     img: chair03,
-    brand: 'Aerobiey',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "Aerobiey",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
   },
 ]
 
 export const reviewData = [
   {
-    date: '2023.02.23',
+    date: "2023.02.23",
     img: deliveryProduct,
-    brand: 'Aerobiey',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "Aerobiey",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
     score: 4,
     tagList: [
       {
@@ -730,11 +727,11 @@ export const reviewData = [
     contents: "배송은 한달 반정도 걸렸어요. 홈페이지에 안내된 것보다 조금더 늦어질 것같다는 안내는 업체에서 미리 주셨구요. 배송에 관한 문의전화를 했을때도 친절히 안내해주셨습니다."
   },
   {
-    date: '2023.02.23',
+    date: "2023.02.23",
     img: deliveryProduct,
-    brand: 'Aerobiey',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "Aerobiey",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
     score: 3,
     tagList: [
       {
@@ -753,11 +750,11 @@ export const reviewData = [
     contents: "배송은 한달 반정도 걸렸어요. 홈페이지에 안내된 것보다 조금더 늦어질 것같다는 안내는 업체에서 미리 주셨구요. 배송에 관한 문의전화를 했을때도 친절히 안내해주셨습니다."
   },
   {
-    date: '2023.02.23',
+    date: "2023.02.23",
     img: deliveryProduct,
-    brand: 'Aerobiey',
-    optionCode: '[23s] AB-045',
-    name: '블랙 모던 소파',
+    brand: "Aerobiey",
+    optionCode: "[23s] AB-045",
+    name: "블랙 모던 소파",
     score: 5,
     tagList: [
       {
@@ -785,31 +782,31 @@ export const reviewData = [
 
 export const WriteReviewTagData = [
   {
-    name: '생각보다 커요',
+    name: "생각보다 커요",
   },
   {
-    name: '적당해요',
+    name: "적당해요",
   },
   {
-    name: '조금 작아요',
+    name: "조금 작아요",
   },
   {
-    name: '색감 예뻐요',
+    name: "색감 예뻐요",
   },
   {
-    name: '분위기 있어요',
+    name: "분위기 있어요",
   },
   {
-    name: '실용적이에요',
+    name: "실용적이에요",
   },
   {
-    name: '무거워요',
+    name: "무거워요",
   },
   {
-    name: '가벼워요',
+    name: "가벼워요",
   },
   {
-    name: '선물하기 좋아요',
+    name: "선물하기 좋아요",
   },
 ]
 
@@ -838,24 +835,42 @@ export const featuredBrandData = [
   {
     id: 1,
     img: light01,
-    name: 'Aerobiey',
-    description: '60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드'
+    name: "Aerobiey",
+    description: "60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드"
   },
   {
     id: 2,
     img: chair01,
-    name: 'OneRain',
-    description: '미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드'
+    name: "OneRain",
+    description: "미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드"
   },
   {
     id: 3,
     img: thumb_brand01,
-    name: 'James Lee',
-    description: '디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드'
+    name: "James Lee",
+    description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
+  },
+  {
+    id: 4,
+    img: light01,
+    name: "Aerobiey",
+    description: "60년 경력의 노하우와 감각으로 프랑스 가구를 대표하는 브랜드"
+  },
+  {
+    id: 5,
+    img: chair01,
+    name: "OneRain",
+    description: "미니멀과 디테일의 균형에 집중하는 영국 프리미엄 가구 브랜드"
+  },
+  {
+    id: 6,
+    img: thumb_brand01,
+    name: "James Lee",
+    description: "디자인과 아트의 경계에서 미적 가치를 재해석 하며 일상에 녹아드는 프리미엄 가구 브랜드"
   }
 ]
 
-export const orderCouponData = [
+export const couponItems = [
   {
     id: 'rerobiey',
     brand: 'Rerobiey',
@@ -885,6 +900,7 @@ export const orderCouponData = [
     expiration: 3,
   }
 ]
+
 interface OrderTermAgreement {
   id: string;
   require: boolean;
@@ -893,19 +909,19 @@ interface OrderTermAgreement {
 
 export const orderTermsAgreementData: OrderTermAgreement[] = [
   {
-    id: 'check_agree_age',
+    id: "check_agree_age",
     require: true,
-    label: '개인정보 수집/이용 동의'
+    label: "개인정보 수집/이용 동의"
   },
   {
-    id: 'check_terms_of_use',
+    id: "check_terms_of_use",
     require: true,
-    label: '개인정보 수집/이용 동의'
+    label: "개인정보 수집/이용 동의"
   },
   {
-    id: 'check_privacy',
+    id: "check_privacy",
     require: true,
-    label: '결제대행 서비스 이용약관 (주)KG이니시스'
+    label: "결제대행 서비스 이용약관 (주)KG이니시스"
   },
 ];
 
@@ -915,44 +931,44 @@ export const brandStoryData = [
     imgsrc: aerobiey06,
     like: false,
     likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[3Color] AB-201',
-    productName: '화이트 아크 체어',
+    shopName: "Aerobiey",
+    modelName: "[3Color] AB-201",
+    productName: "화이트 아크 체어",
     price: 3230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 1,
     imgsrc: aerobiey07,
     like: false,
     likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-102',
-    productName: '클래식 무드등',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-102",
+    productName: "클래식 무드등",
     price: 1430000,
-    colors: ['#192552', '#CBC6C3']
+    colors: ["#192552", "#CBC6C3"]
   },
   {
     id: 2,
     imgsrc: aerobiey08,
     like: false,
     likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
+    shopName: "Aerobiey",
+    modelName: "[1Color] AB-205",
+    productName: "1인용 릴렉스 체어",
     price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
+    colors: ["#1B464D", "#FADA5F"]
   },
   {
     id: 3,
     imgsrc: aerobiey09,
     like: false,
     likeCount: 0,
-    shopName: 'Aerobiey',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
+    shopName: "Aerobiey",
+    modelName: "[23s] AB-392",
+    productName: "에어로비 4인용 쇼파",
     price: 1430000,
-    colors: ['#292522']
+    colors: ["#292522"]
   },
 ]
 
@@ -962,44 +978,44 @@ export const editorPickData = [
     imgsrc: henredn04,
     like: false,
     likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[3Color] AB-201',
-    productName: '그린쇼파',
+    shopName: "Henredn",
+    modelName: "[3Color] AB-201",
+    productName: "그린쇼파",
     price: 3230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 1,
     imgsrc: henredn05,
     like: false,
     likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-102',
-    productName: '1인 클래식 의자',
+    shopName: "Henredn",
+    modelName: "[23s] AB-102",
+    productName: "1인 클래식 의자",
     price: 1430000,
-    colors: ['#192552', '#CBC6C3']
+    colors: ["#192552", "#CBC6C3"]
   },
   {
     id: 2,
     imgsrc: henredn06,
     like: false,
     likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
+    shopName: "Henredn",
+    modelName: "[1Color] AB-205",
+    productName: "1인용 릴렉스 체어",
     price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
+    colors: ["#1B464D", "#FADA5F"]
   },
   {
     id: 3,
     imgsrc: henredn07,
     like: false,
     likeCount: 0,
-    shopName: 'Henredn',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
+    shopName: "Henredn",
+    modelName: "[23s] AB-392",
+    productName: "에어로비 4인용 쇼파",
     price: 1430000,
-    colors: ['#292522']
+    colors: ["#292522"]
   },
 ]
 
@@ -1009,44 +1025,44 @@ export const monthlyPostData = [
     imgsrc: umasqu04,
     like: false,
     likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[3Color] AB-201',
-    productName: '그린쇼파',
+    shopName: "Umasqu",
+    modelName: "[3Color] AB-201",
+    productName: "그린쇼파",
     price: 3230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 1,
     imgsrc: umasqu05,
     like: false,
     likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[23s] AB-102',
-    productName: '1인 클래식 의자',
+    shopName: "Umasqu",
+    modelName: "[23s] AB-102",
+    productName: "1인 클래식 의자",
     price: 1430000,
-    colors: ['#192552', '#CBC6C3']
+    colors: ["#192552", "#CBC6C3"]
   },
   {
     id: 2,
     imgsrc: umasqu06,
     like: false,
     likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[1Color] AB-205',
-    productName: '1인용 릴렉스 체어',
+    shopName: "Umasqu",
+    modelName: "[1Color] AB-205",
+    productName: "1인용 릴렉스 체어",
     price: 3230000,
-    colors: ['#1B464D', '#FADA5F']
+    colors: ["#1B464D", "#FADA5F"]
   },
   {
     id: 3,
     imgsrc: umasqu07,
     like: false,
     likeCount: 0,
-    shopName: 'Umasqu',
-    modelName: '[23s] AB-392',
-    productName: '에어로비 4인용 쇼파',
+    shopName: "Umasqu",
+    modelName: "[23s] AB-392",
+    productName: "에어로비 4인용 쇼파",
     price: 1430000,
-    colors: ['#292522']
+    colors: ["#292522"]
   },
 ]
 
@@ -1056,44 +1072,44 @@ export const shopProductData = [
     imgsrc: sofa01,
     like: true,
     likeCount: 556,
-    shopName: 'One Rain',
-    modelName: '[3Color] OR-205',
-    productName: '원레인 4인용 소파',
+    shopName: "One Rain",
+    modelName: "[3Color] OR-205",
+    productName: "원레인 4인용 소파",
     price: 3230000,
-    colors: ['#1B464D', '#192552', '#4414CD']
+    colors: ["#1B464D", "#192552", "#4414CD"]
   },
   {
     id: 1,
     imgsrc: table01,
     like: false,
     likeCount: 556,
-    shopName: 'ALFDEN',
-    modelName: '[23Series] AD-388',
-    productName: '알프든 옐로우소파',
+    shopName: "ALFDEN",
+    modelName: "[23Series] AD-388",
+    productName: "알프든 옐로우소파",
     price: 1430000,
-    colors: ['#BC862E']
+    colors: ["#BC862E"]
   },
   {
     id: 2,
     imgsrc: chair03,
     like: false,
     likeCount: 556,
-    shopName: 'James Lee',
-    modelName: '[23Series] JL-309',
-    productName: '제임스리 아트체어',
+    shopName: "James Lee",
+    modelName: "[23Series] JL-309",
+    productName: "제임스리 아트체어",
     price: 230000,
-    colors: ['#A55555', '#494A4C', '#192552']
+    colors: ["#A55555", "#494A4C", "#192552"]
   },
   {
     id: 3,
     imgsrc: chair02,
     like: false,
     likeCount: 556,
-    shopName: 'HC ART',
-    modelName: '[21Series] HCA-309',
-    productName: 'HC 아트 우든체어',
+    shopName: "HC ART",
+    modelName: "[21Series] HCA-309",
+    productName: "HC 아트 우든체어",
     price: 130000,
-    colors: ['#A55555', '#494A4C', '#192552']
+    colors: ["#A55555", "#494A4C", "#192552"]
   },
 ]
 
@@ -1494,44 +1510,44 @@ export const styleBrandProductData = [
     imgsrc: alfdn01,
     like: true,
     likeCount: 556,
-    shopName: 'ALFDN',
-    modelName: '[SET] AD-012',
-    productName: '알프든 테이블 도자기 세트',
+    shopName: "ALFDN",
+    modelName: "[SET] AD-012",
+    productName: "알프든 테이블 도자기 세트",
     price: 230000,
-    colors: ['#CBC6C3']
+    colors: ["#CBC6C3"]
   },
   {
     id: 1,
     imgsrc: alfdn02,
     like: false,
     likeCount: 556,
-    shopName: 'ALFDN',
-    modelName: '[23Series] AD-316',
-    productName: '알프든 체어',
+    shopName: "ALFDN",
+    modelName: "[23Series] AD-316",
+    productName: "알프든 체어",
     price: 1230000,
-    colors: ['#282629', '#CBC6C3']
+    colors: ["#282629", "#CBC6C3"]
   },
   {
     id: 2,
     imgsrc: alfdn03,
     like: false,
     likeCount: 556,
-    shopName: 'ALFDN',
-    modelName: '[SET] AD-322',
-    productName: 'Wooden Table, Chair set',
+    shopName: "ALFDN",
+    modelName: "[SET] AD-322",
+    productName: "Wooden Table, Chair set",
     price: 830000,
-    colors: ['#3F2916', '#D67531']
+    colors: ["#3F2916", "#D67531"]
   },
   {
     id: 3,
     imgsrc: alfdn04,
     like: false,
     likeCount: 556,
-    shopName: 'ALFDN',
-    modelName: '[23Series] AD-405',
-    productName: 'Basic sofa',
+    shopName: "ALFDN",
+    modelName: "[23Series] AD-405",
+    productName: "Basic sofa",
     price: 2430000,
-    colors: ['#192552', '#A6A8A7']
+    colors: ["#192552", "#A6A8A7"]
   },
 ]
 
@@ -1539,25 +1555,25 @@ export const homeStylingProductData = [
   {
     id: 0,
     imgsrc: onerain03,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-512',
-    productName: '원레인 더티 러그',
+    shopName: "ONERAIN",
+    modelName: "[23 Series] OR-512",
+    productName: "원레인 더티 러그",
     price: 230000
   },
   {
     id: 1,
     imgsrc: chair02,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-309',
-    productName: '원레인 아트체어',
+    shopName: "ONERAIN",
+    modelName: "[23 Series] OR-309",
+    productName: "원레인 아트체어",
     price: 230000
   },
   {
     id: 2,
     imgsrc: table01,
-    shopName: 'ONERAIN',
-    modelName: '[23 Series] OR-555',
-    productName: '원레인 테이블',
+    shopName: "ONERAIN",
+    modelName: "[23 Series] OR-555",
+    productName: "원레인 테이블",
     price: 420000
   },
 ]
@@ -1566,8 +1582,8 @@ export const monthlyPostSwiperData = [
   {
     imageUrl: aerobiey01,
     title: "따듯한 가구",
-    description: "일상속에서 자연스러운 아름다움을 느껴보세요.",
-    author: "Aerobiey - 23s",
+    description: "일상속에서 자연스러운 아름다움을 느껴보세요. - 23s",
+    author: "umasqu - 23s",
   },
   {
     imageUrl: styleBanner06,
@@ -1610,63 +1626,63 @@ export const brandRakingSwiperData = [
   {
     id: 0,
     imgsrc: onerainBrand,
-    shopName: 'ONERAIN',
+    shopName: "ONERAIN",
     productList: [
       {
         id: 0,
         imgsrc: onerain01,
-        shopName: 'ONERAIN',
-        modelName: '[22Series] OR-210',
-        productName: '원레인 그랑프리 체어',
+        shopName: "ONERAIN",
+        modelName: "[22Series] OR-210",
+        productName: "원레인 그랑프리 체어",
       },
       {
         id: 1,
         imgsrc: onerain02,
-        shopName: 'ONERAIN',
-        modelName: '[23Series] OR-110',
-        productName: '원레인 우든 테이블',
+        shopName: "ONERAIN",
+        modelName: "[23Series] OR-110",
+        productName: "원레인 우든 테이블",
       },
     ],
   },
   {
     id: 1,
     imgsrc: onerainBrand,
-    shopName: 'ONERAIN',
+    shopName: "ONERAIN",
     productList: [
       {
         id: 0,
         imgsrc: onerain01,
-        shopName: 'ONERAIN',
-        modelName: '[22Series] OR-210',
-        productName: '원레인 그랑프리 체어2',
+        shopName: "ONERAIN",
+        modelName: "[22Series] OR-210",
+        productName: "원레인 그랑프리 체어2",
       },
       {
         id: 1,
         imgsrc: onerain02,
-        shopName: 'ONERAIN',
-        modelName: '[23Series] OR-110',
-        productName: '원레인 우든 테이블2',
+        shopName: "ONERAIN",
+        modelName: "[23Series] OR-110",
+        productName: "원레인 우든 테이블2",
       },
     ],
   },
   {
     id: 3,
     imgsrc: onerainBrand,
-    shopName: 'ONERAIN',
+    shopName: "ONERAIN",
     productList: [
       {
         id: 0,
         imgsrc: onerain01,
-        shopName: 'ONERAIN',
-        modelName: '[22Series] OR-210',
-        productName: '원레인 그랑프리 체어3',
+        shopName: "ONERAIN",
+        modelName: "[22Series] OR-210",
+        productName: "원레인 그랑프리 체어3",
       },
       {
         id: 1,
         imgsrc: onerain02,
-        shopName: 'ONERAIN',
-        modelName: '[23Series] OR-110',
-        productName: '원레인 우든 테이블3',
+        shopName: "ONERAIN",
+        modelName: "[23Series] OR-110",
+        productName: "원레인 우든 테이블3",
       },
     ],
   },
@@ -1700,12 +1716,45 @@ export const styleBannerData = [
 ]
 
 export const styleTabPanelStyleTypes = [
-  {avatar: modern, name: '모던', discription: '혼자 사는 자취방'},
-  {avatar: northernEU, name: '북유럽', discription: '아이들이 좋아하는'},
-  {avatar: classic, name: '클래식', discription: '잔잔한 바이브'},
-  {avatar: casual, name: '캐주얼', discription: '에너지 넘치는'},
-  {avatar: cen, name: '첸', discription: '고요함이 좋다면'},
-  {avatar: plant, name: '플랜테리어', discription: '생기를 불어넣는'},
-  {avatar: minimal, name: '미니멀', discription: '깔끔함이 최고'},
-  {avatar: romantic, name: '로맨틱', discription: '달달한 신혼'},
-];
+  {avatar: modern, name: "모던", discription: "혼자 사는 자취방"},
+  {avatar: northernEU, name: "북유럽", discription: "아이들이 좋아하는"},
+  {avatar: classic, name: "클래식", discription: "잔잔한 바이브"},
+  {avatar: casual, name: "캐주얼", discription: "에너지 넘치는"},
+  {avatar: cen, name: "첸", discription: "고요함이 좋다면"},
+  {avatar: plant, name: "플랜테리어", discription: "생기를 불어넣는"},
+  {avatar: minimal, name: "미니멀", discription: "깔끔함이 최고"},
+  {avatar: romantic, name: "로맨틱", discription: "달달한 신혼"},
+]
+
+export const cardOptions = [
+  {
+    id: 1,
+    name: '신한카드',
+    img: null
+  },
+  {
+    id: 2,
+    name: '국민카드',
+    img: null
+  },
+  {
+    id: 3,
+    name: 'NH카드',
+    img: null
+  },
+  {
+    id: 4,
+    name: 'BC카드',
+    img: null
+  },
+  {
+    id: 5,
+    name: '삼성카드',
+    img: null
+  },
+  {
+    id: 6,
+    name: '현대카드',
+    img: null
+  },
+]

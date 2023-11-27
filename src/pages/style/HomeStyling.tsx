@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { Box } from "@mui/material"
-import WhiteTitle from '../../components/title/WhiteTitle'
+import WhiteTitle from "../../components/title/WhiteTitle"
 import { IconRadioOn, IconRadioOff } from "../../assets/images"
-import onerainDetail from "../../assets/images/brand/onerainDetail.png"
+import { onerainDetail } from "../../assets/images/brand"
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
 import { homeStylingProductData } from "../../data"
-import { ScrollToTop } from '../../App'
-import { C333Fs14Fw500Ls20Typography, C999Fs12Lh20Typography, C666Fs12Lh20Typography } from '../../components/Typography'
+import { ScrollToTop } from "../../App"
+import { TitleSmallGray9Typography, LabelMediumGray7Typography, LabelMediumGray8Typography } from "../../components/Typography"
 
 const HomeStyling = () => {
   const [selectedIconIndex, setSelectedIconIndex] = useState(0);
@@ -29,7 +29,7 @@ const HomeStyling = () => {
   return (
     <>
     <Box sx={{position:"relative", height: "100vh"}}>
-      <Box sx={{position:"absolute", top:0, zIndex:2,width: "100%"}}>
+      <Box>
         <WhiteTitle title={["모던한 인테리어 디자인"]}/>
       </Box>
       <img src={onerainDetail} alt="" style={{position:"absolute", width: "100%", zIndex:1, objectFit: "cover", height: "100%"}}/>
@@ -65,17 +65,17 @@ const HomeStyling = () => {
     
       {selectedBrandData && (
         <Link to={"/shop/product_view"}>
-        <Box sx={{position:"fixed", bottom: "74px", backgroundColor: "rgba(255, 255, 255, 0.8)", width: "100%", p: 2, display: "flex", zIndex:2}}>
-        <Box sx={{pr: 2, borderRight: "1px solid #666666", display: "flex"}}>
-          <img src={selectedBrandData.imgsrc} alt="" style={{width: "100px", height: "100px", objectFit: "cover", zIndex:10, opacity: 1, }}/>
+          <Box sx={{position:"fixed", bottom: "74px", backgroundColor: "rgba(255, 255, 255, 0.8)", width: "100%", maxWidth:"420px", p: 2, display: "flex", zIndex:2}}>
+            <Box sx={{pr: 2, borderRight: "1px solid #666666", display: "flex"}}>
+              <img src={selectedBrandData.imgsrc} alt="" style={{width: "100px", height: "100px", objectFit: "cover", zIndex:10, opacity: 1, }}/>
+            </Box>
+            <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", pl:2}}>
+              <TitleSmallGray9Typography sx={{lineHeight:"20px", letterSpacing: "2%",}}>{selectedBrandData.shopName}</TitleSmallGray9Typography>
+              <LabelMediumGray7Typography sx={{lineHeight: "20px",}}>{selectedBrandData.modelName}</LabelMediumGray7Typography>
+              <LabelMediumGray7Typography sx={{lineHeight: "20px",}}>{selectedBrandData.productName}</LabelMediumGray7Typography>
+              <LabelMediumGray8Typography>{selectedBrandData.price.toLocaleString()} won</LabelMediumGray8Typography>
+            </Box>
         </Box>
-        <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", pl:2}}>
-          <C333Fs14Fw500Ls20Typography>{selectedBrandData.shopName}</C333Fs14Fw500Ls20Typography>
-          <C999Fs12Lh20Typography>{selectedBrandData.modelName}</C999Fs12Lh20Typography>
-          <C999Fs12Lh20Typography>{selectedBrandData.productName}</C999Fs12Lh20Typography>
-          <C666Fs12Lh20Typography>{selectedBrandData.price.toLocaleString()} won</C666Fs12Lh20Typography>
-        </Box>
-      </Box>
       </Link>
       )}
     <NavigationBar/>

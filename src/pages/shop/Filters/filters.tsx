@@ -10,17 +10,17 @@ export interface FilterOption {
 };
 
 const WoodTypes = [
-  {avatar: etc, name: '기타수종'},
-  {avatar: maple, name: '단풍나무'},
-  {avatar: chinese_mahogany, name: '참죽나무'},
-  {avatar: walnut, name: '월넛'},
-  {avatar: ebony, name: '흑단'},
-  {avatar: teak, name: '티크'},
-  {avatar: solid, name: '원목/우드'},
-  {avatar: beige, name: '베이지'},
+  {avatar: etc, name: "기타수종"},
+  {avatar: maple, name: "단풍나무"},
+  {avatar: chinese_mahogany, name: "참죽나무"},
+  {avatar: walnut, name: "월넛"},
+  {avatar: ebony, name: "흑단"},
+  {avatar: teak, name: "티크"},
+  {avatar: solid, name: "원목/우드"},
+  {avatar: beige, name: "베이지"},
 ];
 
-const ColorTypes: FilterOption[] = [
+const ColorTypes = [
   {avatar: black, name: '블랙'},
   {avatar: white, name: '화이트'},
   {avatar: grey, name: '그레이'},
@@ -36,23 +36,23 @@ const ColorTypes: FilterOption[] = [
 ];
 
 const TextureTypes = [
-  {avatar: fabric, name: '패브릭'},
-  {avatar: marble, name: '대리석/세라믹'},
-  {avatar: leather, name: '가죽/인조가죽'},
-  {avatar: silver, name: '실버'},
-  {avatar: wood, name: '원목, 우드'},
-  {avatar: rattan, name: '라탄'},
+  {avatar: fabric, name: "패브릭"},
+  {avatar: marble, name: "대리석/세라믹"},
+  {avatar: leather, name: "가죽/인조가죽"},
+  {avatar: silver, name: "실버"},
+  {avatar: wood, name: "원목, 우드"},
+  {avatar: rattan, name: "라탄"},
 ];
 
 export const StyleTypes = [
-  {avatar: modern, name: '모던'},
-  {avatar: northernEU, name: '북유럽'},
-  {avatar: classic, name: '클래식'},
-  {avatar: casual, name: '캐주얼'},
-  {avatar: cen, name: '첸'},
-  {avatar: plant, name: '플랜테리어'},
-  {avatar: minimal, name: '미니멀'},
-  {avatar: romantic, name: '로맨틱'},
+  {avatar: modern, name: "모던"},
+  {avatar: northernEU, name: "북유럽"},
+  {avatar: classic, name: "클래식"},
+  {avatar: casual, name: "캐주얼"},
+  {avatar: cen, name: "첸"},
+  {avatar: plant, name: "플랜테리어"},
+  {avatar: minimal, name: "미니멀"},
+  {avatar: romantic, name: "로맨틱"},
 ];
 
 export const FilterTypes: {[key: string]: Array<FilterOption> | undefined} = {

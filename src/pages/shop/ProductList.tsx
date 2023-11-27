@@ -42,7 +42,7 @@ const ProductList = () => {
   return (
     <>
       <LeftTitle title={title} />
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <FilterContainer ref={filterRef}>
           <FilterTypeContainer>
             {Object.keys(FilterTypes).map((type, idx) => (

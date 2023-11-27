@@ -1,7 +1,7 @@
 import { Avatar, Box, IconButton, SwipeableDrawer } from "@mui/material";
 import { FilterOption, FilterTypes } from "./filters";
 import { FilterMenuContainer, FilterMenuItem, OptionTag, OptionTagContainer, ShowProductButton } from "./index.styles";
-import { BoldTypography, CFFFFs14Typography, Gray8Typography } from "../../../components/Typography";
+import { BoldTypography, TitleSmallWhiteTypography, Gray8Typography } from "../../../components/Typography";
 import { MouseEvent } from "react";
 import React from "react";
 import { IconX } from "../../../assets/images";
@@ -24,9 +24,9 @@ const SelectedTag: React.FC<SelectedTagProps> = ({
 }): JSX.Element => {
   return <OptionTagContainer>
     {options.map((option, idx) => <OptionTag key={`selected-option-${idx}`}>
-      <CFFFFs14Typography sx={{ lineHeight: '19px' }}>
+      <TitleSmallWhiteTypography sx={{ lineHeight: '19px' }}>
         {option.name}
-      </CFFFFs14Typography>
+      </TitleSmallWhiteTypography>
       <IconButton onClick={() => deleteOption(option)}>
         <IconX />
       </IconButton>

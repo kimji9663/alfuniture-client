@@ -10,6 +10,7 @@ interface OptionsProps {
   id?: string | undefined
   name?: string | undefined
   img?: string | undefined
+  type?: string | undefined
 }
 
 interface SelectBoxProps {
@@ -21,47 +22,47 @@ interface SelectBoxProps {
 }
 
 const OutlinedSelect = styled(Box)<SelectProps>((props) => ({
-  position: 'relative',
-  '&::before': {
-    content: '"⌵"',
-    position: 'absolute',
-    top: '8px',
-    right: '16px',
-    color: '#DADADA',
-    fontSize: '20px',
+  position: "relative",
+  "&::before": {
+    content: "'⌵'",
+    position: "absolute",
+    top: "8px",
+    right: "16px",
+    color: "#DADADA",
+    fontSize: "20px",
   },
-  '& > .MuiButton-root': {
-    padding: '6px 16px',
+  "& > .MuiButton-root": {
+    padding: "6px 16px",
     minHeight: 52,
     borderRadius: 0,
-    border: '1px solid #DADADA',
-    justifyContent: 'start',
-    color: '#999'
+    border: "1px solid #DADADA",
+    justifyContent: "start",
+    color: "#999"
   },
-  '& > .MuiButton-root > img': {
-    width: '18px',
-    marginRight: '4px',
+  "& > .MuiButton-root > img": {
+    width: "18px",
+    marginRight: "4px",
   },
-  '& .dropmenu': {
-    display: props.isopen === 'true' ? 'block' : 'none',
-    marginTop: '-1px',
+  "& .dropmenu": {
+    display: props.isopen === "true" ? "block" : "none",
+    marginTop: "-1px",
     padding: 0,
-    color:'#999999',
-    border: '1px solid #dadada',
-    borderTop: 'none',
+    color:"#999999",
+    border: "1px solid #dadada",
+    borderTop: "none",
   },
-  '& .dropmenu > ul > li': {
+  "& .dropmenu > ul > li": {
     padding: 0,
   },
-  '& .dropmenu > ul > li:not(:last-of-type)': {
-    borderBottom: '1px solid #dadada',
+  "& .dropmenu > ul > li:not(:last-of-type)": {
+    borderBottom: "1px solid #dadada",
   },
-  '& .dropmenu .MuiListItemButton-root': {
-    padding: '13.5px 16px',
+  "& .dropmenu .MuiListItemButton-root": {
+    padding: "13.5px 16px",
   },
-  '& .dropmenu .MuiListItemButton-root > img': {
-    width: '18px',
-    marginRight: '4px',
+  "& .dropmenu .MuiListItemButton-root > img": {
+    width: "18px",
+    marginRight: "4px",
   }
 }))
 
@@ -89,10 +90,21 @@ const SelectBox = (props: SelectBoxProps) => {
         fullWidth
         onClick={handleOpen}
       >
-        {selected.img !== '' && (
+        {selected.img && (
           <img src={selected.img} alt={selected.name} />
         )}
-        <span>{selected.name}</span>
+        {selected.type ? (
+          <>
+            <Box component="span" sx={{ mr: 'auto', color: '#333' }}>
+              {selected.type}
+            </Box>
+            <Box component="span" sx={{ pr: 3 }}>
+              {selected.name}
+            </Box>
+          </>
+        ) : (
+          <span>{selected.name}</span>
+        )}
       </Button>
       <Box className="dropmenu">
         {props.children}

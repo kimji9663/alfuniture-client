@@ -5,7 +5,7 @@ import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import ListItem from "../../components/product/ListItem"
 import { shopProductData } from "../../data"
-import TitleTwoLine2 from '../../components/title/TitleTwoLine2'
+import TitleTwoLine from "../../components/title/TitleTwoLine"
 
 const FeaturedProduct = () => {
   const navigate = useNavigate()
@@ -14,28 +14,26 @@ const FeaturedProduct = () => {
     navigate("/onboarding/featured_brand")
   }
 
-  const title = ['회원님을 위한', '가구를 소개해드려요.'];
+  const title = ["회원님을 위한", "가구를 소개해드려요."];
 
   return (
     <>
-      <Box sx={{ height: '100%', overflow: 'auto' }}>
-        <TitleTwoLine2 title={title}/>
-        <Box sx={{ px: 2, alignItems: 'center', height: 'calc(100vh - 202px)' }}>
-          {/* 가구리스트 */}
-          {shopProductData.map((product: any, index: any) =>
-            <ListItem
-              key={index}
-              id={product.id}
-              imgsrc={product.imgsrc}
-              shopName={product.shopName}
-              modelName={product.modelName}
-              productName={product.productName}
-              price={product.price}
-              colors={product.colors}
-              likeCount={product.likeCount}
-            />
-          )}
-        </Box>
+      <TitleTwoLine title={title} />
+      <Box sx={{ px: 2, height: "calc(100vh - 194px)", overflow: "auto" }}>
+        {/* 가구리스트 */}
+        {shopProductData.map((product: any, index: any) =>
+          <ListItem
+            key={index}
+            id={product.id}
+            imgsrc={product.imgsrc}
+            shopName={product.shopName}
+            modelName={product.modelName}
+            productName={product.productName}
+            price={product.price}
+            colors={product.colors}
+            likeCount={product.likeCount}
+          />
+        )}
       </Box>
       <NaviWrap className="single">
         <PrimaryButton onClick={goToNext}>다음으로</PrimaryButton>

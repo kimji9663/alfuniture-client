@@ -24,14 +24,14 @@ const ListItem: React.FC<PreviewProps> = ({
       {/* 가로형 상품 리스트 */}
         <GridBox
           sx={{
-            gridTemplateColumns: '119px auto',
-            borderTop: '1px solid #DADADA',
-            '&:last-child': {
-              borderBottom: '1px solid #DADADA'
+            gridTemplateColumns: "119px auto",
+            borderTop: "1px solid #DADADA",
+            "&:last-child": {
+              borderBottom: "1px solid #DADADA"
             }
           }}
         >
-          <Link href='/shop/product_view' underline='none'>
+          <Link href="/shop/product_view" underline="none">
             <ListImageBox>
               <img
                 src={imgsrc}
@@ -41,7 +41,7 @@ const ListItem: React.FC<PreviewProps> = ({
           </Link>
           <FlexAlignItemsCenterBox>
             <ListDetailBox>
-              <Link href='/shop/product_view' underline='none'>
+              <Link href="/shop/product_view" underline="none">
                 <Box>
                   <BoldGray9Typography>
                     {shopName}
@@ -58,7 +58,7 @@ const ListItem: React.FC<PreviewProps> = ({
                 <BoldGray8Typography>
                   {Intl.NumberFormat().format(price)} 원
                 </BoldGray8Typography>
-                <FlexAlignItemsCenterBox flexDirection={'row'}>
+                <FlexAlignItemsCenterBox flexDirection={"row"}>
                   <IconButton
                     onClick={handleClickLike}
                   >

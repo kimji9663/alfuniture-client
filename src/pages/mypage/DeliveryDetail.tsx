@@ -6,9 +6,9 @@ import { myDeliveryInfo } from "../../data"
 import { OutlineButton } from "../../styles/buttons.styles"
 import { DeliveryInfoOrderCard } from "../../styles/card.style"
 import { IconCircleGray, IconDeliveryCompleted, IconTelGray } from "../../assets/images"
-import { C666Fs10Fw700Typography, C333Fs14Fw500Typography, C999Fs12NoLhTypography, C333Fs12NoLhTypography, C7E7E7EFs10Fw400Typography, C000Fs14Fw700Lh20Typography, C999Fs14Fw400Typography } from "../../components/Typography"
+import { LabelSmallBoldGray8Typography, TitleSmallGray9Typography, LabelMediumGray7Typography, LabelMediumGray9Typography, LabelSmallGray8Typography, TitleSmallBoldTypography, TitleSmallGray7Typography } from "../../components/Typography"
 
-const centerTitle = ['배송 조회']
+const centerTitle = ["배송 조회"]
 
 myDeliveryInfo.forEach((info) => {
   info.deliveryData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -19,7 +19,7 @@ const DeliveryDetail = () => {
   return (
     <>
       <CenterTitle title={centerTitle}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ p: 2 }}>
           {
             myDeliveryInfo.map((el, index) => (
@@ -37,28 +37,28 @@ const DeliveryDetail = () => {
                       />
                       <Box
                         sx={{
-                          flex: '1 1 auto',
+                          flex: "1 1 auto",
                           display:"flex",
                           flexDirection:"column",
                           justifyContent:"space-between"
                         }}
                       >
-                        <C666Fs10Fw700Typography sx={{ minWidth:"65px" }}>빠른배송</C666Fs10Fw700Typography>
+                        <LabelSmallBoldGray8Typography sx={{ minWidth:"65px" }}>빠른배송</LabelSmallBoldGray8Typography>
                         
                         <Box sx={{display:"flex"}}>
-                          <C333Fs14Fw500Typography sx={{ minWidth:"65px" }}>{el.brand}</C333Fs14Fw500Typography>
+                          <TitleSmallGray9Typography sx={{ minWidth:"65px", letterSpacing: "-0.25px", }}>{el.brand}</TitleSmallGray9Typography>
                           <Box>
-                            <C999Fs12NoLhTypography>{el.optionCode}</C999Fs12NoLhTypography>
-                            <C999Fs12NoLhTypography>{el.name}</C999Fs12NoLhTypography>
+                            <LabelMediumGray7Typography>{el.optionCode}</LabelMediumGray7Typography>
+                            <LabelMediumGray7Typography>{el.name}</LabelMediumGray7Typography>
                           </Box>
                         </Box>
                         
                         <Box sx={{display:"flex", width:"100%"}}>
-                          <C333Fs12NoLhTypography sx={{ minWidth:"65px"}}>운송장 번호</C333Fs12NoLhTypography>
+                          <LabelMediumGray9Typography sx={{ minWidth:"65px"}}>운송장 번호</LabelMediumGray9Typography>
                           <Box sx={{display:"flex", justifyContent:"space-between", width: "100%"}}>
-                            <C999Fs12NoLhTypography>{el.deliveryNum}</C999Fs12NoLhTypography>
+                            <LabelMediumGray7Typography>{el.deliveryNum}</LabelMediumGray7Typography>
                             <Button sx={{borderRadius:0, border:"0.5px solid #D9D9D9", display:"flex", p:"1px 5px", minWidth:"30px", color:"#666"}}>
-                              <C7E7E7EFs10Fw400Typography>복사</C7E7E7EFs10Fw400Typography>
+                              <LabelSmallGray8Typography>복사</LabelSmallGray8Typography>
                             </Button>
                           </Box>
                         </Box>
@@ -85,8 +85,8 @@ const DeliveryDetail = () => {
                       <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
-                      <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
+                      <TitleSmallBoldTypography>{item.location + " | " + item.deliveryStatus}</TitleSmallBoldTypography>
+                      <TitleSmallBoldTypography>{item.date}</TitleSmallBoldTypography>
                     </Box>
                   </>
                 ) : index === 0 ? (
@@ -96,8 +96,8 @@ const DeliveryDetail = () => {
                       <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
-                      <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
+                      <TitleSmallBoldTypography>{item.location + " | " + item.deliveryStatus}</TitleSmallBoldTypography>
+                      <TitleSmallBoldTypography>{item.date}</TitleSmallBoldTypography>
                     </Box>
                   </>
                   ) : item.deliveryStatus === "배송완료" ? (
@@ -107,8 +107,8 @@ const DeliveryDetail = () => {
                     <IconDeliveryCompleted style={{position:"absolute", top:4,left:"-2px"}}/>
                   </Box>
                   <Box sx={{ml: 5}}>
-                    <C000Fs14Fw700Lh20Typography>{item.location + " | " + item.deliveryStatus}</C000Fs14Fw700Lh20Typography>
-                    <C000Fs14Fw700Lh20Typography>{item.date}</C000Fs14Fw700Lh20Typography>
+                    <TitleSmallBoldTypography>{item.location + " | " + item.deliveryStatus}</TitleSmallBoldTypography>
+                    <TitleSmallBoldTypography>{item.date}</TitleSmallBoldTypography>
                   </Box>
                 </>
                 ) : index === myDeliveryInfo[0].deliveryData.length - 1 ? (
@@ -118,8 +118,8 @@ const DeliveryDetail = () => {
                       <IconCircleGray style={{position:"absolute", top:4,left:0}}/>
                     </Box>
                     <Box sx={{ml: 5}}>
-                      <C999Fs14Fw400Typography>{item.location + " | " + item.deliveryStatus}</C999Fs14Fw400Typography>
-                      <C999Fs14Fw400Typography>{item.date}</C999Fs14Fw400Typography>
+                      <TitleSmallGray7Typography>{item.location + " | " + item.deliveryStatus}</TitleSmallGray7Typography>
+                      <TitleSmallGray7Typography>{item.date}</TitleSmallGray7Typography>
                     </Box>
                   </>
                 ) : (
@@ -129,8 +129,8 @@ const DeliveryDetail = () => {
                     <IconCircleGray style={{position:"absolute", top:4,left:0}}/>
                   </Box>
                   <Box sx={{ml: 5}}>
-                    <C999Fs14Fw400Typography>{item.location + " | " + item.deliveryStatus}</C999Fs14Fw400Typography>
-                    <C999Fs14Fw400Typography>{item.date}</C999Fs14Fw400Typography>
+                    <TitleSmallGray7Typography>{item.location + " | " + item.deliveryStatus}</TitleSmallGray7Typography>
+                    <TitleSmallGray7Typography>{item.date}</TitleSmallGray7Typography>
                   </Box>
                 </>
                 )}

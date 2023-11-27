@@ -9,16 +9,16 @@ type IvalidatedProps = {
 }
 
 const UserId = ({validated, changeValidated, createUserId, changeUserData}:IvalidatedProps) => {
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("")
   const [idError, setIdError] = useState({
     errorActive: false,
-    errorText: ''
+    errorText: ""
   })
 
   const validateError = () => {
-    if (idError.errorText === '') {
+    if (idError.errorText === "") {
       return false
-    } else if (idError.errorText !== '' && idError.errorActive) {
+    } else if (idError.errorText !== "" && idError.errorActive) {
       return true
     }
   }
@@ -28,13 +28,13 @@ const UserId = ({validated, changeValidated, createUserId, changeUserData}:Ivali
     setUserId(event.target.value)
 
     if (emailPattern.test(event.target.value)) {
-      setIdError({errorActive: false, errorText: ''})
+      setIdError({errorActive: false, errorText: ""})
       createUserId = event.target.value
       changeUserData(createUserId)
-      console.log('사용가능')
+      console.log("사용가능")
       validated[1] = true
     } else {
-      setIdError({errorActive: true, errorText: '이메일에 형식이 올바르지 않습니다.'})      
+      setIdError({errorActive: true, errorText: "이메일에 형식이 올바르지 않습니다."})      
       validated[1] = false
     }
     changeValidated([...validated])
@@ -63,7 +63,7 @@ const UserId = ({validated, changeValidated, createUserId, changeUserData}:Ivali
             name="user_id"
             placeholder="이메일을 입력해주세요."
             type="text"
-            sx={{ '& > input': { height: '2.6875em', fontSize: '.875rem' } }}
+            sx={{ "& > input": { height: "2.6875em", fontSize: ".875rem" } }}
             value={userId}
           />
           <FormHelperText>{idError.errorText}</FormHelperText>

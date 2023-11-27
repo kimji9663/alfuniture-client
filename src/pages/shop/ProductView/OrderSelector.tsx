@@ -41,37 +41,37 @@ interface OptionSelectProps extends CompleteProps {
 
 const productOptions = [
   {
-    id: 'brown',
-    name: '브라운',
+    id: "brown",
+    name: "브라운",
     img: brown
   },
   {
-    id: 'blue',
-    name: '블루',
+    id: "blue",
+    name: "블루",
     img: blue
   },
   {
-    id: 'gray',
-    name: '그레이',
+    id: "gray",
+    name: "그레이",
     img: grey
   },
 ]
 
 const colorScheme = [
   {
-    name: '브라운',
+    name: "브라운",
     img: brown
   },
   {
-    name: '화이트',
+    name: "화이트",
     img: white
   },
   {
-    name: '블랙',
+    name: "블랙",
     img: black
   },
   {
-    name: '그린',
+    name: "그린",
     img: green
   },
 ]
@@ -108,7 +108,7 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
 
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         {checkedColor.length !== 0 && (
           checkedColor.map((color) => (
             <OutlinedTag key={color.name} sx={{ mb: 2 }}>
@@ -119,7 +119,7 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
                 sx={{ 
                   padding: '0 8px', 
                   marginLeft: 'auto', 
-                  '& > svg': { display: 'block', cursor: 'pointer' } 
+                  '& > svg': { display: 'block', cursor: 'pointer', color: '#DADADA' } 
                 }}
               >
                 <IconX />
@@ -128,7 +128,7 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
           ))
         )}
       </Box>
-      <Box sx={{ overflow: 'auto', whiteSpace: 'nowrap', backgroundColor: '#FAFAFA', padding: '16px 8px 0 16px' }}>
+      <Box sx={{ overflow: "auto", whiteSpace: "nowrap", backgroundColor: "#FAFAFA", padding: "16px 8px 0 16px" }}>
         {colorScheme.map((color) => (
           <OutlinedCheckbox key={color.name} sx={{ mr: 1, mb: 2 }}>
             <input 
@@ -150,7 +150,7 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
 // 셀렉트박스 타입
 const OptionSelectType = ({selectedOption, setSelectedOption, complete, setComplete }: OptionSelectProps) => {
   const [selected, setSelected] = useState<OptionsProps>(
-    { name: '컬러 선택', img: '' }
+    { name: "컬러 선택", img: "" }
   )
   const dropMenuRef = useRef<HTMLDivElement | null>(null)
   const [open, setOpen] = useState(false)
@@ -160,8 +160,8 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
       // 바깥 클릭 시 메뉴 닫힘
       if(open && (!dropMenuRef.current?.contains(e.target))) setOpen(false)
     }
-    document.addEventListener('click', handleOutsideClose)
-    return () => document.removeEventListener('click', handleOutsideClose)
+    document.addEventListener("click", handleOutsideClose)
+    return () => document.removeEventListener("click", handleOutsideClose)
     // 마운트 해제 시 이벤트 삭제!!
   }, [open])
 
@@ -210,7 +210,7 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
 
 const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: ToggleProps) => {
   // ios에서 스와이프 동작 활성화
-  const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent)
   const [selectedColors, setSelectedColors] = useState<ColorOptions[]>([])
   const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
   const [open, setOpen] = useState(false)
@@ -228,22 +228,22 @@ const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: Toggle
       disableBackdropTransition={!iOS} 
       disableDiscovery={iOS}
       disableSwipeToOpen={false}
-      anchor='bottom'
+      anchor="bottom"
       open={drawerOpen}
       onClose={setToggleDrawer(false)}
       onOpen={setToggleDrawer(true)}
       sx={{
         zIndex: 1,
-        '& .MuiBackdrop-root': {
-          bottom: '74px',
+        "& .MuiBackdrop-root": {
+          bottom: "74px",
         },
-        '& .MuiPaper-root': {
-          bottom: '74px',
+        "& .MuiPaper-root": {
+          bottom: "74px",
         }
       }}
     >
       <Box
-        sx={{ p: 2, width: 'auto', height: '50vh' }}
+        sx={{ p: 2, width: "auto", height: "50vh" }}
         role="presentation"
       >
         <ViewTitle>색상조합</ViewTitle>

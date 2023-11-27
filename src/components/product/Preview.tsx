@@ -40,7 +40,7 @@ const PreviewItem: React.FC<PreviewProps> = ({
 
   return (
     <Paper elevation={0} square>
-      <Link href='/shop/product_view' underline='none'>
+      <Link href="/shop/product_view" underline="none">
       <CardMedia
         component="img"
         image={imgsrc}
@@ -77,14 +77,14 @@ const PreviewItem: React.FC<PreviewProps> = ({
             sx={{
               gridTemplateColumns: `repeat(${colors?.length}, 10px)`
             }}
-            columnGap='4px'
+            columnGap="4px"
           >
             {colors?.map((color: string, idx: number) => (
               <Box
                 key={`item-color-${idx}`}
                 sx={{
-                  width: '10px',
-                  height: '10px',
+                  width: "10px",
+                  height: "10px",
                   backgroundColor: color
                 }}
               />

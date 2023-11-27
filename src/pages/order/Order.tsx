@@ -1,53 +1,67 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography } from "@mui/material"
-import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
+import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography, Button } from "@mui/material"
+import { SecondaryButton, PrimaryButton, PrimaryLightButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
 import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
-import DaumPostcodeEmbed from 'react-daum-postcode'
+import DaumPostcodeEmbed from "react-daum-postcode"
 import { BasicModal } from "../../styles/modal.styles"
 import OrderInfomation from "./OrderInfomation"
 import { sofa01 } from "../../assets/images/product"
 import OrderTermsAgreement from "./OrderTermsAgreement"
 import CheckboxIcon from "../../components/CheckBoxIcon"
+import CouponSelector from "./CouponSelector"
 
 
 const Order = () => {
   const navigate = useNavigate()
-  // 입력한 모든 주소 저장
+  // 입력한 모든 정보 저장
   const [orderData, setOrderData] = useState({
-    recipient: '',
-    zipcode: '',
-    deliveryAddress: '',
-    phoneNumber: '',
+    recipient: "",
+    zipcode: "",
+    deliveryAddress: "",
+    phoneNumber: "",
     addressSave: false,
     termsAgree: false,
+    coupon: "",
+    deliveryType: "",
+    card: "",
   })
   const [recipientError, setRecipientError] = useState({
     errorActive: false,
-    errorText: ''
+    errorText: ""
   })
   const [phoneError, setPhoneError] = useState({
     errorActive: false,
-    errorText: ''
+    errorText: ""
   })
   const [modalOpen, setModalOpen] = useState(false)
+  const [couponOpen, setCouponOpen] = useState(false)
+  const [selectCoupon, setSelectCoupon] = useState('')
+  const [finalAmount, setFinalAmount] = useState(0)
 
   const handleClose = () => {
     setModalOpen(false)
   }
 
   const handleCompleteOrder = () => {
-    navigate('/')
+    navigate("/")
   }
 
+  const applyCoupon = () => {
+    // 총 가격 - 할인율
+    // return 
+  }
+
+  // 필수정보 체크 후 주문 버튼 활성화
   const handleActiveOrder = 
-    orderData.recipient !== '' && 
-    orderData.zipcode !== '' &&
-    orderData.deliveryAddress !== '' &&
-    orderData.phoneNumber !== '' &&
-    orderData.termsAgree === true
+    orderData.recipient !== "" && 
+    orderData.zipcode !== "" &&
+    orderData.deliveryAddress !== "" &&
+    orderData.phoneNumber !== "" &&
+    orderData.termsAgree === true &&
+    orderData.card !== ""
   ? (
     false
   ) : (
@@ -55,9 +69,9 @@ const Order = () => {
   )
 
   const validateError = () => {
-    if (recipientError.errorText === '') {
+    if (recipientError.errorText === "") {
       return false
-    } else if (recipientError.errorText !== '' && recipientError.errorActive) {
+    } else if (recipientError.errorText !== "" && recipientError.errorActive) {
       return true
     }
   }
@@ -68,25 +82,25 @@ const Order = () => {
     if (event.target.value) {
       setRecipientError({
         errorActive: false, 
-        errorText: ''
+        errorText: ""
       })
     } else {
       setRecipientError({
         errorActive: true, 
-        errorText: '수령인을 입력해주세요.'
+        errorText: "수령인을 입력해주세요."
       })
     }
   }
   
   const handleSearchPostcode = () => {
     // 우편번호 검색 클릭 시 다음 우편번호 API 연동
-    setOrderData({ ...orderData, zipcode: '', deliveryAddress: '' })
+    setOrderData({ ...orderData, zipcode: "", deliveryAddress: "" })
     setModalOpen(true)
   }
   
   const handlePhoneField = (event:React.ChangeEvent<HTMLInputElement>)=> {
     const phoneNumberPattern = /^(010)[0-9]{3,4}[0-9]{4}$/
-    const onlyNumber = event.target.value.replace(/[^-0-9]/g, '')
+    const onlyNumber = event.target.value.replace(/[^-0-9]/g, "")
     setOrderData({ ...orderData, phoneNumber: onlyNumber })
 
     // 입력 시 핸드폰 번호 양식 체크
@@ -98,18 +112,18 @@ const Order = () => {
     if (phoneNumberPattern.test(onlyNumber)) {
       setPhoneError({
         errorActive: false,
-        errorText: ''
+        errorText: ""
       })
     } else {      
-      if (event.target.value !== '') {
+      if (event.target.value !== "") {
         setPhoneError({
           errorActive: false,
-          errorText: ''
+          errorText: ""
         })
       }
       setPhoneError({
         errorActive: true,
-        errorText: '휴대전화 형식이 올바르지 않습니다.'
+        errorText: "휴대전화 형식이 올바르지 않습니다."
       })
     }
   }
@@ -117,7 +131,7 @@ const Order = () => {
   const handleAddressSave = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked){
       setOrderData({ ...orderData, addressSave: true })
-      if (event.currentTarget.id === 'check_agree_all'){
+      if (event.currentTarget.id === "check_agree_all"){
         setOrderData({ ...orderData, addressSave: true })
       }
     } else {
@@ -127,7 +141,6 @@ const Order = () => {
 
   const onCompletePost = (data:any) => {
     setModalOpen(false)
-    console.log(data)
     setOrderData({
       ...orderData, 
       zipcode: data.zonecode,
@@ -135,15 +148,26 @@ const Order = () => {
     })
   }
 
-  const changeOrderData = (val:boolean) => {
+  const changeOrderDataDelivery = (val:string) => {
+    setOrderData({...orderData, deliveryType: val})
+  }
+
+  const changeOrderDataCard = (val:string) => {
+    setOrderData({...orderData, card: val})
+  }
+
+  const changeOrderDataTermsAgree = (val:boolean) => {
     setOrderData({...orderData, termsAgree: val})
-    //console.log(val)
+  }
+
+  const toggleDrawer = (val:boolean) => {
+    setCouponOpen(val)
   }
 
   return (
     <>
       <NoTitle />
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ p: 2 }}>
           <OrderTitle>배송지정보</OrderTitle>
 
@@ -156,14 +180,14 @@ const Order = () => {
               error={validateError()}
             >
               <Box 
-                  sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
+                  sx={{ position: "absolute", top: "13px", fontSize: ".875rem", fontWeight: "bold" }}
               >
                 수령인
               </Box>
               <Input
                 name="recipient"
                 type="text"
-                sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
+                sx={{ pl: 7, "& > input": { height: "2.5rem", fontSize: ".875rem" } }}
                 value={orderData.recipient}
               />
               <FormHelperText>{recipientError.errorText}</FormHelperText>
@@ -172,24 +196,24 @@ const Order = () => {
             <SearchZipcodeWrap
               variant="standard"
               margin="normal"
-              sx={{height: 'auto'}}
+              sx={{height: "auto"}}
             >
               <Box>
                 <Box 
-                  sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
+                  sx={{ position: "absolute", top: "13px", fontSize: ".875rem", fontWeight: "bold" }}
                 >
                   배송지
                 </Box>
                 <Input
                   name="user_id"
                   type="text"
-                  sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
+                  sx={{ pl: 7, "& > input": { height: "2.5rem", fontSize: ".875rem" } }}
                   value={orderData.zipcode}
                   readOnly
                 />
               </Box>
               <PrimaryButton 
-                sx={{ maxWidth: '111px' }}
+                sx={{ maxWidth: "111px" }}
                 onClick={handleSearchPostcode}
               >
                 우편번호 검색
@@ -204,7 +228,7 @@ const Order = () => {
               <Input
                 name="user_id"
                 type="text"
-                sx={{ '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
+                sx={{ "& > input": { height: "2.5rem", fontSize: ".875rem" } }}
                 value={orderData.deliveryAddress}
                 readOnly
               />
@@ -219,7 +243,7 @@ const Order = () => {
                 name="user_id"
                 placeholder="상세주소를 입력해 주세요"
                 type="text"
-                sx={{ '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
+                sx={{ "& > input": { height: "2.5rem", fontSize: ".875rem" } }}
               />
             </FormControl>
             
@@ -231,19 +255,19 @@ const Order = () => {
               error={validateError()}
             >
               <Box 
-                sx={{ position: 'absolute', top: '13px', fontSize: '.875rem', fontWeight: 'bold' }}
+                sx={{ position: "absolute", top: "13px", fontSize: ".875rem", fontWeight: "bold" }}
               >
                 연락처
               </Box>
               <Input
                 name="recipient"
                 type="text"
-                sx={{ pl: 7, '& > input': { height: '2.5rem', fontSize: '.875rem' } }}
+                sx={{ pl: 7, "& > input": { height: "2.5rem", fontSize: ".875rem" } }}
                 value={orderData.phoneNumber}
               />
               <FormHelperText
                 sx={{
-                '&.error': { color: '#d32f2f' } 
+                "&.error": { color: "#d32f2f" } 
                 }}
                 className="error"
               >
@@ -266,49 +290,55 @@ const Order = () => {
           </Box>
         </Box>
 
-        <Box sx={{ p: 2, background: '#FAFAFA' }}>
+        <Box sx={{ p: 2, background: "#FAFAFA" }}>
           <OrderTitle>상품 정보</OrderTitle>
           <Box sx={{
             mt: 3,
-            display: 'flex',
-            alignItems: 'center'
+            display: "flex",
+            alignItems: "center"
           }}>
-            <Box sx={{ mr: 2, position: 'relative', width: '35%', paddingTop: '35%' }}>
+            <Box sx={{ mr: 2, position: "relative", width: "35%", paddingTop: "35%" }}>
               <Box 
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '100%',
-                  height: '100%',
-                  overflow: 'hidden',
-                  background: '#000',
-                  '& > img': { minWidth: '100%', minHeight: '100%' },
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  height: "100%",
+                  overflow: "hidden",
+                  background: "#000",
+                  "& > img": { minWidth: "100%", minHeight: "100%" },
                 }}
               >
                 <img src={sofa01} alt="소파" />
               </Box>
             </Box>
-            <Box sx={{ flex: '1 1 auto' }}>
-              <Typography sx={{ fontSize: '1rem', fontWeight: 'bold' }}>
+            <Box sx={{ flex: "1 1 auto" }}>
+              <Typography sx={{ fontSize: "1rem", fontWeight: "bold" }}>
                 ALFDN - 카멜프든
               </Typography>
               <Box
                 sx={{
                   mt: 2,
-                  '& > p': {
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    color: '#999',
+                  "& > p": {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    color: "#999",
+                    fontSize: ".75rem",
+                  },
+                  "& .title, & .total": {
+                    fontWeight: "bold",
+                    color: "#333",
+                  },
+                  '& .MuiButton-root': {
                     fontSize: '.75rem',
-                  },
-                  '& .title, & .total': {
-                    fontWeight: 'bold',
-                    color: '#333',
-                  },
+                    width: '62px',
+                    padding: 0,
+                    borderRadius: 0,
+                  }
                 }}
               >
                 <p>
@@ -324,18 +354,53 @@ const Order = () => {
                   <span className="title">상품 금액</span>
                   <span className="total">1,594,500원</span>
                 </p>
+                {selectCoupon === '' ? (
+                  <p>
+                    <span className="title">쿠폰적용</span>
+                    <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
+                  </p>
+                ) : (
+                  <p>
+                    <span className="title">쿠폰적용</span>
+                    <div>
+                      <span>-3000원</span>
+                      <Button 
+                        onClick={() => setSelectCoupon('')}
+                        sx={{
+                          backgroundColor: '#bdbdbd',
+                          color: '#fff',
+                        }}
+                      >
+                        취소
+                      </Button>
+                    </div>
+                  </p>
+                )}
               </Box>
             </Box>
           </Box>
         </Box>
 
-        <OrderInfomation />
+        {/* 배송방법, 결제방법, 결제금액 */}
+        <OrderInfomation 
+          selectedCard={orderData.card}
+          setSelectedCard={changeOrderDataCard}
+          selectedDelivery={orderData.deliveryType}
+          setSelectedDelivery={changeOrderDataDelivery}
+        />
 
         <OrderTermsAgreement 
           termsAgree={orderData.termsAgree}
-          changeOrderData={changeOrderData}
+          changeOrderData={changeOrderDataTermsAgree}
         />
       </Box>
+
+      <CouponSelector
+        drawerOpen={couponOpen} 
+        toggleDrawer={toggleDrawer} 
+        complete={selectCoupon}
+        setComplete={setSelectCoupon}
+      />
 
       <NaviWrap className="single">
         <PrimaryButton 

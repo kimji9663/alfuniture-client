@@ -1,12 +1,11 @@
 import React, { useState, } from "react"
 import { Box, Tabs, Tab, } from "@mui/material"
-import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import WriteReviewPanel from "./WriteReviewPanel"
 import ReviewList from "./ReviewList"
 import { TabPanel, TabProps } from "../../components/Tabs"
 
-const title = ['리뷰 작성'];
+const title = ["리뷰 작성"];
 
 const WriteReview: React.FC = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -18,12 +17,12 @@ const WriteReview: React.FC = () => {
   return (
     <>
       <CenterTitle title={title}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 57px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight:"700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight:"700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}
@@ -37,17 +36,12 @@ const WriteReview: React.FC = () => {
         </Box>
 
         <TabPanel value={tabValue} index={0}>
-          <Box sx={{p:2}}>
-            <WriteReviewPanel/>
-          </Box>
+          <WriteReviewPanel/>
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          <Box sx={{p:2, pt:6}}>
-            <ReviewList/>
-          </Box>
+          <ReviewList/>
         </TabPanel>
       </Box>
-      <NavigationBar />
     </>
   )
 }

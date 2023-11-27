@@ -3,10 +3,11 @@ import { Box, Tabs, Tab, Button } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
 import { hasCouponData, getCouponData} from "../../data"
-import { TabPanel, TabProps} from "../../components/Tabs"
+import { TabPanel, TabProps } from "../../components/Tabs"
+import NoData from "../../components/NoData"
 import { HalfArrowDownGray } from "../../assets/images"
 import CouponCard from "./CouponCard"
-import { C333Fs12Typography, C999Fs12Typography } from "../../components/Typography"
+import { LabelMediumGray9ypography, LabelMediumGray7Typography } from "../../components/Typography"
 
 type CouponData = {
   imgsrc: string;
@@ -97,16 +98,16 @@ const Coupon: React.FC = () => {
     }
   };
 
-  const title = ['쿠폰'];
+  const title = ["쿠폰"];
   return (
     <>
       <CenterTitle title={title}/>
-      <Box sx={{ height: 'calc(100vh - 131px)', overflow: 'auto' }}>
+      <Box sx={{ height: "calc(100vh - 131px)", overflow: "auto" }}>
         <Box sx={{ 
           borderBottom: 1, 
-          borderColor: 'divider',
-          '.MuiTab-root.Mui-selected': { color: '#333', fontWeight:"700" },
-          '.MuiTabs-indicator': { height: '1px', backgroundColor: '#333' },
+          borderColor: "divider",
+          ".MuiTab-root.Mui-selected": { color: "#333", fontWeight:"700" },
+          ".MuiTabs-indicator": { height: "1px", backgroundColor: "#333" },
         }}>
           <Tabs 
             value={tabValue}
@@ -120,9 +121,10 @@ const Coupon: React.FC = () => {
         </Box>
 
         <TabPanel value={tabValue} index={0}>
+        { sortedHasCouponDataPanel.length > 0 ||  hasCouponDataPanel.length > 0 ? (
           <Box sx={{mx:"20px", mt:6}}>
             <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
-              <C333Fs12Typography>{"쿠폰 "+formattedHasCouponData.length+"개"}</C333Fs12Typography>
+              <LabelMediumGray9ypography>{"쿠폰 "+formattedHasCouponData.length+"개"}</LabelMediumGray9ypography>
               <Box sx={{display:"flex"}}>
                 <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
                   const sortedDataCopy = sortData(hasCouponDataPanel);
@@ -134,7 +136,7 @@ const Coupon: React.FC = () => {
                     setIsSortedHasCouponPanel(false);
                   }
                 }}>
-                  <C999Fs12Typography>최신순</C999Fs12Typography>
+                  <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>최신순</LabelMediumGray7Typography>
                   <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
                 </Button>
               </Box>  
@@ -147,36 +149,43 @@ const Coupon: React.FC = () => {
               <CouponCard data={hasCouponDataPanel}/>
             )}
           </Box>
+          ):(
+            <NoData message={"보유중인 쿠폰이 없습니다."} linkText={"홈으로 가기"} linkTo={"/"} insideTheTab={true}/>
+          )}
         </TabPanel>
 
         <TabPanel value={tabValue} index={1}>
+        { sortedGetCouponDataPanel.length > 0 ||  getCouponDataPanel.length > 0 ? (
           <Box sx={{mx:"20px", mt:6}}>
-            <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
-              <C333Fs12Typography>{"쿠폰 "+couponCount+"개"}</C333Fs12Typography>
-              <Box sx={{display:"flex"}}>
-                <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
-                  const sortedDataCopy = sortData(getCouponDataPanel);
-                  if (!isSortedGetCouponPanel) {
-                    setSortedGetCouponDataPanel(sortedDataCopy);
-                    setIsSortedGetCouponPanel(true);
-                  } else {
-                    setGetCouponDataPanel(sortedDataCopy.reverse());
-                    setIsSortedGetCouponPanel(false);
-                  }
-                }}>
-                  <C999Fs12Typography>최신순</C999Fs12Typography>
-                  <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
-                </Button>
-              </Box>  
-            </Box>
-            
-            {/* 쿠폰 */}
-            {isSortedGetCouponPanel ? (
-              <CouponCard data={sortedGetCouponDataPanel} onCouponClick={(index) => handleCouponClick(index)} />
-            ) : (
-              <CouponCard data={getCouponDataPanel}onCouponClick={(index) => handleCouponClick(index)} />
-            )}
+          <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:"21px"}}>
+            <LabelMediumGray9ypography>{"쿠폰 "+couponCount+"개"}</LabelMediumGray9ypography>
+            <Box sx={{display:"flex"}}>
+              <Button sx={{color:"#333", display:"flex", borderRadius:0}} onClick={() => {
+                const sortedDataCopy = sortData(getCouponDataPanel);
+                if (!isSortedGetCouponPanel) {
+                  setSortedGetCouponDataPanel(sortedDataCopy);
+                  setIsSortedGetCouponPanel(true);
+                } else {
+                  setGetCouponDataPanel(sortedDataCopy.reverse());
+                  setIsSortedGetCouponPanel(false);
+                }
+              }}>
+                <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>최신순</LabelMediumGray7Typography>
+                <HalfArrowDownGray style={{paddingTop:2, paddingLeft:4}}/>
+              </Button>
+            </Box>  
           </Box>
+          
+          {/* 쿠폰 */}
+          {isSortedGetCouponPanel ? (
+            <CouponCard data={sortedGetCouponDataPanel} onCouponClick={(index) => handleCouponClick(index)} />
+          ) : (
+            <CouponCard data={getCouponDataPanel}onCouponClick={(index) => handleCouponClick(index)} />
+          )}
+        </Box>
+        ):(
+          <NoData message={"받을 수 있는 쿠폰이 없습니다."} linkText={"홈으로 가기"} linkTo={"/"} insideTheTab={true}/>
+        )}
         </TabPanel>
       </Box>
       <NavigationBar />
