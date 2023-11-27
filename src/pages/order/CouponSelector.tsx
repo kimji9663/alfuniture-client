@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Box, Avatar, ListItemAvatar, ListItemText, SwipeableDrawer, ListItemButton } from "@mui/material"
 import SelectBox from "../../components/SelectBox"
-import { aerobiey, jameslee, onerain, clods } from "../../assets/images/logo"
 import { OrderTitle } from "./order.styles"
 import { AvatarList } from "./couponSelector.styles"
 import { couponItems } from "../../data"
@@ -65,7 +64,6 @@ const OptionSelectType = ({selectedCoupon, setSelectedCoupon, complete, setCompl
       complete = brand + title
       setComplete(complete)
     }
-    console.log(selectedCoupon)
   }
 
   return (
@@ -108,10 +106,6 @@ const CouponSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: Toggl
   const setToggleDrawer = (val: boolean) => (event: React.ChangeEvent<HTMLInputElement>) => {
     toggleDrawer(val)
   }
-
-  useEffect(() => {
-    console.log(complete)
-  }, [selectedCoupon, complete])
 
   return (
     <SwipeableDrawer
