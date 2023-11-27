@@ -1,6 +1,6 @@
 import { sofa01, sofa02, sofa03, sofa04, sofa05, table01, chair01, chair02, chair03, chair04, light01, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06, jamesLee01, jamesLee02, jamesLee03, jamesLee04, onerain01, onerain02, onerain03, aerobiey06, aerobiey07, aerobiey08, aerobiey09, henredn04, henredn05, henredn06, henredn07, umasqu04, umasqu05, umasqu06, umasqu07, recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, onerain_coupon03, deliveryProduct } from "./../assets/images/product"
 import { aerobiey, alfdn, clods, jameslee, onerain } from "../assets/images/logo"
-import { onerainBrand, aerobiey01, alfdn01, alfdn02, alfdn03, alfdn04} from "../assets/images/brand"
+import { onerainBrand, aerobiey01, alfdn01, alfdn02, alfdn03, alfdn04 } from "../assets/images/brand"
 import { thumb_brand01 } from "../assets/images"
 import { styleBanner01, styleBanner03, styleBanner04, styleBanner05, styleBanner06, styleBanner07, brandCollectionVideo01, brandCollectionVideo02 } from "../assets/images/banner"
 import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../assets/images/filterIcon/styles";
@@ -225,8 +225,8 @@ export const brandShopPanelProductData = [
 export const brandData = {
   name: "James Lee",
   description: "제임스리",
-  image: jameslee, 
-  isLiked: true, 
+  image: jameslee,
+  isLiked: true,
 };
 
 export const homeBannerData = [
@@ -412,39 +412,39 @@ export const myDeliveryInfo = [
     optionCode: "[21Series] HCA-309",
     name: "HC 아트 우든체어",
     deliveryNum: "158290398",
-    deliveryData: 
+    deliveryData:
       [
         {
-            "location": "해외배송",
-            "deliveryStatus": "집하",
-            "date": "3/14(화)  06:33"
+          "location": "해외배송",
+          "deliveryStatus": "집하",
+          "date": "3/14(화)  06:33"
         },
         {
-            "location": "이탈리아 > 인천항",
-            "deliveryStatus": "배송중",
-            "date": "3/15(수)  01:14"
+          "location": "이탈리아 > 인천항",
+          "deliveryStatus": "배송중",
+          "date": "3/15(수)  01:14"
         },
         {
-            "location": "통관",
-            "deliveryStatus": "통관절차 진행중",
-            "date": "3/15(수)  08:21"
+          "location": "통관",
+          "deliveryStatus": "통관절차 진행중",
+          "date": "3/15(수)  08:21"
         },
         {
-            "location": "통관",
-            "deliveryStatus": "통관 처리완료",
-            "date": "3/15(수)  08:21"
+          "location": "통관",
+          "deliveryStatus": "통관 처리완료",
+          "date": "3/15(수)  08:21"
         },
         {
-            "location": "국내배송",
-            "deliveryStatus": "배송중",
-            "date": "3/15(수)  14:02"
+          "location": "국내배송",
+          "deliveryStatus": "배송중",
+          "date": "3/15(수)  14:02"
         },
         {
-            "location": "판교",
-            "deliveryStatus": "배송완료",
-            "date": "3/15(수)  17:11"
+          "location": "판교",
+          "deliveryStatus": "배송완료",
+          "date": "3/15(수)  17:11"
         }
-    ]
+      ]
   },
 ]
 
@@ -1114,7 +1114,7 @@ export const shopProductData = [
 ]
 
 export const shopJson = {
-  "funiture":[
+  "funiture": [
     {
       "id": "menu_table",
       "category": "테이블",
@@ -1716,14 +1716,14 @@ export const styleBannerData = [
 ]
 
 export const styleTabPanelStyleTypes = [
-  {avatar: modern, name: "모던", discription: "혼자 사는 자취방"},
-  {avatar: northernEU, name: "북유럽", discription: "아이들이 좋아하는"},
-  {avatar: classic, name: "클래식", discription: "잔잔한 바이브"},
-  {avatar: casual, name: "캐주얼", discription: "에너지 넘치는"},
-  {avatar: cen, name: "첸", discription: "고요함이 좋다면"},
-  {avatar: plant, name: "플랜테리어", discription: "생기를 불어넣는"},
-  {avatar: minimal, name: "미니멀", discription: "깔끔함이 최고"},
-  {avatar: romantic, name: "로맨틱", discription: "달달한 신혼"},
+  { avatar: modern, name: "모던", discription: "혼자 사는 자취방" },
+  { avatar: northernEU, name: "북유럽", discription: "아이들이 좋아하는" },
+  { avatar: classic, name: "클래식", discription: "잔잔한 바이브" },
+  { avatar: casual, name: "캐주얼", discription: "에너지 넘치는" },
+  { avatar: cen, name: "첸", discription: "고요함이 좋다면" },
+  { avatar: plant, name: "플랜테리어", discription: "생기를 불어넣는" },
+  { avatar: minimal, name: "미니멀", discription: "깔끔함이 최고" },
+  { avatar: romantic, name: "로맨틱", discription: "달달한 신혼" },
 ]
 
 export const cardOptions = [

@@ -1,15 +1,16 @@
 import { Box, ListItemButton } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { FlexSpaceBetweenBox } from "../../components/Box"
+import { FlexBox } from "../../components/Box"
 
 export const FilterContainer = styled(Box)(() => ({
-  display: "block",
-  padding: "0.5rem 0",
-  borderTop: "1px solid #DDDDDD",
-  borderBottom: "1px solid #DDDDDD",
+  overflow: 'auto',
+  whiteSpace: 'nowrap',
+  padding: '0.5rem 0',
+  borderTop: '1px solid #DDDDDD',
+  borderBottom: '1px solid #DDDDDD',
 }))
 
-export const FilterButton = styled(ListItemButton)(({}) => ({
+export const FilterButton = styled(ListItemButton)(({ }) => ({
   padding: "0.5rem 1rem",
   "&:hover": {
     backgroundColor: "inherit"
@@ -19,9 +20,12 @@ export const FilterButton = styled(ListItemButton)(({}) => ({
   }
 }))
 
-export const FilterTypeContainer = styled(FlexSpaceBetweenBox)(() => ({
-  padding: "0.5rem 1rem",
-  "& .MuiButton-root": {
+export const FilterTypeContainer = styled(FlexBox)(() => ({
+  padding: '0.5rem 1rem',
+  columnGap: '0.5rem',
+  overflow: 'auto',
+  whiteSpace: 'nowrap',
+  '& .MuiButton-root': {
     borderRadius: 0,
     padding: ".375rem 1rem",
     fontSize: ".875rem",

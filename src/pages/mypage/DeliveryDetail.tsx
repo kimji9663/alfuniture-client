@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Box, CardHeader, CardMedia, CardActions, Button } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
