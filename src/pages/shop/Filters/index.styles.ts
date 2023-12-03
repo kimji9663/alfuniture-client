@@ -1,10 +1,10 @@
-import { Button, MenuItem, MenuList } from '@mui/material';
+import { Box, Button, MenuItem, MenuList } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FlexAlignItemsCenterBox, FlexBox } from '../../../components/Box';
 
 export const OptionTagContainer = styled(FlexBox)(() => ({
   columnGap: '0.5rem',
-  marginTop: '0.5rem'
+  marginTop: '0.5rem',
 }))
 
 export const OptionTag = styled(FlexAlignItemsCenterBox)(() => ({
@@ -15,15 +15,30 @@ export const OptionTag = styled(FlexAlignItemsCenterBox)(() => ({
   '& .MuiIconButton-root': {
     padding: 0,
     width: '1rem',
-    height: '1rem'
+    height: '1rem',
+    color: '#DADADA'
   }
 }))
 
-export const FilterMenuContainer = styled(MenuList)(() => ({
-  padding: '1.5rem 1rem',
-  maxHeight: '70vh',
-  display: 'grid',
-  alignContent: 'space-between',
+export const FilterMenuContainer = styled(Box)(() => ({
+  padding: '0rem 1rem',
+  height: '70vh',
+  paddingBottom: '82px',
+  overflow: 'hidden',
+  backgroundColor: '#fff'
+}))
+
+export const FilterMenuHeader = styled(Box)(() => ({
+  padding: '1.5rem 0',
+  position: 'sticky',
+  top: 0,
+  zIndex: 999,
+  backgroundColor: '#fff'
+}))
+
+export const FilterMenuBody = styled(MenuList)(() => ({
+  // maxHeight: 'calc(70vh - 5rem)',
+  overflow: 'auto'
 }))
 
 export const FilterMenuItem = styled(MenuItem)(() => ({
@@ -48,6 +63,9 @@ export const FilterMenuItem = styled(MenuItem)(() => ({
       color: '#F7F7F7'
     }
   },
+  '& .MuiInput-input': {
+    textAlign: 'end'
+  }
 }))
 
 export const ShowProductButton = styled(Button)(() => ({
