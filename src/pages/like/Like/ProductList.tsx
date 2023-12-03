@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { Box, FormControlLabel, Button } from "@mui/material"
+import { Link } from "react-router-dom"
+import { Box, FormControlLabel, Button, Typography } from "@mui/material"
 import { IconShift } from "../../../assets/images"
 import List from "./List"
 import { CustomCheckbox } from "../../../styles/checkbox.styles"
 import {likeProductData, styleTypes} from "../../../data/index"
 import {RectCheckbox} from "../../../styles/checkbox.styles"
-import { handleCheckedFilterItem } from "../../../components/filterUtils";
+import { handleCheckedFilterItem } from "../../../components/filterUtils"
+import { PrimaryButton } from "../../../styles/buttons.styles"
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -15,7 +17,10 @@ const itemList = styleTypes.map(style => ({
 const ProductList = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
   const [isAllChecked, setIsAllChecked] = useState(true);
-  const [filteredStyles, setFilteredStyles] = useState(likeProductData);
+  const [filteredStyles, setFilteredStyles] = useState(likeProductData)
+  const message = "상품이 없습니다."
+  const linkText = "홈으로 가기"
+  const linkTo = "/home"
 
   useEffect(() => {
     setFilterItem(itemList.map(el => el.name));
@@ -128,15 +133,22 @@ const ProductList = () => {
         {isAllChecked ? (
           <List data={likeProductData} />
         ) : (
-          
           <>
-            {filteredStyles.length != 0 ? 
+            {filteredStyles.length !== 0 ? 
             <List data={filteredStyles} /> 
             : 
-            <Box>상품준비중</Box>
+            // 데이터가 없을 때 렌더링
+            <Box sx={{ p: 1, mt: 6, display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", boxSizing: 'border-box' }}>
+              <Typography sx={{ fontWeight: "bold", mb: 2 }}>{message}</Typography>
+              <Link to={linkTo} style={{  width: "100%" }}>
+                <PrimaryButton sx={{color: "white", borderRadius: 0, height: "60px", width: "100%", mb:5 }}>
+                {linkText}
+                </PrimaryButton>
+              </Link>
+            </Box>
             }
           </>
-        ) }
+        )}
       </Box>
     </>
   )

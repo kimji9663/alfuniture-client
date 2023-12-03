@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography, Button } from "@mui/material"
-import { SecondaryButton, PrimaryButton, PrimaryLightButton } from "../../styles/buttons.styles"
+import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import NoTitle from "../../components/title/NoTitle"
 import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
