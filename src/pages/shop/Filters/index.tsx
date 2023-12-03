@@ -1,6 +1,6 @@
-import { Avatar, Box, IconButton, SwipeableDrawer } from "@mui/material";
+import { Avatar, Box, FormControl, FormGroup, IconButton, Input, InputAdornment, SwipeableDrawer } from "@mui/material";
 import { FilterOption, FilterTypes } from "./filters";
-import { FilterMenuContainer, FilterMenuItem, OptionTag, OptionTagContainer, ShowProductButton } from "./index.styles";
+import { FilterMenuBody, FilterMenuContainer, FilterMenuHeader, FilterMenuItem, OptionTag, OptionTagContainer, ShowProductButton } from "./index.styles";
 import { BoldTypography, TitleSmallWhiteTypography, Gray8Typography } from "../../../components/Typography";
 import { MouseEvent } from "react";
 import React from "react";
@@ -71,7 +71,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
       onClose={() => { }}
     >
       <FilterMenuContainer>
-        <Box sx={{ mb: '1.5rem' }}>
+        <FilterMenuHeader>
           <BoldTypography>
             {type}
           </BoldTypography>
@@ -79,8 +79,8 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
             options={selected}
             deleteOption={handleClickX}
           /> : null}
-        </Box>
-        <Box sx={{ maxHeight: 'calc(100% - 164px)', overflow: 'auto' }}>
+        </FilterMenuHeader>
+        <FilterMenuBody sx={{maxHeight: selected.length ? 'calc(70vh - 8rem)' : 'calc(70vh - 5rem)'}}>
           {type !== '가격' ? FilterTypes[type]?.map((item, idx) => (
             <FilterMenuItem
               key={`${item}-type-${idx}`}
@@ -92,26 +92,36 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 {item.name}
               </Gray8Typography>
             </FilterMenuItem>
-          )) : <>
+          )) : <FormGroup sx={{ width: '100%' }}>
             <FilterMenuItem key={'min-price'} className='priceType'>
-              <Gray8Typography>
-                {0}원 에서
-              </Gray8Typography>
-            </FilterMenuItem>,
-            <FilterMenuItem key={'max-price'} className='priceType'>
-              <Gray8Typography>
-                {0}원 까지
-              </Gray8Typography>
+              <FormControl>
+                <Input
+                  type='number'
+                  disableUnderline
+                  defaultValue={0}
+                  endAdornment={<InputAdornment position="end">원 에서</InputAdornment>}
+                />
+              </FormControl>
             </FilterMenuItem>
-          </>}
-        </Box>
-        <ShowProductButton
-          variant="contained"
-          onClick={clickShowProduct(selected)}
-        >
-          제품 보러가기
-        </ShowProductButton>
+            <FilterMenuItem key={'max-price'} className='priceType'>
+              <FormControl>
+                <Input
+                  type='number'
+                  disableUnderline
+                  defaultValue={0}
+                  endAdornment={<InputAdornment position="end">원 까지</InputAdornment>}
+                />
+              </FormControl>
+            </FilterMenuItem>
+          </FormGroup>}
+        </FilterMenuBody>
       </FilterMenuContainer>
+      <ShowProductButton
+        variant="contained"
+        onClick={clickShowProduct(selected)}
+      >
+        제품 보러가기
+      </ShowProductButton>
     </SwipeableDrawer>
   </>
 }
