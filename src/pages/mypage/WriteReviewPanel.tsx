@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
-import { Box, Button, TextareaAutosize } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
+import { Box, Button, TextareaAutosize, ButtonGroup, Typography } from "@mui/material";
 import { IconReviewStarBlackSmall, IconReviewStarGraySmall } from "../../assets/images/";
 import { RectCheckbox } from "../../styles/checkbox.styles";
 import { WriteReviewTagData } from "../../data";
 import { TitleSmallBoldGray9Typography } from "../../components/Typography";
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
+import { BasicModal } from "../../styles/modal.styles"
+import { useNavigate } from "react-router-dom"
 
 interface Tag {
   name: string;
@@ -13,12 +15,15 @@ interface Tag {
 }
 
 const WriteReviewPanel: React.FC = () => {
+  const navigate = useNavigate()
   const initialTags: Tag[] = WriteReviewTagData.map(tag => ({ ...tag, checked: false }));
   const [reviewText, setReviewText] = useState<string>("");
   const [rating, setRating] = useState(0);
   const [userPhoto, setUserPhoto] = useState<string[]>([])
   const [tags, setTags] = useState<Tag[]>(initialTags);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalType, setModalType] = useState("")
   let photoUrl: string | undefined
   const handleUploadPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     if(!e.target.files){
@@ -50,30 +55,50 @@ const WriteReviewPanel: React.FC = () => {
   function checkValidate(){
     if(rating === 0 ){
       console.log("만족도를 선택하세요")
+      setModalType("rating");
+      setModalOpen(true);
       return
     }
-    if(userPhoto.length === 0 ){
-      console.log("사진을 선택하세요")
-      return
-    }
+    // if(userPhoto.length === 0 ){
+    //   console.log("사진을 선택하세요")
+    //   return
+    // }
     if(reviewText.length === 0 ){
       console.log("후기를 작성해주세요")
+      setModalType("reviewText"); 
+      setModalOpen(true); 
       return
     }
-    const checkedTags = tags.filter(tag => tag.checked);
-    if(checkedTags.length === 0){
-      console.log("상품 태그를 선택해주세요")
-      return
-    }
+    // const checkedTags = tags.filter(tag => tag.checked);
+    // if(checkedTags.length === 0){
+    //   console.log("상품 태그를 선택해주세요")
+    //   return
+    // }
+    navigate(-1)
   }
+
+  const handleClose = () => {
+    setModalOpen(false)
+  }
+
+  useEffect(() => {
+    if (modalType === "rating" || modalType === "reviewText") {
+      setModalOpen(true);
+    }
+  }, [modalType]);
 
   return (
     <>
       <Box sx={{p:2}}>
         <Box sx={{ mt: 4 }}>
-          <TitleSmallBoldGray9Typography sx={{mb: 1}}>
-            상품에 대한 만족도
-          </TitleSmallBoldGray9Typography>
+          <Box sx={{display:"flex", mb: 1}}>
+            <TitleSmallBoldGray9Typography>
+              상품에 대한 만족도
+            </TitleSmallBoldGray9Typography>
+            <Box sx={{position:"relative"}}>
+              <Typography style={{color:'red', position:'absolute', left:0, top:"-3px"}}>*</Typography>
+            </Box>
+          </Box>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             {[0, 1, 2, 3, 4].map((starIndex) => (
               <Box
@@ -144,9 +169,14 @@ const WriteReviewPanel: React.FC = () => {
           </Box>
         </Box>
         <Box sx={{ mt: 5 }}>
-          <TitleSmallBoldGray9Typography sx={{ mb: 2 }}>
-            상품 후기
-          </TitleSmallBoldGray9Typography>
+          <Box sx={{display:"flex", mb: 2}}>
+            <TitleSmallBoldGray9Typography>
+              상품 후기
+            </TitleSmallBoldGray9Typography>
+            <Box sx={{position:"relative"}}>
+              <Typography style={{color:'red', position:'absolute', left:0, top:"-3px"}}>*</Typography>
+            </Box>
+          </Box>
           <TextareaAutosize 
             value={reviewText}
             onChange={handleReviewTextChange}
@@ -181,10 +211,25 @@ const WriteReviewPanel: React.FC = () => {
         </Box>
       </Box>
       <NaviWrap>
-        <PrimaryButton sx={{width:"100%"}} onClick={() => {
-          checkValidate()
-        }}>작성완료</PrimaryButton>
+        <PrimaryButton sx={{width:"100%"}} 
+        onClick={() => {checkValidate()}}
+        // onClick={handleModalOpen("upload")}
+        >작성완료</PrimaryButton>
       </NaviWrap>
+
+      <BasicModal open={modalOpen} onClose={handleClose}>
+        <Box>
+          <>
+            <div className="content" style={{fontWeight:"bold"}}>
+              {modalType === "rating" && "별점을 설정해주세요"} 
+              {modalType === "reviewText" && "후기를 작성해주세요"}
+            </div>
+            <ButtonGroup fullWidth>
+              <PrimaryButton onClick={handleClose}>확인</PrimaryButton>
+            </ButtonGroup>
+          </>
+        </Box>
+      </BasicModal>
     </>
   );
 };
