@@ -68,7 +68,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
       anchor="bottom"
       open={open}
       onOpen={() => { }}
-      onClose={() => { }}
+      onClose={clickShowProduct(selected)}
     >
       <FilterMenuContainer>
         <FilterMenuHeader>

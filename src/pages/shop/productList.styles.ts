@@ -20,11 +20,10 @@ export const FilterButton = styled(ListItemButton)(({ }) => ({
   }
 }))
 
-export const FilterTypeContainer = styled(FlexBox)(() => ({
+export const FilterTypeContainer = styled(Box)(() => ({
+  display: 'inline-flex',
   padding: '0.5rem 1rem',
   columnGap: '0.5rem',
-  overflow: 'auto',
-  whiteSpace: 'nowrap',
   '& .MuiButton-root': {
     borderRadius: 0,
     padding: ".375rem 1rem",

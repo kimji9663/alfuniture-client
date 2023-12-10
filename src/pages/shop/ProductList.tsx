@@ -29,7 +29,6 @@ const ProductList = () => {
 
   const addOptions = (options: FilterOption[]) => {
     setFilterOptions({ ...filterOptions, [filterType]: options })
-    console.log(filterOptions)
   };
   const getFilterSummary = (type: string) => {
     const options = filterOptions[type]
