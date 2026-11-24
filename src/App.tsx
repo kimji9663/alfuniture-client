@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import type { ComponentType } from "react"
 import Layout from "./components/Layout"
 import { CartProvider } from "./store/cart"
+import { LikesProvider } from "./store/likes"
 // 홈은 첫 진입 페이지이자 LCP 페이지라 메인 번들에 둔다
 import Home from "./pages/home/Home"
 
@@ -200,7 +201,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <CartProvider>
-      <RouterProvider router={router} />
+      <LikesProvider>
+        <RouterProvider router={router} />
+      </LikesProvider>
     </CartProvider>
   )
 }

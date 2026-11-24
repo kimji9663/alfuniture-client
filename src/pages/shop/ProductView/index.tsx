@@ -15,7 +15,10 @@ import ReviewPanel from "./ReviewPanel"
 import PersonalQnaPanel from "./PersonalQnaPanel"
 import OrderSelector, { OptionSelection, isSelectionComplete } from "./OrderSelector"
 import BrandButton from "../../../components/BrandButton"
-import { useCart } from "../../../store/cart"
+import { NewCartItem, useCart } from "../../../store/cart"
+import type { OrderState } from "../../order/Order"
+import { won } from "../../../utils/pricing"
+import { useLikes } from "../../../store/likes"
 
 // 이 화면이 보여 주는 상품 (상품 ID 라우팅·API 연동 전까지 고정)
 const product = {
@@ -90,13 +93,22 @@ const ViewTabPanel = (props: TabPanelProps) => {
 const ProductView = () => {
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
-  const [isLike, setIsLike] = useState(false)
+  const { isLiked, toggleLike } = useLikes()
+  const isLike = isLiked(product)
   const [optionOpen, setOptionOpen] = useState(false)
   const [selection, setSelection] = useState<OptionSelection>({ colors: [], option: null })
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState("")
   const { addItem } = useCart()
   const selectComplete = isSelectionComplete(selection)
+
+  // 지금 고른 옵션으로 만든 주문 상품 (장바구니 담기·바로 구매 공통)
+  const selectedItem = (): NewCartItem => ({
+    ...product,
+    option1: selection.colors.map((c) => c.name).join("/"),
+    option2: selection.option?.name ?? null,
+    count: 1,
+  })
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
@@ -118,8 +130,9 @@ const ProductView = () => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후 주문하기 이동
       if (selectComplete) {
-        // 구매하기 클릭 시 주문하기 링크로
-        navigate("/order")
+        // 바로 구매: 장바구니를 거치지 않고 이 상품만 주문서로 넘긴다
+        const state: OrderState = { source: "buyNow", item: selectedItem() }
+        navigate("/order", { state })
       } else {
         // 필수 옵션 체크 에러
         setModalType("error")
@@ -130,7 +143,7 @@ const ProductView = () => {
   }
 
   const handleClickLike = (event: React.MouseEvent) => {
-    setIsLike(!isLike)
+    toggleLike({ ...product, colors: ["#494A4C", "#192552", "#D67531"] })
   }
 
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {
@@ -148,9 +161,7 @@ const ProductView = () => {
   const handleAddCart = () => {
     if (!selectComplete) return
     addItem({
-      ...product,
-      option1: selection.colors.map((c) => c.name).join("/"),
-      option2: selection.option?.name ?? null,
+      ...selectedItem(),
     })
     // 담은 뒤 결과 안내 (계속 쇼핑 / 장바구니로 이동)
     setOptionOpen(false)
@@ -186,7 +197,7 @@ const ProductView = () => {
               </Box>
             </Box>
             <Box className="product_price">
-              <span className="price">1,594,500원</span>
+              <span className="price">{won(product.price)}</span>
               <span className="fee">배송비 및 관부가세 포함</span>
             </Box>
 

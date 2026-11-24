@@ -1,0 +1,215 @@
+
+> alfuniture-client@0.1.0 build
+> react-scripts build
+
+(node:23016) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Creating an optimized production build...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+One of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
+  
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Compiled with warnings.
+
+[eslint] 
+src\components\Box.tsx
+  Line 1:15:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 2:18:  'useTheme' is defined but never used    @typescript-eslint/no-unused-vars
+
+src\components\navigationbar.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\product\HorizontalRanking.tsx
+  Line 2:26:  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\product\PreviewType2.tsx
+  Line 34:9:  'handleClickLike' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\title\LeftTitleNoIcon.tsx
+  Line 3:10:  'IconCart' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 3:20:  'IconNotification' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 5:10:  'Link' is defined but never used              @typescript-eslint/no-unused-vars
+
+src\components\title\TitleTwoLine.tsx
+  Line 3:10:  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\auth\SignIn\index.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\home\Home.tsx
+  Line 2:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\mypage\CouponCard.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\mypage\MyInformation.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\mypage\MyOrder.tsx
+  Line 112:32:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\mypage\OrderDetail.tsx
+  Line 31:6:  React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array. You can also do a functional update 'setData(d => ...)' if you only need 'data' in the 'setData' call  react-hooks/exhaustive-deps
+
+src\pages\mypage\OrderList.tsx
+  Line 44:41:  Expected '===' and instead saw '=='  eqeqeq
+  Line 50:41:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\mypage\RecentlyProduct.tsx
+  Line 10:17:  'setCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\pages\notification\index.tsx
+  Line 23:6:  React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array. You can also do a functional update 'setData(d => ...)' if you only need 'data' in the 'setData' call  react-hooks/exhaustive-deps
+
+src\pages\onboarding\LoadingCuration.tsx
+  Line 12:6:  React Hook React.useEffect has a missing dependency: 'goToNext'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\pages\onboarding\loadingCuration.styles.ts
+  Line 4:60:  Unexpected empty object pattern  no-empty-pattern
+
+src\pages\order\OrderInfomation.tsx
+  Line 2:87:  'Avatar' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 2:95:  'ListItemAvatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\postmagazine\BrandStory.tsx
+  Line 3:10:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\postmagazine\RightImageCard.tsx
+  Line 3:8:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\Filters\index.tsx
+  Line 1:18:  'Box' is defined but never used                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 51:6:  React Hook React.useEffect has missing dependencies: 'filterOptions' and 'type'. Either include them or remove the dependency array. If 'setSelected' needs the current value of 'filterOptions', you can also switch to useReducer instead of useState and read 'filterOptions' in the reducer  react-hooks/exhaustive-deps
+
+src\pages\shop\ProductList.tsx
+  Line 36:29:  Expected '===' and instead saw '=='  eqeqeq
+  Line 50:69:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\shop\ProductView\index.styles.ts
+  Line 2:15:  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\ProductView\reviewPanel.styles.ts
+  Line 2:15:  'ButtonGroup' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 3:10:  'PrimaryButton' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\productList.styles.ts
+  Line 3:10:   'FlexBox' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 13:53:  Unexpected empty object pattern      no-empty-pattern
+
+src\pages\shop\shopAll.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 5:41:  Unexpected empty object pattern  no-empty-pattern
+
+src\pages\style\Brand.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\MonthlyPostBox.tsx
+  Line 2:15:   'Typography' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 17:49:  'linkTo' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\PostMagazineTabPanel.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\RankingList.tsx
+  Line 106:32:  Expected '!==' and instead saw '!='  eqeqeq
+
+src\pages\style\RankingTabPanel.tsx
+  Line 1:17:  'useState' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 2:15:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\styles\buttons.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\styles\checkbox.styles.ts
+  Line 4:50:   Unexpected empty object pattern  no-empty-pattern
+  Line 21:60:  Unexpected empty object pattern  no-empty-pattern
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  192.55 kB (-1 B)  build\static\js\main.dd104456.js
+  9.02 kB           build\static\js\6412.f6379769.chunk.js
+  8.9 kB            build\static\js\3777.dba360ac.chunk.js
+  8.27 kB           build\static\js\8411.15fa7c1d.chunk.js
+  7.53 kB (+40 B)   build\static\js\8215.d8f8ae31.chunk.js
+  7.41 kB           build\static\js\6025.e0b56c94.chunk.js
+  7.03 kB           build\static\js\6984.1ccd0161.chunk.js
+  6.53 kB           build\static\js\908.ab79a875.chunk.js
+  6.23 kB           build\static\js\4838.05d1a4ca.chunk.js
+  6.18 kB           build\static\js\3082.7f9c327c.chunk.js
+  6.13 kB           build\static\js\2609.320a54cb.chunk.js
+  6.05 kB           build\static\js\5005.42f3d75d.chunk.js
+  5.9 kB            build\static\js\7004.6387c68d.chunk.js
+  5.7 kB            build\static\js\2733.ddaee900.chunk.js
+  5.68 kB           build\static\js\6336.21049929.chunk.js
+  5.31 kB           build\static\js\8798.867616c2.chunk.js
+  5.06 kB           build\static\js\9862.35cc78c3.chunk.js
+  4.96 kB           build\static\js\8334.0d5455cd.chunk.js
+  4.75 kB           build\static\js\3775.0b92efce.chunk.js
+  4.69 kB           build\static\js\8498.46ac4aee.chunk.js
+  4.63 kB           build\static\js\4389.0d6fd50b.chunk.js
+  4.58 kB           build\static\js\743.9fa4982f.chunk.js
+  4.44 kB           build\static\js\8915.206755fa.chunk.js
+  4.36 kB           build\static\js\6910.9be157f3.chunk.js
+  4.32 kB           build\static\js\3470.714c8793.chunk.js
+  4.23 kB           build\static\js\5910.c8752048.chunk.js
+  4.18 kB           build\static\js\4283.fa43202d.chunk.js
+  4.07 kB           build\static\js\2795.69a275ef.chunk.js
+  3.86 kB           build\static\js\674.821f0b45.chunk.js
+  3.79 kB           build\static\css\main.007bbf7e.css
+  3.65 kB           build\static\js\8071.fbd3cbe7.chunk.js
+  3.59 kB           build\static\js\5038.0b2eaf5e.chunk.js
+  3.58 kB           build\static\js\4717.f7cd2971.chunk.js
+  3.55 kB           build\static\js\8018.93543ea4.chunk.js
+  3.51 kB           build\static\js\3093.93915088.chunk.js
+  3.49 kB           build\static\js\6965.e156966f.chunk.js
+  3.45 kB           build\static\js\6406.2456bf4d.chunk.js
+  3.4 kB            build\static\js\3771.4c9c78fc.chunk.js
+  3.39 kB           build\static\js\5180.033cc1c1.chunk.js
+  3.35 kB           build\static\js\4868.dbaefa26.chunk.js
+  3.34 kB           build\static\js\9829.d68ae283.chunk.js
+  3.15 kB           build\static\js\7479.80b04ab6.chunk.js
+  3.07 kB           build\static\js\4246.a2293528.chunk.js
+  3.03 kB           build\static\js\8098.52d32b41.chunk.js
+  3.01 kB           build\static\js\2546.08a536bd.chunk.js
+  2.94 kB           build\static\js\6164.39e5bb00.chunk.js
+  2.92 kB           build\static\js\9549.31200258.chunk.js
+  2.9 kB            build\static\js\9166.cf1c8b7e.chunk.js
+  2.86 kB           build\static\js\569.51fddfa4.chunk.js
+  2.79 kB           build\static\js\6430.685211a5.chunk.js
+  2.65 kB           build\static\js\4567.003315bb.chunk.js
+  2.06 kB           build\static\js\1560.aeeb21ca.chunk.js
+  1.78 kB           build\static\js\787.928a5de6.chunk.js
+  1.77 kB           build\static\js\7127.2afa0ff6.chunk.js
+  1.27 kB           build\static\js\4832.232e8a65.chunk.js
+  965 B             build\static\js\5017.61308c0d.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+

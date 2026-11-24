@@ -1,7 +1,7 @@
 import { sofa01, sofa02, sofa03, sofa04, sofa05, table01, chair01, chair02, chair03, chair04, light01, rankingItem01, rankingItem02, rankingItem03, rankingItem04, rankingItem05, rankingItem06, jamesLee01, jamesLee02, jamesLee03, jamesLee04, onerain01, onerain02, onerain03, aerobiey06, aerobiey07, aerobiey08, aerobiey09, henredn04, henredn05, henredn06, henredn07, umasqu04, umasqu05, umasqu06, umasqu07, recentlyProduct01, recentlyProduct02, recentlyProduct03, recentlyProduct04, recentlyProduct05, recentlyProduct06, recentlyProduct07, recentlyProduct08, recentlyProduct09, onerain_coupon03, deliveryProduct } from "./../assets/images/product"
 import { aerobiey, alfdn, clods, jameslee, onerain } from "../assets/images/logo"
 import { onerainBrand, aerobiey01, alfdn01, alfdn02, alfdn03, alfdn04 } from "../assets/images/brand"
-import { thumb_brand01 } from "../assets/images"
+import { thumb_brand01, logo as appLogo } from "../assets/images"
 import { styleBanner01, styleBanner03, styleBanner04, styleBanner05, styleBanner06, styleBanner07, brandCollectionVideo01, brandCollectionVideo02 } from "../assets/images/banner"
 import { casual, cen, classic, minimal, modern, northernEU, plant, romantic } from "../assets/images/filterIcon/styles";
 
@@ -365,14 +365,14 @@ export const hasCouponData = [
   {
     imgsrc: onerain_coupon03,
     shopName: "James Lee",
-    couponName: "제임스 리  브랜드 10% 쿠폰",
+    couponName: "제임스 리 브랜드 10% 쿠폰",
     startDate: "20230920",
     endDate: "20231115",
   },
   {
     imgsrc: onerain_coupon03,
     shopName: "One rain",
-    couponName: "원레인  브랜드 10% 쿠폰",
+    couponName: "원레인 브랜드 10% 쿠폰",
     startDate: "20230922",
     endDate: "20231128",
   },
@@ -382,7 +382,7 @@ export const getCouponData = [
   {
     imgsrc: onerain_coupon03,
     shopName: "James Lee",
-    couponName: "제임스 리  브랜드 10% 쿠폰",
+    couponName: "제임스 리 브랜드 10% 쿠폰",
     startDate: "20230920",
     endDate: "20231118",
   },
@@ -396,7 +396,7 @@ export const getCouponData = [
   {
     imgsrc: onerain_coupon03,
     shopName: "One rain",
-    couponName: "원레인  브랜드 10% 쿠폰",
+    couponName: "원레인 브랜드 10% 쿠폰",
     startDate: "20230822",
     endDate: "20231128",
   },
@@ -870,32 +870,61 @@ export const featuredBrandData = [
   }
 ]
 
-export const couponItems = [
+/**
+ * 주문서에서 쓰는 쿠폰 (주문당 1장)
+ * - scope "all": 전 상품 쿠폰 (주문 상품 금액 합계에 할인)
+ * - scope "brand": 브랜드 쿠폰 (brandKey 브랜드 상품 금액에만 할인, 해당 상품이 없으면 사용 불가)
+ *   brandKey는 src/utils/pricing.ts normalizeBrand() 기준 (예: "One Rain" → "onerain")
+ */
+export const couponItems: Array<{
+  id: string; scope: 'all' | 'brand'; brandKey?: string; brand: string; title: string; rate: number; logo: string; expiration: number
+}> = [
   {
-    id: 'rerobiey',
-    brand: 'Rerobiey',
+    id: 'welcome',
+    scope: 'all',
+    brand: 'Alfuniture',
+    title: '전 상품 10% 할인 쿠폰',
+    rate: 0.1,
+    logo: appLogo,
+    expiration: 30,
+  },
+  {
+    id: 'aerobiey',
+    scope: 'brand',
+    brandKey: 'aerobiey',
+    brand: 'Aerobiey',
     title: '브랜드 10% 쿠폰',
+    rate: 0.1,
     logo: aerobiey,
     expiration: 20,
   },
   {
     id: 'onerain',
+    scope: 'brand',
+    brandKey: 'onerain',
     brand: 'ONERAIN',
     title: '브랜드 10% 쿠폰',
+    rate: 0.1,
     logo: onerain,
     expiration: 15,
   },
   {
     id: 'james_lee',
+    scope: 'brand',
+    brandKey: 'jameslee',
     brand: 'James Lee',
     title: '브랜드 10% 쿠폰',
+    rate: 0.1,
     logo: jameslee,
     expiration: 11,
   },
   {
     id: 'clods',
+    scope: 'brand',
+    brandKey: 'clods',
     brand: 'CLODS',
     title: '브랜드 10% 쿠폰',
+    rate: 0.1,
     logo: clods,
     expiration: 3,
   }
