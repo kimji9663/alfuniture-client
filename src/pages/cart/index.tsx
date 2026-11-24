@@ -33,8 +33,8 @@ function CartPage() {
   const productPrice = selectedItems.reduce((total, product) => total + product.price * product.count, 0);
   const deliveryCharge = selectedItems.reduce((total, product) => total + product.deliveryCharge, 0);
   const totalPrice = productPrice + deliveryCharge;
-  // 기존 동작 유지: 선택된 상품의 수량 합계 (상품 종류 수가 아님 → IMPROVEMENTS.md 2번)
-  const totalCount = selectedItems.reduce((total, product) => total + product.count, 0);
+  // "N개 선택상품": 선택된 상품 종류(장바구니 줄) 수. 수량 합계가 아님 (예: 2개+1개 담은 2종 → "2개")
+  const totalCount = selectedItems.length;
 
   // + / - 버튼: 수량 1~99 범위는 스토어에서 보장
   const increaseQuantity = (id: string, count: number) => setCount(id, count + 1);
