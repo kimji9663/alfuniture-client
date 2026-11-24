@@ -29,7 +29,7 @@
 npm ci          # package-lock.json 기준 설치
 npm start       # 개발 서버 http://localhost:3000
 npm run build   # build/ 에 프로덕션 빌드
-npm test        # Jest (현재 실패, 아래 참고)
+npm test        # Jest 62개 (2026-11-25 복구, docs/IMPROVEMENTS.md 11번)
 npm run optimize-images   # 이미지 추가·교체 시: assets-original/images → src/assets/images 에 WebP 생성
 ```
 
@@ -77,7 +77,7 @@ src/
 - CRA는 더 이상 유지보수되지 않아 `react-scripts`를 올리는 것만으로는 보안 취약점을 해소할 수 없습니다. Vite 등으로 옮기는 것을 검토해야 합니다.
 
 **품질**
-- 테스트: 기본 템플릿 테스트(`App.test.tsx`) 1개뿐이고 이마저 실패합니다.
+- 테스트: 기본 템플릿 테스트(`App.test.tsx`) 1개뿐이고 이마저 실패합니다. → **2026-11-25 복구: 62개 통과** ([IMPROVEMENTS.md 11번](docs/IMPROVEMENTS.md#11-결과-2026-11-25))
   1. Jest(CJS)가 ESM 전용인 `swiper/react`를 불러오지 못합니다 (`Cannot find module 'swiper/react'`).
   2. 테스트 내용 자체가 CRA 기본 문구 "learn react"를 찾는 것이라, 모듈 문제를 고쳐도 실패합니다.
 - 타입: `any`가 22곳 있습니다.
@@ -104,7 +104,7 @@ src/
 | └ `react-hooks/exhaustive-deps` | 6 | |
 | └ `no-empty-pattern` | 6 | |
 | └ `eqeqeq` | 6 | |
-| Jest | 스위트 1개 실패, 테스트 0개 실행 | [`test.log`](docs/logs/test.log) |
+| Jest | 스위트 1개 실패, 테스트 0개 실행 → 11-25 복구 후 6개 스위트·62개 통과 | [`test.log`](docs/logs/test.log) → [`test-after.log`](docs/logs/test-after.log) |
 | `npm audit` | 76개 (C6 · H37 · M19 · L14) | [`npm-audit.json`](docs/logs/npm-audit.json) |
 
 #### Lighthouse (홈 `/`)
@@ -325,6 +325,7 @@ src/
 | [`docs/logs/tsc.log`](docs/logs/tsc.log) | `npx tsc --noEmit` 결과와 소요 시간 |
 | [`docs/logs/eslint.log`](docs/logs/eslint.log) | `npx eslint "src/**/*.{ts,tsx}" -f compact` |
 | [`docs/logs/test.log`](docs/logs/test.log) | `CI=true react-scripts test --watchAll=false` |
+| [`docs/logs/test-after.log`](docs/logs/test-after.log) | 11번 테스트 복구 후 `npm test --verbose` (62개 통과) |
 | [`docs/logs/npm-audit.json`](docs/logs/npm-audit.json) | `npm audit --json` |
 | [`docs/logs/perf-baseline.json`](docs/logs/perf-baseline.json) | 4-1 측정 원본 (경로별 로드 지표, 필터 상호작용) |
 | [`docs/logs/lighthouse_summary_before.json`](docs/logs/lighthouse_summary_before.json) | Lighthouse 13.5.0 홈 화면 모바일 측정 결과 (기준선) |

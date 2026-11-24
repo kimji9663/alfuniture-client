@@ -33,8 +33,8 @@ export const RectCheckboxNonChecked = styled(FormControl)(({ }) => ({
 export const CustomCheckbox = styled("input")(() => {
   const theme = useTheme(); 
   return {
-    "-webkit-appearance": "none",
-    "-moz-appearance": "none",
+    WebkitAppearance: "none",
+    MozAppearance: "none",
     appearance: "none",
     background: "#DADADA",
     cursor: "pointer",

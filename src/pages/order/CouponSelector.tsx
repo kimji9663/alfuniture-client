@@ -157,7 +157,7 @@ const CouponSelector = ({drawerOpen, toggleDrawer, lines, selectedId, onSelect}:
       >
         <OrderTitle>사용가능 쿠폰조회</OrderTitle>
         <Box
-          component="p"
+          component="div"
           sx={{
             mt: 2,
             display: 'flex',

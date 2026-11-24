@@ -1,0 +1,98 @@
+PASS src/utils/pricing.test.ts
+  normalizeBrand
+    √ ONERAIN → onerain (3 ms)
+    √ One Rain → onerain
+    √ One rain → onerain
+    √ OneRain → onerain (1 ms)
+    √ James Lee - Sofa → jamesleesofa
+    √ HC ART → hcart (1 ms)
+  productTotal
+    √ 단가 × 수량의 합
+    √ 빈 주문은 0 (1 ms)
+  쿠폰 적용 대상
+    √ 전 상품 쿠폰은 모든 줄 (1 ms)
+    √ 브랜드 쿠폰은 같은 브랜드 줄만 (표기가 달라도) (1 ms)
+    √ 'James Lee - Sofa'도 James Lee 브랜드로 본다 (1 ms)
+    √ brandKey가 없는 브랜드 쿠폰은 적용 대상 없음
+  쿠폰 사용 가능 여부
+    √ 남은 일수 0 이하이면 만료 (8 ms)
+    √ 브랜드 상품이 없으면 브랜드 쿠폰은 사용 불가 (1 ms)
+    √ 만료된 전 상품 쿠폰은 사용 불가
+  couponDiscount
+    √ 전 상품 쿠폰: 합계의 10%
+    √ 브랜드 쿠폰: 해당 브랜드 금액에만 10% (다른 브랜드 제외)
+    √ 적용 대상이 없거나 쿠폰이 없으면 0
+    √ 원 단위 버림
+  orderAmounts (주문서 E2E 시나리오와 같은 숫자)
+    √ 카멜피아 2개 + 빠른배송 = 580,000원 (1 ms)
+    √ + 전 상품 쿠폰 = 532,000원
+    √ + 전 상품 쿠폰 + 일반배송 = 482,000원
+    √ 일반배송, 쿠폰 없음 = 530,000원
+    √ One Rain + ALFDEN, ONERAIN 쿠폰 = 3,307,000원 (1 ms)
+    √ One Rain + ALFDEN, 전 상품 쿠폰 = 3,277,000원
+    √ 바로 구매 카멜프튼 1개 = 1,694,500원
+    √ 상품이 없으면 배송비도 0 (1 ms)
+    √ 배송비 표
+  won
+    √ 천 단위 쉼표 + 원 (21 ms)
+
+PASS src/store/cart.test.tsx
+  √ 이미지는 productId로 찾는다 (URL은 저장하지 않음) (3 ms)
+  √ Provider 밖에서 쓰면 오류 (82 ms)
+  초기값
+    √ 저장된 적이 없으면 예시 상품 2개 (16 ms)
+    √ 저장된 장바구니를 읽는다 (3 ms)
+    √ 저장값이 깨졌으면 빈 장바구니 (3 ms)
+    √ 형식이 맞지 않는 항목은 버린다 (3 ms)
+  담기
+    √ 새 상품은 끝에 추가되고 localStorage에 저장된다 (6 ms)
+    √ 같은 상품·같은 옵션은 줄이 늘지 않고 수량이 더해진다 (3 ms)
+    √ 옵션이 다르면 다른 줄 (2 ms)
+  수량·삭제
+    √ 수량은 1~99로 제한 (2 ms)
+    √ 원본 객체를 직접 고치지 않는다 (이전 버그) (3 ms)
+    √ 삭제 (3 ms)
+  탭 간 동기화
+    √ 다른 탭에서 바뀐 값을 storage 이벤트로 반영 (3 ms)
+
+PASS src/store/likes.test.tsx
+  √ 다른 탭에서 바뀐 값을 storage 이벤트로 반영 (3 ms)
+  상품 키
+    √ 브랜드|모델명|상품명 (앞뒤 공백 제거) (2 ms)
+  초기값
+    √ 저장된 적이 없으면 예시 4개, 모두 찜 상태 (23 ms)
+    √ 저장값이 깨졌으면 빈 목록 (4 ms)
+  찜 토글
+    √ 찜하면 최근 찜한 순으로 맨 앞에 추가, 다시 누르면 해제 (5 ms)
+    √ 나중에 찜한 상품이 앞에 온다 (7 ms)
+    √ localStorage에 저장된다 (3 ms)
+  카탈로그 (이미지·카테고리)
+    √ 목업 상품의 이미지와 카테고리를 키로 찾는다
+    √ 상품 상세 상품(카멜프튼)도 들어 있다 (2 ms)
+
+PASS src/App.test.tsx (7.608 s)
+  √ 홈 화면이 렌더링된다 (라우터·장바구니·찜 Provider·Swiper 포함) (763 ms)
+
+PASS src/pages/cart/index.test.tsx (30.745 s)
+  √ 예시 상품 2개, 결제금액 880,000원, 버튼은 상품 종류 수 "2개" (279 ms)
+  √ 수량 + → 결제금액·수량 표시 갱신, 버튼 숫자는 종류 수 그대로 (175 ms)
+  √ 선택 해제 후 다른 상품을 삭제해도 선택 상태가 어긋나지 않는다 (이전 인덱스 버그) (129 ms)
+  √ 구매하기 → 선택한 상품만 주문서로 (580,000원) (652 ms)
+  √ 모두 삭제하면 빈 장바구니 안내 (46 ms)
+
+PASS src/pages/order/Order.test.tsx (37.683 s)
+  √ 넘겨받은 상품이 없으면 안내 (72 ms)
+  √ 바로 구매: 상품·옵션 표시, 1,594,500 + 빠른배송 100,000 = 1,694,500원 (946 ms)
+  √ 전 상품 쿠폰 적용·취소 (3223 ms)
+  √ ALFDN 상품만 있으면 브랜드 쿠폰은 모두 선택 불가 (1816 ms)
+  √ 장바구니에서 넘어온 One Rain + ALFDEN 주문: ONERAIN 쿠폰은 One Rain 상품에만 할인 (2128 ms)
+
+Test Suites: 6 passed, 6 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        40.673 s
+Ran all test suites.
+
+real	0m44.858s
+user	0m0.168s
+sys	0m0.261s
