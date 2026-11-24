@@ -16,6 +16,7 @@ import PersonalQnaPanel from "./PersonalQnaPanel"
 import OrderSelector, { OptionSelection, isSelectionComplete } from "./OrderSelector"
 import BrandButton from "../../../components/BrandButton"
 import { useCart } from "../../../store/cart"
+import { useLikes } from "../../../store/likes"
 
 // 이 화면이 보여 주는 상품 (상품 ID 라우팅·API 연동 전까지 고정)
 const product = {
@@ -90,7 +91,8 @@ const ViewTabPanel = (props: TabPanelProps) => {
 const ProductView = () => {
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0)
-  const [isLike, setIsLike] = useState(false)
+  const { isLiked, toggleLike } = useLikes()
+  const isLike = isLiked(product)
   const [optionOpen, setOptionOpen] = useState(false)
   const [selection, setSelection] = useState<OptionSelection>({ colors: [], option: null })
   const [modalOpen, setModalOpen] = useState(false)
@@ -130,7 +132,7 @@ const ProductView = () => {
   }
 
   const handleClickLike = (event: React.MouseEvent) => {
-    setIsLike(!isLike)
+    toggleLike({ ...product, colors: ["#494A4C", "#192552", "#D67531"] })
   }
 
   const handleViewTab = (event:React.SyntheticEvent, newValue: number) => {

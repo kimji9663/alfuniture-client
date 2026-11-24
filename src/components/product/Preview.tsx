@@ -1,6 +1,7 @@
 import { CardMedia, IconButton, Link, Paper } from "@mui/material"
 import { Box } from "@mui/system"
-import React, { useState } from "react"
+import React from "react"
+import { useLikes } from "../../store/likes"
 import { FlexSpaceBetweenCenterBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { IconLikeOff, IconLikeOn } from "../../assets/images"
@@ -24,7 +25,6 @@ export interface PreviewProps {
 const PreviewItem: React.FC<PreviewProps> = ({
   id,
   imgsrc,
-  like,
   shopName,
   modelName,
   productName,
@@ -33,12 +33,14 @@ const PreviewItem: React.FC<PreviewProps> = ({
   priority = false,
 }: PreviewProps) => {
 
-  const [isLike, setIsLike] = useState(like)
+  // 찜 상태는 전역 스토어(src/store/likes.tsx)에서 읽는다 → 모든 화면에서 같은 값
+  const { isLiked, toggleLike } = useLikes()
+  const isLike = isLiked({ shopName, modelName, productName })
 
   const handleClickLike = (event: any) => {
     event.preventDefault();
     event.stopPropagation();
-    setIsLike(!isLike)
+    toggleLike({ shopName, modelName, productName, price, colors })
   }
 
   return (

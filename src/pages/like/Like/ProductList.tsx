@@ -4,10 +4,11 @@ import { Box, FormControlLabel, Button, Typography } from "@mui/material"
 import { IconShift } from "../../../assets/images"
 import List from "./List"
 import { CustomCheckbox } from "../../../styles/checkbox.styles"
-import {likeProductData, styleTypes} from "../../../data/index"
+import {styleTypes} from "../../../data/index"
 import {RectCheckbox} from "../../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../../components/filterUtils"
 import { PrimaryButton } from "../../../styles/buttons.styles"
+import { useLikes, catalogEntry } from "../../../store/likes"
 
 const itemList = styleTypes.map(style => ({
   id: (styleTypes.indexOf(style) + 1).toString(),
@@ -17,19 +18,35 @@ const itemList = styleTypes.map(style => ({
 const ProductList = () => {
   const [filterItem, setFilterItem] = useState<string[]>([])
   const [isAllChecked, setIsAllChecked] = useState(true);
-  const [filteredStyles, setFilteredStyles] = useState(likeProductData)
   const message = "상품이 없습니다."
   const linkText = "홈으로 가기"
   const linkTo = "/home"
+
+  // 찜 목록은 전역 스토어에서 (최근 찜한 순). 이미지·카테고리는 카탈로그에서 찾는다
+  const { items: likedItems } = useLikes()
+  const likedProducts = likedItems.map((p, index) => {
+    const entry = catalogEntry(p.key)
+    return {
+      id: index,
+      key: p.key,
+      imgsrc: entry?.imgsrc ?? "",
+      like: true,
+      shopName: p.shopName,
+      modelName: p.modelName,
+      productName: p.productName,
+      price: p.price,
+      colors: p.colors ?? [],
+      likeCount: 0,
+      name: entry?.category ?? "",
+    }
+  })
+  const filteredStyles = isAllChecked ? likedProducts : likedProducts.filter((style) => filterItem.includes(style.name))
 
   useEffect(() => {
     setFilterItem(itemList.map(el => el.name));
   }, []);
 
   useEffect(() => {
-    const updatedFilteredStyles = isAllChecked ? likeProductData : likeProductData.filter((style) => filterItem.includes(style.name));
-    setFilteredStyles(updatedFilteredStyles);
-    
     if (filterItem.length === styleTypes.length) {
       setIsAllChecked(true);
       setFilterItem([]);
@@ -130,11 +147,11 @@ const ProductList = () => {
         </Button>
       </Box>
       <Box>
-        {isAllChecked ? (
-          <List data={likeProductData} />
+        {isAllChecked && filteredStyles.length !== 0 ? (
+          <List data={filteredStyles} />
         ) : (
           <>
-            {filteredStyles.length !== 0 ? 
+            {filteredStyles.length !== 0 ?
             <List data={filteredStyles} /> 
             : 
             // 데이터가 없을 때 렌더링

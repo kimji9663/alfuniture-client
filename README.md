@@ -339,4 +339,6 @@ src/
 | [`docs/logs/build-after-a11y.log`](docs/logs/build-after-a11y.log) | 10번 접근성 수정 이후 `npm run build` 출력 |
 | [`docs/logs/build-after-cart-store.log`](docs/logs/build-after-cart-store.log) | 1번 장바구니 스토어 이후 `npm run build` 출력 |
 | [`docs/logs/cart-e2e.log`](docs/logs/cart-e2e.log) | 장바구니 흐름 브라우저 E2E 23개 항목 결과 |
+| [`docs/logs/build-after-likes.log`](docs/logs/build-after-likes.log) | 1번 찜 스토어 이후 `npm run build` 출력 |
+| [`docs/logs/likes-e2e.log`](docs/logs/likes-e2e.log) | 찜 흐름 브라우저 E2E 20개 항목 결과 |
 | [`docs/logs/a11y-audit-before.json`](docs/logs/a11y-audit-before.json) / [`a11y-audit-after.json`](docs/logs/a11y-audit-after.json) | 41개 경로 접근성 점검 (이름 없는 버튼·링크, alt, main, 저대비 글자) 전/후 |
