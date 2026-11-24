@@ -7,12 +7,15 @@ import { OrderAccordionMenu } from "../../styles/accordion.styles"
 import { DeliveryCheckBox } from "../../styles/checkbox.styles"
 import { styled } from "@mui/material/styles"
 import { cardOptions } from "../../data"
+import { DELIVERY_FEES, OrderAmounts, won } from "../../utils/pricing"
 
 interface CompleteProps {
   selectedCard: string
   setSelectedCard: (val:string) => void
   selectedDelivery: string
   setSelectedDelivery: (val:string) => void
+  /** 결제금액 영역에 표시할 계산 결과 (src/utils/pricing.ts) */
+  amounts: OrderAmounts
 }
 
 interface OptionsProps {
@@ -37,7 +40,7 @@ const AvatarList = styled(List)(() => ({
   },
 }))
 
-const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setSelectedDelivery }: CompleteProps) => {
+const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setSelectedDelivery, amounts }: CompleteProps) => {
   const [expanded, setExpanded] = useState<string | false>(false)
   const [selectDelivery, setSelectDelivery] = useState("check_quick")
   const [selectCard, setSelectCard] = useState<OptionsProps>(
@@ -97,7 +100,7 @@ const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setS
                 <IconDeliveryQuick />
               </Box>
               <Box>
-                <p className="price">빠른배송 100,000원</p>
+                <p className="price">빠른배송 {won(DELIVERY_FEES["빠른배송"])}</p>
                 <p className="additional">알퍼니처 제휴업체를 통한 <span>배송 우선순위</span></p>
               </Box>
             </Box>
@@ -115,7 +118,7 @@ const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setS
                 <IconDeliveryNormal />
               </Box>
               <Box>
-                <p className="price">일반배송 50,000원</p>
+                <p className="price">일반배송 {won(DELIVERY_FEES["일반배송"])}</p>
               </Box>              
             </label>
           </DeliveryCheckBox>
@@ -167,20 +170,20 @@ const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setS
           expandIcon={<ExpandMoreIcon />}
         >
           <p className="title">결제금액</p>
-          <p className="total_amount">1,435,050원</p>
+          <p className="total_amount">{won(amounts.final)}</p>
         </AccordionSummary>
         <AccordionDetails>
           <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>총 상품금액</p>
-            <p>1,594,500원</p>
+            <p>{won(amounts.productTotal)}</p>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>쿠폰 사용</p>
-            <p>159,450원</p>
+            <p>{amounts.discount ? "-" + won(amounts.discount) : won(0)}</p>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between", py: 1, fontSize: ".75rem" }}>
             <p>배송비</p>
-            <p>100,000원</p>
+            <p>{won(amounts.deliveryFee)}</p>
           </Box>
           <Box 
             sx={{ 
@@ -194,7 +197,7 @@ const OrderInfomation = ({ selectedCard, setSelectedCard, selectedDelivery, setS
             }}
           >
             <p>총 결제금액</p>
-            <p>1,435,050원</p>
+            <p>{won(amounts.final)}</p>
           </Box>
         </AccordionDetails>
       </OrderAccordionMenu>

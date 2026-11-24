@@ -8,6 +8,7 @@ import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
 import { useCart, productImage } from "../../store/cart"
+import type { OrderState } from "../order/Order"
 import { LabelMediumGray7Typography, LabelMediumGray9ypography, TitleMediumBoldGray9Typography } from "../../components/Typography"
 
 function CartPage() {
@@ -45,7 +46,9 @@ function CartPage() {
   const handleActiveOrder = selectedItems.length === 0;
   const navigate = useNavigate()
   const handleGoToOrder = () => {
-    navigate("/order")
+    // 선택한 장바구니 줄만 주문서로 넘긴다
+    const state: OrderState = { source: "cart", ids: selectedItems.map((item) => item.id) }
+    navigate("/order", { state })
   }
 
   const deleteItem = (id: string) => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { Box, FormControl, Input, FormHelperText, ButtonGroup, Typography, Button } from "@mui/material"
 import { SecondaryButton, PrimaryButton } from "../../styles/buttons.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
@@ -8,14 +8,37 @@ import {OrderTitle, SearchZipcodeWrap, AgreeCheckbox } from "./order.styles"
 import DaumPostcodeEmbed from "react-daum-postcode"
 import { BasicModal } from "../../styles/modal.styles"
 import OrderInfomation from "./OrderInfomation"
-import { sofa01 } from "../../assets/images/product"
 import OrderTermsAgreement from "./OrderTermsAgreement"
 import CheckboxIcon from "../../components/CheckBoxIcon"
-import CouponSelector from "./CouponSelector"
+import CouponSelector, { findCoupon } from "./CouponSelector"
+import NoData from "../../components/NoData"
+import { CartItem, NewCartItem, productImage, useCart } from "../../store/cart"
+import { DeliveryType, orderAmounts, won } from "../../utils/pricing"
 
+/**
+ * 주문서로 넘어오는 방법 (react-router location.state, 새로 고침해도 유지됨)
+ * - 장바구니 "구매하기": 선택한 장바구니 줄 ID 목록
+ * - 상품 상세 "구매하기": 장바구니를 거치지 않는 바로 구매 상품
+ */
+export type OrderState =
+  | { source: "cart"; ids: string[] }
+  | { source: "buyNow"; item: NewCartItem }
+
+type OrderLine = Pick<CartItem, "id" | "productId" | "shopName" | "productName" | "option1" | "option2" | "price" | "count">
 
 const Order = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const orderState = location.state as OrderState | null
+  const { items: cartItems, removeItem } = useCart()
+
+  // 주문할 상품: 장바구니에서 고른 줄, 또는 바로 구매 상품
+  const lines: OrderLine[] =
+    orderState?.source === "buyNow"
+      ? [{ ...orderState.item, id: "buy-now", count: orderState.item.count ?? 1 }]
+      : orderState?.source === "cart"
+        ? cartItems.filter((item) => orderState.ids.includes(item.id))
+        : []
   // 입력한 모든 정보 저장
   const [orderData, setOrderData] = useState({
     recipient: "",
@@ -25,7 +48,7 @@ const Order = () => {
     addressSave: false,
     termsAgree: false,
     coupon: "",
-    deliveryType: "",
+    deliveryType: "빠른배송" as DeliveryType, // 배송방법 기본값 (OrderInfomation의 기본 선택과 같음)
     card: "",
   })
   const [recipientError, setRecipientError] = useState({
@@ -38,25 +61,34 @@ const Order = () => {
   })
   const [modalOpen, setModalOpen] = useState(false)
   const [couponOpen, setCouponOpen] = useState(false)
-  const [selectCoupon, setSelectCoupon] = useState('')
-  const [finalAmount, setFinalAmount] = useState(0)
+  const [selectCoupon, setSelectCoupon] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+
+  // 금액은 화면 상태에서 바로 계산 (src/utils/pricing.ts)
+  const selectedCoupon = findCoupon(selectCoupon)
+  const amounts = orderAmounts(lines, orderData.deliveryType, selectedCoupon)
+  const selectedCouponName = selectedCoupon
+    ? selectedCoupon.scope === "all" ? "전 상품 10%" : `${selectedCoupon.brand} 10%`
+    : ""
 
   const handleClose = () => {
     setModalOpen(false)
   }
 
   const handleCompleteOrder = () => {
-    navigate("/")
-  }
-
-  const applyCoupon = () => {
-    // 총 가격 - 할인율
-    // return 
+    // 연속 클릭으로 두 번 주문되지 않게 막는다
+    if (submitting) return
+    setSubmitting(true)
+    // 장바구니에서 주문한 상품은 장바구니에서 뺀다
+    if (orderState?.source === "cart") lines.forEach((line) => removeItem(line.id))
+    navigate("/", { replace: true })
   }
 
   // 필수정보 체크 후 주문 버튼 활성화
-  const handleActiveOrder = 
-    orderData.recipient !== "" && 
+  const handleActiveOrder =
+    lines.length > 0 &&
+    !submitting &&
+    orderData.recipient !== "" &&
     orderData.zipcode !== "" &&
     orderData.deliveryAddress !== "" &&
     orderData.phoneNumber !== "" &&
@@ -149,7 +181,7 @@ const Order = () => {
   }
 
   const changeOrderDataDelivery = (val:string) => {
-    setOrderData({...orderData, deliveryType: val})
+    setOrderData({...orderData, deliveryType: val as DeliveryType})
   }
 
   const changeOrderDataCard = (val:string) => {
@@ -162,6 +194,16 @@ const Order = () => {
 
   const toggleDrawer = (val:boolean) => {
     setCouponOpen(val)
+  }
+
+  // 주소창으로 바로 들어왔거나, 주문할 상품이 장바구니에서 모두 빠진 경우
+  if (lines.length === 0) {
+    return (
+      <>
+        <NoTitle />
+        <NoData message={"주문할 상품이 없습니다."} linkText={"장바구니로 가기"} linkTo={"/cart"} />
+      </>
+    )
   }
 
   return (
@@ -292,7 +334,8 @@ const Order = () => {
 
         <Box sx={{ p: 2, background: "#FAFAFA" }}>
           <OrderTitle>상품 정보</OrderTitle>
-          <Box sx={{
+          {lines.map((line) => (
+          <Box key={line.id} sx={{
             mt: 3,
             display: "flex",
             alignItems: "center"
@@ -313,12 +356,12 @@ const Order = () => {
                   "& > img": { minWidth: "100%", minHeight: "100%" },
                 }}
               >
-                <img src={sofa01} alt="소파" />
+                <img src={productImage(line.productId)} alt={line.productName} />
               </Box>
             </Box>
             <Box sx={{ flex: "1 1 auto" }}>
               <Typography sx={{ fontSize: "1rem", fontWeight: "bold" }}>
-                ALFDN - 카멜프든
+                {line.shopName} - {line.productName}
               </Typography>
               <Box
                 sx={{
@@ -342,42 +385,71 @@ const Order = () => {
                 }}
               >
                 <p>
-                  <span className="title">색상</span><span>브라운</span>
+                  <span className="title">옵션</span><span>{line.option1}</span>
                 </p>
+                {line.option2 && (
+                  <p>
+                    <span className="title">추가 옵션</span><span>{line.option2}</span>
+                  </p>
+                )}
                 <p>
-                  <span className="title">재질</span><span>인조가죽</span>
-                </p>
-                <p>
-                  <span className="title">수량</span><span>1개</span>
+                  <span className="title">수량</span><span>{line.count}개</span>
                 </p>
                 <p>
                   <span className="title">상품 금액</span>
-                  <span className="total">1,594,500원</span>
+                  <span className="total">{won(line.price * line.count)}</span>
                 </p>
-                {selectCoupon === '' ? (
-                  <p>
-                    <span className="title">쿠폰적용</span>
-                    <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
-                  </p>
-                ) : (
-                  <p>
-                    <span className="title">쿠폰적용</span>
-                    <div>
-                      <span>-3000원</span>
-                      <Button 
-                        onClick={() => setSelectCoupon('')}
-                        sx={{
-                          backgroundColor: '#bdbdbd',
-                          color: '#fff',
-                        }}
-                      >
-                        취소
-                      </Button>
-                    </div>
-                  </p>
-                )}
               </Box>
             </Box>
+          </Box>
+          ))}
+
+          {/* 쿠폰은 주문당 1장: 전 상품 쿠폰은 상품 금액 합계, 브랜드 쿠폰은 해당 브랜드 상품 금액에 할인 */}
+          <Box
+            sx={{
+              mt: 3,
+              "& > p": {
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                color: "#707070",
+                fontSize: ".75rem",
+              },
+              "& .title": {
+                fontWeight: "bold",
+                color: "#333",
+              },
+              '& .MuiButton-root': {
+                fontSize: '.75rem',
+                width: '62px',
+                padding: 0,
+                borderRadius: 0,
+              }
+            }}
+          >
+            {selectCoupon === null ? (
+              <p>
+                <span className="title">쿠폰적용</span>
+                <PrimaryButton onClick={() => setCouponOpen(true)}>쿠폰 선택</PrimaryButton>
+              </p>
+            ) : (
+              <p>
+                <span className="title">쿠폰적용</span>
+                <span>
+                  <span>{selectedCouponName} -{won(amounts.discount)}</span>
+                  <Button
+                    onClick={() => setSelectCoupon(null)}
+                    sx={{
+                      ml: 1,
+                      backgroundColor: '#bdbdbd',
+                      color: '#fff',
+                    }}
+                  >
+                    취소
+                  </Button>
+                </span>
+              </p>
+            )}
           </Box>
         </Box>
 
@@ -387,6 +459,7 @@ const Order = () => {
           setSelectedCard={changeOrderDataCard}
           selectedDelivery={orderData.deliveryType}
           setSelectedDelivery={changeOrderDataDelivery}
+          amounts={amounts}
         />
 
         <OrderTermsAgreement 
@@ -398,16 +471,17 @@ const Order = () => {
       <CouponSelector
         drawerOpen={couponOpen} 
         toggleDrawer={toggleDrawer} 
-        complete={selectCoupon}
-        setComplete={setSelectCoupon}
+        lines={lines}
+        selectedId={selectCoupon}
+        onSelect={(id) => { setSelectCoupon(id); setCouponOpen(false) }}
       />
 
       <NaviWrap className="single">
-        <PrimaryButton 
+        <PrimaryButton
           disabled={handleActiveOrder}
           onClick={handleCompleteOrder}
         >
-          1,435,050원 결제하기
+          {won(amounts.final)} 결제하기
         </PrimaryButton>
       </NaviWrap>
 
