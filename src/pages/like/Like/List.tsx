@@ -4,6 +4,8 @@ import { GridBox } from "../../../components/Box"
 
 interface ProductData {
   id: number;
+  /** 상품 키 (찜 스토어). 있으면 리스트 key로 쓴다 */
+  key?: string;
   imgsrc: string;
   like: boolean;
   shopName: string;
@@ -32,7 +34,7 @@ const ProductList: React.FC<ProductListProps> = ({ data }) => {
         >
           {data.map((product: ProductData) =>
             <PreviewItem
-              key={`product-${product.id}`}
+              key={`product-${product.key ?? product.id}`}
               id={product.id}
               imgsrc={product.imgsrc}
               shopName={product.shopName}
