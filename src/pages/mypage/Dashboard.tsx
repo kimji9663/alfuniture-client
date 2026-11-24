@@ -59,7 +59,7 @@ const Dashboard = () => {
                   "& > button": { 
                     flexDirection: "column",
                     alignItems: "start",
-                    color: "#999", 
+                    color: "#707070", 
                     fontSize: "0.75rem" 
                   }, 
                   "& > button > span": { color: "#242223" },
@@ -128,7 +128,7 @@ const Dashboard = () => {
               },
               "& .MuiButtonBase-root": {
                 py: 2.5,
-                color: "#999",
+                color: "#707070",
                 fontSize: ".875rem",
               }
             }}

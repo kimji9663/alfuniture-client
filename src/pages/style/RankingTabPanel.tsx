@@ -36,7 +36,7 @@ const RankingTabPanel = () => {
                         <Box sx={{ my: 2 , overflow: "hidden", display: "flex", alignItems:"flex-end"}}>
                           <Link to="/style/brand">
                             <Box sx={{ width: "calc(100vw - 48px)", height: "calc(94vw - 48px)",maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
-                              <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                              <img loading="lazy" src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                               <HeadlineLargeBoldGray6Typography sx={{ fontSize: 40, fontWeight: "600", color: "#FAFAFA", position: "absolute", zIndex: 100 }}>
                                 {item.shopName}
                               </HeadlineLargeBoldGray6Typography>
@@ -63,7 +63,7 @@ const RankingTabPanel = () => {
                         <Box sx={{ my: 2 , overflow: "hidden", display: "flex", alignItems:"flex-end"}}>
                           <Link to="/style/brand">
                             <Box sx={{ width: "calc(100vw - 48px)", height: "calc(94vw - 48px)",maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
-                              <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                              <img loading="lazy" src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                               <HeadlineLargeBoldGray6Typography>
                                 {item.shopName}
                               </HeadlineLargeBoldGray6Typography>
@@ -89,7 +89,7 @@ const RankingTabPanel = () => {
                       <Box sx={{ my: 2 , overflow: "hidden", display: "flex", alignItems:"flex-end"}}>
                         <Link to="/style/brand">
                           <Box sx={{ width: "calc(100vw - 48px)", height: "calc(94vw - 48px)",maxHeight:"calc(420px - 48px)", maxWidth:"calc(420px - 48px)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", mr: 2}}>
-                            <img src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                            <img loading="lazy" src={item.imgsrc} alt="" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                             <HeadlineLargeBoldGray6Typography>
                               {item.shopName}
                             </HeadlineLargeBoldGray6Typography>

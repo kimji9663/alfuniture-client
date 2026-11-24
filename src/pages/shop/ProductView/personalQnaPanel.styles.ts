@@ -30,7 +30,7 @@ export const SellerInfomation = styled(Box)(() => ({
   "& .title": {
     flex: "0 0 120px", 
     fontSize: ".75rem", 
-    color: "#999", 
+    color: "#707070", 
   },
   "& .information": {
     color: "#333", 

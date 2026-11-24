@@ -7,7 +7,7 @@ import PostMagazineHeader from "./PostMagazineHeader"
 import BestWorkAllButton from "./BestWorkAllButton"
 import List from "../like/Like/List"
 import { monthlyPostData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleLargeBoldGray9Typography, TitleLargeBoldWhiteUmasquTypography } from "../../components/Typography"
 
 const MonthlyPost = () => {

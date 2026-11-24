@@ -38,6 +38,7 @@ const ListItemType2: React.FC<PreviewProps> = ({
               <img
                 src={imgsrc}
                 alt="상품이미지"
+                loading="lazy"
               />
               {rank !== undefined && (
                 <Box sx={{width:"24px", height: "24px", backgroundColor: "#242223", color:"white", position:"absolute", left:0, bottom:0, display:"flex", alignItems:"center", justifyContent:"center"}}>

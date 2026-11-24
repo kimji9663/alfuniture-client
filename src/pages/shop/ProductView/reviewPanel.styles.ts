@@ -35,7 +35,7 @@ export const DetailGrade = styled(Box)(() => ({
     marginBottom: "4px",
   },
   "& .grade_number": {
-    color: "#999",
+    color: "#707070",
     fontSize: ".75rem",
   },
   "& .grade_pipe": {
@@ -137,7 +137,7 @@ export const ProductOptions = styled(Box)(() => ({
   "& .hash_tags": {
     display: "flex", 
     flexWrap: "wrap", 
-    color: "#999", 
+    color: "#707070", 
     fontSize: ".75rem", 
   },
   "& .hash_tags > span": { 

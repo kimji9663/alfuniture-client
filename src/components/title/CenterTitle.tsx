@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Typography, Box } from '@mui/material'
-import { ArrowLeft, IconCart, IconNotification } from '../../assets/images'
+import { IconCart, IconNotification } from '../../assets/images'
+import BackButton from './BackButton'
 import { Link, useNavigate } from 'react-router-dom'
 
 interface TitleProps {
@@ -18,7 +19,7 @@ const CenterTitle : FC<TitleProps> = ({title}) => {
     <Box sx={{display: 'flex', alignItems: 'center', height: '41px', p:"8px 0"  }}>
       <Box sx={{ width:"20%"}}>
         <Box sx={{ pl: 2}} >
-          <ArrowLeft onClick={goBack}/>
+          <BackButton onClick={goBack} />
         </Box>
       </Box>
       <Typography
@@ -33,12 +34,12 @@ const CenterTitle : FC<TitleProps> = ({title}) => {
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center',justifyContent: 'flex-end', right: 0,width:"20%"}}>
         <Box sx={{ mr: 1 }}>
-          <Link to="/cart" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
+          <Link to="/cart" aria-label="장바구니" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
             <IconCart />
           </Link>
         </Box>
         <Box sx={{ mr: 2 }}>
-          <Link to="/notification" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
+          <Link to="/notification" aria-label="알림" style={{ display: 'flex',alignItems: 'center', textDecoration: 'none' }}>
             <IconNotification />
           </Link>
         </Box>

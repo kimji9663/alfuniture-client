@@ -76,7 +76,7 @@ const OrderDetail = () => {
                         </Link>
                       </Box>
                       <TitleMediumBoldGray9Typography >{product.productName}</TitleMediumBoldGray9Typography>
-                      <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999"}}>
+                      <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#707070"}}>
                         <span style={{marginRight: "8px"}}>{product.option1}</span>
                         <span style={{fontSize: "14px", marginRight: "8px"}}>|</span>
                         {product.option2 && 

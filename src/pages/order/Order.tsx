@@ -326,7 +326,7 @@ const Order = () => {
                   "& > p": {
                     display: "flex",
                     justifyContent: "space-between",
-                    color: "#999",
+                    color: "#707070",
                     fontSize: ".75rem",
                   },
                   "& .title, & .total": {

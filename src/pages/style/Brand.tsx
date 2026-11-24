@@ -5,7 +5,7 @@ import NavigationBar from "../../components/NavigationBar"
 import List from "../like/Like/List"
 import LeftTitle from "../../components/title/LeftTitle"
 import { styleBrandProductData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleLargeBoldWhiteTypography } from "../../components/Typography"
 
 const Brand = () => {

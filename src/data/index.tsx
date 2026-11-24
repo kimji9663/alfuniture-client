@@ -231,19 +231,19 @@ export const brandData = {
 
 export const homeBannerData = [
   {
-    discription: "chair01",
+    discription: "2023 가구 컬렉션: 원목 바 스툴 (1/4)",
     img: chair04
   },
   {
-    discription: "chair02",
+    discription: "2023 가구 컬렉션: 원목 바 스툴 (2/4)",
     img: chair04
   },
   {
-    discription: "chair03",
+    discription: "2023 가구 컬렉션: 원목 바 스툴 (3/4)",
     img: chair04
   },
   {
-    discription: "chair04",
+    discription: "2023 가구 컬렉션: 원목 바 스툴 (4/4)",
     img: chair04
   },
 ]

@@ -40,7 +40,14 @@ const Home = () => {
           <Swiper {...photoBannerSettings} >
             {homeBannerData.map((photoReview, index) => (
               <SwiperSlide key={`photo_review_${index}`}>
-                <img src={photoReview.img} alt={photoReview.discription} />
+                {/* 첫 슬라이드는 LCP 요소: 우선 로드, 나머지는 지연 로딩 */}
+                <img
+                  src={photoReview.img}
+                  alt={photoReview.discription}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  // React 18 타입에 img fetchpriority가 없어 spread로 전달 (DOM 속성으로 그대로 출력됨)
+                  {...{ fetchpriority: index === 0 ? "high" : "auto" }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -57,7 +64,7 @@ const Home = () => {
             pb:3,
             borderBottom: "1px solid #DADADA"
           }}>
-          <IconButton sx={{
+          <IconButton aria-label="아래로 스크롤" sx={{
             border: "0.5px solid #616161",
             borderRadius: "50%", 
             width: "28px", 
@@ -80,7 +87,7 @@ const Home = () => {
             <TitleLargeBoldTypography sx={{letterSpacing: "-2%", mb: "17px"}}>이달의 아티스트</TitleLargeBoldTypography>
             <Box sx={{position:"relative", display:"flex"}}>
               <Link to="/profile">
-                <img src={jamesLee}/>
+                <img src={jamesLee} alt="이달의 아티스트 James Lee" loading="lazy" width={320} height={359} />
                 <Box sx={{ ml: 4, mb: "33px", position:"absolute", bottom:0, left:0, color:"white"}}>
                   <HeadlineLargeBoldTypography sx={{ mb: 1}}>James Lee</HeadlineLargeBoldTypography>
                   <TitleMediumTypography>알퍼니처가 선정한</TitleMediumTypography>
@@ -140,12 +147,12 @@ const Home = () => {
                 }}>
                   {/* 이미지 */}
                   <Box sx={{ mt: 2, width: "275px", height: "222px", mr: 6 }}>
-                    <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} style={{ width: "100%" }} />
+                    <img src={item.imgsrc} alt={`${index + 1}순위 이미지`} loading="lazy" style={{ width: "100%" }} />
                   </Box>
                   {/* 텍스트 */}
                   <Box sx={{ pl: 2, pt: 2, border: "1px solid #DADADA", borderLeft: "none" }}>
                     <TitleMediumBoldTypography>{item.title}</TitleMediumBoldTypography>
-                    <LabelMediumBoldTypography sx={{letterSpacing: "-0.25px", color: "#999999" }}>{item.discription}</LabelMediumBoldTypography>
+                    <LabelMediumBoldTypography sx={{letterSpacing: "-0.25px", color: "#707070" }}>{item.discription}</LabelMediumBoldTypography>
                     <Box sx={{ display: "flex", flexDirection: "row-reverse", mr: 2, mb: 2 }}>
                       <HalfArrowRigth/>
                     </Box>

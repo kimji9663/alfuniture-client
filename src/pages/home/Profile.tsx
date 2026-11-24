@@ -8,7 +8,7 @@ import DetailViewPanel from "./DetailViewPanel"
 import BrandShopPanel from "./BrandShopPanel"
 import {RectCheckboxNonChecked} from "../../styles/checkbox.styles"
 import {profileTagData} from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TabPanel, TabProps } from "../../components/Tabs"
 import { LabelMediumGray9ypography, HeadlineSmallTypography } from "../../components/Typography"
 
@@ -24,7 +24,7 @@ const Profile = () => {
   ScrollToTop();
   return (
     <>
-      <img src={jamesLee} style={{width: "100vw", maxWidth: "420px"}}/>
+      <img src={jamesLee} alt="James Lee 프로필 사진" style={{width: "100vw", maxWidth: "420px"}}/>
       <Box sx={{mt: 3, ml: 2, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Box>
           <HeadlineSmallTypography>James Lee</HeadlineSmallTypography>
@@ -32,7 +32,7 @@ const Profile = () => {
         </Box>
         <Box sx={{ mr: 2}}>
           
-          <IconButton
+          <IconButton aria-label="좋아요"
             onClick={handleClickLike}
           >
             {isLike ? <IconHeartBig /> : <IconHeartBigRed />}

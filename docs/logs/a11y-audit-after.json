@@ -1,0 +1,522 @@
+[
+ {
+  "route": "/",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"James Lee\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"알퍼니처가 선정한\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"노르웨이 출신의 이달의 작가\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/home",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"James Lee\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"알퍼니처가 선정한\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"노르웨이 출신의 이달의 작가\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/profile",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/auth",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/auth/sign_in",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/auth/sign_up",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(128, 128, 128) on rgb(255,255,255) 3.95 \"SKIP\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding/funiture_selection",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(128, 128, 128) on rgb(255,255,255) 3.95 \"SKIP\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding/style_selection",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 모던\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 북유럽\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 클래식\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 캐주얼\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 첸\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 플랜테리어\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 미니멀\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 로맨틱\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding/featured_product",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding/loading_curation",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(218, 218, 218) on rgb(255,255,255) 1.40 \"가구 브랜드를\n큐레이션 중입니다.\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/onboarding/featured_brand",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"Aerobiey\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"60년 경력의 노하우와 감각으로 프랑\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"OneRain\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"미니멀과 디테일의 균형에 집중하는 영\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"James Lee\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"디자인과 아트의 경계에서 미적 가치를\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"Aerobiey\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"60년 경력의 노하우와 감각으로 프랑\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"OneRain\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"미니멀과 디테일의 균형에 집중하는 영\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"James Lee\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"디자인과 아트의 경계에서 미적 가치를\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/shop",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/shop/product_list",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/shop/product_view",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(253, 104, 104) on rgb(255,255,255) 2.85 \"불가능\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/shop/shop_all",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"테이블\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"의자\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"소파\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"수납장\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"침대\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"조명\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"홈데코\"",
+   "rgb(135, 135, 135) on rgb(255,255,255) 3.59 \"키즈\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/shop/write_qna",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(189, 189, 189) on rgb(255,255,255) 1.88 \"상품 불량 및 오배송의 경우, 해당 \"",
+   "rgb(189, 189, 189) on rgb(255,255,255) 1.88 \"파일당 최대 10MB의 용량 제한이 \"",
+   "rgb(255, 84, 84) on rgb(255,255,255) 3.16 \"10MB\"",
+   "rgb(189, 189, 189) on rgb(255,255,255) 1.88 \"첨부파일은 최대 2개까지 등록 가능합\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/like",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/guide",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(128, 128, 128) on rgb(255,255,255) 3.95 \"SKIP\"",
+   "rgb(218, 218, 218) on rgb(255,255,255) 1.40 \"모던한 인테리어 디자인\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/cart",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/notification",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/order",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/dashboard",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/my_info",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(189, 189, 189) on rgb(255,255,255) 1.88 \"로그아웃\"",
+   "rgb(189, 189, 189) on rgb(255,255,255) 1.88 \"회원탈퇴\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/my_order",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/recently_product",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/order_detail",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/delivery_detail",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/coupon",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"Aerobiey\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"에어로우뷔 브랜드 10% 쿠폰\"",
+   "rgb(228, 228, 228) on rgb(255,255,255) 1.27 \"D--1100\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"James Lee\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"제임스 리 브랜드 10% 쿠폰\"",
+   "rgb(228, 228, 228) on rgb(255,255,255) 1.27 \"D--1105\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"One rain\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"원레인 브랜드 10% 쿠폰\"",
+   "rgb(228, 228, 228) on rgb(255,255,255) 1.27 \"D--1092\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/review",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/write_review",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 0, 0) on rgb(255,255,255) 4.00 \"*\"",
+   "rgb(189, 189, 189) on rgb(247,247,247) 1.75 \"사진 추가\"",
+   "rgb(255, 0, 0) on rgb(255,255,255) 4.00 \"*\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/mypage/modify_review",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 0, 0) on rgb(255,255,255) 4.00 \"*\"",
+   "rgb(189, 189, 189) on rgb(247,247,247) 1.75 \"사진 추가\"",
+   "rgb(255, 0, 0) on rgb(255,255,255) 4.00 \"*\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/style",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"혼자 사는 자취방\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 모던\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"잔잔한 바이브\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 클래식\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"고요함이 좋다면\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 첸\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"깔끔함이 최고\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"# 미니멀\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"아이들이 좋아하는\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"# 북유럽\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"에너지 넘치는\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"# 캐주얼\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"생기를 불어넣는\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"# 플랜테리어\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"달달한 신혼\"",
+   "rgb(250, 250, 250) on rgb(255,255,255) 1.04 \"# 로맨틱\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/style/ranking",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/style/home_styling",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(218, 218, 218) on rgb(255,255,255) 1.40 \"모던한 인테리어 디자인\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/style/brand",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"ALFDN\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/brand_story/aerobiey",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"브랜드 스토리 보러가기\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/editor_pick/henredn",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/monthly_post/umasqu",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"봄이 시작되는 3월\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"화사함이 어울리는 가구\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"브랜드 스토리 보러가기\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"Umasqu\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ },
+ {
+  "route": "/style/reels",
+  "buttons": [],
+  "links": [],
+  "imgs": [],
+  "main": 1,
+  "low": [
+   "rgb(218, 218, 218) on rgb(255,255,255) 1.40 \"모던한 인테리어 디자인\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"forebomi\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"모던하면서 클래식한 인테리어로 바꿨어\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"235\"",
+   "rgb(255, 255, 255) on rgb(255,255,255) 1.00 \"235\""
+  ],
+  "lang": "ko",
+  "title": "Alfuniture"
+ }
+]

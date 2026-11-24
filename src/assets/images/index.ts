@@ -49,14 +49,14 @@ import { ReactComponent as IconSpeechBubble } from "./icon_speech_bubble.svg"
 import { ReactComponent as IconHeartWhite } from "./icon_heart_white.svg"
 
 // Image
-import logo from "./logo.png"
-import thumb_brand01 from "./thumb_brand01.png"
+import logo from "./logo.webp"
+import thumb_brand01 from "./thumb_brand01.webp"
 import icon_kakao from "./icon_sns_kakao.svg"
 import icon_naver from "./icon_sns_naver.svg"
 import icon_facebook from "./icon_sns_facebook.svg"
 import icon_apple from "./icon_sns_apple.svg"
-import img_Aclass from "./img_a_class.png"
-import user_profile from "./user_profile.png"
+import img_Aclass from "./img_a_class.webp"
+import user_profile from "./user_profile.webp"
 
 export {
   // Component

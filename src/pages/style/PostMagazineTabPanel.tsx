@@ -51,7 +51,7 @@ const PostMagazineTabPanel = () => {
         <Box sx={{borderTop: "0.5px solid #868686", borderBottom: "0.5px solid #868686", width: "100%", display:"flex"}}>
           <Box sx={{ borderRight: "0.5px solid #868686", flex:1, display: "flex", pt: "51px", px: 2, pb: 2, position: "relative" }}>
             {/* 이미지 */}
-            <img src={designer} alt="" style={{ objectFit: "cover", width: "100%" }} />
+            <img loading="lazy" src={designer} alt="" style={{ objectFit: "cover", width: "100%" }} />
             <Box sx={{ position: "absolute", zIndex: 1, backgroundColor: "#000000", bottom: "0", left:"16px", px:2, py:1 }}>
               <TitleSmallWhiteTypography sx={{textAlign: "center"}}>에디터 pick</TitleSmallWhiteTypography>
             </Box>
@@ -84,7 +84,7 @@ const PostMagazineTabPanel = () => {
           </Link>
         </Box>
         <Box sx={{display: "flex", width: "100%"}}>
-          <img src={brandStory} alt="" style={{width: "100%", objectFit:"cover", maxHeight:"230px"}}/>
+          <img loading="lazy" src={brandStory} alt="" style={{width: "100%", objectFit:"cover", maxHeight:"230px"}}/>
         </Box>
         <Box sx={{width: "100%", pl:2, pt:2}}>
           <TitleLargeBoldGray9Typography>봄이 시작되는 3월</TitleLargeBoldGray9Typography>
@@ -104,7 +104,7 @@ const PostMagazineTabPanel = () => {
           {videoSwiperData.map((item, index) => (
             <SwiperSlide key={index} onClick={goToReels}>
               <Box sx={{ mt: 2, width: "calc(100% - 16px)", height: "100%", objectFit:"cover", display:"flex"}}>
-                <img src={item.imgsrc} alt="" style={{ width: "100%" }} />
+                <img loading="lazy" src={item.imgsrc} alt="" style={{ width: "100%" }} />
               </Box>
             </SwiperSlide>
           ))}

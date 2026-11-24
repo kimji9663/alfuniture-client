@@ -6,7 +6,7 @@ import NavigationBar from "../../components/NavigationBar"
 import {rankingProductData, styleTypes} from "../../data/index"
 import {RectCheckbox} from "../../styles/checkbox.styles"
 import { handleCheckedFilterItem } from "../../components/filterUtils";
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleMediumTypography } from "../../components/Typography"
 
 const itemList = styleTypes.map(style => ({

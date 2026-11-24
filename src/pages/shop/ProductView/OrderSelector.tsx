@@ -6,37 +6,42 @@ import { OutlinedTag, OutlinedCheckbox } from "./orderSelector.styles"
 import { brown, white, black, green, blue, grey } from "../../../assets/images/filterIcon/colors"
 import { IconX } from "../../../assets/images"
 
-interface CompleteProps {
-  complete: boolean[]
-  setComplete: React.Dispatch<React.SetStateAction<boolean[]>>
-}
-
-interface ToggleProps extends CompleteProps {
-  drawerOpen: boolean 
-  toggleDrawer: (val:boolean) => void
-}
-
-interface OptionsProps {
+export interface OptionsProps {
   id?: string | undefined
   name?: string | undefined
   img?: string | undefined
 }
 
-interface ColorOptions {
+export interface ColorOptions {
   name: string
   img: string
 }
 
-interface OptionTagProps extends CompleteProps {
-  selectedColor: ColorOptions[] | null
-  setSelectedColor: React.Dispatch<React.SetStateAction<ColorOptions[]>>
+/** 상품 상세에서 고른 옵션. 상태는 부모(ProductView)가 갖고, 서랍을 닫았다 열어도 유지된다 */
+export interface OptionSelection {
+  colors: ColorOptions[]
+  option: OptionsProps | null
 }
 
-interface OptionSelectProps extends CompleteProps {
-  open: boolean
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  selectedOption: OptionsProps | null
-  setSelectedOption: React.Dispatch<React.SetStateAction<OptionsProps>>
+export const REQUIRED_COLOR_COUNT = 2
+export const isSelectionComplete = (s: OptionSelection) =>
+  s.colors.length === REQUIRED_COLOR_COUNT && !!s.option?.name
+
+interface ToggleProps {
+  drawerOpen: boolean
+  toggleDrawer: (val:boolean) => void
+  selection: OptionSelection
+  onSelectionChange: (next: OptionSelection) => void
+}
+
+interface OptionTagProps {
+  colors: ColorOptions[]
+  onChange: (colors: ColorOptions[]) => void
+}
+
+interface OptionSelectProps {
+  option: OptionsProps | null
+  onChange: (option: OptionsProps) => void
 }
 
 const productOptions = [
@@ -77,33 +82,18 @@ const colorScheme = [
 ]
 
 // 태그 타입(2개 선택)
-const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }: OptionTagProps) => {
-  const [checkedColor, setCheckedColor] = useState<ColorOptions[]>([])
+const OptionTagType = ({ colors, onChange }: OptionTagProps) => {
+  const checkedColor = colors
 
   const hadleSelectedColor = (color: string, image: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked && !checkedColor.some(el => el.name === color)){
-      if (checkedColor.length < 2) {
-        selectedColor = [...checkedColor, {name: color, img: image}]
-        setCheckedColor(selectedColor)
-      } else {
-        // 컬러 2개이상 선택 시 체크 막기
-        event.target.checked = false
+    if (event.target.checked) {
+      // 컬러 2개까지만 선택 (체크박스는 checked 속성으로 제어되므로 초과 선택은 그대로 무시됨)
+      if (checkedColor.length < REQUIRED_COLOR_COUNT && !checkedColor.some(el => el.name === color)) {
+        onChange([...checkedColor, { name: color, img: image }])
       }
     } else {
-      selectedColor = checkedColor.filter((el) => el.name !== color)
-      setCheckedColor(selectedColor)
+      onChange(checkedColor.filter((el) => el.name !== color))
     }
-
-    // 옵션 모두 선택 시 complete[0] = ture
-    if (selectedColor && selectedColor.length === 2){
-      setSelectedColor(selectedColor)
-      complete[0] = true
-      setComplete(complete)
-    } else {
-      complete[0] = false
-      setComplete(complete)
-    }
-    console.log(selectedColor)
   }
 
   return (
@@ -133,7 +123,8 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
           <OutlinedCheckbox key={color.name} sx={{ mr: 1, mb: 2 }}>
             <input 
               type="checkbox" 
-              id={`check_${color.name}`} 
+              id={`check_${color.name}`}
+              checked={checkedColor.some(el => el.name === color.name)}
               onChange={hadleSelectedColor(color.name, color.img)}
             />
             <label htmlFor={`check_${color.name}`}>
@@ -148,9 +139,10 @@ const OptionTagType = ({selectedColor, setSelectedColor, complete, setComplete }
 }
 
 // 셀렉트박스 타입
-const OptionSelectType = ({selectedOption, setSelectedOption, complete, setComplete }: OptionSelectProps) => {
+const OptionSelectType = ({ option, onChange }: OptionSelectProps) => {
+  // 서랍을 다시 열면 이미 고른 옵션을 보여 준다
   const [selected, setSelected] = useState<OptionsProps>(
-    { name: "컬러 선택", img: "" }
+    option?.name ? option : { name: "컬러 선택", img: "" }
   )
   const dropMenuRef = useRef<HTMLDivElement | null>(null)
   const [open, setOpen] = useState(false)
@@ -165,22 +157,12 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
     // 마운트 해제 시 이벤트 삭제!!
   }, [open])
 
-  const handleSelectOption = (name: string, img: string) => {
+  const handleSelectOption = (id: string, name: string, img: string) => {
     setOpen(false)
-    const option = {...selected,  name: name, img: img}
-    setSelected(option)
-    selectedOption = selected
-    setSelectedOption(selectedOption)
-
-    // 옵션 선택 시 complete[1] = ture
-    if (selectedOption !== null) {
-      complete[1] = true
-      setComplete(complete)
-    } else {
-      complete[1] = false
-      setComplete(complete)
-    }
-    console.log(selectedOption)
+    const next = { id, name, img }
+    setSelected(next)
+    // 방금 고른 값을 그대로 부모에 전달 (이전 코드는 직전 값을 전달해 한 박자 늦었음)
+    onChange(next)
   }
 
   return (
@@ -194,7 +176,7 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
         {productOptions.map((option) => (
           <ListItem 
             key={option.id} 
-            onClick={() => handleSelectOption(option.name, option.img)}
+            onClick={() => handleSelectOption(option.id, option.name, option.img)}
           >
             <ListItemButton>
               <img src={option.img} alt={option.name} />
@@ -208,20 +190,13 @@ const OptionSelectType = ({selectedOption, setSelectedOption, complete, setCompl
 }
 
 
-const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: ToggleProps) => {
+const OrderSelector = ({drawerOpen, toggleDrawer, selection, onSelectionChange}: ToggleProps) => {
   // ios에서 스와이프 동작 활성화
   const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent)
-  const [selectedColors, setSelectedColors] = useState<ColorOptions[]>([])
-  const [selectedOption, setSelectedOption] = useState<OptionsProps>({})
-  const [open, setOpen] = useState(false)
 
   const setToggleDrawer = (val: boolean) => (event: React.ChangeEvent<HTMLInputElement>) => {
     toggleDrawer(val)
   }
-
-  useEffect(() => {
-    console.log(complete)
-  }, [selectedColors, selectedOption, complete])
 
   return (
     <SwipeableDrawer
@@ -248,11 +223,9 @@ const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: Toggle
       >
         <ViewTitle>색상조합</ViewTitle>
         <Box sx={{ mt: 2 }}>
-          <OptionTagType 
-            selectedColor={selectedColors} 
-            setSelectedColor={setSelectedColors}
-            complete={complete}
-            setComplete={setComplete}
+          <OptionTagType
+            colors={selection.colors}
+            onChange={(colors) => onSelectionChange({ ...selection, colors })}
           />
         </Box>
 
@@ -260,13 +233,9 @@ const OrderSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: Toggle
 
         <ViewTitle sx={{ mt: 3 }}>옵션 선택</ViewTitle>
         <Box sx={{ py: 2 }}>
-          <OptionSelectType 
-            open={open}
-            setOpen={setOpen}
-            selectedOption={selectedOption} 
-            setSelectedOption={setSelectedOption}
-            complete={complete}
-            setComplete={setComplete}
+          <OptionSelectType
+            option={selection.option}
+            onChange={(option) => onSelectionChange({ ...selection, option })}
           />
         </Box>
       </Box>

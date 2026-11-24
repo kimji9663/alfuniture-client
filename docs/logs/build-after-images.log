@@ -1,0 +1,176 @@
+
+> alfuniture-client@0.1.0 build
+> react-scripts build
+
+(node:35036) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Creating an optimized production build...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+One of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
+  
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Compiled with warnings.
+
+[eslint] 
+src\components\Box.tsx
+  Line 1:15:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 2:18:  'useTheme' is defined but never used    @typescript-eslint/no-unused-vars
+
+src\components\navigationbar.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\product\HorizontalRanking.tsx
+  Line 2:26:  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\product\PreviewType2.tsx
+  Line 34:9:  'handleClickLike' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\title\LeftTitleNoIcon.tsx
+  Line 3:21:  'IconCart' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 3:31:  'IconNotification' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 4:10:  'Link' is defined but never used              @typescript-eslint/no-unused-vars
+
+src\components\title\TitleTwoLine.tsx
+  Line 3:10:  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\auth\SignIn\index.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\cart\index.tsx
+  Line 37:6:  React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array. You can also do a functional update 'setData(d => ...)' if you only need 'data' in the 'setData' call  react-hooks/exhaustive-deps
+  Line 48:6:  React Hook useEffect has a missing dependency: 'calculateTotalCount'. Either include it or remove the dependency array                                                                                          react-hooks/exhaustive-deps
+
+src\pages\home\Home.tsx
+  Line 2:17:   'useState' is defined but never used                                                                       @typescript-eslint/no-unused-vars
+  Line 90:17:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+src\pages\home\Profile.tsx
+  Line 27:7:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+src\pages\mypage\CouponCard.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\mypage\MyInformation.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\mypage\MyOrder.tsx
+  Line 112:32:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\mypage\OrderDetail.tsx
+  Line 31:6:  React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array. You can also do a functional update 'setData(d => ...)' if you only need 'data' in the 'setData' call  react-hooks/exhaustive-deps
+
+src\pages\mypage\OrderList.tsx
+  Line 44:41:  Expected '===' and instead saw '=='  eqeqeq
+  Line 50:41:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\mypage\RecentlyProduct.tsx
+  Line 10:17:  'setCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\pages\notification\index.tsx
+  Line 23:6:  React Hook useEffect has a missing dependency: 'data'. Either include it or remove the dependency array. You can also do a functional update 'setData(d => ...)' if you only need 'data' in the 'setData' call  react-hooks/exhaustive-deps
+
+src\pages\onboarding\LoadingCuration.tsx
+  Line 12:6:  React Hook React.useEffect has a missing dependency: 'goToNext'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\pages\onboarding\loadingCuration.styles.ts
+  Line 4:60:  Unexpected empty object pattern  no-empty-pattern
+
+src\pages\order\Order.tsx
+  Line 42:10:  'finalAmount' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  Line 42:23:  'setFinalAmount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  Line 52:9:   'applyCoupon' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+src\pages\order\OrderInfomation.tsx
+  Line 2:87:  'Avatar' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 2:95:  'ListItemAvatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\postmagazine\BrandStory.tsx
+  Line 3:10:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\postmagazine\RightImageCard.tsx
+  Line 3:8:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\Filters\index.tsx
+  Line 1:18:  'Box' is defined but never used                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  Line 51:6:  React Hook React.useEffect has missing dependencies: 'filterOptions' and 'type'. Either include them or remove the dependency array. If 'setSelected' needs the current value of 'filterOptions', you can also switch to useReducer instead of useState and read 'filterOptions' in the reducer  react-hooks/exhaustive-deps
+
+src\pages\shop\ProductList.tsx
+  Line 36:29:  Expected '===' and instead saw '=='  eqeqeq
+  Line 50:69:  Expected '===' and instead saw '=='  eqeqeq
+
+src\pages\shop\ProductView\index.styles.ts
+  Line 2:15:  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\ProductView\reviewPanel.styles.ts
+  Line 2:15:  'ButtonGroup' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 3:10:  'PrimaryButton' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\shop\productList.styles.ts
+  Line 3:10:   'FlexBox' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 13:53:  Unexpected empty object pattern      no-empty-pattern
+
+src\pages\shop\shopAll.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 5:41:  Unexpected empty object pattern  no-empty-pattern
+
+src\pages\style\Brand.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\MonthlyPostBox.tsx
+  Line 2:15:   'Typography' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 17:49:  'linkTo' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\PostMagazineTabPanel.tsx
+  Line 1:17:  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\style\RankingList.tsx
+  Line 106:32:  Expected '!==' and instead saw '!='  eqeqeq
+
+src\pages\style\RankingTabPanel.tsx
+  Line 1:17:  'useState' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 2:15:  'Typography' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\styles\buttons.styles.ts
+  Line 1:10:  'css' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\styles\checkbox.styles.ts
+  Line 4:50:   Unexpected empty object pattern  no-empty-pattern
+  Line 21:60:  Unexpected empty object pattern  no-empty-pattern
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  274.5 kB (-113.35 kB)  build\static\js\main.129ccb6c.js
+  3.79 kB                build\static\css\main.007bbf7e.css
+  1.78 kB                build\static\js\787.928a5de6.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+exit 0 time 52s

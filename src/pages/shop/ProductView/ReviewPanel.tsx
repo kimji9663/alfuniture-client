@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Box, Divider, Rating } from "@mui/material"
 import StarIcon from "@mui/icons-material/Star"
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
 import { ViewTitle } from "./index.styles"
 import { AverageGrade, DetailGrade, PhotoReviewWrap, ReviewerInfo, UserPhotoWrap, ProductOptions } from "./reviewPanel.styles"
 import { sofa01, sofa02, light01, light02, chair01, chair02, table01, table02 } from "../../../assets/images/product"
@@ -156,7 +155,7 @@ const ReviewPanel = () => {
         <Swiper {...photoReviewSettings}>
           {photoReviewList.map((photoReview) => (
             <SwiperSlide key={`photo_review_${photoReview.id}`}>
-              <img src={photoReview.img} alt={photoReview.discription} />
+              <img loading="lazy" src={photoReview.img} alt={photoReview.discription} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -184,7 +183,7 @@ const ReviewPanel = () => {
         <Swiper {...userPhotoSettings}>
           {userPhotoList.map((userPhoto) => (
             <SwiperSlide key={`user_photo_${userPhoto.id}`}>
-              <img src={userPhoto.img} alt={userPhoto.discription} />
+              <img loading="lazy" src={userPhoto.img} alt={userPhoto.discription} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -214,7 +213,7 @@ const ReviewPanel = () => {
         </Box>
       </ProductOptions>
 
-      <Box sx={{ mt: 3, color: "#999", fontSize: ".875rem" }}>
+      <Box sx={{ mt: 3, color: "#707070", fontSize: ".875rem" }}>
         한 달 걸려서 받았네요. 아이보리 할까 브라운 할까 고민 많이 했는데 아이보리 하길 너무 잘한 것 같아요. 기다린 보람이 있습니다. 
         사진에서 보시다 시피 전체 인테리어와 조화를 잘 이루고 또 적당히 포인트가 되는게 정말로 취향저격입니다. 
         조금 힙하면서도 단정한  분위기를 선호한다면 저는 강추드립니다 :)

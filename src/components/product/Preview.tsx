@@ -17,6 +17,8 @@ export interface PreviewProps {
   productName: string;
   price: number;
   colors?: Array<string>;
+  /** 첫 화면에 보이는 항목이면 true: 지연 로딩하지 않는다 */
+  priority?: boolean;
 }
 
 const PreviewItem: React.FC<PreviewProps> = ({
@@ -27,7 +29,8 @@ const PreviewItem: React.FC<PreviewProps> = ({
   modelName,
   productName,
   price,
-  colors
+  colors,
+  priority = false,
 }: PreviewProps) => {
 
   const [isLike, setIsLike] = useState(like)
@@ -46,6 +49,7 @@ const PreviewItem: React.FC<PreviewProps> = ({
         image={imgsrc}
         width="100%"
         alt="상품이미지"
+        loading={priority ? "eager" : "lazy"}
         sx={{
           aspectRatio: "1 / 1"
         }}
@@ -55,7 +59,7 @@ const PreviewItem: React.FC<PreviewProps> = ({
           <BoldGray9Typography>
             {shopName}
           </BoldGray9Typography>
-          <IconButton
+          <IconButton aria-label="좋아요" aria-pressed={!!isLike}
             onClick={handleClickLike}
           >
             {isLike ? <IconLikeOn /> : <IconLikeOff />}

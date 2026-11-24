@@ -13,8 +13,19 @@ import NoTitle from "../../../components/title/NoTitle"
 import DetailViewPanel from "./DetailViewPanel"
 import ReviewPanel from "./ReviewPanel"
 import PersonalQnaPanel from "./PersonalQnaPanel"
-import OrderSelector from "./OrderSelector"
+import OrderSelector, { OptionSelection, isSelectionComplete } from "./OrderSelector"
 import BrandButton from "../../../components/BrandButton"
+import { useCart } from "../../../store/cart"
+
+// 이 화면이 보여 주는 상품 (상품 ID 라우팅·API 연동 전까지 고정)
+const product = {
+  productId: "camelfton",
+  shopName: "ALFDN",
+  modelName: "",
+  productName: "카멜프튼",
+  price: 1594500,
+  deliveryCharge: 0, // 배송비 및 관부가세 포함 가격
+}
 
 const brandData = {
   name: "ALFDN",
@@ -81,14 +92,16 @@ const ProductView = () => {
   const [tabValue, setTabValue] = useState(0)
   const [isLike, setIsLike] = useState(false)
   const [optionOpen, setOptionOpen] = useState(false)
-  const [selectComplete, setSelectComplete] = useState([false, false])
+  const [selection, setSelection] = useState<OptionSelection>({ colors: [], option: null })
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState("")
+  const { addItem } = useCart()
+  const selectComplete = isSelectionComplete(selection)
 
   const goToCart = (event: React.MouseEvent) => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후
-      if (selectComplete[0] && selectComplete[1]) {
+      if (selectComplete) {
         // 장바구니로 이동하시겠습니까? 모달 띄움
         setModalType("cart")
         setModalOpen(true)
@@ -104,7 +117,7 @@ const ProductView = () => {
   const goToOrder = () => {
     if (optionOpen) {
       // 필수 옵션이 모두 선택 되었는지 체크 후 주문하기 이동
-      if (selectComplete[0] && selectComplete[1]) {
+      if (selectComplete) {
         // 구매하기 클릭 시 주문하기 링크로
         navigate("/order")
       } else {
@@ -133,8 +146,15 @@ const ProductView = () => {
   }
 
   const handleAddCart = () => {
-    // 장바구니 추가 후 닫기
-    setModalOpen(false)
+    if (!selectComplete) return
+    addItem({
+      ...product,
+      option1: selection.colors.map((c) => c.name).join("/"),
+      option2: selection.option?.name ?? null,
+    })
+    // 담은 뒤 결과 안내 (계속 쇼핑 / 장바구니로 이동)
+    setOptionOpen(false)
+    setModalType("added")
   }
 
   return (
@@ -142,14 +162,15 @@ const ProductView = () => {
       <Global styles={globalStyle} />
       <NoTitle/>
       <Box sx={{ height: "calc(100vh - 74px)", overflow: "auto" }}>
-        <Box sx={{ "& > img": { width: "100%" } }}>
-          <img src={sofa01} alt="소파" />
+        {/* LCP 요소: 우선 로드 + 원본 비율(360x458)로 자리를 미리 잡아 레이아웃 밀림 방지 */}
+        <Box sx={{ "& > img": { width: "100%", height: "auto" } }}>
+          <img src={sofa01} alt="소파" width={360} height={458} {...{ fetchpriority: "high" }} />
         </Box>
         <Box sx={{ p: 2 }}>
           <ProductMainInfo>
             <Box className="product_brand">
               <Typography className="brand_name">ALFDN</Typography>
-              <IconButton
+              <IconButton aria-label="좋아요" aria-pressed={!!isLike}
                 onClick={handleClickLike}
               >
                 {isLike ? <IconLikeOn /> : <IconLikeOff />}
@@ -223,8 +244,8 @@ const ProductView = () => {
       <OrderSelector 
         drawerOpen={optionOpen} 
         toggleDrawer={toggleDrawer} 
-        complete={selectComplete}
-        setComplete={setSelectComplete}
+        selection={selection}
+        onSelectionChange={setSelection}
       />
 
       <NaviWrap className="pair" sx={{ zIndex: 2 }}>
@@ -248,6 +269,15 @@ const ProductView = () => {
               <ButtonGroup fullWidth>
                 <SecondaryButton onClick={handleClose}>취소</SecondaryButton>
                 <PrimaryButton onClick={handleAddCart}>확인</PrimaryButton>
+              </ButtonGroup>
+            </>
+          )}
+          {modalType === "added" && (
+            <>
+              <div className="content">장바구니에 담았습니다.</div>
+              <ButtonGroup fullWidth>
+                <SecondaryButton onClick={handleClose}>계속 쇼핑하기</SecondaryButton>
+                <PrimaryButton onClick={() => navigate("/cart")}>장바구니 보기</PrimaryButton>
               </ButtonGroup>
             </>
           )}

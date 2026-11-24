@@ -6,7 +6,7 @@ import PostMagazineHeader from "./PostMagazineHeader"
 import BestWorkAllButton from "./BestWorkAllButton"
 import List from "../like/Like/List"
 import { brandStoryData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from "../../components/Typography"
 
 const BrandStory = () => {
