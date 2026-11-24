@@ -6,7 +6,7 @@ import { onerainDetail } from "../../assets/images/brand"
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar"
 import { homeStylingProductData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleSmallGray9Typography, LabelMediumGray7Typography, LabelMediumGray8Typography } from "../../components/Typography"
 
 const HomeStyling = () => {

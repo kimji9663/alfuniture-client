@@ -25,7 +25,7 @@ export const OrderInfoAccordionMenu = styled(Accordion)(() => ({
       margin: "16px 0",
     },
     "& p": {
-      color: "#999",
+      color: "#707070",
     },
     "& .title, & .total_amount": {
       color: "#333",
@@ -61,7 +61,7 @@ export const OrderAccordionMenu = styled(Accordion)(() => ({
       margin: "16px 0",
     },
     "& p": {
-      color: "#999",
+      color: "#707070",
     },
     "& .title, & .total_amount": {
       color: "#333",

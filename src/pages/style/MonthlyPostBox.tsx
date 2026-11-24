@@ -17,7 +17,7 @@ const MonthlyPostBox: React.FC<MonthlyPostBoxProps> = ({data}) => {
   const { title, imageUrl, description, author, linkTo } = data;
   return (
     <>
-      <img src={imageUrl} alt="" style={{ width: "100%", objectFit: "cover" }} />
+      <img loading="lazy" src={imageUrl} alt="" style={{ width: "100%", objectFit: "cover" }} />
       <Box sx={{ my: 3 }}>
         <TitleLargeBoldGray9Typography sx={{ mb: 1, lineHeight: "24px", letterSpacing: "-0.25px", }}>
           {title}

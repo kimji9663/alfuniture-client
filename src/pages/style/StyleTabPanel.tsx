@@ -122,7 +122,7 @@ const StyleTabPanel = () => {
               }}
             >
               <Link to="/style/home_styling">
-                <img
+                <img loading="lazy"
                   src={style.avatar}
                   alt={style.name}
                   style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: "100%" }}
@@ -159,7 +159,7 @@ const StyleTabPanel = () => {
               }}
             >
               <Link to="/style/home_styling">
-                <img
+                <img loading="lazy"
                   src={style.avatar}
                   alt={style.name}
                   style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: "100%" }}

@@ -14,7 +14,7 @@ import { styled } from "@mui/material/styles";
 //color
 //Gray9 #333333
 //Gray8 #666666
-//Gray7 #999999
+//Gray7 #707070 (접근성: 흰 배경 대비 4.95:1. 기존 #999999는 2.84:1)
 
 export const SpanTypography = styled((props: TypographyProps) => (
   <Typography component="span" {...props}>
@@ -284,20 +284,20 @@ export const LabelSmallBoldGray8Typography  = styled(BoldTypography)(() => ({
 //999
 
 export const TitleSmallGray7Typography  = styled(Typography)(() => ({
-  color:"#999999",
+  color:"#707070",
   fontSize: "14px",
   lineHeight:"20px",
   letterSpacing:"-0.25px", 
 }));
 
 export const Gray7Typography = styled(Typography)(() => ({
-  color: "#999",
+  color: "#707070",
   fontSize: "12px",
   lineHeight: "150%"
 }));
 
 export const LabelMediumGray7Typography = styled(Typography)(() => ({
-  color: "#999999",
+  color: "#707070",
   fontSize: "12px",
   letterSpacing: "-0.25px",
 }));

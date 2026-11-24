@@ -28,7 +28,7 @@ const WhiteTitle: FC<TitleProps> = ({title}) => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", m: 2, textAlign: "center" }}>
-        <Link to="/" style={{ display: "flex", textDecoration: "none" }}>
+        <Link to="/" aria-label="뒤로 가기" style={{ display: "flex", textDecoration: "none" }}>
           <ArrowWhite onClick={goBack}/>
         </Link>
       </Box>

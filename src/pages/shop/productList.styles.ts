@@ -38,7 +38,7 @@ export const FilterTypeContainer = styled(Box)(() => ({
     }
   },
   "& .MuiButton-outlined": {
-    color: "#999",
+    color: "#707070",
     borderColor: "#DADADA",
     "&:hover": {
       // color: "#000",

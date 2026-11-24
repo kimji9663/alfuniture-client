@@ -24,13 +24,13 @@ const ListItem: React.FC<{ item: NotificationData; isLastItem: boolean }> = ({ i
         {item.name.trim() !== "" ? (
           <>
           <span style={{ color: "black", fontSize: "12px", marginBottom: "4px", letterSpacing: "-0.25px" }}>{item.name + " "}</span>
-          <span style={{ color: "#999999", fontSize: "12px", marginBottom: "4px", letterSpacing: "-0.25px" }}>{item.content}</span>
+          <span style={{ color: "#707070", fontSize: "12px", marginBottom: "4px", letterSpacing: "-0.25px" }}>{item.content}</span>
           </>
         ) : (
           <span style={{ color: "black", fontSize: "12px", marginBottom: "4px", letterSpacing: "-0.25px" }}>{item.content}</span>
         )}
       </Box>
-      <Typography sx={{ fontSize: "12px", color: "#999999" }}>{item.date}</Typography>
+      <Typography sx={{ fontSize: "12px", color: "#707070" }}>{item.date}</Typography>
     </Box>
   );
 };

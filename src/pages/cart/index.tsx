@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IconXblack } from "../../assets/images";
 import { Box, IconButton } from "@mui/material";
 import CenterTitle from "../../components/title/CenterTitle"
@@ -7,122 +7,55 @@ import { CustomCheckbox } from "../../styles/checkbox.styles"
 import { NaviWrap } from "../../components/navigationbar.styles"
 import { PrimaryButton } from "../../styles/buttons.styles"
 import { useNavigate } from "react-router-dom"
-import { cartProductData } from "../../data"
+import { useCart, productImage } from "../../store/cart"
 import { LabelMediumGray7Typography, LabelMediumGray9ypography, TitleMediumBoldGray9Typography } from "../../components/Typography"
 
-interface cartData {
-  imgsrc: any,
-  shopName: string,
-  modelName: string,
-  productName: string,
-  option1: string,
-  option2: any,
-  price: number,
-  count: number,
-  deliveryCharge: number,
-  coupon?: Array<object>,
-}
-
-
 function CartPage() {
-  const [data, setData] = useState<cartData[]>([]);
-  const [totalCount, setTotalCount] = useState<number>(0);
+  // 장바구니 내용은 전역 스토어(src/store/cart.tsx)에서 가져온다
+  const { items: data, removeItem, setCount } = useCart();
 
-  const [selectedProducts, setSelectedProducts] = useState<number[]>(
-    Array(cartProductData.length).fill(true) // 초기에 모든 데이터 항목을 선택함
-  );
-  useEffect(() => {
-    // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...cartProductData]);
-  }, []); 
-
-  useEffect(() => {
-    const length = cartProductData.length;
-    const indexArray = Array.from({ length }, (_, index) => index);
-  
-    setSelectedProducts(indexArray);
-  }, []);
-
-  useEffect(() => {
-    setTotalCount(calculateTotalCount());
-  }, [selectedProducts]);
-  
+  // 선택 상태는 이 화면에서만 쓰므로 로컬 상태. 배열 위치가 아니라 장바구니 줄 ID로 관리한다.
+  // "선택 해제한 ID"를 저장해서, 새로 담긴 상품은 자동으로 선택된 상태가 된다.
+  const [deselected, setDeselected] = useState<Set<string>>(() => new Set());
+  const isSelected = (id: string) => !deselected.has(id);
+  const selectedItems = data.filter((product) => isSelected(product.id));
 
   // 선택된 상품을 토글하는 함수
-  const toggleProduct = (productId: number) => {
-    setSelectedProducts((prevSelected) => {
-      if (prevSelected.includes(productId)) {
-        return prevSelected.filter((id) => id !== productId);
-      } else {
-        return [...prevSelected, productId];
-      }
+  const toggleProduct = (id: string) => {
+    setDeselected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
     });
   };
 
-  // 선택된 상품들의 가격을 합산하는 함수
-  const calculateProductPrice = () => {
-    return data
-      .filter((product, index) => selectedProducts.includes(index))
-      .reduce((total, product) => total + product.price * product.count, 0); // 가격에 수량을 곱해 총 가격 계산
+  // 선택된 상품들의 가격 합계 (단가 × 수량)
+  const productPrice = selectedItems.reduce((total, product) => total + product.price * product.count, 0);
+  const deliveryCharge = selectedItems.reduce((total, product) => total + product.deliveryCharge, 0);
+  const totalPrice = productPrice + deliveryCharge;
+  // 기존 동작 유지: 선택된 상품의 수량 합계 (상품 종류 수가 아님 → IMPROVEMENTS.md 2번)
+  const totalCount = selectedItems.reduce((total, product) => total + product.count, 0);
+
+  // + / - 버튼: 수량 1~99 범위는 스토어에서 보장
+  const increaseQuantity = (id: string, count: number) => setCount(id, count + 1);
+  const decreaseQuantity = (id: string, count: number) => {
+    if (count > 1) setCount(id, count - 1);
   };
 
-  const calculateDeliveryCharge = () => {
-    return data
-      .filter((product, index) => selectedProducts.includes(index))
-      .reduce((total, product) => total + product.deliveryCharge, 0);
-  };
-
-  const calculateTotalPrice = () => {
-    return data
-      .filter((product, index) => selectedProducts.includes(index))
-      .reduce((total, product) => total + product.price * product.count + product.deliveryCharge, 0);
-  };
-  
-  // + 버튼 클릭 시 수량 증가
-  const increaseQuantity = (index: number) => {
-    const updatedData = [...data];
-    updatedData[index].count += 1;
-    setData(updatedData);
-    setTotalCount(calculateTotalCount());
-  };
-  
-  // - 버튼 클릭 시 수량 감소
-  const decreaseQuantity = (index: number) => {
-    const updatedData = [...data];
-    if (updatedData[index].count > 1) {
-      updatedData[index].count -= 1;
-      setData(updatedData);
-      setTotalCount(calculateTotalCount());
-    }
-  };
-  
-  const calculateTotalCount = () => {
-    return data
-      .filter((product, index) => selectedProducts.includes(index))
-      .reduce((total, product) => total + product.count, 0);
-  }
-
-  const handleActiveOrder = selectedProducts.length === 0;
+  const handleActiveOrder = selectedItems.length === 0;
   const navigate = useNavigate()
   const handleGoToOrder = () => {
     navigate("/order")
   }
 
-  const deleteItem = (index: number) => {
-
-    if (index >= 0 && index < data.length) {
-      const updatedItems = [...data];
-      updatedItems.splice(index, 1);
-
-      // 선택된 상품 목록에서 해당 인덱스 제거
-      const updatedSelectedProducts = [...selectedProducts];
-      updatedSelectedProducts.splice(index, 1);
-
-      // 데이터 배열과 선택된 상품 목록 상태 업데이트
-      setData(updatedItems);
-      setSelectedProducts(updatedSelectedProducts);
-      setTotalCount(calculateTotalCount());
-    }
+  const deleteItem = (id: string) => {
+    removeItem(id);
+    setDeselected((prev) => {
+      if (!prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
   }
   return (
     <>
@@ -131,9 +64,9 @@ function CartPage() {
         // 데이터가 있을 때 렌더링
         <Box sx={{minHeight:"calc(100vh - 57px)", position:"relative", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
           <Box>
-            {data.map((product, index) => (
+            {data.map((product) => (
               <Box
-                key={index}
+                key={product.id}
                 sx={{
                   p: "24px 16px",
                   display: "flex",
@@ -152,8 +85,8 @@ function CartPage() {
                   }}>
                 <CustomCheckbox
                   type="checkbox"
-                  checked={selectedProducts.includes(index)}
-                  onChange={() => toggleProduct(index)}
+                  checked={isSelected(product.id)}
+                  onChange={() => toggleProduct(product.id)}
                 />
                 </Box>
                 <Box sx={{flexGrow: "1"}}>
@@ -168,7 +101,7 @@ function CartPage() {
                       mr: 2
                     }}>
                       <img
-                        src={product.imgsrc}
+                        src={productImage(product.productId)}
                         alt={product.productName}
                         style={{ width: "100px", height: "100px", objectFit: "cover" }}
                       />
@@ -180,10 +113,10 @@ function CartPage() {
                           <LabelMediumGray9ypography sx={{fontWeight:"600"}}>{product.shopName}</LabelMediumGray9ypography>
                         </Box>
                         {/* 닫기 버튼 예정 */}
-                        <IconXblack onClick={() => deleteItem(index)} />
+                        <IconXblack onClick={() => deleteItem(product.id)} />
                       </Box>
                       <TitleMediumBoldGray9Typography>{product.productName}</TitleMediumBoldGray9Typography>
-                      <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#999999"}}>
+                      <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#707070"}}>
                         <span style={{marginRight: "8px"}}>{product.option1}</span>
                         <span style={{fontSize: "14px", marginRight: "8px"}}>|</span>
                         {product.option2 && 
@@ -202,7 +135,7 @@ function CartPage() {
                               width: "20px",
                               height: "20px",
                               fontWeight: "200"}}
-                            onClick={() => decreaseQuantity(index)}>
+                            onClick={() => decreaseQuantity(product.id, product.count)}>
                                 <span
                                   style={{
                                     position: "absolute",
@@ -216,6 +149,8 @@ function CartPage() {
                             </IconButton>
                             <input
                               value={product.count}
+                              readOnly
+                              aria-label={`${product.productName} 수량`}
                               style={{
                                 padding: "0",
                                 fontSize: "12px",
@@ -235,7 +170,7 @@ function CartPage() {
                               width: "20px",
                               height: "20px",
                               fontWeight: "200"}}
-                            onClick={() => increaseQuantity(index)}>
+                            onClick={() => increaseQuantity(product.id, product.count)}>
                                 <span
                                   style={{
                                     position: "absolute",
@@ -270,7 +205,7 @@ function CartPage() {
                         justifyContent: "space-between",
                         mb: "4px"
                       }}>
-                      <Box sx={{color: "#999999"}}>배송비</Box>
+                      <Box sx={{color: "#707070"}}>배송비</Box>
                       <Box>
                       {product.deliveryCharge === 0 ? (
                         <span>무료배송</span>
@@ -290,17 +225,17 @@ function CartPage() {
               <Box sx={{borderTop:"1px solid #DADADA", py:3}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
                   <LabelMediumGray7Typography sx={{lineHeight: "16px",}}>총 상품금액</LabelMediumGray7Typography>
-                  <LabelMediumGray9ypography>{calculateProductPrice().toLocaleString()+"원"}</LabelMediumGray9ypography>
+                  <LabelMediumGray9ypography>{productPrice.toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", mb:2}}>
                   <LabelMediumGray7Typography sx={{lineHeight: "16px",}}>배송비</LabelMediumGray7Typography>
-                  <LabelMediumGray9ypography>{calculateDeliveryCharge().toLocaleString()+"원"}</LabelMediumGray9ypography>
+                  <LabelMediumGray9ypography>{deliveryCharge.toLocaleString()+"원"}</LabelMediumGray9ypography>
                 </Box>
               </Box>
               <Box sx={{borderTop:"1px solid #333333", py:2}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
                   <TitleMediumBoldGray9Typography>결제금액</TitleMediumBoldGray9Typography>
-                  <TitleMediumBoldGray9Typography>{calculateTotalPrice().toLocaleString()+"원"}</TitleMediumBoldGray9Typography>
+                  <TitleMediumBoldGray9Typography>{totalPrice.toLocaleString()+"원"}</TitleMediumBoldGray9Typography>
                 </Box>
               </Box>
             </Box>

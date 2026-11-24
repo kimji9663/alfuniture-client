@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Divider, Button } from "@mui/material"
 import { DetailView, MoreButton, CoverBox, MoreInfomation } from "./detailViewPanel.styles"
 import { HalfArrow } from "../../../assets/images"
-import img_product_view from "../../../assets/images/img_product_view.png"
+import img_product_view from "../../../assets/images/img_product_view.webp"
 
 const DetailViewPanel = () => {
   const [viewMore, setViewMore] = useState(false)
@@ -14,7 +14,7 @@ const DetailViewPanel = () => {
   return (
     <>
       <DetailView sx={{ height: viewMore ? "auto" : "502px", pb: viewMore ? "58px" : 0 }}>
-        <img src={img_product_view} alt="" />
+        <img loading="lazy" src={img_product_view} alt="" />
         <CoverBox>
           <MoreButton 
             variant="outlined" 

@@ -137,7 +137,7 @@ const CouponSelector = ({drawerOpen, toggleDrawer, complete, setComplete}: Toggl
             mt: 2,
             display: 'flex',
             justifyContent: 'space-between',
-            color: '#999',
+            color: '#707070',
             fontSize: '.8rem',
             '& .title': {
               color: '#000',

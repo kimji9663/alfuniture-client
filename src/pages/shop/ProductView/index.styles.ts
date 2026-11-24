@@ -50,7 +50,7 @@ export const ProductMainInfo = styled(Box)(() => ({
     },
     "& .fee": {
       marginLeft: "8px", 
-      color: "#999", 
+      color: "#707070", 
       fontSize: ".75rem",
     },
   },
@@ -77,7 +77,7 @@ export const ProductViewTabs = styled(Box)(() => ({
   borderBottom: "1px solid #EEEEEE", 
   borderColor: "divider",
   ".MuiTab-root": {
-    color: "#999",
+    color: "#707070",
   },
   ".MuiTab-root.Mui-selected": { 
     color: "#333", 

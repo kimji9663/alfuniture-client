@@ -101,6 +101,7 @@ const WriteQna = () => {
             {userPhoto.length < 2 && (
               <Button 
                 component="label"
+                aria-label="사진 첨부"
               >
                 <IconPlus />
                 <VisuallyHiddenInput 

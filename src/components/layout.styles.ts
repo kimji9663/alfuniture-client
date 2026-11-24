@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 
-export const ContentWrap = styled.div({
+// <main> 랜드마크: 스크린리더가 본문으로 바로 이동할 수 있다 (div와 레이아웃 동일)
+export const ContentWrap = styled.main({
     position: "relative",
     maxWidth: "420px",
     minHeight: "100vh",

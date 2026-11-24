@@ -139,7 +139,7 @@ const SignIn = () => {
           sx={{ 
             mt: 2, 
             textAlign: "center", 
-            color: "#999999", 
+            color: "#707070", 
             fontSize: ".75rem",
             "& > a": { 
               ml: 1,

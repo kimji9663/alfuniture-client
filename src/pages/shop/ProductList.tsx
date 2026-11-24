@@ -69,9 +69,10 @@ const ProductList = () => {
             columnGap='0.5rem'
             rowGap='1.5rem'
           >
-            {shopProductData.map((product: any) =>
+            {shopProductData.map((product: any, index: number) =>
               <PreviewItem
                 key={`product-${product.id}`}
+                priority={index < 4}
                 id={product.id}
                 imgsrc={product.imgsrc}
                 shopName={product.shopName}

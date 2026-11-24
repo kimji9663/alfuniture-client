@@ -45,6 +45,7 @@ const PreviewItem: React.FC<PreviewProps> = ({
         image={imgsrc}
         width="100%"
         alt="상품이미지"
+        loading="lazy"
         sx={{
           aspectRatio: "1 / 1.2"
         }}

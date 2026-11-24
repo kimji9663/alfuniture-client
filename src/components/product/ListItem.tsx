@@ -36,6 +36,7 @@ const ListItem: React.FC<PreviewProps> = ({
               <img
                 src={imgsrc}
                 alt="상품이미지"
+                loading="lazy"
               />
             </ListImageBox>
           </Link>
@@ -59,7 +60,7 @@ const ListItem: React.FC<PreviewProps> = ({
                   {Intl.NumberFormat().format(price)} 원
                 </BoldGray8Typography>
                 <FlexAlignItemsCenterBox flexDirection={"row"}>
-                  <IconButton
+                  <IconButton aria-label="좋아요" aria-pressed={!!isLike}
                     onClick={handleClickLike}
                   >
                     {isLike ? <IconLikeOn /> : <IconLikeOff />}

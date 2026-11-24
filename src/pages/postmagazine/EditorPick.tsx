@@ -7,7 +7,7 @@ import RightImageCard from "./RightImageCard"
 import BestWorkAllButton from "./BestWorkAllButton"
 import List from "../like/Like/List"
 import { editorPickData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleMediumBoldGray9Typography, HeadlineExtraLargeBoldGray9Typography, TitleSmallWhiteTypography, TitleSmallGray8Typography, TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from "../../components/Typography"
 
 const EditorPick = () => {

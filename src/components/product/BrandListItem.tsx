@@ -18,6 +18,7 @@ const BrandListItem: React.FC<PreviewProps> = ({
           <img
             src={imgsrc}
             alt="상품이미지"
+            loading="lazy"
           />
           {rank ?
             <FlexCenterCenterBox className="rank">

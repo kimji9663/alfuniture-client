@@ -22,7 +22,7 @@ const BrandButton: React.FC<BrandButtonProps> = ({ brandData }) => {
           {brandData.name}
           <ArrowRight />
         </Typography>
-        <Typography sx={{ color: "#999", fontSize: ".75rem" }}>{brandData.description}</Typography>
+        <Typography sx={{ color: "#707070", fontSize: ".75rem" }}>{brandData.description}</Typography>
       </Box>
       <Box sx={{ ml: "auto", px: 4, "& > svg": { display: "block" } }}>
         <IconHeartSmall />

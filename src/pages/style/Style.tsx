@@ -10,7 +10,7 @@ import RankingTabPanel from "./RankingTabPanel";
 import PostMagazineTabPanel from "./PostMagazineTabPanel";
 import { Swiper, SwiperSlide } from "swiper/react"
 import { styleBannerData } from "../../data"
-import { ScrollToTop } from "../../App"
+import { ScrollToTop } from "../../components/ScrollToTop"
 import { TitleSmallTypography, HeadlineExtraLargeGray9Typography, TitleSmallGray8Typography } from "../../components/Typography"
 
 const brandCollectionSettings:ISwiperProps = {

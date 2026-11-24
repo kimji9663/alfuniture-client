@@ -1,51 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import type { ComponentType } from "react"
 import Layout from "./components/Layout"
+import { CartProvider } from "./store/cart"
+// 홈은 첫 진입 페이지이자 LCP 페이지라 메인 번들에 둔다
 import Home from "./pages/home/Home"
-import Profile from "./pages/home/Profile"
-import Guide from "./pages/Guide"
-import ShopProductList from "./pages/shop/ProductList"
-import ShopProductView from "./pages/shop/ProductView"
-import ShopAll from "./pages/shop/ShopAll"
-import ShopWriteQna from "./pages/shop/WriteQna"
-import FunitureSelection from "./pages/onboarding/FunitureSelection"
-import StyleSelection from "./pages/onboarding/StyleSelection"
-import FeaturedProduct from "./pages/onboarding/FeaturedProduct"
-import FeaturedBrand from "./pages/onboarding/FeaturedBrand"
-import Like from "./pages/like/Like"
-import SignIn from "./pages/auth/SignIn"
-import SignUp from "./pages/auth/SignUp"
-import Cart from "./pages/cart"
-import Notification from "./pages/notification"
-import Order from "./pages/order/Order"
-import Dashboard from "./pages/mypage/Dashboard"
-import Style from "./pages/style/Style"
-import RankingList from "./pages/style/RankingList"
-import HomeStyling from "./pages/style/HomeStyling"
-import Brand from "./pages/style/Brand"
-import LoadingCuration from "./pages/onboarding/LoadingCuration"
-import MyInformation from "./pages/mypage/MyInformation"
-import MyOrder from "./pages/mypage/MyOrder"
-import RecentlyProduct from "./pages/mypage/RecentlyProduct"
-import OrderDetail from "./pages/mypage/OrderDetail"
-import Coupon from "./pages/mypage/Coupon"
-import Review from "./pages/mypage/Review"
-import WriteReview from "./pages/mypage/WriteReview"
-import DeliveryDetail from "./pages/mypage/DeliveryDetail"
-import BrandStory from "./pages/postmagazine/BrandStory"
-import EditorPick from "./pages/postmagazine/EditorPick"
-import MonthlyPost from "./pages/postmagazine/MonthlyPost"
-import Reels from "./pages/style/Reels"
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
-export function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0); // 페이지 이동 후 스크롤 위치를 최상단으로 이동
-  }, [pathname]);
-
-  return null;
+/**
+ * 라우트 단위 코드 분할.
+ * React Router의 `lazy`를 쓰면 다음 페이지 청크를 받는 동안 현재 화면을 그대로 유지한다
+ * (React.lazy + Suspense처럼 빈 화면이 깜빡이지 않음).
+ */
+const page = (load: () => Promise<{ default: ComponentType }>) => async () => {
+  const { default: Component } = await load()
+  return { Component }
 }
 
 const router = createBrowserRouter([
@@ -64,167 +31,167 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        lazy: page(() => import("./pages/home/Profile")),
       },
       {
         path: "/auth",
-        element: <SignIn />,
+        lazy: page(() => import("./pages/auth/SignIn")),
         children: [
           {
             path: "/auth/sign_in",
-            element: <SignIn />,
+            lazy: page(() => import("./pages/auth/SignIn")),
           }
         ]
       },
       {
         path: "/auth/sign_up",
-        element: <SignUp />,
+        lazy: page(() => import("./pages/auth/SignUp")),
       },
       {
         path: "/onboarding",
-        element: <FunitureSelection />,
+        lazy: page(() => import("./pages/onboarding/FunitureSelection")),
         children: [
           {
             path: "/onboarding/funiture_selection",
-            element: <FunitureSelection />,
+            lazy: page(() => import("./pages/onboarding/FunitureSelection")),
           }
         ]
       },
       {
         path: "/onboarding/style_selection",
-        element: <StyleSelection />,
+        lazy: page(() => import("./pages/onboarding/StyleSelection")),
       },
       {
         path: "/onboarding/featured_product",
-        element: <FeaturedProduct />,
+        lazy: page(() => import("./pages/onboarding/FeaturedProduct")),
       },
       {
         path: "/onboarding/loading_curation",
-        element: <LoadingCuration />,
+        lazy: page(() => import("./pages/onboarding/LoadingCuration")),
       },
       {
         path: "/onboarding/featured_brand",
-        element: <FeaturedBrand />,
+        lazy: page(() => import("./pages/onboarding/FeaturedBrand")),
       },
       {
         path: "/shop",
-        element: <ShopProductList />,
+        lazy: page(() => import("./pages/shop/ProductList")),
         children: [
           {
             path: "/shop/product_list",
-            element: <ShopProductList />,
+            lazy: page(() => import("./pages/shop/ProductList")),
           },
         ]
       },
       {
         path: "/shop/product_view",
-        element: <ShopProductView />,
+        lazy: page(() => import("./pages/shop/ProductView")),
       },
       {
         path: "/shop/shop_all",
-        element: <ShopAll />,
+        lazy: page(() => import("./pages/shop/ShopAll")),
       },
       {
         path: "/shop/write_qna",
-        element: <ShopWriteQna />,
+        lazy: page(() => import("./pages/shop/WriteQna")),
       },
       {
         path: "/like",
-        element: <Like />,
+        lazy: page(() => import("./pages/like/Like")),
       },
       {
         path: "/guide",
-        element: <Guide />,
+        lazy: page(() => import("./pages/Guide")),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        lazy: page(() => import("./pages/cart")),
       },
       {
         path: "/notification",
-        element: <Notification />,
+        lazy: page(() => import("./pages/notification")),
       },
       {
         path: "/order",
-        element: <Order />,
+        lazy: page(() => import("./pages/order/Order")),
       },
       {
         path: "/mypage",
-        element: <Dashboard />,
+        lazy: page(() => import("./pages/mypage/Dashboard")),
         children: [
           {
             path: "/mypage/dashboard",
-            element: <Dashboard />,
+            lazy: page(() => import("./pages/mypage/Dashboard")),
           },
         ]
       },
       {
         path: "/mypage/my_info",
-        element: <MyInformation />,
+        lazy: page(() => import("./pages/mypage/MyInformation")),
       },
       {
         path: "/mypage/my_order",
-        element: <MyOrder />,
+        lazy: page(() => import("./pages/mypage/MyOrder")),
       },
       {
         path: "/mypage/recently_product",
-        element: <RecentlyProduct />,
+        lazy: page(() => import("./pages/mypage/RecentlyProduct")),
       },
       {
         path: "/mypage/order_detail",
-        element: <OrderDetail />,
+        lazy: page(() => import("./pages/mypage/OrderDetail")),
       },
       {
         path: "/mypage/delivery_detail",
-        element: <DeliveryDetail />,
+        lazy: page(() => import("./pages/mypage/DeliveryDetail")),
       },
       {
         path: "/mypage/coupon",
-        element: <Coupon />,
+        lazy: page(() => import("./pages/mypage/Coupon")),
       },
       {
         path: "/mypage/review",
-        element: <Review />,
+        lazy: page(() => import("./pages/mypage/Review")),
       },
       {
         path: "/mypage/write_review",
-        element: <WriteReview />,
+        lazy: page(() => import("./pages/mypage/WriteReview")),
       },
       {
         path: "/mypage/modify_review",
-        element: <WriteReview />,
+        lazy: page(() => import("./pages/mypage/WriteReview")),
       },
       {
         path: "/style",
-        element: <Style />,
+        lazy: page(() => import("./pages/style/Style")),
       },
       {
         path: "/style/ranking",
-        element: <RankingList />,
+        lazy: page(() => import("./pages/style/RankingList")),
       },
       {
         path: "/style/home_styling",
-        element: <HomeStyling />,
+        lazy: page(() => import("./pages/style/HomeStyling")),
       },
       {
         path: "/style/brand",
-        element: <Brand />,
+        lazy: page(() => import("./pages/style/Brand")),
       },
       {
         path: "/brand_story/aerobiey",
-        element: <BrandStory />,
+        lazy: page(() => import("./pages/postmagazine/BrandStory")),
       },
       {
         path: "/editor_pick/henredn",
-        element: <EditorPick />,
+        lazy: page(() => import("./pages/postmagazine/EditorPick")),
       },
       {
         path: "/monthly_post/umasqu",
-        element: <MonthlyPost />,
+        lazy: page(() => import("./pages/postmagazine/MonthlyPost")),
       },
       {
         path: "/style/reels",
-        element: <Reels />,
+        lazy: page(() => import("./pages/style/Reels")),
       },
     ],
   },
@@ -232,9 +199,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>      
+    <CartProvider>
       <RouterProvider router={router} />
-    </>
+    </CartProvider>
   )
 }
 

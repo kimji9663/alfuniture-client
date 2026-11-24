@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "swiper/css"; // Home·Style 등 여러 페이지의 Swiper가 공통으로 사용
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

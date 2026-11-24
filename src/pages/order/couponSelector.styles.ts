@@ -21,7 +21,7 @@ export const OutlinedTag = styled(Box)(() => ({
   maxWidth: '48%',
   borderRadius: 0,
   border: '1px solid #DADADA',
-  color: '#999999',
+  color: '#707070',
   '& > img': {
     width: '18px',
     marginRight: '4px',

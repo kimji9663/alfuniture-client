@@ -37,7 +37,7 @@ const OutlinedSelect = styled(Box)<SelectProps>((props) => ({
     borderRadius: 0,
     border: "1px solid #DADADA",
     justifyContent: "start",
-    color: "#999"
+    color: "#707070"
   },
   "& > .MuiButton-root > img": {
     width: "18px",
@@ -47,7 +47,7 @@ const OutlinedSelect = styled(Box)<SelectProps>((props) => ({
     display: props.isopen === "true" ? "block" : "none",
     marginTop: "-1px",
     padding: 0,
-    color:"#999999",
+    color:"#707070",
     border: "1px solid #dadada",
     borderTop: "none",
   },

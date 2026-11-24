@@ -36,6 +36,6 @@ export const AgreeCheckbox = styled(FormControlLabel)(() => ({
     color: "#333",
   },
   "& .sub": {
-    color: "#999",
+    color: "#707070",
   }
 }))
