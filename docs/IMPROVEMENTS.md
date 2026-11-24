@@ -19,7 +19,7 @@
 | 8 | P1 | 페이지별 코드 분할 ✅ 완료 (2026-11-24, [결과](#8-결과-2026-11-24)) | S |
 | 9 | P1 | 영상 정리 | S |
 | 10 | P2 | 접근성 ✅ 완료 (2026-11-24, [결과](#10-결과-2026-11-24)) | S |
-| 11 | P2 | 테스트 복구 | S |
+| 11 | P2 | 테스트 복구 ✅ 완료 (2026-11-25, [결과](#11-결과-2026-11-25)) | S |
 | 12 | P2 | ESLint 경고 정리 | S |
 | 13 | P3 | 안 쓰는 패키지 제거 | S |
 | 14 | P3 | CRA → Vite 이전 | L |
@@ -393,6 +393,35 @@
 
 - 지금은 Jest가 ESM 전용인 `swiper/react`를 불러오지 못해 테스트가 실패합니다. `package.json`의 `jest.transformIgnorePatterns`에 `swiper`를 추가합니다.
 - CRA 기본 테스트(`App.test.tsx`, "learn react" 검색)를 지우고 장바구니 계산과 필터 로직 단위 테스트부터 씁니다. 2~5번 작업을 지켜 주는 안전장치가 됩니다.
+
+#### 11. 결과 (2026-11-25)
+
+**`npm test` 실패 → 6개 파일, 62개 테스트 모두 통과 (약 45초)** ([로그](logs/test-after.log))
+
+**Jest 설정** (`package.json`의 `jest`, 새 의존성 없음)
+- **원인:** Jest 27(CRA 5)은 `package.json`의 `exports` 필드를 읽지 못해 `swiper/react`를 찾지 못했습니다. swiper는 ESM(`.mjs`)이라 Babel 변환도 필요합니다.
+- `moduleNameMapper`로 `swiper/react`, `swiper/css`를 실제 파일에 직접 연결했습니다.
+- `transformIgnorePatterns`는 CRA 기본값과 같되 `node_modules/swiper`만 변환하도록 했습니다.
+
+**테스트**
+
+| 파일 | 개수 | 내용 |
+| --- | --: | --- |
+| `src/App.test.tsx` | 1 | 앱 전체(라우터·장바구니·찜 Provider·Swiper)로 홈 렌더링, `main` 랜드마크·알림 링크 라벨 확인 (CRA 예제 "learn react" 대체) |
+| `src/utils/pricing.test.ts` | 33 | 브랜드 표기 통일, 쿠폰 적용 대상·만료·사용 가능 여부, 할인(원 단위 버림), 주문 E2E와 같은 금액 시나리오 7개 (580,000 / 532,000 / 482,000 / 530,000 / 3,307,000 / 3,277,000 / 1,694,500원) |
+| `src/store/cart.test.tsx` | 13 | 예시 초기값, 저장값 읽기·깨진 값·잘못된 항목 거르기, 같은 옵션 합치기, 옵션별 줄 분리, 수량 1~99 제한, **원본 직접 수정 안 함**, 삭제, 탭 간 동기화, 이미지 URL 미저장, Provider 밖 사용 오류 |
+| `src/store/likes.test.tsx` | 9 | 상품 키, 예시 초기값, 깨진 값, 찜·해제, 최근 찜한 순 정렬, 저장, 카탈로그 이미지·카테고리, 탭 간 동기화 |
+| `src/pages/cart/index.test.tsx` | 5 | 결제금액·"2개 선택상품", 수량 + 반영, **선택 해제 후 다른 상품 삭제 시 선택 상태 유지**(이전 인덱스 버그), 구매하기 → 선택 상품만 주문서(580,000원), 모두 삭제 시 안내 |
+| `src/pages/order/Order.test.tsx` | 5 | 상품 없을 때 안내, 바로 구매 금액, 전 상품 쿠폰 적용·취소, ALFDN만 있을 때 브랜드 쿠폰 4장 선택 불가, ONERAIN 쿠폰이 One Rain 상품에만 할인 |
+
+**테스트가 찾아서 함께 고친 것**
+- `CouponSelector`: `<p>` 안에 `<p>`가 들어가는 잘못된 HTML 중첩 → 바깥을 `div`로 바꿨습니다 (전역 리셋으로 여백이 같아서 화면 변화 없음).
+- `checkbox.styles.ts`: 객체 스타일에 `"-webkit-appearance"`처럼 kebab-case 키를 쓰고 있었습니다 (Emotion 경고) → `WebkitAppearance`, `MozAppearance`로 바꿨습니다.
+
+**남은 일**
+- **E2E 테스트는 프로젝트에 넣지 않았습니다.** 장바구니·찜·주문 브라우저 E2E 77개 항목은 작업 중 임시 스크립트로 돌렸고, 결과 로그만 `docs/logs/`에 남아 있습니다. 프로젝트에 두려면 Playwright 같은 도구 설치가 필요합니다.
+- 필터(4번)와 오류 처리(6번)는 기능을 만들 때 테스트를 함께 씁니다.
+- CI(GitHub Actions)에서 `npm test`를 자동으로 돌리는 설정은 아직 없습니다.
 
 ### 12. ESLint 경고 정리 (S)
 

@@ -55,5 +55,15 @@
   "devDependencies": {
     "prettier": "3.0.0",
     "sharp": "^0.34.3"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\](?!swiper[/\\\\]).+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^swiper/react$": "<rootDir>/node_modules/swiper/swiper-react.mjs",
+      "^swiper/css$": "<rootDir>/node_modules/swiper/swiper.css"
+    }
   }
 }
