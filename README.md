@@ -31,7 +31,10 @@ npm start       # 개발 서버 http://localhost:3000
 npm run build   # build/ 에 프로덕션 빌드
 npm test        # Jest 62개 (2026-11-25 복구, docs/IMPROVEMENTS.md 11번)
 npm run optimize-images   # 이미지 추가·교체 시: assets-original/images → src/assets/images 에 WebP 생성
+npm run test:e2e          # 빌드 후 브라우저 E2E (Playwright, 처음엔 npx playwright install chromium)
 ```
+
+GitHub Actions(`.github/workflows/ci.yml`)가 `main` 푸시와 모든 PR에서 Jest → 빌드 → E2E를 자동으로 실행합니다.
 
 설치할 때 나오는 메시지:
 - `npm audit`: 취약점 76개 (critical 6 · high 37 · moderate 19 · low 14). 대부분 `react-scripts` 5의 하위 의존성입니다. → [`docs/logs/npm-audit.json`](docs/logs/npm-audit.json)
