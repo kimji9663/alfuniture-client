@@ -130,7 +130,7 @@ export const ProductOptions = styled(Box)(() => ({
   },
   "& .options > span": {
     marginRight: "20px",
-    color: "#BDBDBD", 
+    color: "#707070", 
     fontSize: ".75rem",
   },
   "& .hash_tags": {

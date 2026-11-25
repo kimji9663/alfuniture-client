@@ -82,15 +82,31 @@ test.describe("주문서", () => {
     expect((await orderAmounts(page)).total).toBe("530,000원")
   })
 
-  test("결제: 필수 정보 입력 후 활성, 연속 클릭해도 한 번, 주문한 상품만 장바구니에서 빠짐", async ({ page }) => {
+  test("결제: 필수 정보 입력 후 활성, 연속 클릭해도 한 번, 주문 완료 화면, 주문한 상품만 장바구니에서 빠짐", async ({ page }) => {
     const errors = collectPageErrors(page)
     await orderCamelpiaOnly(page)
     await fillRequired(page)
     await expect(payButton(page)).toBeEnabled()
     await payButton(page).evaluate((b: HTMLButtonElement) => { b.click(); b.click() })
-    await expect(page).toHaveURL(/\/$/)
+
+    // 주문 완료 화면: 주문번호, 상품, 결제금액
+    await expect(page).toHaveURL(/\/order\/complete$/)
+    await expect(page.getByRole("heading", { name: "주문이 완료되었어요" })).toBeVisible()
+    await expect(page.getByText(/주문번호 \d{8}-\d{6}/)).toBeVisible()
+    await expect(page.getByText("ALFDEN - 카멜피아")).toBeVisible()
+    await expect(page.getByText("주문 상품 1개")).toBeVisible()
+    await expect(page.locator("section[aria-label='결제 정보']")).toContainText("총 결제금액580,000원")
+
     const cart = await page.evaluate((k) => JSON.parse(localStorage.getItem(k) ?? "[]").map((i: any) => i.productName), CART_KEY)
     expect(cart).toEqual(["모닝 데스크"])
+
+    // 뒤로 가기로 결제 화면에 돌아오지 않는다 (replace)
+    await page.goBack()
+    await expect(page).toHaveURL(/\/cart$/)
+
+    await page.goForward()
+    await page.getByRole("button", { name: "쇼핑 계속하기" }).click()
+    await expect(page.getByText("2023 Furniture")).toBeVisible()
     errors.expectNone()
   })
 

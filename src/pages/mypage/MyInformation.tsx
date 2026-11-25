@@ -36,7 +36,7 @@ const InfomationList = styled(Box)(() => ({
     fontSize: ".875rem",
   },
   "& > button.gray": {
-    color: "#BDBDBD",
+    color: "#707070",
   },
   "& > .MuiDivider-root": {
     margin: "6px 0"

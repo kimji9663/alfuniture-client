@@ -11,7 +11,7 @@ const TitleTwoLine: FC<TitleProps> = ({title, onClick, skip}) => {
   return (
     <Box sx={{p : "16px 16px 0 16px ", height: '120px', boxSizing: 'border-box' }}>
       {skip ? (
-        <Box sx={{ textAlign: 'right', pr: 2, height: "24px", color: 'gray'}} onClick={onClick}>
+        <Box sx={{ textAlign: 'right', pr: 2, height: "24px", color: '#707070'}} onClick={onClick}>
           SKIP
         </Box>
       ) : null}

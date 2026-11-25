@@ -101,6 +101,8 @@ const ProductView = () => {
   const [modalType, setModalType] = useState("")
   const { addItem } = useCart()
   const addingRef = useRef(false)
+  // 옵션 서랍을 붙일 스크롤 영역 (하단 버튼은 이 밖에 있음)
+  const contentRef = useRef<HTMLDivElement | null>(null)
   const selectComplete = isSelectionComplete(selection)
 
   // 지금 고른 옵션으로 만든 주문 상품 (장바구니 담기·바로 구매 공통)
@@ -176,7 +178,7 @@ const ProductView = () => {
     <>
       <Global styles={globalStyle} />
       <NoTitle/>
-      <Box sx={{ height: "calc(100vh - 74px)", overflow: "auto" }}>
+      <Box ref={contentRef} sx={{ height: "calc(100vh - 74px)", overflow: "auto" }}>
         {/* LCP 요소: 우선 로드 + 원본 비율(360x458)로 자리를 미리 잡아 레이아웃 밀림 방지 */}
         <Box sx={{ "& > img": { width: "100%", height: "auto" } }}>
           <img src={sofa01} alt="소파" width={360} height={458} {...{ fetchpriority: "high" }} />
@@ -216,7 +218,7 @@ const ProductView = () => {
                   <Box component="span" sx={{ color: "#666" }}>
                     빠른배송
                   </Box>
-                  <Box component="span" sx={{ ml: 1, color: "#FD6868" }}>
+                  <Box component="span" sx={{ ml: 1, color: "#D32F2F" }}>
                     불가능
                   </Box>
                 </Box>
@@ -257,6 +259,7 @@ const ProductView = () => {
       </Box>
 
       <OrderSelector 
+        container={() => contentRef.current}
         drawerOpen={optionOpen} 
         toggleDrawer={toggleDrawer} 
         selection={selection}

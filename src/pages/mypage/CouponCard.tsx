@@ -12,6 +12,9 @@ type CouponData = {
   dDay: number;
 };
 
+/** 남은 일수 표시: 만료(음수) → "기간 만료", 오늘 → "D-Day", 그 외 → "D-n" */
+export const dDayLabel = (dDay: number) => (dDay < 0 ? "기간 만료" : dDay === 0 ? "D-Day" : `D-${dDay}`)
+
 type CouponCardProps = {
   data: CouponData[];
   onCouponClick?: (index: number) => void;
@@ -35,16 +38,16 @@ const CouponCard: React.FC<CouponCardProps> = ({ data, onCouponClick }) => {
                   <TitleSmallBoldTypography sx={{ color: "#FAFAFA" }}>{item.couponName}</TitleSmallBoldTypography>
                 </Box>
                 <Box>
-                  <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>{item.startDate + " - " + item.endDate}
-                    <span style={{ color: "#E4E4E4" }}>{" D-" + item.dDay}</span>
+                  <LabelMediumGray7Typography sx={{lineHeight: "16px", color: "#E4E4E4"}}>{item.startDate + " - " + item.endDate}
+                    <span style={{ color: "#E4E4E4" }}>{" " + dDayLabel(item.dDay)}</span>
                   </LabelMediumGray7Typography>
                 </Box>
               </Box>
             </Link>
-            <Button sx={{ position: "absolute", top: 71, right: 16, zIndex: 10, py: 1, px: 2, border:"1px solid #FAFAFA", borderRadius:0 }}   onClick={() => {onCouponClick(index)}}>
-              <LabelMediumBoldTypography sx={{ lineHeight: "16px", color: "#FAFAFA" }}>쿠폰 받기</LabelMediumBoldTypography>
+            <Button disabled={item.dDay < 0} sx={{ position: "absolute", top: 71, right: 16, zIndex: 10, py: 1, px: 2, border:"1px solid #FAFAFA", borderRadius:0 }}   onClick={() => {onCouponClick(index)}}>
+              <LabelMediumBoldTypography sx={{ lineHeight: "16px", color: "#FAFAFA" }}>{item.dDay < 0 ? "기간 만료" : "쿠폰 받기"}</LabelMediumBoldTypography>
             </Button>
-          <img src={item.imgsrc} alt="" style={{ position: "absolute", top: 0, left: 0, objectFit: "cover", filter: "brightness(50%)", height: "128px", width: "100%", zIndex: 0 }} />
+          <img src={item.imgsrc} alt="" style={{ position: "absolute", top: 0, left: 0, objectFit: "cover", filter: item.dDay < 0 ? "brightness(40%) grayscale(100%)" : "brightness(50%)", height: "128px", width: "100%", zIndex: 0 }} />
         </Box>
         ) : (
         <Link to={"/style/brand"} >
@@ -59,12 +62,12 @@ const CouponCard: React.FC<CouponCardProps> = ({ data, onCouponClick }) => {
                 <TitleSmallBoldTypography sx={{ color: "#FAFAFA" }}>{item.couponName}</TitleSmallBoldTypography>
               </Box>
               <Box>
-                <LabelMediumGray7Typography sx={{lineHeight: "16px"}}>{item.startDate + " - " + item.endDate}
-                  <span style={{ color: "#E4E4E4" }}>{" D-" + item.dDay}</span>
+                <LabelMediumGray7Typography sx={{lineHeight: "16px", color: "#E4E4E4"}}>{item.startDate + " - " + item.endDate}
+                  <span style={{ color: "#E4E4E4" }}>{" " + dDayLabel(item.dDay)}</span>
                 </LabelMediumGray7Typography>
               </Box>
             </Box>
-            <img src={item.imgsrc} alt="" style={{ position: "absolute", top: 0, left: 0, objectFit: "cover", filter: "brightness(50%)", height: "128px", width: "100%", zIndex: 0 }} />
+            <img src={item.imgsrc} alt="" style={{ position: "absolute", top: 0, left: 0, objectFit: "cover", filter: item.dDay < 0 ? "brightness(40%) grayscale(100%)" : "brightness(50%)", height: "128px", width: "100%", zIndex: 0 }} />
           </Box>
         </Link>
         )}

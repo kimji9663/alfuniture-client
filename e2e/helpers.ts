@@ -23,11 +23,11 @@ export const likeButton = (page: Page, productName: string): Locator =>
 
 /**
  * 상품 상세 하단의 "장바구니" / "구매하기" 버튼
- * 옵션 서랍(MUI SwipeableDrawer)이 열리면 MUI가 서랍 밖 요소에 aria-hidden을 붙여 역할(role)로는 찾을 수 없다.
- * 화면에는 보이고 클릭도 되므로 글자로 찾는다. (접근성 이슈로 docs/IMPROVEMENTS.md에 기록)
+ * 옵션 서랍이 열려 있어도 스크린리더에서 사라지지 않으므로(서랍을 스크롤 영역에 붙임) 역할(role)로 찾는다.
+ * (이전에는 MUI가 aria-hidden을 붙여 글자로만 찾을 수 있었음)
  */
 export const bottomButton = (page: Page, name: "장바구니" | "구매하기") =>
-  page.locator("button", { hasText: new RegExp(`^${name}$`) })
+  page.getByRole("button", { name, exact: true })
 
 /** 상품 상세에서 옵션 고르기 (색상 2개 + 옵션 1개) */
 export async function chooseProductOptions(page: Page, colors = ["브라운", "화이트"], option = "블루") {
