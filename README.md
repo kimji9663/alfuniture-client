@@ -75,7 +75,7 @@ src/
 - 404 페이지와 에러 경계(`errorElement`)가 없습니다.
 
 **의존성**
-- 안 쓰는 패키지: `styled-components`, `react-material-ui-carousel`, `react-swipeable`. 소스에서 import하는 곳이 없습니다.
+- 안 쓰는 패키지: `styled-components`, `react-material-ui-carousel`, `react-swipeable`. 소스에서 import하는 곳이 없습니다. → **2026-11-25 제거** (`@emotion/css`, `@testing-library/user-event` 포함 5개, IMPROVEMENTS.md 13번)
 - `@emotion/css`와 `@emotion/styled`, MUI `sx`를 섞어 써서 스타일 방식이 통일돼 있지 않습니다.
 - CRA는 더 이상 유지보수되지 않아 `react-scripts`를 올리는 것만으로는 보안 취약점을 해소할 수 없습니다. Vite 등으로 옮기는 것을 검토해야 합니다.
 
