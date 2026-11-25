@@ -104,15 +104,22 @@ const OptionTagType = ({ colors, onChange }: OptionTagProps) => {
             <OutlinedTag key={color.name} sx={{ mb: 2 }}>
               <img src={color.img} alt={color.name} />
               <span>{color.name}</span>
-              <Box 
-                component="span" 
-                sx={{ 
-                  padding: '0 8px', 
-                  marginLeft: 'auto', 
-                  '& > svg': { display: 'block', cursor: 'pointer', color: '#DADADA' } 
+              {/* 태그 X: 이 색상 선택 해제 (키보드로도 누를 수 있는 버튼) */}
+              <Box
+                component="button"
+                type="button"
+                aria-label={`${color.name} 선택 해제`}
+                onClick={() => onChange(checkedColor.filter((el) => el.name !== color.name))}
+                sx={{
+                  padding: '0 8px',
+                  marginLeft: 'auto',
+                  border: 0,
+                  background: 'none',
+                  cursor: 'pointer',
+                  '& > svg': { display: 'block', color: '#DADADA' }
                 }}
               >
-                <IconX />
+                <IconX aria-hidden="true" />
               </Box>
             </OutlinedTag>
           ))

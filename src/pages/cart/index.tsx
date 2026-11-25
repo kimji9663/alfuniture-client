@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IconXblack } from "../../assets/images";
 import { iconButtonReset } from "../../components/title/BackButton";
+import QuantityInput from "../../components/QuantityInput";
 import { Box, IconButton } from "@mui/material";
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
@@ -160,10 +161,11 @@ function CartPage() {
                                   -
                                 </span>
                             </IconButton>
-                            <input
+                            {/* 수량 직접 입력: 포커스가 빠지거나 Enter로 확정, 1~99 */}
+                            <QuantityInput
                               value={product.count}
-                              readOnly
-                              aria-label={`${product.productName} 수량`}
+                              onCommit={(count) => setCount(product.id, count)}
+                              label={`${product.productName} 수량`}
                               style={{
                                 padding: "0",
                                 fontSize: "12px",
