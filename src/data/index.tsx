@@ -1095,6 +1095,7 @@ export const monthlyPostData = [
   },
 ]
 
+/** 상품 목록(/shop). filters는 원목·컬러·재질·스타일 필터에 쓰는 속성 (src/pages/shop/filterProducts.ts) */
 export const shopProductData = [
   {
     id: 0,
@@ -1105,7 +1106,9 @@ export const shopProductData = [
     modelName: "[3Color] OR-205",
     productName: "원레인 4인용 소파",
     price: 3230000,
-    colors: ["#1B464D", "#192552", "#4414CD"]
+    colors: ["#1B464D", "#192552", "#4414CD"],
+    // 필터 속성 (목업: 상품 이름·사진·색상 견본을 보고 정한 값, 2026-11-25)
+    filters: { 컬러: ["브라운", "블루", "퍼플"], 재질: ["가죽/인조가죽"], 스타일: ["모던", "미니멀"] },
   },
   {
     id: 1,
@@ -1116,7 +1119,9 @@ export const shopProductData = [
     modelName: "[23Series] AD-388",
     productName: "알프든 옐로우소파",
     price: 1430000,
-    colors: ["#BC862E"]
+    colors: ["#BC862E"],
+    // 필터 속성 (목업: 상품 이름·사진·색상 견본을 보고 정한 값, 2026-11-25)
+    filters: { 원목: ["원목/우드"], 컬러: ["옐로우"], 재질: ["패브릭"], 스타일: ["북유럽", "캐주얼"] },
   },
   {
     id: 2,
@@ -1127,7 +1132,9 @@ export const shopProductData = [
     modelName: "[23Series] JL-309",
     productName: "제임스리 아트체어",
     price: 230000,
-    colors: ["#A55555", "#494A4C", "#192552"]
+    colors: ["#A55555", "#494A4C", "#192552"],
+    // 필터 속성 (목업: 상품 이름·사진·색상 견본을 보고 정한 값, 2026-11-25)
+    filters: { 원목: ["월넛"], 컬러: ["레드", "그레이", "블루"], 재질: ["가죽/인조가죽", "원목, 우드"], 스타일: ["모던", "클래식"] },
   },
   {
     id: 3,
@@ -1138,7 +1145,9 @@ export const shopProductData = [
     modelName: "[21Series] HCA-309",
     productName: "HC 아트 우든체어",
     price: 130000,
-    colors: ["#A55555", "#494A4C", "#192552"]
+    colors: ["#A55555", "#494A4C", "#192552"],
+    // 필터 속성 (목업: 상품 이름·사진·색상 견본을 보고 정한 값, 2026-11-25)
+    filters: { 원목: ["단풍나무", "원목/우드"], 컬러: ["레드", "그레이", "블루", "브라운"], 재질: ["원목, 우드", "실버"], 스타일: ["미니멀", "북유럽"] },
   },
 ]
 
