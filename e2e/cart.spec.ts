@@ -83,6 +83,17 @@ test.describe("장바구니", () => {
     errors.expectNone()
   })
 
+  test("담기 확인을 연속으로 눌러도 한 번만 담긴다", async ({ page }) => {
+    await page.goto("/shop/product_view")
+    await bottomButton(page, "장바구니").click()
+    await chooseProductOptions(page)
+    await bottomButton(page, "장바구니").click()
+    // 같은 버튼을 화면이 바뀌기 전에 두 번 클릭
+    await page.getByRole("button", { name: "확인" }).evaluate((b: HTMLButtonElement) => { b.click(); b.click() })
+    const count = await page.evaluate((k) => JSON.parse(localStorage.getItem(k) ?? "[]").find((i: any) => i.productName === "카멜프튼")?.count, CART_KEY)
+    expect(count).toBe(1)
+  })
+
   test("다른 탭에서 삭제하면 이 탭에 반영된다", async ({ context }) => {
     const a = await context.newPage()
     const b = await context.newPage()

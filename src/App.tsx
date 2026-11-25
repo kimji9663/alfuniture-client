@@ -3,6 +3,9 @@ import type { ComponentType } from "react"
 import Layout from "./components/Layout"
 import { CartProvider } from "./store/cart"
 import { LikesProvider } from "./store/likes"
+import RouteError from "./components/RouteError"
+import StatusScreen from "./components/StatusScreen"
+import NotFound from "./pages/NotFound"
 // 홈은 첫 진입 페이지이자 LCP 페이지라 메인 번들에 둔다
 import Home from "./pages/home/Home"
 
@@ -19,6 +22,8 @@ const page = (load: () => Promise<{ default: ComponentType }>) => async () => {
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    // 페이지 렌더링·청크 로드 오류를 흰 화면 대신 안내 화면으로 (청크 로드 실패는 자동 새로 고침)
+    errorElement: <RouteError />,
     children: [
       {
         path: "/",
@@ -194,6 +199,11 @@ const router = createBrowserRouter([
         path: "/style/reels",
         lazy: page(() => import("./pages/style/Reels")),
       },
+      {
+        // 위 경로에 없는 주소
+        path: "*",
+        element: <NotFound />,
+      },
     ],
   },
 ]);
@@ -202,7 +212,8 @@ function App() {
   return (
     <CartProvider>
       <LikesProvider>
-        <RouterProvider router={router} />
+        {/* 첫 진입 페이지의 청크를 받는 동안 (예: /cart로 바로 들어왔을 때) */}
+        <RouterProvider router={router} fallbackElement={<StatusScreen loading title="불러오는 중" />} />
       </LikesProvider>
     </CartProvider>
   )

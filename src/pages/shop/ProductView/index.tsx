@@ -1,5 +1,5 @@
 import { Global } from "@emotion/react"
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Tabs, Tab, Box, IconButton, Divider, Typography, ButtonGroup } from "@mui/material"
 import { NaviWrap } from "../../../components/navigationbar.styles"
@@ -100,6 +100,7 @@ const ProductView = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState("")
   const { addItem } = useCart()
+  const addingRef = useRef(false)
   const selectComplete = isSelectionComplete(selection)
 
   // 지금 고른 옵션으로 만든 주문 상품 (장바구니 담기·바로 구매 공통)
@@ -115,6 +116,7 @@ const ProductView = () => {
       // 필수 옵션이 모두 선택 되었는지 체크 후
       if (selectComplete) {
         // 장바구니로 이동하시겠습니까? 모달 띄움
+        addingRef.current = false // 새 담기 확인 창마다 다시 허용
         setModalType("cart")
         setModalOpen(true)
       } else {
@@ -159,7 +161,9 @@ const ProductView = () => {
   }
 
   const handleAddCart = () => {
-    if (!selectComplete) return
+    // "확인"을 빠르게 두 번 눌러도 한 번만 담는다 (화면이 "담았습니다"로 바뀌기 전 두 번째 클릭 방지)
+    if (!selectComplete || addingRef.current) return
+    addingRef.current = true
     addItem({
       ...selectedItem(),
     })
