@@ -1,17 +1,27 @@
-import { Avatar, Box, FormControl, FormGroup, IconButton, Input, InputAdornment, SwipeableDrawer } from "@mui/material";
+import { Avatar, FormControl, FormGroup, IconButton, Input, InputAdornment, SwipeableDrawer } from "@mui/material";
 import { FilterOption, FilterTypes } from "./filters";
 import { FilterMenuBody, FilterMenuContainer, FilterMenuHeader, FilterMenuItem, OptionTag, OptionTagContainer, ShowProductButton } from "./index.styles";
 import { BoldTypography, TitleSmallWhiteTypography, Gray8Typography } from "../../../components/Typography";
 import { MouseEvent } from "react";
 import React from "react";
 import { IconX } from "../../../assets/images";
+import { PriceRange } from "../filterProducts";
 
 interface FilterDrawerProps {
   open: boolean
   type: string
   filterOptions: typeof FilterTypes
-  clickShowProduct: (options: FilterOption[]) => (event: MouseEvent<HTMLElement>) => void;
+  /** 현재 적용된 가격 범위 (가격 필터를 다시 열면 채워 둔다) */
+  priceRange: PriceRange
+  /** "제품 보러가기" 또는 서랍 닫기: 고른 옵션(가격이면 가격 범위)을 부모에 적용 */
+  clickShowProduct: (options: FilterOption[], price?: PriceRange) => (event: MouseEvent<HTMLElement>) => void;
 };
+
+/** 가격 입력값 → 숫자 (빈 칸·0·음수는 제한 없음) */
+const toPrice = (value: string): number | null => {
+  const n = Number(value.replace(/[^0-9]/g, ""))
+  return n > 0 ? n : null
+}
 
 interface SelectedTagProps {
   options: Array<FilterOption>
@@ -38,17 +48,29 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
   open,
   type,
   filterOptions,
+  priceRange,
   clickShowProduct
 }): JSX.Element => {
   const [selected, setSelected] = React.useState<Array<FilterOption>>([]);
+  const [minPrice, setMinPrice] = React.useState("");
+  const [maxPrice, setMaxPrice] = React.useState("");
 
   React.useEffect(() => {
     if (open) {
       setSelected(filterOptions[type] ?? [])
+      setMinPrice(priceRange.min ? String(priceRange.min) : "")
+      setMaxPrice(priceRange.max ? String(priceRange.max) : "")
     } else {
       setSelected([])
     }
+    // 서랍을 열 때만 현재 적용값으로 채운다
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
+
+  // 가격 필터면 가격 범위를, 아니면 고른 옵션을 넘긴다
+  const apply = type === "가격"
+    ? clickShowProduct([], { min: toPrice(minPrice), max: toPrice(maxPrice) })
+    : clickShowProduct(selected)
 
   const handleClickOption = (item: FilterOption) => () => {
     let copy = [...selected]
@@ -68,7 +90,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
       anchor="bottom"
       open={open}
       onOpen={() => { }}
-      onClose={clickShowProduct(selected)}
+      onClose={apply}
     >
       <FilterMenuContainer>
         <FilterMenuHeader>
@@ -98,7 +120,10 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 <Input
                   type='number'
                   disableUnderline
-                  defaultValue={0}
+                  placeholder="0"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  inputProps={{ min: 0, step: 10000, "aria-label": "최소 가격" }}
                   endAdornment={<InputAdornment position="end">원 에서</InputAdornment>}
                 />
               </FormControl>
@@ -108,7 +133,10 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 <Input
                   type='number'
                   disableUnderline
-                  defaultValue={0}
+                  placeholder="0"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  inputProps={{ min: 0, step: 10000, "aria-label": "최대 가격" }}
                   endAdornment={<InputAdornment position="end">원 까지</InputAdornment>}
                 />
               </FormControl>
@@ -118,7 +146,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
       </FilterMenuContainer>
       <ShowProductButton
         variant="contained"
-        onClick={clickShowProduct(selected)}
+        onClick={apply}
       >
         제품 보러가기
       </ShowProductButton>
