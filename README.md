@@ -102,7 +102,7 @@ src/
 | 추가 청크 | gzip 1.78 KB (`web-vitals`) | 〃 |
 | 빌드 산출물 전체 | 201 MB (이미지 `static/media` 44MB·155개 + 영상 153MB) | |
 | `tsc --noEmit` | 오류 0개, 16.7초 | [`tsc.log`](docs/logs/tsc.log) |
-| ESLint (`react-app` 설정) | 오류 0 · 경고 55 | [`eslint.log`](docs/logs/eslint.log) |
+| ESLint (`react-app` 설정) | 오류 0 · 경고 55 → **11-25 정리 후 0** (CI에서 0개 유지) | [`eslint.log`](docs/logs/eslint.log) |
 | └ `no-unused-vars` | 35 | |
 | └ `react-hooks/exhaustive-deps` | 6 | |
 | └ `no-empty-pattern` | 6 | |

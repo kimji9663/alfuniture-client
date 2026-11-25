@@ -8,12 +8,9 @@ const LoadingCuration = () => {
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    setTimeout(goToNext, 3000);   
-  }, []);
-
-  const goToNext = () => {
-    navigate("/onboarding/featured_product")
-  };
+    const timer = setTimeout(() => navigate("/onboarding/featured_product"), 3000)
+    return () => clearTimeout(timer) // 3초 안에 화면을 떠나면 이동하지 않는다
+  }, [navigate]);
 
   return (
     <>

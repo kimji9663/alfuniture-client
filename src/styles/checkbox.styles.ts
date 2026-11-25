@@ -1,7 +1,7 @@
 import { FormControl} from "@mui/material"
 import { styled, useTheme } from "@mui/material/styles"
 
-export const RectCheckbox = styled(FormControl)(({ }) => ({
+export const RectCheckbox = styled(FormControl)(() => ({
   "& input": {
     display: "none",
   },
@@ -18,7 +18,7 @@ export const RectCheckbox = styled(FormControl)(({ }) => ({
   },
 }))
 
-export const RectCheckboxNonChecked = styled(FormControl)(({ }) => ({
+export const RectCheckboxNonChecked = styled(FormControl)(() => ({
   "& input": {
     display: "none",
   },

@@ -1,8 +1,7 @@
-import { css } from "@emotion/css"
 import { Box } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
-export const ShopAllList = styled(Box)(({}) => ({
+export const ShopAllList = styled(Box)(() => ({
   display: "flex",
   borderBottom: "1px solid #DADADA",
 

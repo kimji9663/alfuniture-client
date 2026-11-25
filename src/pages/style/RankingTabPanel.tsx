@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Box, Typography } from "@mui/material"
+import React from "react"
+import { Box } from "@mui/material"
 import HorizontalRanking  from "../../components/product/HorizontalRanking"
 import { Link } from "react-router-dom";
 import ListItemType2 from "../../components/product/ListItemType2"

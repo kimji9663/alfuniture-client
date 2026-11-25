@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Box, Button } from "@mui/material"
 import { HalfArrowRigth } from "../../assets/images/"
 import { designer, brandStory } from "../../assets/images/brand"

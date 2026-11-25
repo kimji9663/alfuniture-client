@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles"
 import { FlexCenterCenterFullBox } from "../../components/Box"
 
-export const LoadingBox = styled(FlexCenterCenterFullBox)(({}) => ({
+export const LoadingBox = styled(FlexCenterCenterFullBox)(() => ({
   flexDirection: "column",
   rowGap: "2rem",
   height: "100vh",

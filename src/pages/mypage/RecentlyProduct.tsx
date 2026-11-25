@@ -7,7 +7,7 @@ import ProductList from "./ProductList"
 import { LabelMediumBoldGray8Typography } from "../../components/Typography"
 
 const RecentlyProduct = () => {
-  const [count, setCount] = useState(recentlyProductData.length)
+  const [count] = useState(recentlyProductData.length)
   
   return (
     <Box sx={{minHeight:"100vh", position:"relative", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>

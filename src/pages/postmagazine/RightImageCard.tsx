@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { TitleLargeBoldGray9Typography, TitleSmallGray7Typography } from "../../components/Typography";
 
 interface CardProps {

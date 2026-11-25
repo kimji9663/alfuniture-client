@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CenterTitle from "../../components/title/CenterTitle";
 import NoData from "../../components/NoData";
 import ListItem from "./ListItem";
@@ -12,15 +12,11 @@ interface NotificationData {
 }
 
 const NotificationList: React.FC = () => {
-  const [data, setData] = useState<NotificationData[]>([]);
+  const [data] = useState<NotificationData[]>(notificationData);
   const message = "현재 받은 알림이 없습니다.";
   const linkText = "홈으로 가기";
   const linkTo = "/home";
 
-  useEffect(() => {
-    // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...notificationData]);
-  }, []); 
 
   return (
     <>

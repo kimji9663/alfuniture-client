@@ -109,7 +109,7 @@ const MyOrder = () => {
           </>
         )}
         </Box>
-        {filteredOrders.length == 0 ? (
+        {filteredOrders.length === 0 ? (
           <NoData message={"배송 정보가 없습니다."} linkText={"마이 페이지로 가기"} linkTo={"/mypage"} insideTheTab={true}/>
         ) : (
           <Box sx={{ p: 2, pt: 5 }}>

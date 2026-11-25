@@ -1,6 +1,5 @@
 import React, { FC  } from 'react'
 import { Typography, Box } from '@mui/material'
-import { Link } from 'react-router-dom'
 
 interface TitleProps {
   title: string[]; // props의 타입 정의

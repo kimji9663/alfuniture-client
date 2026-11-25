@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import { Typography, Box } from '@mui/material'
-import { IconCart, IconNotification } from '../../assets/images'
 import BackButton from './BackButton'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface TitleProps {
   title: string[]; // props의 타입 정의

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { TitleLargeBoldGray9Typography, LabelMediumGray7Typography, TitleSmallGray9Typography } from "../../components/Typography";
 
@@ -14,7 +14,7 @@ interface MonthlyPostBoxProps {
 }
 
 const MonthlyPostBox: React.FC<MonthlyPostBoxProps> = ({data}) => {
-  const { title, imageUrl, description, author, linkTo } = data;
+  const { title, imageUrl, description, author } = data;
   return (
     <>
       <img loading="lazy" src={imageUrl} alt="" style={{ width: "100%", objectFit: "cover" }} />

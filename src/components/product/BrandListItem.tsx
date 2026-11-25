@@ -1,4 +1,4 @@
-import { FlexBox, FlexCenterCenterBox, GridBox } from "../Box"
+import { FlexBox, FlexCenterCenterBox } from "../Box"
 import { BoldGray9Typography, Gray7Typography } from "../Typography"
 import { PreviewProps } from "./Preview"
 import { BrandContainer, BrandDetailBox, BrandImageBox } from "./brandlistitem.styles"

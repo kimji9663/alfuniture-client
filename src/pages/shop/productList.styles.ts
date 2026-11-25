@@ -1,6 +1,5 @@
 import { Box, ListItemButton } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import { FlexBox } from "../../components/Box"
 
 export const FilterContainer = styled(Box)(() => ({
   overflow: 'auto',
@@ -10,7 +9,7 @@ export const FilterContainer = styled(Box)(() => ({
   borderBottom: '1px solid #DDDDDD',
 }))
 
-export const FilterButton = styled(ListItemButton)(({ }) => ({
+export const FilterButton = styled(ListItemButton)(() => ({
   padding: "0.5rem 1rem",
   "&:hover": {
     backgroundColor: "inherit"

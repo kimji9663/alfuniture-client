@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, AccordionDetails, AccordionSummary, List, ListItemButton, ListItemText, Avatar, ListItemAvatar } from "@mui/material"
+import { Box, AccordionDetails, AccordionSummary, List, ListItemButton, ListItemText } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import SelectBox from "../../components/SelectBox"
 import { IconDeliveryNormal, IconDeliveryQuick } from "../../assets/images"
