@@ -21,7 +21,7 @@
 | 10 | P2 | 접근성 ✅ 완료 (2026-11-24, [결과](#10-결과-2026-11-24)) | S |
 | 11 | P2 | 테스트 복구 ✅ 완료 (2026-11-25, [결과](#11-결과-2026-11-25)) | S |
 | 12 | P2 | ESLint 경고 정리 ✅ 완료 (2026-11-25, [결과](#12-결과-2026-11-25)) | S |
-| 13 | P3 | 안 쓰는 패키지 제거 | S |
+| 13 | P3 | 안 쓰는 패키지 제거 — 🔶 패키지 5개 제거 완료, 스타일 방식 통일 남음 (2026-11-25, [결과](#13-결과-2026-11-25)) | S |
 | 14 | P3 | CRA → Vite 이전 | L |
 
 ---
@@ -584,6 +584,32 @@
 
 - `styled-components`, `react-material-ui-carousel`, `react-swipeable`을 지웁니다. 소스에서 import하는 곳이 없습니다.
 - 스타일 방식을 MUI `sx`와 Emotion 중 하나로 정해 통일합니다. 지금은 `sx` 654곳, 인라인 `style` 99곳, Emotion이 섞여 있습니다.
+
+#### 13. 결과 (2026-11-25)
+
+**의존성 사용처 전수 조사** (`src/`, `e2e/`, `scripts/`, 설정 파일에서 import·require·설정 문자열 검색)
+
+| 패키지 | 사용처 | 결정 |
+| --- | --: | --- |
+| `styled-components` | 0 | **제거.** 스타일은 Emotion·MUI만 사용 |
+| `react-material-ui-carousel` | 0 | **제거.** 슬라이더는 `swiper` 사용 |
+| `react-swipeable` | 0 | **제거** |
+| `@emotion/css` | 0 | **제거.** 12번에서 마지막 `css` import(모두 미사용)가 정리됨. MUI에 필요한 건 `@emotion/react`·`@emotion/styled` |
+| `@testing-library/user-event` | 0 | **제거.** CRA 템플릿 기본 설치, 테스트에서 미사용 (필요해지면 다시 설치) |
+| `@types/*`, `typescript` | — | 유지. TypeScript가 암묵적으로 사용 |
+| `prettier` | — | 유지. `.prettierrc.js` 포매터 |
+
+**결과**
+- 잠금 파일 패키지 수: **1,567 → 1,531개** (36개 감소, 하위 의존성 포함)
+- 앱 번들 크기: 변화 없음 (`main.js` gzip 199.11KB). 원래 import되지 않던 패키지라 번들에 들어 있지 않았습니다.
+- `npm audit`: 79개로 변화 없음. 취약점 대부분이 `react-scripts`(CRA) 하위 의존성이라 14번에서 줄어듭니다.
+- 다른 패키지가 이 다섯 개에 의존하지 않음을 `npm ls`로 확인했습니다.
+
+**검증:** `tsc`, ESLint 0, `CI=true` 빌드, Jest 103개, E2E 77개 통과
+
+**남은 일**
+- **스타일 방식 통일:** 화면 전체를 바꾸는 큰 작업이라 이번에 하지 않았습니다. 14번(Vite 이전) 이후, 디자인 시스템을 정할 때 함께 하는 것을 권합니다.
+- **의존성 분류:** 테스트용 패키지(`@testing-library/*`, `@types/jest`)가 `devDependencies`가 아닌 `dependencies`에 있습니다 (CRA 템플릿 기본값). 동작에는 영향이 없어 그대로 두었습니다.
 
 ### 14. CRA → Vite 이전 (L)
 
