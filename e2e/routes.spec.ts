@@ -3,10 +3,10 @@ import path from "path"
 import { expect, test } from "@playwright/test"
 import { collectPageErrors } from "./helpers"
 
-// App.tsx 라우터에 등록된 모든 경로 (새 경로를 추가하면 자동으로 포함됨)
+// App.tsx 라우터에 등록된 모든 경로 (새 경로를 추가하면 자동으로 포함됨, 404용 "*"는 errors.spec.ts에서 따로)
 const routes = Array.from(
   new Set([...fs.readFileSync(path.join(__dirname, "../src/App.tsx"), "utf8").matchAll(/path:\s*"([^"]+)"/g)].map((m) => m[1])),
-)
+).filter((r) => r.startsWith("/"))
 
 test.describe("모든 경로 스모크", () => {
   test("경로 목록을 읽었다", () => {
