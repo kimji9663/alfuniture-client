@@ -30,8 +30,8 @@ async function fillRequired(page: Page) {
     return false
   })
   expect(ok).toBe(true)
-  // 약관 전체 동의 (주문서의 "기본 배송지로 등록"과 id가 겹쳐 두 번째 요소)
-  await page.locator("#check_agree_all").nth(1).dispatchEvent("click")
+  // 약관 전체 동의
+  await page.locator("#check_agree_all").dispatchEvent("click")
   await page.locator(".MuiAccordionSummary-root").filter({ hasText: "결제방법" }).click()
   await page.getByRole("button", { name: /선택하기/ }).click()
   await page.locator("li", { hasText: "신한카드" }).click() // ListItemButton(li)은 role=button
@@ -53,6 +53,26 @@ test.describe("주문서", () => {
 
     await page.reload() // location.state 유지
     await expect(page.getByText("ALFDEN - 카멜피아")).toBeVisible()
+  })
+
+  test("주문서에 중복 id가 없다 (배송지 저장·약관 전체 동의 체크박스)", async ({ page }) => {
+    await orderCamelpiaOnly(page)
+    const duplicateIds = await page.evaluate(() => {
+      const seen = new Map<string, number>()
+      document.querySelectorAll("[id]").forEach((el) => seen.set(el.id, (seen.get(el.id) ?? 0) + 1))
+      return Array.from(seen).filter(([id, n]) => id && n > 1).map(([id]) => id)
+    })
+    expect(duplicateIds).toEqual([])
+
+    // 두 체크박스가 각자 따로 동작한다
+    const addressSave = page.locator("#check_address_save")
+    const agreeAll = page.locator("#check_agree_all")
+    await page.getByText("기본 배송지로 등록").click()
+    await expect(addressSave).toBeChecked()
+    await expect(agreeAll).not.toBeChecked()
+    await agreeAll.dispatchEvent("click")
+    await expect(agreeAll).toBeChecked()
+    await expect(addressSave).toBeChecked()
   })
 
   test("쿠폰 목록: 전 상품/브랜드 묶음, ALFDEN만 있으면 브랜드 쿠폰 선택 불가", async ({ page }) => {

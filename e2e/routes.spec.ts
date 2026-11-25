@@ -22,6 +22,13 @@ test.describe("모든 경로 스모크", () => {
       await expect(page.locator("#root")).not.toBeEmpty()
       await expect.poll(async () => (await page.locator("#root").innerText()).trim().length).toBeGreaterThan(0)
       expect(failed.filter((u) => u.includes("/static/js/"))).toEqual([])
+      // 같은 id가 두 번 나오면 라벨·스크린리더가 엉뚱한 요소를 가리킨다
+      const duplicateIds = await page.evaluate(() => {
+        const seen = new Map<string, number>()
+        document.querySelectorAll("[id]").forEach((el) => seen.set(el.id, (seen.get(el.id) ?? 0) + 1))
+        return Array.from(seen).filter(([id, n]) => id && n > 1).map(([id, n]) => `${id}×${n}`)
+      })
+      expect(duplicateIds, `중복 id: ${duplicateIds.join(", ")}`).toEqual([])
       errors.expectNone()
     })
   }

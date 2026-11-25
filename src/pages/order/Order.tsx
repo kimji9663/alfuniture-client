@@ -171,14 +171,7 @@ const Order = () => {
   }
   
   const handleAddressSave = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.currentTarget.checked){
-      setOrderData({ ...orderData, addressSave: true })
-      if (event.currentTarget.id === "check_agree_all"){
-        setOrderData({ ...orderData, addressSave: true })
-      }
-    } else {
-      setOrderData({ ...orderData, addressSave: false })
-    }
+    setOrderData({ ...orderData, addressSave: event.currentTarget.checked })
   }
 
   const onCompletePost = (data:any) => {
@@ -330,8 +323,8 @@ const Order = () => {
             <AgreeCheckbox 
               sx={{ mb: 2 }}
               control={
-                <CheckboxIcon 
-                  id="check_agree_all"
+                <CheckboxIcon
+                  id="check_address_save"
                   onChange={handleAddressSave}
                   checked={orderData.addressSave}
                 />
