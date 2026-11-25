@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles"
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import { PrimaryButton } from "../../../styles/buttons.styles"
 
 export const ProductMainInfo = styled(Box)(() => ({

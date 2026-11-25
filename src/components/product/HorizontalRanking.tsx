@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {Typography, Box, Link } from "@mui/material"
+import { Typography, Box } from "@mui/material"
 
 interface RankingItem {
   id: number;

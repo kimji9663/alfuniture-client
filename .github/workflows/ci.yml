@@ -29,12 +29,13 @@ jobs:
       - name: 단위·화면 테스트 (Jest)
         run: npm test -- --watchAll=false
 
+      # CRA는 CI=true(Actions 기본값)이면 ESLint 경고를 오류로 보고 빌드를 실패시킨다.
+      # 경고를 0개로 정리했으므로(docs/IMPROVEMENTS.md 12번) 새 경고가 생기면 여기서 막힌다.
       - name: 프로덕션 빌드
         run: npm run build
-        env:
-          # CRA는 CI=true이면 ESLint 경고를 오류로 보고 빌드를 실패시킨다.
-          # 기존 경고 정리(docs/IMPROVEMENTS.md 12번) 전까지는 경고를 허용한다.
-          CI: false
+
+      - name: ESLint (src 전체, 테스트 파일 포함, 경고 0개 유지)
+        run: npx eslint "src/**/*.{ts,tsx}" --max-warnings=0
 
       - name: Playwright 브라우저 설치
         run: npx playwright install --with-deps chromium

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconXblack } from "../../assets/images";
+import { iconButtonReset } from "../../components/title/BackButton";
 import { Box, IconButton } from "@mui/material";
 import CenterTitle from "../../components/title/CenterTitle"
 import NoData from "../../components/NoData"
@@ -88,6 +89,7 @@ function CartPage() {
                   }}>
                 <CustomCheckbox
                   type="checkbox"
+                  aria-label={`${product.productName} 선택`}
                   checked={isSelected(product.id)}
                   onChange={() => toggleProduct(product.id)}
                 />
@@ -115,8 +117,15 @@ function CartPage() {
                         <Box >
                           <LabelMediumGray9ypography sx={{fontWeight:"600"}}>{product.shopName}</LabelMediumGray9ypography>
                         </Box>
-                        {/* 닫기 버튼 예정 */}
-                        <IconXblack onClick={() => deleteItem(product.id)} />
+                        {/* 삭제: 키보드(Tab/Enter)로도 누를 수 있는 실제 버튼 */}
+                        <button
+                          type="button"
+                          aria-label={`${product.productName} 삭제`}
+                          onClick={() => deleteItem(product.id)}
+                          style={iconButtonReset}
+                        >
+                          <IconXblack aria-hidden="true" />
+                        </button>
                       </Box>
                       <TitleMediumBoldGray9Typography>{product.productName}</TitleMediumBoldGray9Typography>
                       <Box sx={{fontSize: "12px", height: "20px", lineHeight: "20px", letterSpacing: "-0.25px", color: "#707070"}}>
@@ -138,6 +147,7 @@ function CartPage() {
                               width: "20px",
                               height: "20px",
                               fontWeight: "200"}}
+                            aria-label={`${product.productName} 수량 줄이기`}
                             onClick={() => decreaseQuantity(product.id, product.count)}>
                                 <span
                                   style={{
@@ -173,6 +183,7 @@ function CartPage() {
                               width: "20px",
                               height: "20px",
                               fontWeight: "200"}}
+                            aria-label={`${product.productName} 수량 늘리기`}
                             onClick={() => increaseQuantity(product.id, product.count)}>
                                 <span
                                   style={{
@@ -238,7 +249,7 @@ function CartPage() {
               <Box sx={{borderTop:"1px solid #333333", py:2}}>
                 <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
                   <TitleMediumBoldGray9Typography>결제금액</TitleMediumBoldGray9Typography>
-                  <TitleMediumBoldGray9Typography>{totalPrice.toLocaleString()+"원"}</TitleMediumBoldGray9Typography>
+                  <TitleMediumBoldGray9Typography data-testid="cart-total">{totalPrice.toLocaleString()+"원"}</TitleMediumBoldGray9Typography>
                 </Box>
               </Box>
             </Box>

@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react"
+import React from "react"
 import LogoTitle from "../../components/title/LogoTitle"
 import NavigationBar from "../../components/NavigationBar"
 import { ISwiperProps } from "../../components/ISwiperProps"

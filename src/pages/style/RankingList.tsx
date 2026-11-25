@@ -103,7 +103,7 @@ const RankingList = () => {
       </Box>
       <Box sx={{px: 2, minHeight: "calc(100vh - 213.6px)"}}>
         {/* 가구리스트 */}
-        {filteredStyles.length != 0 ? (
+        {filteredStyles.length !== 0 ? (
           filteredStyles.map((product: any, index: any) =>
           <ListItemType2
             key={index}

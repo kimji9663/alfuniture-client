@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles"
-import { Box, ButtonGroup } from "@mui/material"
-import { PrimaryButton } from "../../../styles/buttons.styles"
+import { Box } from "@mui/material"
 
 export const AverageGrade = styled(Box)(() => ({
   textAlign: "center",

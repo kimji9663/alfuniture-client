@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import NavigationBar from "../../components/NavigationBar"
-import { Typography, Box } from "@mui/material"
+import { Box } from "@mui/material"
 import {aerobiey02, aerobiey03, aerobiey04, aerobiey05} from "../../assets/images/brand"
 import PostMagazineHeader from "./PostMagazineHeader"
 import BestWorkAllButton from "./BestWorkAllButton"

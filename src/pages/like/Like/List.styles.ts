@@ -9,7 +9,7 @@ export const FilterContainer = styled(Box)(() => ({
   borderBottom: "1px solid #DDDDDD",
 }))
 
-export const FilterButton = styled(ListItemButton)(({}) => ({
+export const FilterButton = styled(ListItemButton)(() => ({
   padding: "0.5rem 1rem",
   "&:hover": {
     backgroundColor: "inherit"

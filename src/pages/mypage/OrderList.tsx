@@ -41,13 +41,13 @@ const OrderList: React.FC<OrderListProps> = ({ myOrderList, review }) => {
             <div className="card_content">
               <Box sx={{display:"flex", justifyContent:"space-between"}}>
                 <p className="state">{order.state}</p>  
-                {!review && order.state == "배송준비중" && (
+                {!review && order.state === "배송준비중" && (
                   <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                     <LabelMediumGray7Typography>주문 취소</LabelMediumGray7Typography>
                     <IconArrowForwardIcon/>
                   </Box>
                 )}
-                {!review && order.state == "배송완료" && (
+                {!review && order.state === "배송완료" && (
                   <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                     <LabelMediumGray7Typography>교환/반품</LabelMediumGray7Typography>
                     <IconArrowForwardIcon/>

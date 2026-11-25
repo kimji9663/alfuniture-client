@@ -1,6 +1,6 @@
 import { CardMedia, Link, Paper } from "@mui/material"
 import { Box } from "@mui/system"
-import React, { useState } from "react"
+import React from "react"
 import { FlexSpaceBetweenCenterBox } from "../Box"
 import { BoldGray8Typography, BoldGray9Typography, Gray7Typography } from "../Typography"
 import { PreviewDetailBox } from "./preview.styles"
@@ -29,13 +29,6 @@ const PreviewItem: React.FC<PreviewProps> = ({
   colors
 }: PreviewProps) => {
 
-  const [isLike, setIsLike] = useState(like)
-
-  const handleClickLike = (event: any) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setIsLike(!isLike)
-  }
 
   return (
     <Paper elevation={0} square>

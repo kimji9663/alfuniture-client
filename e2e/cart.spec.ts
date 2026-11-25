@@ -12,7 +12,7 @@ test.describe("장바구니", () => {
 
   test("수량 변경은 새로 고침과 페이지 이동 뒤에도 유지된다", async ({ page }) => {
     await page.goto("/cart")
-    await cartCard(page, "카멜피아").getByRole("button", { name: "+" }).click()
+    await page.getByRole("button", { name: "카멜피아 수량 늘리기" }).click()
     expect(await cartPayment(page)).toContain("1,120,000원")
 
     await page.reload()
@@ -29,7 +29,7 @@ test.describe("장바구니", () => {
     await cartCard(page, "카멜피아").getByRole("checkbox").uncheck()
     expect(await cartPayment(page)).toContain("300,000원")
 
-    await cartCard(page, "모닝 데스크").locator("svg").last().click() // X 아이콘
+    await page.getByRole("button", { name: "모닝 데스크 삭제" }).click()
     await expect(page.getByText("모닝 데스크", { exact: true })).toHaveCount(0)
     await expect(cartCard(page, "카멜피아").getByRole("checkbox")).not.toBeChecked()
     expect(await cartPayment(page)).toMatch(/결제금액 0원/)
@@ -79,7 +79,7 @@ test.describe("장바구니", () => {
     await page.getByRole("button", { name: "확인" }).click()
     await page.goto("/cart")
     await expect(page.getByText("카멜프튼", { exact: true })).toHaveCount(1)
-    await expect(cartCard(page, "카멜프튼").getByLabel("카멜프튼 수량")).toHaveValue("2")
+    await expect(cartCard(page, "카멜프튼").getByLabel("카멜프튼 수량", { exact: true })).toHaveValue("2")
     errors.expectNone()
   })
 
@@ -99,7 +99,7 @@ test.describe("장바구니", () => {
     const b = await context.newPage()
     await a.goto("/cart")
     await b.goto("/cart")
-    await cartCard(b, "모닝 데스크").locator("svg").last().click()
+    await b.getByRole("button", { name: "모닝 데스크 삭제" }).click()
     await expect(a.getByText("모닝 데스크", { exact: true })).toHaveCount(0)
   })
 

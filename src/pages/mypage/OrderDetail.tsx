@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material"
 import NavigationBar from "../../components/NavigationBar"
 import CenterTitle from "../../components/title/CenterTitle"
@@ -24,11 +24,7 @@ interface cartData {
 
 const OrderDetail = () => {
 
-  const [data, setData] = useState<cartData[]>([]);
-  useEffect(() => {
-    // 초기 데이터를 기존 데이터에 추가
-    setData([...data, ...myPageOrderDetailData]);
-  }, []); 
+  const [data] = useState<cartData[]>(myPageOrderDetailData);
   
   return (
     <Box sx={{minHeight:"100vh", position:"relative", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
