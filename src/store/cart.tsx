@@ -43,7 +43,7 @@ const SEED: CartItem[] = [
 ].map((item) => ({ ...item, id: lineId(item) }))
 
 const STORAGE_KEY = "alfuniture:cart:v1"
-const MAX_COUNT = 99
+export const MAX_COUNT = 99
 
 type Action =
   | { type: "add"; item: NewCartItem }
@@ -51,7 +51,8 @@ type Action =
   | { type: "setCount"; id: string; count: number }
   | { type: "replace"; items: CartItem[] }
 
-const clampCount = (n: number) => Math.min(MAX_COUNT, Math.max(1, Math.floor(n) || 1))
+/** 수량은 1~99 정수 */
+export const clampCount = (n: number) => Math.min(MAX_COUNT, Math.max(1, Math.floor(n) || 1))
 
 function reducer(items: CartItem[], action: Action): CartItem[] {
   switch (action.type) {

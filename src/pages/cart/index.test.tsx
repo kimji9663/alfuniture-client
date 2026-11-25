@@ -40,6 +40,16 @@ it("수량 + → 결제금액·수량 표시 갱신, 버튼 숫자는 종류 수
   expect(buyButton()).toHaveTextContent("2개 선택상품")
 })
 
+it("수량 직접 입력 → 확정하면 결제금액 반영 (카멜피아 5개)", () => {
+  renderCart()
+  const input = screen.getByRole("textbox", { name: "카멜피아 수량" })
+  fireEvent.change(input, { target: { value: "5" } })
+  fireEvent.blur(input)
+  // 240,000 × 5 + 300,000 + 배송비 100,000
+  expect(total()).toHaveTextContent("1,600,000원")
+  expect(input).toHaveValue("5")
+})
+
 it("선택 해제 후 다른 상품을 삭제해도 선택 상태가 어긋나지 않는다 (이전 인덱스 버그)", () => {
   renderCart()
   fireEvent.click(checkbox("카멜피아"))

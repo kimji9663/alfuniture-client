@@ -83,6 +83,44 @@ test.describe("장바구니", () => {
     errors.expectNone()
   })
 
+  test("수량 직접 입력: Enter로 확정, 범위 밖 값은 1~99로, Escape는 취소", async ({ page }) => {
+    await page.goto("/cart")
+    const qty = page.getByRole("textbox", { name: "카멜피아 수량" })
+    await qty.fill("5")
+    await qty.press("Enter")
+    expect(await cartPayment(page)).toContain("1,600,000원") // 240,000×5 + 300,000 + 100,000
+    await expect(qty).toHaveValue("5")
+
+    await qty.fill("0")
+    await qty.press("Tab") // 포커스가 빠지면 확정
+    await expect(qty).toHaveValue("1")
+
+    await qty.fill("9")
+    await qty.press("Escape")
+    await expect(qty).toHaveValue("1")
+
+    await page.reload() // 저장됨
+    await expect(page.getByRole("textbox", { name: "카멜피아 수량" })).toHaveValue("1")
+  })
+
+  test("옵션 태그의 X로 색상 선택 해제 (키보드로도 가능)", async ({ page }) => {
+    await page.goto("/shop/product_view")
+    await bottomButton(page, "장바구니").click()
+    for (const c of ["브라운", "화이트"]) await page.locator(`label[for="check_${c}"]`).click()
+    await page.getByRole("button", { name: "브라운 선택 해제" }).click()
+    await expect(page.locator("#check_브라운")).not.toBeChecked()
+    await expect(page.getByRole("button", { name: "브라운 선택 해제" })).toHaveCount(0)
+
+    await page.getByRole("button", { name: "화이트 선택 해제" }).focus()
+    await page.keyboard.press("Enter")
+    await expect(page.locator("#check_화이트")).not.toBeChecked()
+
+    // 해제한 뒤 다른 색상을 다시 고를 수 있다 (2개 제한이 풀림)
+    for (const c of ["블랙", "그린"]) await page.locator(`label[for="check_${c}"]`).click()
+    await expect(page.locator("#check_블랙")).toBeChecked()
+    await expect(page.locator("#check_그린")).toBeChecked()
+  })
+
   test("담기 확인을 연속으로 눌러도 한 번만 담긴다", async ({ page }) => {
     await page.goto("/shop/product_view")
     await bottomButton(page, "장바구니").click()
