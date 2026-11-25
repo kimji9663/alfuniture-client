@@ -9,7 +9,8 @@ function Reels() {
   return (
     <>
       <Box sx={{display:"flex", position:"relative", minHeight:"calc(100vh - 74px)"}}>
-        <video muted autoPlay loop height="100%" width="100%" style={{minHeight:"calc(100vh - 74px)", maxHeight:"calc(100vh - 74px)", overflow:"hidden", objectFit:"cover", position:"absolute", top:0, left:0}}>
+        {/* 압축 영상(720p, 0.5MB) + 로딩 중 포스터. playsInline: iOS에서 전체 화면으로 열리지 않게 */}
+        <video muted autoPlay loop playsInline poster="/videos/video3-poster.webp" aria-label="모던한 인테리어 디자인 영상" height="100%" width="100%" style={{minHeight:"calc(100vh - 74px)", maxHeight:"calc(100vh - 74px)", overflow:"hidden", objectFit:"cover", position:"absolute", top:0, left:0}}>
           <source src="/videos/video3.mp4" type="video/mp4" />
         </video>
         <Box>
