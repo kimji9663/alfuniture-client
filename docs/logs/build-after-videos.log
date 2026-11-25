@@ -1,0 +1,97 @@
+
+> alfuniture-client@0.1.0 build
+> react-scripts build
+
+(node:23564) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Creating an optimized production build...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+One of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
+  
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Compiled successfully.
+
+File sizes after gzip:
+
+  199.11 kB     build\static\js\main.34ab8571.js
+  8.94 kB       build\static\js\3777.e3d6923b.chunk.js
+  8.39 kB       build\static\js\8215.a6b6103d.chunk.js
+  8.21 kB       build\static\js\8411.2ebcd2db.chunk.js
+  7.41 kB       build\static\js\6025.e0b56c94.chunk.js
+  7.38 kB       build\static\js\1427.c891a3b1.chunk.js
+  7.35 kB       build\static\js\1499.31a80d2e.chunk.js
+  7.01 kB       build\static\js\1695.364c590d.chunk.js
+  6.6 kB        build\static\js\6373.7451cc56.chunk.js
+  6.08 kB       build\static\js\4838.018f02b2.chunk.js
+  6.08 kB       build\static\js\7083.bd0fd7f3.chunk.js
+  6.06 kB       build\static\js\8770.f188cace.chunk.js
+  5.99 kB       build\static\js\3844.c406aace.chunk.js
+  5.9 kB        build\static\js\7004.6387c68d.chunk.js
+  5.84 kB       build\static\js\743.4cb2e8dd.chunk.js
+  5.68 kB       build\static\js\6336.21049929.chunk.js
+  5.38 kB       build\static\js\8877.4460e1cf.chunk.js
+  4.7 kB        build\static\js\3775.e4616836.chunk.js
+  4.52 kB       build\static\js\400.f2e38206.chunk.js
+  4.36 kB       build\static\js\5005.79514202.chunk.js
+  4.33 kB       build\static\js\6910.0edb595b.chunk.js
+  4.1 kB        build\static\js\5910.d6cb4c02.chunk.js
+  4 kB          build\static\js\2795.f65ed15b.chunk.js
+  3.79 kB       build\static\css\main.007bbf7e.css
+  3.76 kB       build\static\js\9166.82f9b9c5.chunk.js
+  3.72 kB       build\static\js\8154.f74d0ddd.chunk.js
+  3.71 kB       build\static\js\5190.5f407514.chunk.js
+  3.54 kB       build\static\js\8071.f2f7326b.chunk.js
+  3.52 kB       build\static\js\8018.19084318.chunk.js
+  3.49 kB       build\static\js\6965.e156966f.chunk.js
+  3.19 kB       build\static\js\8707.5d5e0999.chunk.js
+  3.07 kB       build\static\js\4246.a2293528.chunk.js
+  3.05 kB       build\static\js\2546.d4d50611.chunk.js
+  2.95 kB       build\static\js\5082.727aa9d5.chunk.js
+  2.88 kB       build\static\js\8334.a2d8aade.chunk.js
+  2.75 kB       build\static\js\4389.272b0592.chunk.js
+  2.64 kB       build\static\js\8498.283ffa67.chunk.js
+  2.55 kB       build\static\js\8915.94437588.chunk.js
+  2.5 kB        build\static\js\3473.bdc66a89.chunk.js
+  2.07 kB       build\static\js\5038.d81c64ac.chunk.js
+  2 kB          build\static\js\4283.33b23211.chunk.js
+  1.84 kB       build\static\js\674.4097f667.chunk.js
+  1.78 kB       build\static\js\787.928a5de6.chunk.js
+  1.77 kB       build\static\js\7127.2afa0ff6.chunk.js
+  1.6 kB        build\static\js\6164.15a25d39.chunk.js
+  1.51 kB       build\static\js\569.7966c76d.chunk.js
+  1.36 kB       build\static\js\4717.87dd0bfa.chunk.js
+  1.33 kB       build\static\js\4567.ff59c799.chunk.js
+  1.27 kB       build\static\js\4832.232e8a65.chunk.js
+  1.22 kB       build\static\js\6406.c7e1e294.chunk.js
+  1.11 kB       build\static\js\4868.f2671a6c.chunk.js
+  1 kB (+35 B)  build\static\js\5017.9bb47f50.chunk.js
+  761 B         build\static\js\3576.ef323829.chunk.js
+  757 B         build\static\js\8098.926a07ca.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+

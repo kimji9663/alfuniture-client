@@ -31,6 +31,7 @@ npm start       # 개발 서버 http://localhost:3000
 npm run build   # build/ 에 프로덕션 빌드
 npm test        # Jest 110개 (단위·화면 테스트, docs/IMPROVEMENTS.md 11번)
 npm run optimize-images   # 이미지 추가·교체 시: assets-original/images → src/assets/images 에 WebP 생성
+npm run compress-videos -- <원본 폴더>   # 영상 추가·교체 시: 720p H.264 압축 + 포스터 (public/videos)
 npm run clean-svg-ids     # SVG 아이콘 추가 시: 쓰이지 않는 id 제거 (인라인 아이콘 id 중복 방지)
 npm run test:e2e          # 빌드 후 브라우저 E2E (Playwright, 처음엔 npx playwright install chromium)
 ```
@@ -48,7 +49,7 @@ GitHub Actions(`.github/workflows/ci.yml`)가 `main` 푸시와 모든 PR에서 J
 ```
 public/
   _redirects            Netlify SPA 리다이렉트
-  videos/               릴스용 mp4 3개 (총 153MB)
+  videos/               릴스용 mp4 3개 (총 153MB) → 2026-11-25 720p 압축 2.76MB + 포스터 (IMPROVEMENTS.md 9번)
 src/
   App.tsx               라우터 정의 (약 35개 경로, 모두 Layout 하위)
   data/index.tsx        목업 데이터 (1,759줄, 상품·브랜드·리뷰 등)
@@ -90,7 +91,7 @@ src/
 
 **에셋·성능**
 - 원본 이미지를 압축하지 않고 그대로 씁니다. 필터 아이콘(`filterIcon/wood_*.png`, `texture_*.png`)은 작게 표시되는데도 파일 하나가 0.6~6MB입니다. 상위 3개: `wood_etc.png` 6.0MB, `wood_maple.png` 5.6MB, `wood_walnut.png` 4.4MB.
-- `public/videos/*.mp4` 3개가 총 153MB (78MB / 55MB / 27MB)이고 저장소에 직접 들어 있습니다.
+- `public/videos/*.mp4` 3개가 총 153MB (78MB / 55MB / 27MB)이고 저장소에 직접 들어 있습니다. → **2026-11-25 압축: 2.76MB** (원본은 git 기록에만)
 - 코드 분할이 없습니다. 모든 페이지가 `main.js` 한 파일에 들어갑니다 (`React.lazy` 미사용).
 
 ### 4. 성능·품질 기준선
@@ -101,7 +102,7 @@ src/
 | JS 번들 `main.js` | 1,068 KB (gzip 387.85 KB) | 〃 |
 | CSS 번들 | gzip 3.79 KB | 〃 |
 | 추가 청크 | gzip 1.78 KB (`web-vitals`) | 〃 |
-| 빌드 산출물 전체 | 201 MB (이미지 `static/media` 44MB·155개 + 영상 153MB) | |
+| 빌드 산출물 전체 | 201 MB (이미지 `static/media` 44MB·155개 + 영상 153MB) → 7번 후 159MB → **9번 후 11MB** | |
 | `tsc --noEmit` | 오류 0개, 16.7초 | [`tsc.log`](docs/logs/tsc.log) |
 | ESLint (`react-app` 설정) | 오류 0 · 경고 55 → **11-25 정리 후 0** (CI에서 0개 유지) | [`eslint.log`](docs/logs/eslint.log) |
 | └ `no-unused-vars` | 35 | |

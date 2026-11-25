@@ -30,7 +30,8 @@
     "optimize-images": "node scripts/optimize-images.js",
     "test:e2e": "npm run build && playwright test",
     "e2e": "playwright test",
-    "clean-svg-ids": "node scripts/clean-svg-ids.js"
+    "clean-svg-ids": "node scripts/clean-svg-ids.js",
+    "compress-videos": "node scripts/compress-videos.js"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
+    "ffmpeg-static": "^5.2.0",
     "prettier": "3.0.0",
     "sharp": "^0.34.3"
   },
