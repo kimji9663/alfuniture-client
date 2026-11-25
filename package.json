@@ -29,7 +29,8 @@
     "eject": "react-scripts eject",
     "optimize-images": "node scripts/optimize-images.js",
     "test:e2e": "npm run build && playwright test",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "clean-svg-ids": "node scripts/clean-svg-ids.js"
   },
   "eslintConfig": {
     "extends": [

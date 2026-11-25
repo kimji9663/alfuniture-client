@@ -31,6 +31,7 @@ npm start       # 개발 서버 http://localhost:3000
 npm run build   # build/ 에 프로덕션 빌드
 npm test        # Jest 110개 (단위·화면 테스트, docs/IMPROVEMENTS.md 11번)
 npm run optimize-images   # 이미지 추가·교체 시: assets-original/images → src/assets/images 에 WebP 생성
+npm run clean-svg-ids     # SVG 아이콘 추가 시: 쓰이지 않는 id 제거 (인라인 아이콘 id 중복 방지)
 npm run test:e2e          # 빌드 후 브라우저 E2E (Playwright, 처음엔 npx playwright install chromium)
 ```
 
