@@ -11,7 +11,7 @@ export const ShopAllList = styled(Box)(() => ({
     alignItems: "center",
     justifyContent: "left",
     padding: "16px",
-    color: "#878787",
+    color: "#707070",
   },
   "& > .subdivision": {
     display: "none",

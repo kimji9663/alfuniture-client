@@ -96,7 +96,7 @@ const WriteReviewPanel: React.FC = () => {
               상품에 대한 만족도
             </TitleSmallBoldGray9Typography>
             <Box sx={{position:"relative"}}>
-              <Typography style={{color:'red', position:'absolute', left:0, top:"-3px"}}>*</Typography>
+              <Typography style={{color:'#D32F2F', position:'absolute', left:0, top:"-3px"}}>*</Typography>
             </Box>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -127,7 +127,7 @@ const WriteReviewPanel: React.FC = () => {
                     height: "100%",
                     borderRadius: 0,
                     backgroundColor: "#F7F7F7",
-                    color: "#BDBDBD",
+                    color: "#707070",
                     border: "0.5px solid #BDBDBD",
                   }}
                   >
@@ -174,7 +174,7 @@ const WriteReviewPanel: React.FC = () => {
               상품 후기
             </TitleSmallBoldGray9Typography>
             <Box sx={{position:"relative"}}>
-              <Typography style={{color:'red', position:'absolute', left:0, top:"-3px"}}>*</Typography>
+              <Typography style={{color:'#D32F2F', position:'absolute', left:0, top:"-3px"}}>*</Typography>
             </Box>
           </Box>
           <TextareaAutosize 

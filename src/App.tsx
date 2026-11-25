@@ -122,6 +122,10 @@ const router = createBrowserRouter([
         lazy: page(() => import("./pages/order/Order")),
       },
       {
+        path: "/order/complete",
+        lazy: page(() => import("./pages/order/OrderComplete")),
+      },
+      {
         path: "/mypage",
         lazy: page(() => import("./pages/mypage/Dashboard")),
         children: [

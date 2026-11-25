@@ -32,6 +32,11 @@ interface ToggleProps {
   toggleDrawer: (val:boolean) => void
   selection: OptionSelection
   onSelectionChange: (next: OptionSelection) => void
+  /**
+   * 서랍을 붙일 요소 (상품 상세의 스크롤 영역).
+   * MUI 모달은 붙은 요소 안의 형제만 스크린리더에서 숨기므로, 그 밖에 있는 하단 "장바구니/구매하기" 버튼은 계속 읽힌다.
+   */
+  container?: () => HTMLElement | null
 }
 
 interface OptionTagProps {
@@ -116,7 +121,7 @@ const OptionTagType = ({ colors, onChange }: OptionTagProps) => {
                   border: 0,
                   background: 'none',
                   cursor: 'pointer',
-                  '& > svg': { display: 'block', color: '#DADADA' }
+                  '& > svg': { display: 'block', color: '#8C8C8C' }
                 }}
               >
                 <IconX aria-hidden="true" />
@@ -197,7 +202,7 @@ const OptionSelectType = ({ option, onChange }: OptionSelectProps) => {
 }
 
 
-const OrderSelector = ({drawerOpen, toggleDrawer, selection, onSelectionChange}: ToggleProps) => {
+const OrderSelector = ({drawerOpen, toggleDrawer, selection, onSelectionChange, container}: ToggleProps) => {
   // ios에서 스와이프 동작 활성화
   const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
@@ -212,6 +217,8 @@ const OrderSelector = ({drawerOpen, toggleDrawer, selection, onSelectionChange}:
       disableSwipeToOpen={false}
       anchor="bottom"
       open={drawerOpen}
+      // 하단 버튼과 함께 쓰는 서랍: 버튼을 스크린리더에서 숨기지 않고(container) Tab으로 이동할 수 있게(disableEnforceFocus)
+      ModalProps={{ container, disableEnforceFocus: true }}
       onClose={setToggleDrawer(false)}
       onOpen={setToggleDrawer(true)}
       sx={{

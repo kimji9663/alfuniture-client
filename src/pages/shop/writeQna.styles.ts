@@ -113,8 +113,8 @@ export const QnaImageField = styled(Box)(() => ({
 
 export const UploadNotice = styled(Box)(() => ({ 
   fontSize: ".75rem", 
-  color: "#BDBDBD", 
+  color: "#707070", 
   "p > span": { 
-    color: "#FF5454" 
+    color: "#D32F2F" 
   } 
 }))

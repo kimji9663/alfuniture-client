@@ -49,7 +49,7 @@ export const QnaListItem = styled(Box)(() => ({
     fontSize: ".75rem",
   },
   "& .content.locked": {
-    color: "#BDBDBD", 
+    color: "#707070", 
   },
   "& .content_info": {
     display: "flex", 

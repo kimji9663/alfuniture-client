@@ -14,6 +14,7 @@ import CouponSelector, { findCoupon } from "./CouponSelector"
 import NoData from "../../components/NoData"
 import { CartItem, NewCartItem, productImage, useCart } from "../../store/cart"
 import { DeliveryType, orderAmounts, won } from "../../utils/pricing"
+import { OrderCompleteState, createOrderNo } from "./OrderComplete"
 
 /**
  * 주문서로 넘어오는 방법 (react-router location.state, 새로 고침해도 유지됨)
@@ -79,9 +80,18 @@ const Order = () => {
     // 연속 클릭으로 두 번 주문되지 않게 막는다
     if (submitting) return
     setSubmitting(true)
+    // 주문 완료 화면에 보여 줄 내용 (장바구니에서 빼기 전에 만든다)
+    const complete: OrderCompleteState = {
+      orderNo: createOrderNo(),
+      lines: lines.map(({ productId, shopName, productName, option1, option2, price, count }) => ({ productId, shopName, productName, option1, option2, price, count })),
+      amounts,
+      deliveryType: orderData.deliveryType,
+      couponName: selectedCouponName || undefined,
+    }
     // 장바구니에서 주문한 상품은 장바구니에서 뺀다
     if (orderState?.source === "cart") lines.forEach((line) => removeItem(line.id))
-    navigate("/", { replace: true })
+    // 뒤로 가기로 결제 화면에 돌아오지 않게 replace
+    navigate("/order/complete", { replace: true, state: complete })
   }
 
   // 필수정보 체크 후 주문 버튼 활성화
